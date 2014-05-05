@@ -1,0 +1,35 @@
+{
+    "name": "reload/drupal-composer-project",
+    "description": "Composer template for Drupal projects",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kasper Garnæs",
+            "email": "kasper@reload.dk"
+        }
+    ],
+    "repositories": [
+      {
+        "type": "composer",
+        "url": "http://drupal-packages.kasper.reload.dk/packages.json"
+      }
+    ],
+    "require": {
+      "thecodingmachine/drupal": "7.23.*@dev",
+      "composer/installers": "~1.0"
+    },
+    "scripts": {
+      "post-create-project-cmd": [
+        "rm README.md LICENSE"
+      ]
+    },
+    "config": {
+        "vendor-dir": "sites/all/composer"
+    },
+    "extra": {
+      "installer-paths": {
+        "sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
+        "sites/all/themes/contrib/{$name}/": ["type:drupal-theme"]
+      }
+    }
+}
