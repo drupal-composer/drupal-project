@@ -9,6 +9,7 @@ cd some-dir
 php ../composer.phar require drupal/ctools:7.*
 ```
 
+
 ## Background
 
 A Drupal project usually consists of the following:
@@ -24,15 +25,31 @@ Meanwhile the PHP Community has gathered around another dependency manager, [Com
 
 This project aims to be a ressource for using Composer to manage Drupal projects with the same advantages as Drush Make but without the tradeoffs regardless of what version of Drupal being used.
 
+
+## Getting started
+
+To start your first Drupal project with Composer you need to:
+
+1. [Install Composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
+2. Create a `composer.json` file in the root of your project with [appropriate properties](https://getcomposer.org/doc/04-schema.md#properties) - primarily [the Drupal core package](#core) and the [Drupal.org package repository](#projects). To use the `composer.json` template provided by this project run `composer create-project reload/drupal-composer-project project-dir --stability dev --no-interaction
+3. Run `composer install` from your project directory to install Drupal 7.
+4. Run `composer require drupal/some-project` to install a module or theme from Drupal.org.
+
+You should now have a Drupal 7 installation in your project directory and be ready to include other projects from Drupal.org.
+
+
 ## Usage
 
 The following aims to explain Composer in relation to Drush Make based on the structure of [the Drush Make documentation](http://drush.ws/docs/make.txt).
 
 Composer has [a great introduction](https://getcomposer.org/doc/00-intro.md) and [thorough documentation of the composer.json format](https://getcomposer.org/doc/04-schema.md).
 
-### Core version
+
+### Core version<a name="core"/>
 
 The core version of Drupal to be used with the project is specified using the version of the `thecodingmachine/drupal` package.
+
+Using Composer to manage Drupal projects has so far been tested with Drupal 7 projects. It may or may not work for Drupal 6 and 8.
 
 The following will download Drupal 7.23:
 
@@ -43,17 +60,19 @@ The following will download Drupal 7.23:
 ```
 
 #### Notes
+
 This behavior differs from both Drush Make and standard Composer.
 
 Requiring this package will download Drupal Core as a part of the project unpack it in the root of the project. Consequently there is no need for recursive make files or the like.
 
 The behavior is handled by a custom Composer installer, [mouf/archieve-installer](https://github.com/thecodingmachine/archive-installer).
 
-### Projects
 
-All Drupal projects to be retrieved should be added as dependencies with their short name prefixed by `drupal/` and their version in the format `[drupal-version].[module-major-version].[module.minor-version]`.
+### Projects<a name="projects"/>
 
-The following will download the [Chaos tool suite (ctools)](https://drupal.org/project/ctools) 1.4 for Drupal 7.
+All Drupal projects to be retrieved should be added as dependencies in the format `drupal/[module-short_name] and their version in the format `[drupal-version].[module-major-version].[module.minor-version]`.
+
+The following will download the [Chaos tool suite (ctools)](https://drupal.org/project/ctools) module version 1.4 for Drupal 7.
 
 
 ```json 
@@ -68,7 +87,7 @@ You can also run `php composer.phar require drupal/ctools` from the command line
 
 #### Notes
 
-Drupal packages are normally not available from the default Composer package repository Packagist to for this to work a custom repository must be added:
+Drupal projects are normally not available from the default Composer package repository Packagist to for this to work a custom repository must be added:
 
 ```json
     "repositories": [
@@ -79,15 +98,42 @@ Drupal packages are normally not available from the default Composer package rep
     ]
 ```
 
+This repository is generated using the [](https://github.com/reload/drupal-packages-generator)
+
+Composer does not support downloading of requirements specified in the `.info` file for a project. These must be added manually.
+
+
 ### Project options
 
 #### Version
 
+You specify the version of each project using [Composer package version constraints](https://getcomposer.org/doc/01-basic-usage.md#package-versions).
+
+In this example the following releases of Drupal 7 modules will be downloaded:
+
+* Latest stable minor release of Chaos tool suite 1.x 
+* Latest stable release of Features
+* Latest development release of Views 3.x
+
+```json 
+    "require": {
+	    "drupal/ctools": "7.1.*",
+	    "drupal/features": "7.*"
+	    "drupal/views": "7.3-dev",
+    }
+```
+
 #### Patch
 
-#### Subdir
+See the [Netresearch patches Composer plugin](https://github.com/netresearch/composer-patches-plugin) for applying patches.
 
-The location of modules can be changed in the `installer-paths` section of `composer.json` either by individual project or by type.
+##### Notes
+
+Since Drupal Core is handled using a custom Composer installer patching Core is currently not possible.
+
+#### Subdir<a name="subdir"></a>
+
+The location of projects can be changed in the `installer-paths` section of `composer.json` either by individual project or by type.
 
 ```json
     "extra": {
@@ -102,41 +148,143 @@ Custom location of packages are handled by [the Composer Installers project](htt
 
 #### Location
 
-This is not supported by Composer.
+Specifying alternate sources of Drupal projects is not immediatly supported.
 
+One approach to achieving would be to update [the Drupal.org packages.json generator](https://github.com/reload/drupal-packages-generator) to support other updates XML servers than `updates.drupal.org`, custom vendor names and add the resulting `packages.json` to the `repositories` section.
 
 #### Type
 
+To specify the type of a Drupal project set [the package type](https://getcomposer.org/doc/04-schema.md#type) to one of the types supported by [the Composer Installers project](https://github.com/composer/installers). This includes `drupal-module` and `drupal-theme`.
+
+Note that for this to work the Composer package for the project must also require `"composer/installers": "~1.0"`.
+
 #### Directory name
+
+Projects can be placed in specific directories using the `installer-paths` section. See [Subdir](#subdir).
 
 #### l10n_path
 
-This is not supported by Composer.
+Composer does not support specifying custom paths for translations.
 
 #### l10n_url
 
-This is not supported by Composer.
+Composer does not support specifying custom translation servers.
 
 #### overwrite
 
+Composer does not have an option to specify that a package should be installed in a non-empty directory.
+
 #### translations
 
-This is not supported by Composer.
+Composer does not handle handle translations.
 
-### Project download options
+
+### Project download options<a name="project-download-options">
+
+To download a project which is not on Drupal.org or a Composer package then define it as [a custom package repository](https://getcomposer.org/doc/05-repositories.md#package-2) and add it as a dependency.
+
+This method supports version constrol checkouts from custom branches or tags as well as file downloads.
+
 
 ### Libraries
 
+Non-Drupal non-Composer libraries can be retrieved by specifying them as custom Package repository. See [Project download options](#project-download-options).
+
+Example downloading jQuery UI 1.10.4:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "jquery/jqueryui",
+                "version": "1.10.4",
+                "type": "drupal-library",
+                "dist": {
+                    "url": "http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip",
+                    "type": "zip"
+                },
+                "require": {
+                	"composer/installers": "~1.0",
+                }
+            }
+        }
+    ],
+    "require": {
+	    "jquery/jquery.ui": "1.10.4",
+    }
+}
+```
+
+#### Notes
+
+A different package type is introduced here: `drupal-library`. This allows Composer Installer to handle library placement different compared to modules and themes.
+
 ### Library options
+
+Libraries are defined as Composer packages and thus support [the same options](https://getcomposer.org/doc/04-schema.md) as Drupal projects and Composer packages in gneeral.
+
+#### Destination
+
+Libraries can be placed in specific directories using the `installer-paths` section. See [Subdir](#subdir).
 
 ### Includes
 
-### Recursion
+Composer uses dependencies as includes. If a dependency has dependencies on its own and specifies these in its' `composer.json` file then these dependencies will be installed as well. Note that a Composer package does not have to contain any actual code - this project is an example of just that!
+
+If the purpose of including additional files is to define packages then Composer has different option for including package defitions through [the `repositories` section](https://getcomposer.org/doc/04-schema.md#repositories).
+
+### Defaults
+
+Composer does not have the concept of user-defined default values for packages.
+
+Composer Installer does support setting a standard directory for all packages of a specific type e.g. modules. See [Subdir](#subdir).
+
+### Overriding properties
+
+Composer does not support overriding individual properties for a package.
+
+One approach to changing properties is to fork the package, update the `composer.json` for the package accordingly and [add a new repository](https://getcomposer.org/doc/04-schema.md#repositories) pointing to the fork in the root `composer.json`.
+
+Packages overriding the Drupal projects repository should be placed before this repository due to the over in which Composer looks for packages.
+
+
+## Recursion
+
+Composer resolves [dependencies and a range of other properties](https://getcomposer.org/doc/04-schema.md) from `composer.json` files recursively.
+
+A few properties are only defined by the [root package](https://getcomposer.org/doc/04-schema.md#root-package) - the `composer.json` for the project.
+
+
+## Generate
+
+Composer does not support generating a `composer.json` file form an existing project.
+
+## FAQ
+
+### How is this better than Drush Make?
+
+Drush Make has its own problems which makes it difficult to work with e.g.:
+
+* [Multiple `.make` files](http://drupalcode.org/project/openatrium.git/tree/refs/heads/7.x-2.x) to support downloading Drupal Core with custom code
+* Tricky rebuild process leading to [custom workarounds](https://drupal.org/project/drush_situs)
+* Build process makes it slow to use developer tools like [git bisect](http://git-scm.com/book/en/Git-Tools-Debugging-with-Git#Binary-Search).
+
+Also Drush Make is a tool primarily built for Drupal. [The PHP community has matured a lot lately](http://programming.oreilly.com/2014/03/the-new-php.html). Using Composer means using the same tool as the rest of the community of the makes it easy to use other libraries with a Drupal project.
+
+[It is time to get off the island!](http://www.garfieldtech.com/blog/off-the-island-2013)
+
+### Should I commit the contrib modules I download
+
+Composer recommends **no**. They provide [argumentation against but also workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+
 
 ## Credit
 
-* Archieve installer [mouf/archieve-installer](https://github.com/thecodingmachine/archive-installer) [introduced by The Coding Machine](http://blog.thecodingmachine.com/content/installing-drupal-using-composer).
-* Composer installers [composer/installers](Custom location of packages are handled by [the Composer Installers project](https://github.com/composer/installers).
-* Netresearch patches plugin [netresearch/composer-patches-plugin
-](https://github.com/netresearch/composer-patches-plugin).
+Using Composer to manage a Drupal project would not be possible without the work of others:
+
+* [Archieve installer](https://github.com/thecodingmachine/archive-installer) used to install Drupal Core [introduced by The Coding Machine](http://blog.thecodingmachine.com/content/installing-drupal-using-composer).
+* [Composer installers](https://github.com/composer/installers) used to specify custom location of packages.
+* [Netresearch patches plugin](https://github.com/netresearch/composer-patches-plugin) for applying patches to Composer projects.
 
