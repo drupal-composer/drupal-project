@@ -29,7 +29,10 @@
     "extra": {
       "installer-paths": {
         "sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
-        "sites/all/themes/contrib/{$name}/": ["type:drupal-theme"]
+        "sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
+        "sites/all/libraries/{$name}/": ["type:drupal-library"],
+        "sites/all/drush/{$name}/": ["type:drupal-drush"],
+        "profiles/{$name}/": ["type:drupal-profile"]
       }
     }
 }
