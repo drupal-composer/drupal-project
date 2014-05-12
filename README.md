@@ -21,7 +21,7 @@ A Drupal project usually consists of the following:
 
 The most popular approach to assembling these parts is using [Drush Make](http://drush.ws/docs/make.txt). 
 
-Meanwhile the PHP Community has gathered around another dependency manager, [Composer](https://getcomposer.org/). It is even used for [mangaing dependencies for Drupal 8 Core](https://drupal.org/node/1764330).
+Meanwhile the PHP Community has gathered around another dependency manager, [Composer](https://getcomposer.org/). It is even used for [managing dependencies for Drupal 8 Core](https://drupal.org/node/1764330).
 
 This project aims to be a ressource for using Composer to manage Drupal projects with the same advantages as Drush Make but without the tradeoffs regardless of what version of Drupal being used.
 
@@ -98,7 +98,7 @@ Drupal projects are normally not available from the default Composer package rep
     ]
 ```
 
-This repository is generated using the [](https://github.com/reload/drupal-packages-generator)
+This repository is generated using the [Drupal.org packages.json generator](https://github.com/reload/drupal-packages-generator).
 
 Composer does not support downloading of requirements specified in the `.info` file for a project. These must be added manually.
 
