@@ -125,7 +125,26 @@ In this example the following releases of Drupal 7 modules will be downloaded:
 
 #### Patch
 
-See the [Netresearch patches Composer plugin](https://github.com/netresearch/composer-patches-plugin) for applying patches.
+Patching projects is supported by the [Netresearch patches Composer plugin](https://github.com/netresearch/composer-patches-plugin).
+
+To apply a patch to a project a `patches` section must be added to the `extras` section of `composer.json`.
+
+The following will patch the Chaos tool suite version 7.1.4 with [this patch](https://drupal.org/files/issues/ctools-deleted-not-needed-element-from-array-in-node-plugin.patch):
+
+```json
+    "extra": {
+      "patches": {
+        "drupal/ctools": {
+          "7.1.4": [
+            {
+              "url": "https://drupal.org/files/issues/ctools-deleted-not-needed-element-from-array-in-node-plugin.patch"
+            }
+          ]
+        }
+      }
+    }
+``` 
+
 
 ##### Notes
 
