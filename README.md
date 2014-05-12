@@ -132,23 +132,51 @@ To apply a patch to a project a `patches` section must be added to the `extras` 
 The following will patch the Chaos tool suite version 7.1.4 with [this patch](https://drupal.org/files/issues/ctools-deleted-not-needed-element-from-array-in-node-plugin.patch):
 
 ```json
-    "extra": {
-      "patches": {
-        "drupal/ctools": {
-          "7.1.4": [
-            {
-              "url": "https://drupal.org/files/issues/ctools-deleted-not-needed-element-from-array-in-node-plugin.patch"
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "reload/drupal-composer-project-patches",
+        "version": "1.0.0",
+        "type": "patches",
+        "require": {
+          "netresearch/composer-patches-plugin": "~1.0"
+        },
+        "extra": {
+          "patches": {
+            "drupal/ctools": {
+              "7.1.4": [
+                {
+                  "title": "Delete not needed element from array in existing node plugin",
+                  "url": "https://drupal.org/files/issues/ctools-deleted-not-needed-element-from-array-in-node-plugin.patch"
+                }
+              ]
             }
-          ]
+          }
         }
       }
     }
-``` 
+  ],
+  "require": {
+    "reload/drupal-composer-project-patches": "*"
+  }
+```
 
+The important parts about a package containing patches are:
+
+* It must have the `patches` type
+* It must require the `netresearch/composer-patches-plugin` package
+* It can contain multiple patches to multiple projects
+* The root package should require the patches package
+* When adding or removing patches to a package the package version must be updated as well
+
+The plugin supports [other options for specifying patches](https://github.com/netresearch/composer-patches-plugin#providing-patches) as well.
 
 ##### Notes
 
 Since Drupal Core is handled using a custom Composer installer patching Core is currently not possible.
+
+The plugin does not generate a `PATCHES.txt` file for each patched project as Drush Make does.
 
 #### Subdir<a name="subdir"></a>
 
