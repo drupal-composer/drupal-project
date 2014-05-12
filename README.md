@@ -47,25 +47,45 @@ Composer has [a great introduction](https://getcomposer.org/doc/00-intro.md) and
 
 ### Core version<a name="core"/>
 
-The core version of Drupal to be used with the project is specified using the version of the `thecodingmachine/drupal` package.
+The core version of Drupal to be used with the project is specified using the [Composer non-destructive archive installer plugin](https://github.com/azt3k/non-destructive-archive-installer).
 
-Using Composer to manage Drupal projects has so far been tested with Drupal 7 projects. It may or may not work for Drupal 6 and 8.
-
-The following will download Drupal 7.23:
+Adding the following package to the `repositories` and `requires` sections will download Drupal 7.28 to the root of the Composer project:
 
 ```json 
-    "require": {
-	    "thecodingmachine/drupal": "7.23.*@dev",
-    }
+	"repositories": [
+		{
+			"type": "package",
+			"package": {
+				"name": "drupal/drupal",
+				"type": "non-destructive-archive-installer",
+				"version": "7.28",
+				"dist": {
+					"url": "http://ftp.drupal.org/files/projects/drupal-7.28.zip",
+					"type": "zip"
+				},
+				"require": {
+					"azt3k/non-destructive-archive-installer" : "*"
+				},
+				"extra": {
+					"target-dir": ".",
+					"omit-first-directory": "true"
+				}
+			}
+		}
+	],
+	"require": {
+		"azt3k/non-destructive-archive-installer" : "dev-master",
+		"drupal/drupal": "7.*",
+	}
 ```
+
+Using Composer to manage Drupal projects has so far been tested with Drupal 7 projects. It may or may not work for Drupal 6 and 8.
 
 #### Notes
 
 This behavior differs from both Drush Make and standard Composer.
 
-Requiring this package will download Drupal Core as a part of the project unpack it in the root of the project. Consequently there is no need for recursive make files or the like.
-
-The behavior is handled by a custom Composer installer, [mouf/archieve-installer](https://github.com/thecodingmachine/archive-installer).
+Requiring this package will download Drupal Core as a part of the project and unpack it in the root of the project. Consequently there is no need for recursive make files or the like.
 
 
 ### Projects<a name="projects"/>
@@ -158,6 +178,7 @@ The following will patch the Chaos tool suite version 7.1.4 with [this patch](ht
     }
   ],
   "require": {
+	"netresearch/composer-patches-plugin": "~1.0"
     "reload/drupal-composer-project-patches": "*"
   }
 ```
@@ -174,7 +195,7 @@ The plugin supports [other options for specifying patches](https://github.com/ne
 
 ##### Notes
 
-Since Drupal Core is handled using a custom Composer installer patching Core is currently not possible.
+Patching Drupal Core may not work since Drupal Core is handled using a custom Composer installer.
 
 The plugin does not generate a `PATCHES.txt` file for each patched project as Drush Make does.
 
@@ -331,7 +352,7 @@ Composer recommends **no**. They provide [argumentation against but also workrou
 
 Using Composer to manage a Drupal project would not be possible without the work of others:
 
-* [Archieve installer](https://github.com/thecodingmachine/archive-installer) used to install Drupal Core [introduced by The Coding Machine](http://blog.thecodingmachine.com/content/installing-drupal-using-composer).
+* [Non-destructive archive installer](https://github.com/azt3k/non-destructive-archive-installer) used to install Drupal Core.
 * [Composer installers](https://github.com/composer/installers) used to specify custom location of packages.
 * [Netresearch patches plugin](https://github.com/netresearch/composer-patches-plugin) for applying patches to Composer projects.
 

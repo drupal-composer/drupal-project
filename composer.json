@@ -10,12 +10,32 @@
 	],
 	"repositories": [
 		{
+			"type": "package",
+			"package": {
+				"name": "drupal/drupal",
+				"type": "non-destructive-archive-installer",
+				"version": "7.28",
+				"dist": {
+					"url": "http://ftp.drupal.org/files/projects/drupal-7.28.zip",
+					"type": "zip"
+				},
+				"require": {
+					"azt3k/non-destructive-archive-installer" : "*"
+				},
+				"extra": {
+					"target-dir": ".",
+					"omit-first-directory": "true"
+				}
+			}
+		},
+		{
 			"type": "composer",
 			"url": "http://drupal-packages.kasper.reload.dk/packages.json"
 		}
 	],
 	"require": {
-		"thecodingmachine/drupal": "7.23.*@dev",
+		"azt3k/non-destructive-archive-installer" : "dev-master",
+		"drupal/drupal": "7.*",
 		"composer/installers": "~1.0"
 	},
 	"scripts": {
