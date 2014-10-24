@@ -14,9 +14,9 @@
 			"package": {
 				"name": "drupal/drupal",
 				"type": "non-destructive-archive-installer",
-				"version": "7.28",
+				"version": "7.32.0",
 				"dist": {
-					"url": "http://ftp.drupal.org/files/projects/drupal-7.28.zip",
+					"url": "http://ftp.drupal.org/files/projects/drupal-7.32.zip",
 					"type": "zip"
 				},
 				"require": {
