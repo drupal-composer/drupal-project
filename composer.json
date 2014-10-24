@@ -1,11 +1,6 @@
 {
   "name": "reload/drupal-composer-project",
   "description": "Composer template for Drupal projects",
-  "license": "MIT",
-  "authors": [{
-    "name": "Kasper Garnæs",
-    "email": "kasper@reload.dk"
-  }],
   "repositories": [{
     "type": "package",
     "package": {
