@@ -25,12 +25,64 @@
 				"extra": {
 					"target-dir": ".",
 					"omit-first-directory": "true"
-				}
+				},
+        "replace": {
+          "drupal/aggregator": "self.version",
+          "drupal/block": "self.version",
+          "drupal/blog": "self.version",
+          "drupal/book": "self.version",
+          "drupal/color": "self.version",
+          "drupal/comment": "self.version",
+          "drupal/contact": "self.version",
+          "drupal/contextual": "self.version",
+          "drupal/dashboard": "self.version",
+          "drupal/dblog": "self.version",
+          "drupal/field": "self.version",
+          "drupal/field_sql_storage": "self.version",
+          "drupal/list": "self.version",
+          "drupal/number": "self.version",
+          "drupal/options": "self.version",
+          "drupal/text": "self.version",
+          "drupal/field_ui": "self.version",
+          "drupal/file": "self.version",
+          "drupal/filter": "self.version",
+          "drupal/forum": "self.version",
+          "drupal/help": "self.version",
+          "drupal/image": "self.version",
+          "drupal/locale": "self.version",
+          "drupal/menu": "self.version",
+          "drupal/node": "self.version",
+          "drupal/openid": "self.version",
+          "drupal/overlay": "self.version",
+          "drupal/path": "self.version",
+          "drupal/php": "self.version",
+          "drupal/poll": "self.version",
+          "drupal/profile": "self.version",
+          "drupal/rdf": "self.version",
+          "drupal/search": "self.version",
+          "drupal/shortcut": "self.version",
+          "drupal/statistics": "self.version",
+          "drupal/syslog": "self.version",
+          "drupal/system": "self.version",
+          "drupal/taxonomy": "self.version",
+          "drupal/toolbar": "self.version",
+          "drupal/tracker": "self.version",
+          "drupal/translation": "self.version",
+          "drupal/trigger": "self.version",
+          "drupal/update": "self.version",
+          "drupal/user": "self.version",
+          "drupal/minimal": "self.version",
+          "drupal/standard": "self.version",
+          "drupal/bartik": "self.version",
+          "drupal/garland": "self.version",
+          "drupal/seven": "self.version",
+          "drupal/stark": "self.version"
+        }				
 			}
 		},
 		{
 			"type": "composer",
-			"url": "http://drupal-packages.kasper.reload.dk/packages.json"
+			"url": "http://static.drupal-packagist.org/v0.2.0/"
 		}
 	],
 	"require": {
