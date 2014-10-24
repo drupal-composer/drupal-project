@@ -34,7 +34,7 @@
 		}
 	],
 	"require": {
-		"azt3k/non-destructive-archive-installer" : "dev-master",
+		"azt3k/non-destructive-archive-installer" : "0.2.*",
 		"drupal/drupal": "7.*",
 		"composer/installers": "~1.0"
 	},
