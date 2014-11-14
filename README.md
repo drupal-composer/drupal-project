@@ -69,6 +69,8 @@ Adding the following package to the `repositories` and `requires` sections will 
 				"extra": {
 					"target-dir": ".",
 					"omit-first-directory": "true"
+				},
+				"replace": {
 				}
 			}
 		}
@@ -86,6 +88,8 @@ Using Composer to manage Drupal projects has so far been tested with Drupal 7 pr
 This behavior differs from both Drush Make and standard Composer.
 
 Requiring this package will download Drupal Core as a part of the project and unpack it in the root of the project. Consequently there is no need for recursive make files or the like.
+
+Note that any core module required by contrib projects must be added in the `replace` section to inform Composer that there is no need to download these separately. This project template includes all core modules in the `replace` section.
 
 
 ### Projects<a name="projects"/>
@@ -107,20 +111,18 @@ You can also run `php composer.phar require drupal/ctools` from the command line
 
 #### Notes
 
-Drupal projects are normally not available from the default Composer package repository Packagist to for this to work a custom repository must be added:
+Drupal projects are normally not available from the default Composer package repository Packagist. In order to for this to work a custom repository must be added:
 
 ```json
     "repositories": [
       {
         "type": "composer",
-        "url": "http://drupal-packages.kasper.reload.dk/packages.json"
+        "url": "static.drupal-packagist.org/v0.2.0/"
       }
     ]
 ```
 
-This repository is generated using the [Drupal.org packages.json generator](https://github.com/reload/drupal-packages-generator).
-
-Composer does not support downloading of requirements specified in the `.info` file for a project. These must be added manually.
+This repository is generated using the [drupal-parse-composer project](https://github.com/winmillwill/drupal-parse-composer).
 
 
 ### Project options
