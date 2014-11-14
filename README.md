@@ -74,7 +74,7 @@ Adding the following package to the `repositories` and `requires` sections will 
 		}
 	],
 	"require": {
-		"azt3k/non-destructive-archive-installer" : "dev-master",
+		"azt3k/non-destructive-archive-installer" : "0.2.*",
 		"drupal/drupal": "7.*",
 	}
 ```
