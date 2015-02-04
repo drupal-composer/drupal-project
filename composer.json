@@ -6,8 +6,9 @@
     "url": "http://drupal-packagist.webflo.io"
   }],
   "require": {
-    "drupal/drupal": "7.*",
-    "composer/installers": "~1.0"
+    "composer/installers": "~1.0",
+    "derhasi/composer-preserve-paths": "0.1.*",
+    "drupal/drupal": "7.*"
   },
   "scripts": {
     "post-create-project-cmd": ["rm README.md LICENSE"]
@@ -23,6 +24,14 @@
       "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
       "web/sites/all/drush/{$name}/": ["type:drupal-drush"],
       "web/profiles/{$name}/": ["type:drupal-profile"]
-    }
+    },
+    "preserve-paths": [
+      "web/sites/all/modules/contrib",
+      "web/sites/all/themes/contrib",
+      "web/sites/all/libraries",
+      "web/sites/all/drush",
+      "web/sites/default/settings.php",
+      "web/sites/default/files"
+    ]
   }
 }
