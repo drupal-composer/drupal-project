@@ -1,0 +1,18 @@
+# OS specific temporary files
+.DS_Store*
+ehthumbs.db
+Thumbs.db
+
+# IDEs
+.buildpath
+.idea
+.project
+.settings
+*.esproj
+*.komodoproject
+*.komodotools
+nbproject
+
+# Tools
+.svn
+.sass-cache
