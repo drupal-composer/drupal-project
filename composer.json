@@ -84,7 +84,7 @@
     "post-create-project-cmd": ["rm README.md LICENSE"]
   },
   "config": {
-    "vendor-dir": "sites/all/vendor"
+    "vendor-dir": "vendor"
   },
   "extra": {
     "installer-paths": {
