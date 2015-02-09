@@ -3,7 +3,7 @@
   "description": "Composer template for Drupal projects",
   "repositories": [{
     "type": "composer",
-    "url": "http://drupal-packagist.webflo.io"
+    "url": "http://packagist.drupal-composer.org"
   }],
   "require": {
     "composer/installers": "~1.0",
