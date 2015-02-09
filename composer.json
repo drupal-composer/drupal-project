@@ -2,83 +2,13 @@
   "name": "reload/drupal-composer-project",
   "description": "Composer template for Drupal projects",
   "repositories": [{
-    "type": "package",
-    "package": {
-      "name": "drupal/drupal",
-      "type": "non-destructive-archive-installer",
-      "version": "7.32.0",
-      "dist": {
-        "url": "http://ftp.drupal.org/files/projects/drupal-7.32.zip",
-        "type": "zip"
-      },
-      "require": {
-        "azt3k/non-destructive-archive-installer": "*"
-      },
-      "extra": {
-        "target-dir": ".",
-        "omit-first-directory": "true"
-      },
-      "replace": {
-        "drupal/aggregator": "self.version",
-        "drupal/block": "self.version",
-        "drupal/blog": "self.version",
-        "drupal/book": "self.version",
-        "drupal/color": "self.version",
-        "drupal/comment": "self.version",
-        "drupal/contact": "self.version",
-        "drupal/contextual": "self.version",
-        "drupal/dashboard": "self.version",
-        "drupal/dblog": "self.version",
-        "drupal/field": "self.version",
-        "drupal/field_sql_storage": "self.version",
-        "drupal/list": "self.version",
-        "drupal/number": "self.version",
-        "drupal/options": "self.version",
-        "drupal/text": "self.version",
-        "drupal/field_ui": "self.version",
-        "drupal/file": "self.version",
-        "drupal/filter": "self.version",
-        "drupal/forum": "self.version",
-        "drupal/help": "self.version",
-        "drupal/image": "self.version",
-        "drupal/locale": "self.version",
-        "drupal/menu": "self.version",
-        "drupal/node": "self.version",
-        "drupal/openid": "self.version",
-        "drupal/overlay": "self.version",
-        "drupal/path": "self.version",
-        "drupal/php": "self.version",
-        "drupal/poll": "self.version",
-        "drupal/profile": "self.version",
-        "drupal/rdf": "self.version",
-        "drupal/search": "self.version",
-        "drupal/shortcut": "self.version",
-        "drupal/statistics": "self.version",
-        "drupal/syslog": "self.version",
-        "drupal/system": "self.version",
-        "drupal/taxonomy": "self.version",
-        "drupal/toolbar": "self.version",
-        "drupal/tracker": "self.version",
-        "drupal/translation": "self.version",
-        "drupal/trigger": "self.version",
-        "drupal/update": "self.version",
-        "drupal/user": "self.version",
-        "drupal/minimal": "self.version",
-        "drupal/standard": "self.version",
-        "drupal/bartik": "self.version",
-        "drupal/garland": "self.version",
-        "drupal/seven": "self.version",
-        "drupal/stark": "self.version"
-      }
-    }
-  }, {
     "type": "composer",
-    "url": "http://static.drupal-packagist.org/v0.2.0/"
+    "url": "http://packagist.drupal-composer.org"
   }],
   "require": {
-    "azt3k/non-destructive-archive-installer": "0.2.*",
-    "drupal/drupal": "7.*",
-    "composer/installers": "~1.0"
+    "composer/installers": "~1.0",
+    "derhasi/composer-preserve-paths": "0.1.*",
+    "drupal/drupal": "7.*"
   },
   "scripts": {
     "post-create-project-cmd": ["rm README.md LICENSE"]
@@ -88,11 +18,20 @@
   },
   "extra": {
     "installer-paths": {
-      "sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
-      "sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
-      "sites/all/libraries/{$name}/": ["type:drupal-library"],
-      "sites/all/drush/{$name}/": ["type:drupal-drush"],
-      "profiles/{$name}/": ["type:drupal-profile"]
-    }
+      "web/": ["type:drupal-core"],
+      "web/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
+      "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
+      "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
+      "web/sites/all/drush/{$name}/": ["type:drupal-drush"],
+      "web/profiles/{$name}/": ["type:drupal-profile"]
+    },
+    "preserve-paths": [
+      "web/sites/all/modules/contrib",
+      "web/sites/all/themes/contrib",
+      "web/sites/all/libraries",
+      "web/sites/all/drush",
+      "web/sites/default/settings.php",
+      "web/sites/default/files"
+    ]
   }
 }
