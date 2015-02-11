@@ -11,7 +11,9 @@
     "drupal/drupal": "7.*"
   },
   "scripts": {
-    "post-create-project-cmd": ["rm README.md LICENSE"]
+    "post-create-project-cmd": [
+      "rm README.md LICENSE .travis.yml phpunit.xml.dist"
+    ]
   },
   "config": {
     "vendor-dir": "vendor"
