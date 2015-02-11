@@ -1,5 +1,5 @@
 {
-  "name": "reload/drupal-composer-project",
+  "name": "drupal-composer/drupal-project",
   "description": "Composer template for Drupal projects",
   "repositories": [{
     "type": "composer",
