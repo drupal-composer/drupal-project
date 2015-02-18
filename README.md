@@ -117,12 +117,12 @@ Drupal projects are normally not available from the default Composer package rep
     "repositories": [
       {
         "type": "composer",
-        "url": "static.drupal-packagist.org/v0.2.0/"
+        "url": "http://packagist.drupal-composer.org"
       }
     ]
 ```
 
-This repository is generated using the [drupal-parse-composer project](https://github.com/winmillwill/drupal-parse-composer).
+This repository is generated using the [drupal-parse-composer project](https://github.com/drupal-composer/drupal-parse-composer).
 
 
 ### Project options
