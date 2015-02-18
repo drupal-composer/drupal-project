@@ -4,7 +4,7 @@
 
 ```sh
 curl -sS https://getcomposer.org/installer | php
-php composer.phar create-project reload/drupal-composer-project some-dir --stability dev --no-interaction
+php composer.phar create-project drupal-composer/drupal-project some-dir --stability dev --no-interaction
 cd some-dir
 php ../composer.phar require drupal/ctools:7.*
 ```
@@ -31,7 +31,7 @@ This project aims to be a ressource for using Composer to manage Drupal projects
 To start your first Drupal project with Composer you need to:
 
 1. [Install Composer](https://getcomposer.org/doc/00-intro.md#system-requirements).
-2. Create a `composer.json` file in the root of your project with [appropriate properties](https://getcomposer.org/doc/04-schema.md#properties) - primarily [the Drupal core package](#core) and the [Drupal.org package repository](#projects). To use the `composer.json` template provided by this project run `composer create-project reload/drupal-composer-project project-dir --stability dev --no-interaction
+2. Create a `composer.json` file in the root of your project with [appropriate properties](https://getcomposer.org/doc/04-schema.md#properties) - primarily [the Drupal core package](#core) and the [Drupal.org package repository](#projects). To use the `composer.json` template provided by this project run `composer create-project drupal-composer/drupal-project project-dir --stability dev --no-interaction
 3. Run `composer install` from your project directory to install Drupal 7.
 4. Run `composer require drupal/some-project` to install a module or theme from Drupal.org.
 
