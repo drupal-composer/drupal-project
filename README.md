@@ -77,7 +77,7 @@ Adding the following package to the `repositories` and `requires` sections will 
 	],
 	"require": {
 		"azt3k/non-destructive-archive-installer" : "0.2.*",
-		"drupal/drupal": "7.*",
+		"drupal/drupal": "7.*"
 	}
 ```
 
@@ -101,7 +101,7 @@ The following will download the [Chaos tool suite (ctools)](https://drupal.org/p
 
 ```json 
     "require": {
-	    "drupal/ctools": "7.1.4",
+	    "drupal/ctools": "7.1.4"
     }
 ```
 
@@ -140,8 +140,8 @@ In this example the following releases of Drupal 7 modules will be downloaded:
 ```json 
     "require": {
 	    "drupal/ctools": "7.1.*",
-	    "drupal/features": "7.*"
-	    "drupal/views": "7.3-dev",
+	    "drupal/features": "7.*",
+	    "drupal/views": "7.3-dev"
     }
 ```
 
@@ -180,7 +180,7 @@ The following will patch the Chaos tool suite version 7.1.4 with [this patch](ht
     }
   ],
   "require": {
-	"netresearch/composer-patches-plugin": "~1.0"
+    "netresearch/composer-patches-plugin": "~1.0",
     "reload/drupal-composer-project-patches": "*"
   }
 ```
@@ -276,13 +276,13 @@ Example downloading jQuery UI 1.10.4:
                     "type": "zip"
                 },
                 "require": {
-                	"composer/installers": "~1.0",
+                	"composer/installers": "~1.0"
                 }
             }
         }
     ],
     "require": {
-	    "jquery/jquery.ui": "1.10.4",
+	    "jquery/jquery.ui": "1.10.4"
     }
 }
 ```
