@@ -19,7 +19,7 @@ A Drupal project usually consists of the following:
 * Perhaps even some PHP libraries found on GitHub
 * Custom code written by you and your team mates
 
-The most popular approach to assembling these parts is using [Drush Make](http://drush.ws/docs/make.txt). 
+The most popular approach to assembling these parts is using [Drush Make](http://drush.ws/docs/make.txt).
 
 Meanwhile the PHP Community has gathered around another dependency manager, [Composer](https://getcomposer.org/). It is even used for [managing dependencies for Drupal 8 Core](https://drupal.org/node/1764330).
 
@@ -51,34 +51,36 @@ The core version of Drupal to be used with the project is specified using the [C
 
 Adding the following package to the `repositories` and `requires` sections will download Drupal 7.28 to the root of the Composer project:
 
-```json 
-	"repositories": [
-		{
-			"type": "package",
-			"package": {
-				"name": "drupal/drupal",
-				"type": "non-destructive-archive-installer",
-				"version": "7.28",
-				"dist": {
-					"url": "http://ftp.drupal.org/files/projects/drupal-7.28.zip",
-					"type": "zip"
-				},
-				"require": {
-					"azt3k/non-destructive-archive-installer" : "*"
-				},
-				"extra": {
-					"target-dir": ".",
-					"omit-first-directory": "true"
-				},
-				"replace": {
-				}
-			}
-		}
-	],
-	"require": {
-		"azt3k/non-destructive-archive-installer" : "0.2.*",
-		"drupal/drupal": "7.*",
-	}
+```json
+{
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "drupal/drupal",
+        "type": "non-destructive-archive-installer",
+        "version": "7.28",
+        "dist": {
+          "url": "http://ftp.drupal.org/files/projects/drupal-7.28.zip",
+          "type": "zip"
+        },
+        "require": {
+          "azt3k/non-destructive-archive-installer" : "*"
+        },
+        "extra": {
+          "target-dir": ".",
+          "omit-first-directory": "true"
+        },
+        "replace": {
+        }
+      }
+    }
+  ],
+  "require": {
+    "azt3k/non-destructive-archive-installer" : "0.2.*",
+    "drupal/drupal": "7.*"
+  }
+}
 ```
 
 Using Composer to manage Drupal projects has so far been tested with Drupal 7 projects. It may or may not work for Drupal 6 and 8.
@@ -99,10 +101,12 @@ All Drupal projects to be retrieved should be added as dependencies in the forma
 The following will download the [Chaos tool suite (ctools)](https://drupal.org/project/ctools) module version 1.4 for Drupal 7.
 
 
-```json 
-    "require": {
-	    "drupal/ctools": "7.1.4",
-    }
+```json
+{
+  "require": {
+    "drupal/ctools": "7.1.4"
+  }
+}
 ```
 
 The module will be placed under `sites/all/modules/contrib/`.
@@ -114,12 +118,14 @@ You can also run `php composer.phar require drupal/ctools` from the command line
 Drupal projects are normally not available from the default Composer package repository Packagist. In order to for this to work a custom repository must be added:
 
 ```json
-    "repositories": [
-      {
-        "type": "composer",
-        "url": "http://packagist.drupal-composer.org"
-      }
-    ]
+{
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "http://packagist.drupal-composer.org"
+    }
+  ]
+}
 ```
 
 This repository is generated using the [drupal-parse-composer project](https://github.com/drupal-composer/drupal-parse-composer).
@@ -133,16 +139,18 @@ You specify the version of each project using [Composer package version constrai
 
 In this example the following releases of Drupal 7 modules will be downloaded:
 
-* Latest stable minor release of Chaos tool suite 1.x 
+* Latest stable minor release of Chaos tool suite 1.x
 * Latest stable release of Features
 * Latest development release of Views 3.x
 
-```json 
-    "require": {
-	    "drupal/ctools": "7.1.*",
-	    "drupal/features": "7.*"
-	    "drupal/views": "7.3-dev",
-    }
+```json
+{
+  "require": {
+    "drupal/ctools": "7.1.*",
+    "drupal/features": "7.*",
+    "drupal/views": "7.3-dev"
+  }
+}
 ```
 
 #### Patch
@@ -154,6 +162,7 @@ To apply a patch to a project a `patches` section must be added to the `extras` 
 The following will patch the Chaos tool suite version 7.1.4 with [this patch](https://drupal.org/files/issues/ctools-deleted-not-needed-element-from-array-in-node-plugin.patch):
 
 ```json
+{
   "repositories": [
     {
       "type": "package",
@@ -180,9 +189,10 @@ The following will patch the Chaos tool suite version 7.1.4 with [this patch](ht
     }
   ],
   "require": {
-	"netresearch/composer-patches-plugin": "~1.0"
+    "netresearch/composer-patches-plugin": "~1.0",
     "reload/drupal-composer-project-patches": "*"
   }
+}
 ```
 
 The important parts about a package containing patches are:
@@ -206,12 +216,14 @@ The plugin does not generate a `PATCHES.txt` file for each patched project as Dr
 The location of projects can be changed in the `installer-paths` section of `composer.json` either by individual project or by type.
 
 ```json
-    "extra": {
-      "installer-paths": {
-        "sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
-        "sites/all/themes/{$name}/": ["drupal/zen"]
-      }
+{
+  "extra": {
+    "installer-paths": {
+      "sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
+      "sites/all/themes/{$name}/": ["drupal/zen"]
     }
+  }
+}
 ```
 
 Custom location of packages are handled by [the Composer Installers project](https://github.com/composer/installers).
@@ -264,26 +276,26 @@ Example downloading jQuery UI 1.10.4:
 
 ```json
 {
-    "repositories": [
-        {
-            "type": "package",
-            "package": {
-                "name": "jquery/jqueryui",
-                "version": "1.10.4",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip",
-                    "type": "zip"
-                },
-                "require": {
-                	"composer/installers": "~1.0",
-                }
-            }
+  "repositories": [
+    {
+      "type": "package",
+      "package": {
+        "name": "jquery/jqueryui",
+        "version": "1.10.4",
+        "type": "drupal-library",
+        "dist": {
+          "url": "http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip",
+          "type": "zip"
+        },
+        "require": {
+          "composer/installers": "~1.0"
         }
-    ],
-    "require": {
-	    "jquery/jquery.ui": "1.10.4",
+      }
     }
+  ],
+  "require": {
+    "jquery/jquery.ui": "1.10.4"
+  }
 }
 ```
 
@@ -357,4 +369,3 @@ Using Composer to manage a Drupal project would not be possible without the work
 * [Non-destructive archive installer](https://github.com/azt3k/non-destructive-archive-installer) used to install Drupal Core.
 * [Composer installers](https://github.com/composer/installers) used to specify custom location of packages.
 * [Netresearch patches plugin](https://github.com/netresearch/composer-patches-plugin) for applying patches to Composer projects.
-
