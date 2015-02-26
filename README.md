@@ -19,7 +19,7 @@ A Drupal project usually consists of the following:
 * Perhaps even some PHP libraries found on GitHub
 * Custom code written by you and your team mates
 
-The most popular approach to assembling these parts is using [Drush Make](http://drush.ws/docs/make.txt). 
+The most popular approach to assembling these parts is using [Drush Make](http://drush.ws/docs/make.txt).
 
 Meanwhile the PHP Community has gathered around another dependency manager, [Composer](https://getcomposer.org/). It is even used for [managing dependencies for Drupal 8 Core](https://drupal.org/node/1764330).
 
@@ -51,7 +51,7 @@ The core version of Drupal to be used with the project is specified using the [C
 
 Adding the following package to the `repositories` and `requires` sections will download Drupal 7.28 to the root of the Composer project:
 
-```json 
+```json
 {
   "repositories": [
     {
@@ -101,7 +101,7 @@ All Drupal projects to be retrieved should be added as dependencies in the forma
 The following will download the [Chaos tool suite (ctools)](https://drupal.org/project/ctools) module version 1.4 for Drupal 7.
 
 
-```json 
+```json
 {
   "require": {
     "drupal/ctools": "7.1.4"
@@ -139,11 +139,11 @@ You specify the version of each project using [Composer package version constrai
 
 In this example the following releases of Drupal 7 modules will be downloaded:
 
-* Latest stable minor release of Chaos tool suite 1.x 
+* Latest stable minor release of Chaos tool suite 1.x
 * Latest stable release of Features
 * Latest development release of Views 3.x
 
-```json 
+```json
 {
   "require": {
     "drupal/ctools": "7.1.*",
@@ -275,23 +275,23 @@ Non-Drupal non-Composer libraries can be retrieved by specifying them as custom 
 Example downloading jQuery UI 1.10.4:
 
 ```json
-{   
+{
   "repositories": [
     {
       "type": "package",
-      "package": { 
+      "package": {
         "name": "jquery/jqueryui",
         "version": "1.10.4",
         "type": "drupal-library",
-        "dist": { 
+        "dist": {
           "url": "http://jqueryui.com/resources/download/jquery-ui-1.10.4.zip",
           "type": "zip"
         },
-        "require": { 
+        "require": {
           "composer/installers": "~1.0"
-        } 
-      } 
-    } 
+        }
+      }
+    }
   ],
   "require": {
     "jquery/jquery.ui": "1.10.4"
@@ -369,4 +369,3 @@ Using Composer to manage a Drupal project would not be possible without the work
 * [Non-destructive archive installer](https://github.com/azt3k/non-destructive-archive-installer) used to install Drupal Core.
 * [Composer installers](https://github.com/composer/installers) used to specify custom location of packages.
 * [Netresearch patches plugin](https://github.com/netresearch/composer-patches-plugin) for applying patches to Composer projects.
-
