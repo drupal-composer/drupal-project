@@ -1,0 +1,48 @@
+{
+    "name": "",
+    "description": "",
+    "type": "project",
+    "license": "",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "support": {},
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://raw.githubusercontent.com/webflo/d8/master/packages.json"
+        },
+        {
+            "type": "composer",
+            "url": "http://packagist.drupal-composer.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/webflo/drush.git"
+        }
+    ],
+    "require": {
+        "composer/installers": "^1.0.20",
+        "drupal/core": "8.0.x-dev",
+        "drush/drush": "dev-autoload",
+
+        "drupal/devel": "8.1.*@dev",
+        "drupal/token": "8.1.*@dev"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {
+        "post-install-cmd": "scripts/composer/post-install.sh"
+    },
+    "extra": {
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"]
+        }
+    }
+}

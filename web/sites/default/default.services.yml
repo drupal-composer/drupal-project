@@ -1,0 +1,90 @@
+parameters:
+  session.storage.options:
+    # Default ini options for sessions.
+    #
+    # Some distributions of Linux (most notably Debian) ship their PHP
+    # installations with garbage collection (gc) disabled. Since Drupal depends
+    # on PHP's garbage collection for clearing sessions, ensure that garbage
+    # collection occurs by using the most common settings.
+    # @default 1
+    gc_probability: 1
+    # @default 100
+    gc_divisor: 100
+    #
+    # Set session lifetime (in seconds), i.e. the time from the user's last
+    # visit to the active session may be deleted by the session garbage
+    # collector. When a session is deleted, authenticated users are logged out,
+    # and the contents of the user's $_SESSION variable is discarded.
+    # @default 200000
+    gc_maxlifetime: 200000
+    #
+    # Set session cookie lifetime (in seconds), i.e. the time from the session
+    # is created to the cookie expires, i.e. when the browser is expected to
+    # discard the cookie. The value 0 means "until the browser is closed".
+    # @default 2000000
+    cookie_lifetime: 2000000
+    #
+    # Drupal automatically generates a unique session cookie name based on the
+    # full domain name used to access the site. This mechanism is sufficent for
+    # most use-cases, including multi-site deployments. However, if it is
+    # desired that a session can be reused accross different subdomains, the
+    # cookie domain needs to be set to the shared base domain. Doing so assures
+    # that users remain logged in as they cross between various subdomains.
+    # To maximize compatibility and normalize the behavior across user agents,
+    # the cookie domain should start with a dot.
+    #
+    # @default none
+    # cookie_domain: '.example.com'
+    #
+  twig.config:
+    # Twig debugging:
+    #
+    # When debugging is enabled:
+    # - The markup of each Twig template is surrounded by HTML comments that
+    #   contain theming information, such as template file name suggestions.
+    # - Note that this debugging markup will cause automated tests that directly
+    #   check rendered HTML to fail. When running automated tests, 'debug'
+    #   should be set to FALSE.
+    # - The dump() function can be used in Twig templates to output information
+    #   about template variables.
+    # - Twig templates are automatically recompiled whenever the source code
+    #   changes (see auto_reload below).
+    #
+    # For more information about debugging Twig templates, see
+    # http://drupal.org/node/1906392.
+    #
+    # Not recommended in production environments
+    # @default false
+    debug: false
+    # Twig auto-reload:
+    #
+    # Automatically recompile Twig templates whenever the source code changes.
+    # If you don't provide a value for auto_reload, it will be determined
+    # based on the value of debug.
+    #
+    # Not recommended in production environments
+    # @default null
+    auto_reload: null
+    # Twig cache:
+    #
+    # By default, Twig templates will be compiled and stored in the filesystem
+    # to increase performance. Disabling the Twig cache will recompile the
+    # templates from source each time they are used. In most cases the
+    # auto_reload setting above should be enabled rather than disabling the
+    # Twig cache.
+    #
+    # Not recommended in production environments
+    # @default true
+    cache: true
+  factory.keyvalue:
+    {}
+    # Default key/value storage service to use.
+    # @default keyvalue.database
+    # default: keyvalue.database
+    # Collection-specific overrides.
+    # state: keyvalue.database
+  factory.keyvalue.expirable:
+    {}
+    # Default key/value expirable storage service to use.
+    # @default keyvalue.database.expirable
+    # default: keyvalue.database.expirable
