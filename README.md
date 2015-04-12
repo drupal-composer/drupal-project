@@ -1,5 +1,7 @@
 # Composer template for Drupal projects
 
+[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+
 **TL;DR**: Use [Composer](https://getcomposer.org/) instead of [Drush Make](http://drush.ws/docs/make.txt) for Drupal 7 projects:
 
 ```sh
@@ -8,7 +10,6 @@ php composer.phar create-project drupal-composer/drupal-project some-dir 8.x-dev
 cd some-dir
 php ../composer.phar require drupal/devel:8.*
 ```
-
 
 ## Background
 
