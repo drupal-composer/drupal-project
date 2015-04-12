@@ -6,7 +6,7 @@
 
 ```sh
 curl -sS https://getcomposer.org/installer | php
-php composer.phar create-project drupal-composer/drupal-project some-dir 8.x-dev
+php composer.phar create-project drupal-composer/drupal-project:8.x-dev some-dir
 cd some-dir
 php ../composer.phar require drupal/devel:8.*
 ```
