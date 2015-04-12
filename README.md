@@ -4,9 +4,9 @@
 
 ```sh
 curl -sS https://getcomposer.org/installer | php
-php composer.phar create-project drupal-composer/drupal-project some-dir --stability dev --no-interaction
+php composer.phar create-project drupal-composer/drupal-project some-dir 8.x-dev
 cd some-dir
-php ../composer.phar require drupal/ctools:7.*
+php ../composer.phar require drupal/devel:8.*
 ```
 
 
