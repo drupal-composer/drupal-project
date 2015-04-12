@@ -23,7 +23,7 @@
     "require": {
         "composer/installers": "^1.0.20",
         "drupal/core": "8.0.*",
-        "drush/drush": "7.0.*",
+        "drush/drush": "7.0.x-dev",
 
         "drupal/devel": "8.1.*@dev",
         "drupal/token": "8.1.*@dev"
