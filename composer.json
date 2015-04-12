@@ -18,16 +18,12 @@
         {
             "type": "composer",
             "url": "http://packagist.drupal-composer.org"
-        },
-        {
-            "type": "vcs",
-            "url": "https://github.com/webflo/drush.git"
         }
     ],
     "require": {
         "composer/installers": "^1.0.20",
-        "drupal/core": "8.0.x-dev",
-        "drush/drush": "dev-autoload",
+        "drupal/core": "8.0.*",
+        "drush/drush": "7.0.*",
 
         "drupal/devel": "8.1.*@dev",
         "drupal/token": "8.1.*@dev"
