@@ -1,5 +1,7 @@
 # Composer template for Drupal projects
 
+[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=7.x)](https://travis-ci.org/drupal-composer/drupal-project)
+
 This project template should provide a kickstart for managing your site 
 dependencies with [Composer](https://getcomposer.org/).
 
