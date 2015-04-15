@@ -29,6 +29,15 @@ cd some-dir
 composer require drupal/ctools:7.*
 ```
 
+## What does the template do?
+
+When installing the given `composer.json` some tasks are taken care of:
+
+* Drupal will be installed in the `web`-directory.
+* Modules (packages of type `drupal-module`) will be placed in `web/sites/all/modules/contrib/`
+* Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
+* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
+
 ## Generate composer.json from existing project
 
 With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
