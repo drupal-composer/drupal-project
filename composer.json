@@ -1,8 +1,8 @@
 {
-    "name": "",
-    "description": "",
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
-    "license": "",
+    "license": "MIT",
     "authors": [
         {
             "name": "",
