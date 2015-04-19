@@ -19,11 +19,3 @@ if [ ! -d web/sites/default/files ]
   then
     mkdir -m777 web/sites/default/files
 fi
-
-# Add wrapper script for launching drush with project specific config/aliases/commands.
-if [ ! -d vendor/bin/dr ]
-  then
-    echo "#!/usr/bin/env sh
-vendor/bin/drush --local --alias-path=drush/site-aliases --config=drush/config --include=drush/commands $@" > vendor/bin/dr
-    chmod +x vendor/bin/dr
-fi
