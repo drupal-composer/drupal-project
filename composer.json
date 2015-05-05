@@ -17,7 +17,7 @@
         },
         {
             "type": "composer",
-            "url": "http://packagist.drupal-composer.org"
+            "url": "https://packagist.drupal-composer.org"
         }
     ],
     "require": {
