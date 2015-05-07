@@ -12,4 +12,7 @@ install:
   - composer --verbose install
 
 script:
-  - "cd web && ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite"
+  - cd web
+  - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite"
+  # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
+  - ./../vendor/bin/phpunit -c core --exclude-group Composer
