@@ -5,6 +5,7 @@ php:
   - 5.6
 
 before_install:
+  - phpenv config-rm xdebug.ini
   - composer --verbose self-update
   - composer --version
 
