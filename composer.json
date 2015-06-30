@@ -13,10 +13,6 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://raw.githubusercontent.com/webflo/d8/master/packages.json"
-        },
-        {
-            "type": "composer",
             "url": "https://packagist.drupal-composer.org"
         }
     ],
