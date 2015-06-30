@@ -10,7 +10,7 @@ before_install:
   - composer --version
 
 install:
-  - composer --verbose install
+  - composer -vvv install
 
 script:
   - cd web
