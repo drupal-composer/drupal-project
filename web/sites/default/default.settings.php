@@ -22,7 +22,7 @@
  * 'sites/default' will be used.
  *
  * For example, for a fictitious site installed at
- * http://www.drupal.org:8080/mysite/test/, the 'settings.php' file is searched
+ * https://www.drupal.org:8080/mysite/test/, the 'settings.php' file is searched
  * for in the following directories:
  *
  * - sites/8080.www.drupal.org.mysite.test
@@ -44,11 +44,11 @@
  *
  * Note that if you are installing on a non-standard port number, prefix the
  * hostname with that number. For example,
- * http://www.drupal.org:8080/mysite/test/ could be loaded from
+ * https://www.drupal.org:8080/mysite/test/ could be loaded from
  * sites/8080.www.drupal.org.mysite.test/.
  *
  * @see example.sites.php
- * @see conf_path()
+ * @see \Drupal\Core\DrupalKernel::getSitePath()
  *
  * In addition to customizing application settings through variables in
  * settings.php, you can create a services.yml file in the same directory to
@@ -75,7 +75,7 @@
  *   'host' => 'localhost',
  *   'port' => 3306,
  *   'prefix' => 'myprefix_',
- *   'collation' => 'utf8_general_ci',
+ *   'collation' => 'utf8mb4_general_ci',
  * );
  * @endcode
  *
@@ -127,7 +127,7 @@
  *   'password' => 'password',
  *   'host' => 'localhost',
  *   'prefix' => 'main_',
- *   'collation' => 'utf8_general_ci',
+ *   'collation' => 'utf8mb4_general_ci',
  * );
  * @endcode
  *
@@ -256,6 +256,18 @@ $config_directories = array();
  */
 
 /**
+ * The active installation profile.
+ *
+ * Changing this after installation is not recommended as it changes which
+ * directories are scanned during extension discovery. If this is set prior to
+ * installation this value will be rewritten according to the profile selected
+ * by the user.
+ *
+ * @see install_select_profile()
+ */
+# $settings['install_profile'] = '';
+
+/**
  * Salt for one-time login links, cancel links, form tokens, etc.
  *
  * This variable will be set to a random value by the installer. All one-time
@@ -273,6 +285,16 @@ $config_directories = array();
  * @endcode
  */
 $settings['hash_salt'] = '';
+
+/**
+ * Deployment identifier.
+ *
+ * Drupal's dependency injection container will be automatically invalidated and
+ * rebuilt when the Drupal core version changes. When updating contributed or
+ * custom code that changes the container, changing this identifier will also
+ * allow the container to be invalidated as soon as code is deployed.
+ */
+# $settings['deployment_identifier'] = \Drupal::VERSION;
 
 /**
  * Access control for update.php script.
@@ -371,18 +393,29 @@ $settings['update_free_access'] = FALSE;
 /**
  * Class Loader.
  *
- * By default, Composer's ClassLoader is used, which is best for development, as
- * it does not break when code is moved in the file system. You can decorate the
- * class loader with a cached solution for better performance, which is
- * recommended for production sites.
+ * If the APC extension is detected, the Symfony APC class loader is used for
+ * performance reasons. Detection can be prevented by setting
+ * class_loader_auto_detect to false, as in the example below.
+ */
+# $settings['class_loader_auto_detect'] = FALSE;
+
+/*
+ * If the APC extension is not detected, either because APC is missing or
+ * because auto-detection has been disabled, auto-loading falls back to
+ * Composer's ClassLoader, which is good for development as it does not break
+ * when code is moved in the file system. You can also decorate the base class
+ * loader with another cached solution than the Symfony APC class loader, as
+ * all production sites should have a cached class loader of some sort enabled.
  *
- * To do so, you may decorate and replace the local $class_loader variable.
- *
- * For example, to use Symfony's APC class loader, uncomment the code below.
+ * To do so, you may decorate and replace the local $class_loader variable. For
+ * example, to use Symfony's APC class loader without automatic detection,
+ * uncomment the code below.
  */
 /*
 if ($settings['hash_salt']) {
-  $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader('drupal.' . $settings['hash_salt'], $class_loader);
+  $prefix = 'drupal.' . hash('sha256', 'drupal.' . $settings['hash_salt']);
+  $apc_loader = new \Symfony\Component\ClassLoader\ApcClassLoader($prefix, $class_loader);
+  unset($prefix);
   $class_loader->unregister();
   $apc_loader->register();
   $class_loader = $apc_loader;
@@ -407,7 +440,7 @@ if ($settings['hash_salt']) {
  * the code directly via SSH or FTP themselves. This setting completely
  * disables all functionality related to these authorized file operations.
  *
- * @see http://drupal.org/node/244924
+ * @see https://www.drupal.org/node/244924
  *
  * Remove the leading hash signs to disable.
  */
@@ -434,14 +467,14 @@ if ($settings['hash_salt']) {
  * Private file path:
  *
  * A local file system path where private files will be stored. This directory
- * must be absolute, outside of the the Drupal installation directory and not
+ * must be absolute, outside of the Drupal installation directory and not
  * accessible over the web.
  *
  * Note: Caches need to be cleared when this value is changed to make the
  * private:// stream wrapper available to the system.
  *
- * See http://drupal.org/documentation/modules/file for more information about
- * securing private files.
+ * See https://www.drupal.org/documentation/modules/file for more information
+ * about securing private files.
  */
 # $settings['file_private_path'] = '';
 
