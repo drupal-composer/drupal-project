@@ -20,8 +20,10 @@
         "drupal/core": "8.0.*",
         "drush/drush": "8.*",
 
-        "drupal/devel": "8.1.*@dev",
         "drupal/token": "8.1.*@dev"
+    },
+    "require-dev": {
+        "drupal/devel": "8.1.*@dev"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
