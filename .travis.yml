@@ -2,7 +2,7 @@ language: php
 php:
   - 5.5
   - 5.6
-  
+
 sudo: false
 
 before_install:
@@ -19,10 +19,12 @@ script:
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
-  
+
   # Test dev release
+  - cd $TRAVIS_BUILD_DIR
+  - composer --verbose require --no-update drupal/core:8.0.x-dev
+  - composer --verbose update
   - cd $TRAVIS_BUILD_DIR/web
-  - composer -vvv require drupal/core:8.0.x-dev
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
