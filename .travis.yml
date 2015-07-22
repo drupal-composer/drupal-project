@@ -11,7 +11,7 @@ before_install:
   - composer --version
 
 install:
-  - composer --verbose install
+  - composer install -vvv
 
 script:
   # Test stable release
@@ -21,8 +21,10 @@ script:
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
   
   # Test dev release
+  - cd $TRAVIS_BUILD_DIR
+  - composer require -vvv --no-update drupal/core:8.0.x-dev 
+  - composer update -vvv
   - cd $TRAVIS_BUILD_DIR/web
-  - composer -vvv require drupal/core:8.0.x-dev
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
