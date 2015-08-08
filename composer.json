@@ -1,30 +1,31 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "pfrenssen/drupal-project",
+    "description": "Project template for Drupal 8 projects with Composer, Phing and Behat",
     "type": "project",
     "license": "MIT",
-    "authors": [
-        {
-            "name": "",
-            "role": ""
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
-        }
-    ],
     "require": {
         "composer/installers": "^1.0.20",
         "drupal/core": "8.0.*",
         "drush/drush": "8.*",
-
+        "php": ">=5.5.9"
+    },
+    "require-dev": {
+        "behat/behat": "3.0.x-dev",
+        "drupal/coder": "dev-8.x-2.x",
+        "drupal/config_update": "8.1.*@dev",
         "drupal/devel": "8.1.*@dev",
-        "drupal/token": "8.1.*@dev"
+        "drupal/drupal-extension": "~3.0",
+        "drupal/phing-drush-task": "1.0",
+        "phing/phing": "~2.10"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
+    "autoload": {
+        "psr-4": {
+            "Drupal\\DrupalProject\\": "tests/src",
+            "DrupalProject\\": "src"
+        }
+    },
     "scripts": {
         "post-install-cmd": "scripts/composer/post-install.sh"
     },
@@ -36,5 +37,29 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "web/drush/commands/{$name}": ["type:drupal-drush"]
         }
-    }
+  },
+  "repositories": [
+      {
+          "type": "composer",
+          "url": "https://packagist.drupal-composer.org"
+      },
+      {
+          "type": "vcs",
+          "url": "http://git.drupal.org/project/coder.git"
+      },
+      {
+          "type": "package",
+          "package": {
+              "name": "drupal/phing-drush-task",
+              "version": "1.0",
+              "source": {
+                  "url": "http://git.drupal.org/project/phingdrushtask.git",
+                  "type": "git",
+                  "reference": "7.x-1.0"
+              },
+              "autoload": { "classmap": [ "DrushTask.php" ] },
+              "include-path": [ "." ]
+          }
+      }
+  ]
 }
