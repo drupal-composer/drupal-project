@@ -158,6 +158,14 @@ $ cd tests/
 $ ./behat features/authentication.feature
 ```
 
+If you want to run the tests from a different folder, then provide the path to
+`tests/behat.yml` with the `-c` option:
+
+```
+# Run the tests from the root folder of the project.
+$ ./vendor/bin/behat -c tests/behat.yml
+```
+
 
 ## Checking for coding standards violations
 
