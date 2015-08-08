@@ -1,0 +1,119 @@
+# Drupal configuration
+# --------------------
+
+# The install profile to use.
+platform.profile.name = standard
+
+# The site name.
+platform.site.name = MyDrupalProject
+
+# Database settings.
+drupal.db.type = mysql
+drupal.db.name = db_name
+drupal.db.user = db_user
+drupal.db.password = db_pass
+drupal.db.host = 127.0.0.1
+drupal.db.port = 3306
+drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
+
+# Admin user.
+drupal.admin.username = admin
+drupal.admin.password = admin
+drupal.admin.email = admin@example.com
+
+# Comma-separated list of demo users to create. The username and password will
+# be taken from the role.
+drupal.demo.users = administrator
+
+
+# Paths
+# -----
+
+# Paths to executables.
+phing.bin = ${project.basedir}/vendor/bin/phing
+drush.bin = ${project.basedir}/vendor/bin/drush
+
+# Files and directories inside the Drupal installation.
+platform.drupal.dir = ${project.basedir}/web
+
+platform.sites.dir = ${platform.drupal.dir}/sites
+platform.site.dir = ${platform.drupal.sites.dir}/all
+
+platform.settings.dir = ${platform.sites.dir}/default
+platform.settings.php = ${platform.settings.dir}/settings.php
+platform.settings.local.php.example = ${platform.sites.dir}/example.settings.local.php
+platform.settings.local.php = ${platform.settings.dir}/settings.local.php
+platform.files.dir = ${platform.settings.dir}/files
+
+platform.modules.dir = ${platform.drupal.dir}/modules
+platform.profiles.dir = ${platform.drupal.dir}/profiles
+platform.themes.dir = ${platform.drupal.dir}/themes
+
+
+# Behat configuration
+# -------------------
+
+# The location of the Behat executable.
+behat.bin = ${project.basedir}/bin/behat
+
+# The location of the Behat tests.
+behat.dir = ${project.basedir}/tests
+
+# The location of the Behat configuration template.
+behat.yml.template = ${behat.dir}/behat.yml.dist
+
+# The location of the generated Behat configuration file.
+behat.yml.path = ${behat.dir}/behat.yml
+
+# The base URL to use in Behat tests.
+behat.base_url = http://localhost
+
+# The location to search for Behat subcontexts.
+behat.subcontexts.path = ${platform.modules.dir}
+
+# The output format to use for Behat tests, either 'progress' or 'pretty'.
+behat.formatter.name = progress
+
+# The location of the test files.
+behat.files.path = ${behat.dir}/fixtures/files
+
+
+# PHP CodeSniffer configuration
+# -----------------------------
+
+# The file extensions to test.
+phpcs.extensions = php inc module install info test profile theme css js
+
+# The default configuration file to generate.
+phpcs.config = ${project.basedir}/phpcs.xml
+
+# The coding standard to use.
+phpcs.standard = ${project.basedir}/phpcs-ruleset.xml
+
+# Paths to check, delimited by semicolons.
+phpcs.files = ${platform.modules.dir};${platform.profiles.dir};${platform.themes.dir}
+
+# Paths to ignore, delimited by semicolons.
+phpcs.ignore = ${platform.modules.dir}/contrib
+
+# The report format. For example 'full', 'summary', 'diff', 'xml', 'json'.
+phpcs.report = full
+
+# Whether or not to show sniff codes in the report.
+phpcs.sniffcodes = 0
+
+# Whether or not to show the progress of the run.
+phpcs.progress = 1
+
+# The location of the file containing the global configuration options.
+phpcs.global.config = ${project.basedir}/vendor/squizlabs/php_codesniffer/CodeSniffer.conf
+
+
+# Development options
+# -------------------
+
+# Development modules to enable.
+drupal.modules.dev = config_update field_ui menu_ui views_ui
+
+# Verbosity of Drush commands. Set to 'yes' for verbose output.
+drush.verbose = no

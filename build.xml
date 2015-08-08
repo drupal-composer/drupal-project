@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<project name="My Drupal Project" default="help">
+
+    <property file="build.properties.local" />
+    <property file="build.properties" />
+    <property file="build.properties.dist" />
+
+    <target name="help" description="Phing target list">
+        <exec executable="${phing.bin}"
+              passthru="true">
+            <arg value="-l"/>
+        </exec>
+    </target>
+
+    <includepath classpath="src/Phing" />
+
+    <echo msg="Loading Drush task." />
+    <taskdef name="drush" classname="DrushTask" />
+
+    <echo msg="Loading PHP Codesniffer Configuration task." />
+    <taskdef name="phpcodesnifferconfiguration" classname="\DrupalProject\Phing\PhpCodeSnifferConfigurationTask" />
+
+    <!-- Make the settings folder writeable so that the installer can copy settings.php. -->
+    <target name="writable-settings-folder">
+        <chmod mode="0755" failonerror="true" verbose="true" quiet="false" file="${platform.settings.dir}" />
+    </target>
+
+    <!-- Make settings.php writeable so that the installer save it. -->
+    <target name="writable-settings-php">
+        <if>
+            <available file="${platform.settings.php}" type="file" property="platform.settings.php.available" />
+            <then>
+                <chmod mode="0644" failonerror="false" verbose="true" quiet="false" file="${platform.settings.php}" />
+            </then>
+        </if>
+    </target>
+
+    <!-- Install the platform. -->
+    <target name="install" description="Install the platform." depends="writable-settings-folder, writable-settings-php">
+        <drush
+            command="site-install"
+            assume="yes"
+            root="${platform.drupal.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+            <option name="db-url" value="${drupal.db.url}"/>
+            <option name="site-name" value="${platform.site.name}"/>
+            <option name="account-name" value="${drupal.admin.username}"/>
+            <option name="account-pass" value="${drupal.admin.password}"/>
+            <option name="account-mail" value="${drupal.admin.email}"/>
+            <param>${platform.profile.name}</param>
+            <!-- Disable sending of e-mails during installation. -->
+            <param>install_configure_form.update_status_module='array(FALSE,FALSE)'</param>
+        </drush>
+    </target>
+
+    <!-- Set up PHP CodeSniffer. -->
+    <target name="setup-php-codesniffer" description="Generate the configuration file for PHP CodeSniffer.">
+        <if>
+            <available file="${phpcs.config}" type="file" property="phpcs.config.available" />
+            <then>
+                <echo message="Deleting existing PHP Codesniffer default configuration file." />
+                <delete file="${phpcs.config}" failonerror="false" />
+            </then>
+        </if>
+        <if>
+            <available file="${phpcs.global.config}" type="file" property="phpcs.global.config.available" />
+            <then>
+                <echo message="Deleting existing PHP Codesniffer global configuration file." />
+                <delete file="${phpcs.global.config}" failonerror="false" />
+            </then>
+        </if>
+        <phpcodesnifferconfiguration
+            configFile="${phpcs.config}"
+            extensions="${phpcs.extensions}"
+            files="${phpcs.files}"
+            globalConfig="${phpcs.global.config}"
+            ignorePatterns="${phpcs.ignore}"
+            report="${phpcs.report}"
+            showProgress="${phpcs.progress}"
+            showSniffCodes="${phpcs.sniffcodes}"
+            standard="${phpcs.standard}"
+        />
+    </target>
+
+    <!-- Set up Behat. -->
+    <target name="setup-behat" description="Generate the configuration file for Behat.">
+        <if>
+            <available file="${behat.yml.path}" type="file" property="behat.yml.available" />
+            <then>
+                <echo message="Deleting existing behat.yml configuration file" />
+                <delete file="${behat.yml.path}" failonerror="false" />
+            </then>
+        </if>
+        <echo message="Creating behat.yml configuration file" />
+        <loadfile property="behat.yml.content" file="${behat.yml.template}">
+            <filterchain>
+                <replacetokens>
+                    <token key="project.code.dir" value="${project.code.dir}" />
+                    <token key="drupal.site.dir" value="${drupal.site.dir}" />
+                    <token key="behat.base_url" value="${behat.base_url}" />
+                    <token key="behat.formatter.name" value="${behat.formatter.name}" />
+                </replacetokens>
+            </filterchain>
+        </loadfile>
+        <echo message="${behat.yml.content}" file="${behat.yml.path}" />
+    </target>
+
+    <!-- Create demo users. -->
+    <target name="create-demo-users" description="Create demo users.">
+        <foreach list="${drupal.demo.users}" param="drupal.demo.user" target="create-demo-user" delimiter="," />
+    </target>
+
+    <!-- Create a demo user. Subtarget of "create-demo-users". -->
+    <target name="create-demo-user">
+        <drush
+            command="user-create"
+            assume="yes"
+            root="${platform.drupal.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+            <option name="mail" value="${drupal.demo.user}@example.com"/>
+            <option name="password" value="${drupal.demo.user}"/>
+            <param>${drupal.demo.user}</param>
+        </drush>
+        <drush
+            command="user-add-role"
+            assume="yes"
+            root="${platform.drupal.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+            <option name="name" value="${drupal.demo.user}"/>
+            <param>${drupal.demo.user}</param>
+        </drush>
+    </target>
+
+    <!-- Set up development configuration, including on-screen error logging and debugging options. -->
+    <target name="enable-dev-settings">
+        <phingcall target="writable-settings-folder"/>
+        <!-- Copy settings file containing development values, but preserve any existing local settings. -->
+        <copy file="${platform.settings.local.php.example}" tofile="${platform.settings.local.php}" overwrite="false" />
+    </target>
+
+    <!-- Enable development modules. -->
+    <target name="enable-dev-modules">
+        <drush
+            command="pm-enable"
+            assume="yes"
+            root="${platform.drupal.dir}"
+            bin="${drush.bin}"
+            verbose="${drush.verbose}">
+            <param>${drupal.modules.dev}</param>
+        </drush>
+    </target>
+
+    <target
+        name="setup-dev"
+        description="Set up a development environment."
+        depends="setup-behat, setup-php-codesniffer, enable-dev-settings, enable-dev-modules, create-demo-users" />
+
+    <target
+        name="setup-acceptance"
+        description="Set up an acceptance environment."
+        depends="create-demo-users" />
+
+    <target
+        name="install-dev"
+        description="Install the website and set up the development environment."
+        depends="install, setup-dev" />
+
+</project>
