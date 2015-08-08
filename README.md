@@ -51,6 +51,79 @@ you can now generate a basic `composer.json` file from an existing project. Note
 that the generated `composer.json` might differ from this project's file.
 
 
+## Listing the available build commands
+
+You can get a list of all the available Phing build commands ("targets") with a
+short description of each target with the following command:
+
+```
+$ ./vendor/bin/phing
+```
+
+
+## Install the website.
+
+```
+$ ./vendor/bin/phing install
+```
+
+
+## Set up tools for the development environment
+
+If you want to install a version suitable for development you can execute the
+`setup-dev` Phing target.
+
+```
+$ ./vendor/bin/phing setup-dev
+```
+
+This will perform the following tasks:
+
+1. Configure Behat.
+2. Configure PHP CodeSniffer.
+3. Enable 'development mode'. This will:
+  * Enable the services in `development.services.yml`.
+  * Show all error messages with backtrace information.
+  * Disable CSS and JS aggregation.
+  * Disable the render cache.
+  * Allow test modules and themes to be installed.
+  * Enable access to `rebuild.php`.
+4. Enable development modules.
+5. Create a demo user for each user role.
+
+
+## Running Behat tests
+
+The Behat test suite is located in the `tests/` folder. The easiest way to run
+them is by going into this folder and executing the following command:
+
+```
+$ cd tests/
+$ ./behat
+```
+
+If you want to execute a single test, just provide the path to the test as an
+argument. The tests are located in `tests/features/`:
+
+```
+$ cd tests/
+$ ./behat features/authentication.feature
+```
+
+
+## Checking for coding standards violations
+
+PHP CodeSniffer can be run with the following command:
+
+```
+# Scan all files for coding standards violations.
+$ ./vendor/bin/phpcs
+
+# Scan only a single folder.
+$ ./vendor/bin/phpcs web/modules/custom/mymodule
+```
+
+
 ## FAQ
 
 ### Should I commit the contrib modules I download
