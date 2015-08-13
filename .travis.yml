@@ -19,6 +19,8 @@ script:
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
+  - ./../vendor/bin/drush
+  - ./../vendor/bin/console
 
   # Test dev release
   - cd $TRAVIS_BUILD_DIR
@@ -28,3 +30,5 @@ script:
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
+  - ./../vendor/bin/drush
+  - ./../vendor/bin/console
