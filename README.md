@@ -42,6 +42,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates default writable versions of `settings.php` and `services.yml`.
 * Creates `sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
+* Latest version of DrupalConsole is installed locally for use at `vendor/bin/console`.
 
 
 ## Generate composer.json from existing project
