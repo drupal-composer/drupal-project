@@ -5,6 +5,9 @@ php:
 
 sudo: false
 
+env:
+  - SIMPLETEST_DB=sqlite://tmp/site.sqlite
+
 before_install:
   - phpenv config-rm xdebug.ini
   - composer --verbose self-update
