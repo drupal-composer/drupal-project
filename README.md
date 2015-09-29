@@ -44,6 +44,18 @@ When installing the given `composer.json` some tasks are taken care of:
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/console`.
 
+## Updating Drupal Core
+
+Updating Drupal core is a two-step process.
+
+1. Update the version number of `drupal/core` in `composer.json`.
+1. Run `composer update drupal/core`.
+1. Run `scripts/drupal/update-scaffold` to update files in the `web` directory.
+   This will update `web` with whatever the latest Drupal 8 release is. Review
+   the files for any changes and restore any customizations to `.htaccess` or
+   `ROBOTS.txt`.
+1. Commit everything all together in a single commit, so `web` will remain in
+   sync with the `core` when checking out branches or running `git bisect`.
 
 ## Generate composer.json from existing project
 
