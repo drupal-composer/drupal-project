@@ -18,11 +18,8 @@
     "require": {
         "composer/installers": "^1.0.20",
         "drupal/core": "8.0.*",
-        "drush/drush": "8.*",
-        "drupal/console": "~0.8",
-
-        "drupal/devel": "8.1.*@dev",
-        "drupal/token": "8.1.*@dev"
+        "drush/drush": "dev-master",
+        "drupal/console": "dev-master"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
