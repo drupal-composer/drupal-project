@@ -2,10 +2,10 @@
 # --------------------
 
 # The install profile to use.
-platform.profile.name = standard
+website.profile.name = standard
 
 # The site name.
-platform.site.name = MyDrupalProject
+website.site.name = MyDrupalProject
 
 # Database settings.
 drupal.db.type = mysql
@@ -34,20 +34,20 @@ phing.bin = ${project.basedir}/vendor/bin/phing
 drush.bin = ${project.basedir}/vendor/bin/drush
 
 # Files and directories inside the Drupal installation.
-platform.drupal.dir = ${project.basedir}/web
+website.drupal.dir = ${project.basedir}/web
 
-platform.sites.dir = ${platform.drupal.dir}/sites
-platform.site.dir = ${platform.drupal.sites.dir}/all
+website.sites.dir = ${website.drupal.dir}/sites
+website.site.dir = ${website.drupal.sites.dir}/all
 
-platform.settings.dir = ${platform.sites.dir}/default
-platform.settings.php = ${platform.settings.dir}/settings.php
-platform.settings.local.php.example = ${platform.sites.dir}/example.settings.local.php
-platform.settings.local.php = ${platform.settings.dir}/settings.local.php
-platform.files.dir = ${platform.settings.dir}/files
+website.settings.dir = ${website.sites.dir}/default
+website.settings.php = ${website.settings.dir}/settings.php
+website.settings.local.php.example = ${website.sites.dir}/example.settings.local.php
+website.settings.local.php = ${website.settings.dir}/settings.local.php
+website.files.dir = ${website.settings.dir}/files
 
-platform.modules.dir = ${platform.drupal.dir}/modules
-platform.profiles.dir = ${platform.drupal.dir}/profiles
-platform.themes.dir = ${platform.drupal.dir}/themes
+website.modules.dir = ${website.drupal.dir}/modules
+website.profiles.dir = ${website.drupal.dir}/profiles
+website.themes.dir = ${website.drupal.dir}/themes
 
 
 # Behat configuration
@@ -69,7 +69,7 @@ behat.yml.path = ${behat.dir}/behat.yml
 behat.base_url = http://localhost
 
 # The location to search for Behat subcontexts.
-behat.subcontexts.path = ${platform.modules.dir}
+behat.subcontexts.path = ${website.modules.dir}
 
 # The output format to use for Behat tests, either 'progress' or 'pretty'.
 behat.formatter.name = progress
@@ -91,10 +91,10 @@ phpcs.config = ${project.basedir}/phpcs.xml
 phpcs.standard = ${project.basedir}/phpcs-ruleset.xml
 
 # Paths to check, delimited by semicolons.
-phpcs.files = ${platform.modules.dir};${platform.profiles.dir};${platform.themes.dir}
+phpcs.files = ${website.modules.dir};${website.profiles.dir};${website.themes.dir}
 
 # Paths to ignore, delimited by semicolons.
-phpcs.ignore = ${platform.modules.dir}/contrib
+phpcs.ignore = ${website.modules.dir}/contrib
 
 # The report format. For example 'full', 'summary', 'diff', 'xml', 'json'.
 phpcs.report = full

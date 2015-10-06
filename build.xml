@@ -23,15 +23,15 @@
 
     <!-- Make the settings folder writeable so that the installer can copy settings.php. -->
     <target name="writable-settings-folder">
-        <chmod mode="0755" failonerror="true" verbose="true" quiet="false" file="${platform.settings.dir}" />
+        <chmod mode="0755" failonerror="true" verbose="true" quiet="false" file="${website.settings.dir}" />
     </target>
 
     <!-- Make settings.php writeable so that the installer save it. -->
     <target name="writable-settings-php">
         <if>
-            <available file="${platform.settings.php}" type="file" property="platform.settings.php.available" />
+            <available file="${website.settings.php}" type="file" property="website.settings.php.available" />
             <then>
-                <chmod mode="0644" failonerror="false" verbose="true" quiet="false" file="${platform.settings.php}" />
+                <chmod mode="0644" failonerror="false" verbose="true" quiet="false" file="${website.settings.php}" />
             </then>
         </if>
     </target>
@@ -41,15 +41,15 @@
         <drush
             command="site-install"
             assume="yes"
-            root="${platform.drupal.dir}"
+            root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
             <option name="db-url" value="${drupal.db.url}"/>
-            <option name="site-name" value="${platform.site.name}"/>
+            <option name="site-name" value="${website.site.name}"/>
             <option name="account-name" value="${drupal.admin.username}"/>
             <option name="account-pass" value="${drupal.admin.password}"/>
             <option name="account-mail" value="${drupal.admin.email}"/>
-            <param>${platform.profile.name}</param>
+            <param>${website.profile.name}</param>
             <!-- Disable sending of e-mails during installation. -->
             <param>install_configure_form.update_status_module='array(FALSE,FALSE)'</param>
         </drush>
@@ -117,7 +117,7 @@
         <drush
             command="user-create"
             assume="yes"
-            root="${platform.drupal.dir}"
+            root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
             <option name="mail" value="${drupal.demo.user}@example.com"/>
@@ -127,7 +127,7 @@
         <drush
             command="user-add-role"
             assume="yes"
-            root="${platform.drupal.dir}"
+            root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
             <option name="name" value="${drupal.demo.user}"/>
@@ -139,7 +139,7 @@
     <target name="enable-dev-settings">
         <phingcall target="writable-settings-folder"/>
         <!-- Copy settings file containing development values, but preserve any existing local settings. -->
-        <copy file="${platform.settings.local.php.example}" tofile="${platform.settings.local.php}" overwrite="false" />
+        <copy file="${website.settings.local.php.example}" tofile="${website.settings.local.php}" overwrite="false" />
     </target>
 
     <!-- Enable development modules. -->
@@ -147,7 +147,7 @@
         <drush
             command="pm-enable"
             assume="yes"
-            root="${platform.drupal.dir}"
+            root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
             <param>${drupal.modules.dev}</param>
