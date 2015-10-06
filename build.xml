@@ -36,8 +36,8 @@
         </if>
     </target>
 
-    <!-- Install the platform. -->
-    <target name="install" description="Install the platform." depends="writable-settings-folder, writable-settings-php">
+    <!-- Install the website. -->
+    <target name="install" depends="writable-settings-folder, writable-settings-php">
         <drush
             command="site-install"
             assume="yes"
