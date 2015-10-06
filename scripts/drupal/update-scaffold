@@ -1,7 +1,6 @@
 #!/bin/bash
 
-CWD="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-ROOT=`realpath "${CWD}/../.."`
+ROOT=$(pwd)
 
 drush dl drupal-8 --destination=/tmp --drupal-project-rename=drupal-8 --quiet -y
 
@@ -17,4 +16,3 @@ rsync -avz --delete /tmp/drupal-8/ $ROOT/web \
  --exclude=vendor
 
 rm -rf /tmp/drupal-8
-

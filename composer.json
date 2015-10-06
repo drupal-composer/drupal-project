@@ -2,21 +2,35 @@
     "name": "pfrenssen/drupal-project",
     "description": "Project template for Drupal 8 projects with Composer, Phing and Behat",
     "type": "project",
-    "license": "MIT",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        }
+    ],
     "require": {
         "composer/installers": "^1.0.20",
+        "drupal/console": "dev-master",
         "drupal/core": "8.0.*",
-        "drush/drush": "8.*",
+        "drush/drush": "dev-master",
         "php": ">=5.5.9"
     },
     "require-dev": {
-        "behat/behat": "3.0.x-dev",
         "drupal/coder": "dev-8.x-2.x",
         "drupal/config_update": "8.1.*@dev",
         "drupal/devel": "8.1.*@dev",
         "drupal/drupal-extension": "~3.0",
         "drupal/phing-drush-task": "1.0",
-        "phing/phing": "~2.10"
+        "mikey179/vfsStream": "~1.2",
+        "phing/phing": "~2.10",
+        "symfony/css-selector": "2.7.*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
