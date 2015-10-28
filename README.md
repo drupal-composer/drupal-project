@@ -29,6 +29,10 @@ cd some-dir
 composer require drupal/devel:8.*
 ```
 
+If you are adding command line tools like Drush through composer, you can add
+them to your shell's path by running `shell.sh` in the project's root
+directory.
+
 ## What does the template do?
 
 When installing the given `composer.json` some tasks are taken care of:
