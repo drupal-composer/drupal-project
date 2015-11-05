@@ -223,13 +223,13 @@ $databases = array();
  * Location of the site configuration files.
  *
  * The $config_directories array specifies the location of file system
- * directories used for configuration data. On install, "active" and "staging"
- * directories are created for configuration. The staging directory is used for
+ * directories used for configuration data. On install, "active" and "sync"
+ * directories are created for configuration. The sync directory is used for
  * configuration imports; the active directory is not used by default, since the
  * default storage for active configuration is the database rather than the file
  * system (this can be changed; see "Active configuration settings" below).
  *
- * The default location for the active and staging directories is inside a
+ * The default location for the active and sync directories is inside a
  * randomly-named directory in the public files path; this setting allows you to
  * override these locations. If you use files for the active configuration, you
  * can enhance security by putting the active configuration outside your
@@ -238,7 +238,7 @@ $databases = array();
  * Example:
  * @code
  *   $config_directories = array(
- *     CONFIG_STAGING_DIRECTORY => '/another/directory/outside/webroot',
+ *     CONFIG_SYNC_DIRECTORY => '/another/directory/outside/webroot',
  *   );
  * @endcode
  */
@@ -454,6 +454,19 @@ if ($settings['hash_salt']) {
 # $settings['file_chmod_file'] = 0664;
 
 /**
+ * Public file base URL:
+ *
+ * An alternative base URL to be used for serving public files. This must
+ * include any leading directory path.
+ *
+ * A different value from the domain used by Drupal to be used for accessing
+ * public files. This can be used for a simple CDN integration, or to improve
+ * security by serving user-uploaded files from a different domain or subdomain
+ * pointing to the same server. Do not include a trailing slash.
+ */
+# $settings['file_public_base_url'] = 'http://downloads.example.com/files';
+
+/**
  * Public file path:
  *
  * A local file system path where public files will be stored. This directory
@@ -513,28 +526,6 @@ if ($settings['hash_salt']) {
  * Note: This setting does not apply to installation and update pages.
  */
 # $settings['maintenance_theme'] = 'bartik';
-
-/**
- * Base URL (optional).
- *
- * If Drupal is generating incorrect URLs on your site, which could
- * be in HTML headers (links to CSS and JS files) or visible links on pages
- * (such as in menus), uncomment the Base URL statement below (remove the
- * leading hash sign) and fill in the absolute URL to your Drupal installation.
- *
- * You might also want to force users to use a given domain.
- * See the .htaccess file for more information.
- *
- * Examples:
- *   $base_url = 'http://www.example.com';
- *   $base_url = 'http://www.example.com:8888';
- *   $base_url = 'http://www.example.com/drupal';
- *   $base_url = 'https://www.example.com:8888/drupal';
- *
- * It is not allowed to have a trailing slash; Drupal will add it
- * for you.
- */
-# $base_url = 'http://www.example.com';  // NO trailing slash!
 
 /**
  * PHP settings:

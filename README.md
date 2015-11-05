@@ -50,10 +50,12 @@ Updating Drupal core is a two-step process.
 
 1. Update the version number of `drupal/core` in `composer.json`.
 1. Run `composer update drupal/core`.
-1. Run `./scripts/drupal/update-scaffold` to update files in the `web` directory.
-   This will update `web` with whatever the latest Drupal 8 release is. Review
-   the files for any changes and restore any customizations to `.htaccess` or
-   `robots.txt`.
+1. Run `./scripts/drupal/update-scaffold [drush-version-spec]` to update files
+   in the `web` directory, where `drush-version-spec` is an optional identifier
+   acceptable to Drush, e.g. `drupal-8.0.x` or `drupal-8.1.x`, corresponding to
+   the version you specified in `composer.json`. (Defaults to `drupal-8`, the
+   latest stable release.) Review the files for any changes and restore any
+   customizations to `.htaccess` or `robots.txt`.
 1. Commit everything all together in a single commit, so `web` will remain in
    sync with the `core` when checking out branches or running `git bisect`.
 

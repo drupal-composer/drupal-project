@@ -1,18 +1,23 @@
 #!/bin/bash
 
 ROOT=$(pwd)
+VERSION=${1:-drupal-8}
 
-drush dl drupal-8 --destination=/tmp --drupal-project-rename=drupal-8 --quiet -y
+drush dl "$VERSION" --destination=/tmp --drupal-project-rename=drupal-8 --quiet -y
 
 rsync -avz --delete /tmp/drupal-8/ $ROOT/web \
  --exclude=.gitkeep \
  --exclude=autoload.php \
  --exclude=composer.json \
+ --exclude=composer.lock \
  --exclude=core \
  --exclude=drush \
  --exclude=example.gitignore \
  --exclude=LICENSE.txt \
  --exclude=README.txt \
- --exclude=vendor
+ --exclude=vendor \
+ --exclude=sites \
+ --exclude=themes \
+ --exclude=modules
 
 rm -rf /tmp/drupal-8
