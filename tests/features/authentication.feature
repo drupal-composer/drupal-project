@@ -5,7 +5,7 @@ Feature: User authentication
 
 Scenario: Anonymous user can see the user login page
   Given I am not logged in
-  When I visit "user"
+  When I visit "user/login"
   Then I should see the text "Log in"
   And I should see the text "Reset your password"
   And I should see the text "Username"
