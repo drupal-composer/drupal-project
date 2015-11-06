@@ -107,6 +107,13 @@
         <echo message="${behat.yml.content}" file="${behat.yml.path}" />
     </target>
 
+    <!-- Link the site root to the document root of the webserver. -->
+    <target
+        name="link-docroot"
+        description="Create a symlink from the site root to the webserver document root.">
+        <symlink link="${server.docroot}" target="${drupal.site.dir}" overwrite="true" />
+    </target>
+
     <!-- Create demo users. -->
     <target name="create-demo-users" description="Create demo users.">
         <foreach list="${drupal.demo.users}" param="drupal.demo.user" target="create-demo-user" delimiter="," />
