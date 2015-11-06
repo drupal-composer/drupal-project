@@ -3,7 +3,7 @@ default:
     default:
       contexts:
         - FeatureContext
-        - Drupal\DrupalProject\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrupalContext
         - Drupal\DrupalExtension\Context\DrushContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\MinkContext
