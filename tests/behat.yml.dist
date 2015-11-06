@@ -20,7 +20,7 @@ default:
       api_driver: 'drupal'
       blackbox: ~
       drupal:
-        drupal_root: '${platform.drupal.dir}'
+        drupal_root: '${website.drupal.dir}'
       selectors:
         message_selector: '.messages'
         error_message_selector: '.messages.messages--error'
