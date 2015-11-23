@@ -71,3 +71,7 @@ that the generated `composer.json` might differ from this project's file.
 ### Should I commit the contrib modules I download
 
 Composer recommends **no**. They provide [argumentation against but also workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+
+### How can I apply patches to downloaded modules?
+
+If you need to apply patches (depending on the project being modified, a pull request is often a better solution), you can do so with the [composer-patches](https://github.com/cweagans/composer-patches plugin) plugin.
