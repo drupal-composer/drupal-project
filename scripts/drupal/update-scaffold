@@ -18,6 +18,7 @@ rsync -avz --delete /tmp/drupal-8/ $ROOT/web \
  --exclude=vendor \
  --exclude=sites \
  --exclude=themes \
+ --exclude=profiles \
  --exclude=modules
 
 rm -rf /tmp/drupal-8
