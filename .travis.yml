@@ -9,6 +9,7 @@ env:
   - SIMPLETEST_DB=sqlite://tmp/site.sqlite
 
 before_install:
+  - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
   - composer --verbose self-update
   - composer --version
