@@ -169,8 +169,8 @@
 
     <target
         name="setup-dev"
-        description="Set up a development environment."
-        depends="build-dev, enable-dev-settings, enable-dev-modules, create-demo-users" />
+        description="Set up 'development mode' for an installed website."
+        depends="build-dev, enable-dev-settings, enable-dev-modules" />
 
     <target
         name="setup-acceptance"
@@ -180,6 +180,6 @@
     <target
         name="install-dev"
         description="Install the website and set up the development environment."
-        depends="install, setup-dev" />
+        depends="install, setup-dev", "create-demo-users" />
 
 </project>
