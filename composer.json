@@ -35,6 +35,7 @@
         "mikey179/vfsStream": "~1.2",
         "pfrenssen/phpcs-pre-push": "1.0",
         "phing/phing": "~2.10",
+        "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "2.7.*"
     },
     "minimum-stability": "dev",
