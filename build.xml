@@ -180,6 +180,6 @@
     <target
         name="install-dev"
         description="Install the website and set up the development environment."
-        depends="install, setup-dev", "create-demo-users" />
+        depends="install, setup-dev, create-demo-users" />
 
 </project>
