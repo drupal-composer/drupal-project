@@ -10,6 +10,9 @@
     "derhasi/composer-preserve-paths": "0.1.*",
     "drupal/drupal": "7.*"
   },
+  "conflict": {
+    "drupal/core": "8.*"
+  },
   "scripts": {
     "post-create-project-cmd": [
       "rm README.md LICENSE .travis.yml phpunit.xml.dist"
