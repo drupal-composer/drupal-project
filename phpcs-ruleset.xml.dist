@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- PHP_CodeSniffer standard for Drupal projects. -->
+<!-- See http://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php -->
+<ruleset name="Drupal Project">
+    <description>Drupal coding standard</description>
+
+    <!-- Exclude unsupported file types. -->
+    <exclude-pattern>*.gif</exclude-pattern>
+    <exclude-pattern>*.less</exclude-pattern>
+    <exclude-pattern>*.png</exclude-pattern>
+
+    <!-- Minified files don't have to comply with coding standards. -->
+    <exclude-pattern>*.min.css</exclude-pattern>
+    <exclude-pattern>*.min.js</exclude-pattern>
+
+    <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal" />
+</ruleset>

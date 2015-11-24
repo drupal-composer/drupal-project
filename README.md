@@ -184,7 +184,27 @@ $ ./vendor/bin/behat -c tests/behat.yml
 
 ## Checking for coding standards violations
 
-PHP CodeSniffer can be run with the following command:
+### Set up PHP CodeSniffer
+
+PHP CodeSniffer is included to do coding standards checks of PHP and JS files.
+In the default configuration it will scan all files in the following folders:
+- `web/modules` (excluding `web/modules/contrib`)
+- `web/profiles`
+- `web/themes`
+
+First you'll need to execute the `setup-php-codesniffer` Phing target (note that
+this also runs as part of the `install-dev` and `setup-dev` targets):
+
+```
+$ ./vendor/bin/phing setup-php-codesniffer
+```
+
+This will generate a `phpcs.xml` file containing settings specific to your local
+environment. Make sure to never commit this file.
+
+### Run coding standards checks
+
+The coding standards checks can then be run as follows:
 
 ```
 # Scan all files for coding standards violations.
@@ -193,6 +213,27 @@ $ ./vendor/bin/phpcs
 # Scan only a single folder.
 $ ./vendor/bin/phpcs web/modules/custom/mymodule
 ```
+
+### Customize configuration
+
+The basic configuration can be changed by copying the relevant Phing properties
+from the "PHP CodeSniffer configuration" section in `build.properties.dist` to
+`build.properties` and changing them to your requirements. Then regenerate the
+`phpcs.xml` file by running the `setup-php-codesniffer` target:
+
+```
+$ ./vendor/bin/phing setup-php-codesniffer
+```
+
+To change to PHP CodeSniffer ruleset itself, make a copy of the file
+`phpcs-ruleset.xml.dist` and rename it to `phpcs-ruleset.xml`, and then put this
+line in your `build.properties` file:
+
+```
+phpcs.standard = ${project.basedir}/phpcs-ruleset.xml
+```
+
+For more information on configuring the ruleset see [Annotated ruleset](http://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php).
 
 
 ## FAQ

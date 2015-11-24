@@ -87,8 +87,10 @@ phpcs.extensions = php inc module install info test profile theme css js
 # The default configuration file to generate.
 phpcs.config = ${project.basedir}/phpcs.xml
 
-# The coding standard to use.
-phpcs.standard = ${project.basedir}/phpcs-ruleset.xml
+# The coding standard to use. If you want to customize the rules, make a copy of
+# the file and name it 'phpcs-ruleset.xml'. Then copy this property to your
+# build.properties file and remove the '.dist' suffix.
+phpcs.standard = ${project.basedir}/phpcs-ruleset.xml.dist
 
 # Paths to check, delimited by semicolons.
 phpcs.files = ${website.modules.dir};${website.profiles.dir};${website.themes.dir}
