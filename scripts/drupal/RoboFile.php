@@ -23,6 +23,10 @@ class RoboFile extends \Robo\Tasks {
     return $this->getProjectRoot() . '/web';
   }
 
+  protected function getTmpDir() {
+    return $this->getProjectRoot() . '/tmp';
+  }
+
   protected function getDrush() {
     return $this->getVendorBin() . '/drush';
   }
@@ -66,24 +70,26 @@ class RoboFile extends \Robo\Tasks {
 
     $this->stopOnFail();
 
+    $tmpDir = $this->getTmpDir();
+
     $this->taskFilesystemStack()
-      ->mkdir('tmp')
+      ->mkdir($tmpDir)
       ->run();
 
-    $this->taskCleanDir(['./tmp'])
+    $this->taskCleanDir([$tmpDir])
       ->run();
 
     $this->taskExec($this->getDrush())
       ->args(['dl', $version])
-      ->args('--root=tmp')
-      ->args('--destination=tmp')
+      ->args("--root=$tmpDir")
+      ->args("--destination=$tmpDir")
       ->args('--drupal-project-rename=drupal-8')
       ->args('--quiet')
       ->args('--yes')
       ->run();
 
     $this->taskRsync()
-      ->fromPath('tmp/drupal-8')
+      ->fromPath("$tmpDir/drupal-8")
       ->toPath($this->getWebRoot())
       ->exclude('.gitkeep')
       ->exclude('autoload.php')
@@ -110,12 +116,12 @@ class RoboFile extends \Robo\Tasks {
 
     foreach ($default_settings as $file) {
       $this->taskRsync()
-        ->fromPath('tmp/drupal-8/' . $file)
+        ->fromPath("$tmpDir/drupal-8/" . $file)
         ->toPath($this->getWebRoot() . '/' . $file)
         ->run();
     }
 
-    $this->taskDeleteDir('tmp')
+    $this->taskDeleteDir($tmpDir)
       ->run();
   }
 
