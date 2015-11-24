@@ -34,7 +34,9 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "post-install-cmd": "sh ./scripts/composer/post-install.sh"
+        "post-install-cmd": "sh ./scripts/composer/post-install.sh",
+        "pre-update-cmd": "sh ./scripts/drupal/pre-update.sh",
+        "post-update-cmd": "sh ./scripts/drupal/post-update.sh"
     },
     "extra": {
         "installer-paths": {
