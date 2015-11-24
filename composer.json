@@ -33,6 +33,7 @@
         "jcalderonzumba/gastonjs": "^1.1@dev",
         "jcalderonzumba/mink-phantomjs-driver": "dev-master#10d7c48c9a4129463052321b52450d98983c4332",
         "mikey179/vfsStream": "~1.2",
+        "pfrenssen/phpcs-pre-push": "1.0",
         "phing/phing": "~2.10",
         "symfony/css-selector": "2.7.*"
     },
@@ -77,6 +78,19 @@
               },
               "autoload": { "classmap": [ "DrushTask.php" ] },
               "include-path": [ "." ]
+          }
+      },
+      {
+          "type": "package",
+          "package": {
+              "name": "pfrenssen/phpcs-pre-push",
+              "version": "1.0",
+              "type": "git-hook",
+              "source": {
+                  "url": "https://gist.github.com/498fc52fea3f965f6640.git",
+                  "type": "git",
+                  "reference": "master"
+              }
           }
       }
   ]

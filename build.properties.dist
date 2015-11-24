@@ -110,6 +110,14 @@ phpcs.progress = 1
 # The location of the file containing the global configuration options.
 phpcs.global.config = ${project.basedir}/vendor/squizlabs/php_codesniffer/CodeSniffer.conf
 
+# Whether or not to run a coding standards check before doing a git push. Note
+# that this will abort the push if the coding standards check fails.
+phpcs.prepush.enable = 0
+
+# The source and destination paths of the git pre-push hook.
+phpcs.prepush.source = ${project.basedir}/vendor/pfrenssen/phpcs-pre-push/pre-push
+phpcs.prepush.destination = ${project.basedir}/.git/hooks/pre-push
+
 
 # Development options
 # -------------------

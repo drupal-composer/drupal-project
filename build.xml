@@ -82,6 +82,20 @@
             showSniffCodes="${phpcs.sniffcodes}"
             standard="${phpcs.standard}"
         />
+
+        <!-- Set up the git pre-push hook. -->
+        <phingcall target="disable-pre-push"/>
+        <if>
+            <equals arg1="${phpcs.prepush.enable}" arg2="1" />
+            <then>
+                <symlink link="${phpcs.prepush.destination}" target="${phpcs.prepush.source}" overwrite="true" />
+            </then>
+        </if>
+    </target>
+
+    <!-- Disable the PHP CodeSniffer pre-push hook. -->
+    <target name="disable-pre-push" description="Disable the coding standards check when pushing to a git repository.">
+        <delete file="${phpcs.prepush.destination}" failonerror="false" />
     </target>
 
     <!-- Set up Behat. -->
