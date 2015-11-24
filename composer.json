@@ -29,7 +29,7 @@
         "drupal/config_update": "8.1.*@dev",
         "drupal/devel": "8.1.*@dev",
         "drupal/drupal-extension": "~3.0",
-        "drupal/phing-drush-task": "~1.0",
+        "drupal/phing-drush-task": "1.0",
         "jcalderonzumba/gastonjs": "^1.1@dev",
         "jcalderonzumba/mink-phantomjs-driver": "dev-master#10d7c48c9a4129463052321b52450d98983c4332",
         "mikey179/vfsStream": "~1.2",
@@ -69,11 +69,11 @@
           "type": "package",
           "package": {
               "name": "drupal/phing-drush-task",
-              "version": "1.2",
+              "version": "1.0",
               "source": {
                   "url": "http://git.drupal.org/project/phingdrushtask.git",
                   "type": "git",
-                  "reference": "7.x-1.2"
+                  "reference": "7.x-1.0"
               },
               "autoload": { "classmap": [ "DrushTask.php" ] },
               "include-path": [ "." ]
