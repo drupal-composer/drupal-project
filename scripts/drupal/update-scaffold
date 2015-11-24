@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/bin/bash -e
 
 ROOT=$(pwd)
+DRUSH=$ROOT/vendor/bin/drush
 VERSION=${1:-drupal-8}
+DRUPAL_TEMP=$(mktemp -d)
 
-drush dl "$VERSION" --destination=/tmp --drupal-project-rename=drupal-8 --quiet -y
+$DRUSH dl "$VERSION" --root=$DRUPAL_TEMP --destination=$DRUPAL_TEMP --drupal-project-rename=drupal-8 --quiet -y
 
-rsync -avz --delete /tmp/drupal-8/ $ROOT/web \
+rsync -avz --delete $DRUPAL_TEMP/drupal-8/ $ROOT/web \
  --exclude=.gitkeep \
  --exclude=autoload.php \
  --exclude=composer.json \
@@ -18,6 +20,7 @@ rsync -avz --delete /tmp/drupal-8/ $ROOT/web \
  --exclude=vendor \
  --exclude=sites \
  --exclude=themes \
+ --exclude=profiles \
  --exclude=modules
 
-rm -rf /tmp/drupal-8
+rm -rf $DRUPAL_TEMP/drupal-8
