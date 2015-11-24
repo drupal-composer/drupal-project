@@ -163,14 +163,9 @@
     </target>
 
     <target
-        name="build-dev"
-        description="Build a development environment."
-        depends="setup-behat, setup-php-codesniffer" />
-
-    <target
         name="setup-dev"
         description="Set up a development environment."
-        depends="build-dev, enable-dev-settings, enable-dev-modules, create-demo-users" />
+        depends="setup-behat, setup-php-codesniffer, enable-dev-settings, enable-dev-modules, create-demo-users" />
 
     <target
         name="setup-acceptance"
