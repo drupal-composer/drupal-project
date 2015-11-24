@@ -29,14 +29,17 @@
         "jcalderonzumba/mink-phantomjs-driver": "dev-master#10d7c48c9a4129463052321b52450d98983c4332",
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
-        "symfony/css-selector": "2.7.*"
+        "symfony/css-selector": "2.7.*",
+        "codegyre/robo": "^0.6.0"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
         "post-install-cmd": "sh ./scripts/composer/post-install.sh",
-        "pre-update-cmd": "sh ./scripts/drupal/pre-update.sh",
-        "post-update-cmd": "sh ./scripts/drupal/post-update.sh"
+        "pre-update-cmd": "composer robo version:dump",
+        "post-update-cmd": "composer robo update:if-newer-version",
+        "robo": "robo --load-from $(pwd)/scripts/drupal",
+        "update-scaffold": "robo --load-from $(pwd)/scripts/drupal update"
     },
     "extra": {
         "installer-paths": {

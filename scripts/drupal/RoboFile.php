@@ -27,16 +27,36 @@ class RoboFile extends \Robo\Tasks {
     return $this->getVendorBin() . '/drush';
   }
 
+  protected function getVersionFile() {
+    return $this->getVendorDir() . '/.drupal-version';
+  }
+
   public function versionDump() {
-    $this->taskWriteToFile($this->getVendorDir() . '/.drupal-version')
+    $this->taskWriteToFile($this->getVersionFile())
       ->text(\Drupal::VERSION)
       ->run();
   }
 
   public function versionRemove() {
     $this->taskFilesystemStack()
-      ->remove($this->getVendorDir() . '/.drupal-version')
+      ->remove($this->getVersionFile())
       ->run();
+  }
+
+  public function updateIfNewerVersion() {
+    $versionFile = $this->getVersionFile();
+    if (file_exists($versionFile)) {
+      $previousVersion = file_get_contents($versionFile);
+      $this->versionRemove();
+      $currentVersion = str_replace('0-dev', 'x', \Drupal::VERSION);
+      if ($currentVersion != $previousVersion) {
+        $this->say("Drupal core updated from version $previousVersion to $currentVersion; updateing scaffolding files.");
+        $this->update("drupal-$currentVersion");
+      }
+      else {
+        $this->say("Drupal core version did not change; skipping scaffolding update.");
+      }
+    }
   }
 
   public function update($version = NULL) {
