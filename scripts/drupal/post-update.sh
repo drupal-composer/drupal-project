@@ -12,6 +12,7 @@ then
   # the version we recorded prior to the update running
   DRUPAL_VERSION=$($DRUSH --root=$DRUPAL_ROOT status "Drupal version" --format=yaml | awk '{print $2}')
   PREVIOUS_VERSION=$(cat $VERSION_FILE)
+  rm $VERSION_FILE
 
   if [ $DRUPAL_VERSION != $PREVIOUS_VERSION ]
   then
