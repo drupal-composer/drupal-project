@@ -71,9 +71,13 @@ class RoboFile extends \Robo\Tasks {
     $this->stopOnFail();
 
     $tmpDir = $this->getTmpDir();
+    $confDir = $this->getWebRoot() . '/sites/default';
+
+    $confDirOriginalPerms = fileperms($confDir);
 
     $this->taskFilesystemStack()
       ->mkdir($tmpDir)
+      ->chmod($confDir, 0755)
       ->run();
 
     $this->taskCleanDir([$tmpDir])
@@ -122,6 +126,10 @@ class RoboFile extends \Robo\Tasks {
     }
 
     $this->taskDeleteDir($tmpDir)
+      ->run();
+
+    $this->taskFilesystemStack()
+      ->chmod($confDir, $confDirOriginalPerms)
       ->run();
   }
 
