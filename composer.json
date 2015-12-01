@@ -17,6 +17,7 @@
     ],
     "require": {
         "composer/installers": "^1.0.20",
+        "drupal-composer/drupal-scaffold": "dev-master",
         "cweagans/composer-patches": "~1.0",
         "drupal-composer/drupal-scaffold": "dev-master",
         "drupal/core": "8.0.*",
