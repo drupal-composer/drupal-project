@@ -18,7 +18,7 @@
     "require": {
         "composer/installers": "^1.0.20",
         "cweagans/composer-patches": "~1.0",
-        "webflo/drupal-security-advisories": "8.0.x-dev",
+        "drupal-composer/drupal-security-advisories": "8.0.x-dev",
         "roave/security-advisories": "dev-master",
         "drupal/core": "8.0.*",
         "drush/drush": "~8.0",
