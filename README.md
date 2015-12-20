@@ -29,6 +29,34 @@ cd some-dir
 composer require drupal/devel:8.*
 ```
 
+## Using in Docker on Mac OS X
+The following allows you to run a Drupal app on your Mac OS X filesystem within a PHP 5.6-Apache Docker container against a MySQL database. It uses a modified version of the [official Drupal](https://hub.docker.com/_/drupal/) Dockerfile.
+
+As Drupal requires write access to some of the app filesystem, download and install [docker-osx-dev](https://github.com/brikis98/docker-osx-dev):
+```
+curl -o /usr/local/bin/docker-osx-dev https://raw.githubusercontent.com/brikis98/docker-osx-dev/master/src/docker-osx-dev
+chmod +x /usr/local/bin/docker-osx-dev
+docker-osx-dev install
+```
+
+Clone this project to your development machine:
+```
+git clone git@github.com:drupal-composer/drupal-project.git <your-drupal-app-path>
+```
+
+Give Docker containers access to your Drupal code. Use `docker-osx-dev` to mount and rsync local drupal code in `boot2docker`:
+```
+docker-osx-dev -s <your-drupal-app-path>
+```
+See `docker-osx-dev` documentation. This shell is now watching your files. 
+
+In a new shell, run the `docker-dev` Drupal setup script for OS X, with the argument values you want:
+```
+<your-drupal-app-path>/docker-dev/setup-osx --app-path <your-drupal-app-path> --app-name drupal-app --container-name some-drupal-app --mysql-container-name some-mysql --mysql-root-password some-password --localhost-port 8080
+```
+
+See the [official Drupal Docker setup](https://hub.docker.com/_/drupal/) to understand these arguments. Set `localhost-port` as the port you want your `localhost` Drupal app to be served on.
+
 ## What does the template do?
 
 When installing the given `composer.json` some tasks are taken care of:

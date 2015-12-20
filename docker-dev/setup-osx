@@ -1,0 +1,111 @@
+#!/bin/bash
+
+# SETUP & COLLECT ARGUMENTS
+# =========================
+set -e
+
+PROGNAME=$(basename $0)
+
+die() {
+    echo "$PROGNAME: $*" >&2
+    exit 1
+}
+
+usage() {
+    if [ "$*" != "" ] ; then
+        echo "Error: $*"
+    fi
+
+    cat << EOF
+Usage: $PROGNAME [OPTION ...]
+
+Sets up a drupal-compose template project in a Docker container on Mac OS X.
+
+Required: docker-osx-dev to be installed
+
+Options:
+--help                    display this usage message and exit
+--app-path                path to your application code
+--app-name                name of your application
+--container-name          name of the application container you are starting
+--mysql-container-name    name of the mysql container you are starting
+--mysql-root-password     root password to the mysql database
+--localhost-port          (optional, default 8080) port to serve the application on
+
+EOF
+    exit 1
+}
+
+# required data
+APP_PATH=""
+APP_NAME=""
+CONTAINER_NAME=""
+MYSQL_CONTAINER_NAME=""
+MYSQL_ROOT_PASSWORD=""
+
+# optional defaulted data
+LOCALHOST_PORT=8080
+
+while [ $# -gt 0 ] ; do
+    case "$1" in
+    --help)
+        usage
+        ;;
+    --app-path)
+        APP_PATH="$2"
+        shift
+        ;;
+    --app-name)
+        APP_NAME="$2"
+        shift
+        ;;
+    --container-name)
+        CONTAINER_NAME="$2"
+        shift
+        ;;
+    --mysql-container-name)
+        MYSQL_CONTAINER_NAME="$2"
+        shift
+        ;;
+    --mysql-root-password)
+        MYSQL_ROOT_PASSWORD="$2"
+        shift
+        ;;
+    --localhost-port)
+        LOCALHOST_PORT="$2"
+        shift
+        ;;
+    -*)
+        usage "Unknown option '$1'"
+        ;;
+    *)
+        usage "Too many arguments"
+        ;;
+    esac
+    shift
+done
+
+if [[ -z "$APP_PATH" || -z "$APP_NAME" || -z "$CONTAINER_NAME" || -z "$MYSQL_CONTAINER_NAME" || -z "$MYSQL_ROOT_PASSWORD" ]] ; then
+    usage "Not enough arguments"
+fi
+
+# MAIN SCRIPT
+# ===========
+
+# build drupal container
+docker build -t "$APP_NAME:latest" $APP_PATH/docker-dev
+
+# run mysql and drupal containers; link mysql and mounted folder
+docker run --name $MYSQL_CONTAINER_NAME -e MYSQL_ROOT_PASSWORD=$MYSQL_ROOT_PASSWORD -d mysql:latest
+docker run --name $CONTAINER_NAME -v $APP_PATH:/var/www/html --link $MYSQL_CONTAINER_NAME:mysql -p $LOCALHOST_PORT:80 -d $APP_NAME:latest
+
+# forward the port through virtualbox
+VBoxManage controlvm "boot2docker-vm" natpf1 "http,tcp,127.0.0.1,$LOCALHOST_PORT,,$LOCALHOST_PORT"
+
+# build drupal
+docker exec -it $CONTAINER_NAME composer install
+
+# give sites folder required permissions
+docker exec -it $CONTAINER_NAME chown -R www-data:www-data web/sites
+
+exit 0
