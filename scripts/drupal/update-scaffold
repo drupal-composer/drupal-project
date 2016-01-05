@@ -7,7 +7,7 @@ DRUPAL_TEMP=$(mktemp -d)
 
 $DRUSH dl "$VERSION" --root=$DRUPAL_TEMP --destination=$DRUPAL_TEMP --drupal-project-rename=drupal-8 --quiet -y
 
-rsync -avz --delete $DRUPAL_TEMP/drupal-8/ $ROOT/web \
+rsync -avz --delete $DRUPAL_TEMP/drupal-8/ "$ROOT/web" \
  --exclude=.gitkeep \
  --exclude=autoload.php \
  --exclude=composer.json \
