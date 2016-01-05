@@ -25,7 +25,7 @@ script:
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
   - ./../vendor/bin/drush
-  - ./../vendor/bin/console
+  - ./../vendor/bin/drupal
 
   # Test dev release
   - cd $TRAVIS_BUILD_DIR
@@ -36,4 +36,4 @@ script:
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   - ./../vendor/bin/phpunit -c core --exclude-group Composer
   - ./../vendor/bin/drush
-  - ./../vendor/bin/console
+  - ./../vendor/bin/drupal
