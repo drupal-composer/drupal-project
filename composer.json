@@ -31,6 +31,9 @@
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "2.7.*"
     },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
