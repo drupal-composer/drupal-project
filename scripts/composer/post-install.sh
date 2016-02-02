@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Check to see if we need to run drupal-scaffold
+if [ ! -f web/autoload.php ]
+  then
+    composer drupal-scaffold
+fi
+
+
 # Prepare the settings file for installation
 if [ ! -f web/sites/default/settings.php ]
   then
