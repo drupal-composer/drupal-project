@@ -17,6 +17,7 @@
     ],
     "require": {
         "composer/installers": "^1.0.20",
+        "drupal-composer/drupal-scaffold": "~1",
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "8.0.*",
         "drush/drush": "~8.0",
@@ -37,6 +38,7 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": "sh ./scripts/composer/post-install.sh"
     },
     "extra": {
