@@ -162,6 +162,22 @@
         <phingcall target="writable-settings-folder"/>
         <!-- Copy settings file containing development values, but preserve any existing local settings. -->
         <copy file="${website.settings.local.php.example}" tofile="${website.settings.local.php}" overwrite="false" />
+        <!-- Uncomment the inclusion of the local settings file in settings.php. -->
+        <phingcall target="writable-settings-php"/>
+        <reflexive>
+            <fileset dir="${website.settings.dir}">
+                <include pattern="settings.php" />
+            </fileset>
+            <filterchain>
+                <replaceregexp>
+                    <regexp
+                        pattern="^# (if \(file_exists\(__DIR__ \. '\/settings\.local\.php'\)\) \{\n)# (  include __DIR__ \. '\/settings\.local\.php';\n)# (\})"
+                        replace="\1\2\3"
+                        modifiers="m"
+                    />
+                </replaceregexp>
+            </filterchain>
+        </reflexive>
     </target>
 
     <!-- Enable development modules. -->
