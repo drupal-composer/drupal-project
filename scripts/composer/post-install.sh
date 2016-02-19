@@ -30,7 +30,7 @@ fi
 # Prepare the files directory for installation
 if [ ! -d $DOCUMENTROOT/sites/default/files ]
   then
-    mkdir web/sites/default/files
-    chmod 777 web/sites/default/files
+    mkdir $DOCUMENTROOT/sites/default/files
+    chmod 777 $DOCUMENTROOT/sites/default/files
     echo "Create a sites/default/files directory with chmod 777"
 fi
