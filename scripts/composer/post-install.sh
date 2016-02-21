@@ -14,7 +14,10 @@ fi
 # Prepare the settings file for installation
 if [ ! -f $DOCUMENTROOT/sites/default/settings.php ]
   then
-    cp $DOCUMENTROOT/sites/default/default.settings.php $DOCUMENTROOT/sites/default/settings.php
+    sed \
+      -e "s/\(\$settings\['hash_salt'\] = \)'';/\1'$(php -r 'print bin2hex(openssl_random_pseudo_bytes(32));')';/" \
+      $DOCUMENTROOT/sites/default/default.settings.php \
+      > $DOCUMENTROOT/sites/default/settings.php
     chmod 666 $DOCUMENTROOT/sites/default/settings.php
     echo "Create a sites/default/settings.php file with chmod 666"
 fi
