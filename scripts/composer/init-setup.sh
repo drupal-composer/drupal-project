@@ -9,6 +9,9 @@ if [ ! -f $DOCUMENTROOT/autoload.php ]
     mkdir -p $DOCUMENTROOT/modules
     mkdir -p $DOCUMENTROOT/themes
     mkdir -p $DOCUMENTROOT/profiles
+
+    # Clean dumb directories created by drupal-scaffold.
+    rm -r tmp+([0-9])
 fi
 
 # Prepare the services file for installation
