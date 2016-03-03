@@ -13,14 +13,17 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drunomics/drupal-project:1.*@dev --repository='https://packages.drunomics.com' --stability dev DIRECTORY
+// Last stable version:
+composer create-project drunomics/drupal-project:1.* --repository='https://packages.drunomics.com' PROJECT
+// Last development version:
+composer create-project drunomics/drupal-project:1.*@dev --repository='https://packages.drunomics.com' --stability dev PROJECT
 ```
 
 With `composer require ...` you can download new dependencies to your 
 installation.
 
 ```
-cd some-dir
+cd PROJECT
 composer require drupal/devel:8.*
 ```
 
