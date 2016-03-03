@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DOCUMENTROOT=web
 
@@ -9,9 +9,6 @@ if [ ! -f $DOCUMENTROOT/autoload.php ]
     mkdir -p $DOCUMENTROOT/modules
     mkdir -p $DOCUMENTROOT/themes
     mkdir -p $DOCUMENTROOT/profiles
-
-    # Clean dumb directories created by drupal-scaffold.
-    rm -r tmp+([0-9])
 fi
 
 # Prepare the services file for installation
@@ -29,3 +26,6 @@ if [ ! -d $DOCUMENTROOT/sites/default/files ]
     chmod 777 $DOCUMENTROOT/sites/default/files
     echo "Create a sites/default/files directory with chmod 777"
 fi
+
+# Clean dumb directories created by drupal-scaffold.
+rm -r tmp*
