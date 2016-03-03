@@ -11,6 +11,8 @@ $databases['default']['default'] = array (
   'driver' => 'mysql',
 );
 
+$settings['trusted_host_patterns'][] = '^{{ project }}.local$';
+
 $config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../config',
 );
