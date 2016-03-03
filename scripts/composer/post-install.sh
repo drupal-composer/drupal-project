@@ -11,14 +11,6 @@ if [ ! -f $DOCUMENTROOT/autoload.php ]
     mkdir -p $DOCUMENTROOT/profiles
 fi
 
-# Prepare the settings file for installation
-if [ ! -f $DOCUMENTROOT/sites/default/settings.php ]
-  then
-    cp $DOCUMENTROOT/sites/default/default.settings.php $DOCUMENTROOT/sites/default/settings.php
-    chmod 666 $DOCUMENTROOT/sites/default/settings.php
-    echo "Create a sites/default/settings.php file with chmod 666"
-fi
-
 # Prepare the services file for installation
 if [ ! -f $DOCUMENTROOT/sites/default/services.yml ]
   then
