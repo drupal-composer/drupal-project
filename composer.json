@@ -32,19 +32,6 @@
     },
     "repositories": [
         {
-            "type": "package",
-            "package": {
-                "name": "drunomics/drudrush",
-                "type": "drupal-drush",
-                "version": "master",
-                "source": {
-                    "url": "git@bitbucket.org:drunomics/drudrush.git",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        },
-        {
             "type": "composer",
             "url": "https://packages.drunomics.com"
         },
@@ -58,9 +45,12 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "scripts/composer/process-replacements.php",
-        "post-install-cmd": "sh ./scripts/composer/post-install.sh",
+        "init-setup": "scripts/composer/init-setup.sh",
         "post-create-project-cmd": [
-            "@process-replacements"
+            "@process-replacements",
+            "@drupal-scaffold",
+            "drush dpsetup",
+            "@init-setup"
         ]
     },
     "extra": {
