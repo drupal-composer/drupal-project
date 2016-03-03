@@ -57,7 +57,11 @@
     "prefer-stable": true,
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "post-install-cmd": "sh ./scripts/composer/post-install.sh"
+        "process-replacements": "scripts/composer/process-replacements.php",
+        "post-install-cmd": "sh ./scripts/composer/post-install.sh",
+        "post-create-project-cmd": [
+            "@process-replacements"
+        ]
     },
     "extra": {
         "installer-paths": {
