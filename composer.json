@@ -1,17 +1,11 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "drunomics/drupal-project",
+    "description": "Project template for drunomics Drupal 8 projects with composer",
     "type": "project",
     "authors": [
         {
             "name": "drunomics GmbH",
             "role": "Creator."
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
         }
     ],
     "require": {
@@ -20,7 +14,9 @@
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "8.0.*",
         "drush/drush": "~8.0",
-        "drupal/console": "~0.10"
+        "drunomics/drudrush": "dev-master",
+        "drupal/console": "~0.10",
+        "wikimedia/composer-merge-plugin": "^1.3@dev"
     },
     "require-dev": {
         "behat/mink": "~1.6",
@@ -34,6 +30,29 @@
     "conflict": {
         "drupal/drupal": "*"
     },
+    "repositories": [
+        {
+            "type": "package",
+            "package": {
+                "name": "drunomics/drudrush",
+                "type": "drupal-drush",
+                "version": "master",
+                "source": {
+                    "url": "git@bitbucket.org:drunomics/drudrush.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "composer",
+            "url": "https://packages.drunomics.com"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        }
+    ],
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
@@ -47,6 +66,14 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "merge-plugin": {
+            "include": [
+                "web/modules/custom/*/composer.json"
+            ],
+            "recurse": false,
+            "replace": false,
+            "merge-extra": false
         }
     }
 }
