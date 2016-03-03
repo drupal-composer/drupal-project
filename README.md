@@ -1,13 +1,6 @@
-# Composer template for Drupal projects
+# Composer template for drunomics Drupal projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
-
-This project template should provide a kickstart for managing your site
-dependencies with [Composer](https://getcomposer.org/).
-
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/master/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+Builds upon https://github.com/drupal-composer/drupal-project.
 
 ## Usage
 
@@ -20,7 +13,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project drunomics/drupal-project:1.*@dev --repository='https://packages.drunomics.com' --stability dev DIRECTORY
 ```
 
 With `composer require ...` you can download new dependencies to your 
