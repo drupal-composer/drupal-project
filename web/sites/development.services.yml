@@ -1,8 +1,6 @@
 # Custom file, combining development.services.yml and default.services.yml.
 
 services:
-  cache.backend.memory:
-    class: Drupal\Core\Cache\MemoryBackendFactory
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
 parameters:
