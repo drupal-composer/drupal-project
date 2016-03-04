@@ -10,6 +10,7 @@ echo "Project name $project taken from directory name\n";
 $file_patterns = [
   'devsetup/*\.yml',
   'web/sites/default/*\.php',
+  'drush/*\.php',
 ];
 
 $replacements = [
