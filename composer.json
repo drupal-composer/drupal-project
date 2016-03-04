@@ -47,6 +47,7 @@
         "process-replacements": "scripts/composer/process-replacements.php",
         "init-setup": "scripts/composer/init-setup.sh",
         "post-create-project-cmd": [
+            "rm README.md && mv README.md.dist README.md",
             "@process-replacements",
             "@drupal-scaffold",
             "drush dpsetup",

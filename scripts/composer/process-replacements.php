@@ -8,6 +8,7 @@ echo "Project name $project taken from directory name\n";
 
 // Specify files for which replacement will be applied.
 $file_patterns = [
+  '*.md',
   'devsetup/*\.yml',
   'web/sites/default/*\.php',
   'drush/*\.php',
