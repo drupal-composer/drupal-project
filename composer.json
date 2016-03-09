@@ -19,7 +19,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "~1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.0.*",
+        "drupal/drupal": "8.0.*",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10"
     },
@@ -43,7 +43,7 @@
     },
     "extra": {
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
+            "web": ["type:drupal-core"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
