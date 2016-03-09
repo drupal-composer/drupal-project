@@ -6,9 +6,11 @@ DOCUMENTROOT=web
 if [ ! -f $DOCUMENTROOT/autoload.php ]
   then
     composer drupal-scaffold
-    mkdir -p $DOCUMENTROOT/modules
-    mkdir -p $DOCUMENTROOT/themes
-    mkdir -p $DOCUMENTROOT/profiles
+    for dir in modules themes profiles
+    do
+      mkdir -p $DOCUMENTROOT/$dir
+      touch $DOCUMENTROOT/$dir/.gitkeep
+    done
 fi
 
 # Prepare the settings file for installation
