@@ -5,6 +5,9 @@ vendor
 # Ignore everything in webroot.
 web/*
 
+# Uncomment the following line to include robots.txt.
+#!web/robots.txt
+
 # Only ignore contrib modules in webroot.
 !web/modules
 web/modules/README.txt
