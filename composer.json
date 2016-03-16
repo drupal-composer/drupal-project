@@ -17,6 +17,7 @@
     ],
     "require": {
         "composer/installers": "^1.0.20",
+        "drupal-composer/drupal-scaffold": "~1",
         "cweagans/composer-patches": "~1.0",
         "drupal/console": "~0.10",
         "drupal/core": "8.0.*",
@@ -32,7 +33,7 @@
         "drupal/drupal-extension": "~3.0",
         "drupal/phing-drush-task": "1.0",
         "jcalderonzumba/gastonjs": "^1.1@dev",
-        "jcalderonzumba/mink-phantomjs-driver": "dev-master#10d7c48c9a4129463052321b52450d98983c4332",
+        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsStream": "~1.2",
         "pfrenssen/phpcs-pre-push": "1.0",
         "phing/phing": "~2.10",
@@ -51,6 +52,7 @@
         }
     },
     "scripts": {
+        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": "sh ./scripts/composer/post-install.sh"
     },
     "extra": {
