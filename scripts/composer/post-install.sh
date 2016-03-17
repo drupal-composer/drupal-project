@@ -8,7 +8,7 @@ if [ ! -f $DOCUMENTROOT/autoload.php ]
     do
       mkdir -p $DOCUMENTROOT/$dir
       touch $DOCUMENTROOT/$dir/.gitkeep
-      done
+    done
 fi
 
 # Prepare the settings file for installation
