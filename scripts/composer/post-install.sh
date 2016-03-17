@@ -1,7 +1,5 @@
 #!/bin/sh
-
 DOCUMENTROOT=web
-
 # Prepare the scaffold files if they are not already present
 if [ ! -f $DOCUMENTROOT/autoload.php ]
   then
@@ -10,7 +8,7 @@ if [ ! -f $DOCUMENTROOT/autoload.php ]
     do
       mkdir -p $DOCUMENTROOT/$dir
       touch $DOCUMENTROOT/$dir/.gitkeep
-    done
+      done
 fi
 
 # Prepare the settings file for installation
