@@ -1,7 +1,5 @@
 #!/bin/sh
-
 DOCUMENTROOT=web
-
 # Prepare the scaffold files if they are not already present
 if [ ! -f $DOCUMENTROOT/autoload.php ]
   then
