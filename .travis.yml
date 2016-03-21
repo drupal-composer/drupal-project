@@ -5,3 +5,4 @@ php:
   - "5.3"
 install:
   - composer install
+  - composer require drupal/ableorganizer:@dev
