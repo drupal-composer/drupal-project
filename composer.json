@@ -21,6 +21,8 @@
   "config": {
     "vendor-dir": "vendor"
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "extra": {
     "installer-paths": {
       "web/": ["type:drupal-core"],
