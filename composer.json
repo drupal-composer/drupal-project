@@ -40,6 +40,7 @@
         "wa72/htmlpagedom": "^1.2",
         "drupal/admin_toolbar": "8.1.14",
         "drupal/coffee": "8.1.0-beta1",
+        "drupal/contact_storage": "8.1.0-beta2",
         "drupal/ctools": "8.3.0-alpha23",
         "drupal/devel": "8.1.*@dev",
         "drupal/entity_reference_revisions": "8.1.0-rc4",
