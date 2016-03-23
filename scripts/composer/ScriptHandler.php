@@ -57,9 +57,9 @@ class ScriptHandler {
 
     // Prepare the files directory for installation
     if (!$fs->exists($root . '/sites/default/files')) {
-      $oldmask = umask(0); // Temporarily set the umask to 0 to get correct permissions
+      $oldmask = umask(0);
       $fs->mkdir($root . '/sites/default/files', 0777);
-      umask($oldmask); // Revert umask to original value
+      umask($oldmask);
       $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
     }
   }
