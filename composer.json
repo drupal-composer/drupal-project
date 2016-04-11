@@ -1,12 +1,12 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "thinkshout/drupal-project",
+    "description": "ThinkShout's project template for Drupal 8 projects with composer",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "ThinkShout",
+            "role": "Developer"
         }
     ],
     "repositories": [
@@ -19,7 +19,7 @@
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "~1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.0.*",
+        "drupal/core": "8.1.*",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10"
     },
