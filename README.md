@@ -13,3 +13,10 @@ Then after cd in to the new site directory and run:
 ```
 composer install
 ```
+
+## Bash
+
+You can also do the same here one command.
+```
+bash <(curl -s curl -L https://raw.githubusercontent.com/poetic/drupal-project/8.x/install.sh) SITE_NAME
+```
