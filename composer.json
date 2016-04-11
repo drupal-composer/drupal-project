@@ -34,7 +34,7 @@
         "drupal/migrate_plus": "8.1.0",
         "drupal/pathauto": "8.1.0-alpha2",
         "drupal/simple_sitemap": "8.2.2",
-        "drupal/token": "8.1.0-alpha2",
+        "drupal/token": "8.1.0-alpha2"
     },
     "require-dev": {
         "behat/mink": "~1.6",
