@@ -31,7 +31,7 @@
         "drupal/linkit": "8.4.1",
         "drupal/layout_plugin": "8.1.0-alpha22",
         "drupal/metatag": "8.1.0-beta7",
-        "drupal/migrate_plus": "8.1.0",
+        "drupal/migrate_plus": "8.2.*@dev",
         "drupal/pathauto": "8.1.0-alpha2",
         "drupal/simple_sitemap": "8.2.2",
         "drupal/token": "8.1.0-alpha2"
