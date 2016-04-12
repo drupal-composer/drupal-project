@@ -17,6 +17,18 @@ First you need to [install composer](https://getcomposer.org/doc/00-intro.md#ins
 You might need to replace `composer` with `php composer.phar` (or similar)
 for your setup.
 
+To use the ThinkShout specific fork of drupal-project you'll want edit your
+`~/.composer/config.json` to include this repository. For example, add the following after the `config` section:
+
+```json
+"repositories": [
+    {
+        "type": "vcs",
+        "url": "https://github.com/thinkshout/drupal-project"
+    }
+]
+```
+
 After that you can create the project:
 
 ```
