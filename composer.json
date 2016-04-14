@@ -17,7 +17,7 @@
     ],
     "require": {
         "composer/installers": "^1.0.20",
-        "drupal-composer/drupal-scaffold": "~1",
+        "drupal-composer/drupal-scaffold": "^1.3.1",
         "cweagans/composer-patches": "~1.0",
         "drupal/console": "~0.10",
         "drupal/core": "8.0.*",
@@ -49,11 +49,21 @@
         "psr-4": {
             "Drupal\\DrupalProject\\": "tests/src",
             "DrupalProject\\": "src"
-        }
+        },
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "post-install-cmd": "sh ./scripts/composer/post-install.sh"
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::buildScaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::buildScaffold",
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ]
     },
     "extra": {
         "installer-paths": {
