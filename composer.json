@@ -70,5 +70,8 @@
             "replace": false,
             "merge-extra": false
         }
+    },
+    "config": {
+        "sort-packages": true
     }
 }
