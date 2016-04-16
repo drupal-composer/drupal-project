@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "c0f106edf435bdd164945b16a91fc7e8",
-    "content-hash": "147c3d59ab7d13682a8ec02a2082af73",
+    "hash": "34f084c953148c44359a164693a0f020",
+    "content-hash": "316a529b223047726beffc57de5c318c",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4815,22 +4815,45 @@
             "time": "2015-12-22 20:10:14"
         },
         {
-            "name": "drupal/phing-drush-task",
-            "version": "1.0",
+            "name": "drupal/phingdrushtask",
+            "version": "dev-7.x-2.x",
             "source": {
                 "type": "git",
-                "url": "http://git.drupal.org/project/phingdrushtask.git",
-                "reference": "7.x-1.0"
+                "url": "https://git.drupal.org/project/phingdrushtask.git",
+                "reference": "75e16a308c56a6cf8f4a4948b80c9f4bd32c9a81"
+            },
+            "require": {
+                "drush/drush": "6.5 - 8.0",
+                "phing/phing": "~2.9"
             },
             "type": "library",
-            "autoload": {
-                "classmap": [
-                    "DrushTask.php"
-                ]
+            "extra": {
+                "branch-alias": {
+                    "dev-7.x-2.x": "7.2.x-dev"
+                }
             },
-            "include-path": [
-                "."
-            ]
+            "autoload": {
+                "psr-0": {
+                    "Drush\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.drupal-composer.org/downloads/",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Frederic Dewinne",
+                    "email": "frederic@continuousphp.com"
+                },
+                {
+                    "name": "Pierre Buyle",
+                    "email": "pierre@buyle.org"
+                }
+            ],
+            "description": "Drush task for Phing",
+            "homepage": "https://github.com/continuousphp/phing-drush-task",
+            "time": "2016-03-10 14:56:20"
         },
         {
             "name": "fabpot/goutte",
@@ -6196,6 +6219,7 @@
         "drupal/coder": 20,
         "drupal/config_update": 20,
         "drupal/devel": 20,
+        "drupal/phingdrushtask": 20,
         "jcalderonzumba/gastonjs": 20
     },
     "prefer-stable": true,
