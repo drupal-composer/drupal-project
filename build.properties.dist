@@ -30,8 +30,9 @@ drupal.demo.users = administrator
 # -----
 
 # Paths to executables.
-phing.bin = ${project.basedir}/vendor/bin/phing
+composer.bin = ${project.basedir}/vendor/bin/composer
 drush.bin = ${project.basedir}/vendor/bin/drush
+phing.bin = ${project.basedir}/vendor/bin/phing
 
 # Files and directories inside the Drupal installation.
 website.drupal.dir = ${project.basedir}/web
