@@ -16,7 +16,7 @@
     <includepath classpath="src/Phing" />
 
     <echo msg="Loading Drush task." />
-    <taskdef name="drush" classname="DrushTask" />
+    <taskdef name="drush" classname="\Drush\Task" />
 
     <echo msg="Loading PHP Codesniffer Configuration task." />
     <taskdef name="phpcodesnifferconfiguration" classname="\DrupalProject\Phing\PhpCodeSnifferConfigurationTask" />
