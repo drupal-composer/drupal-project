@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "34f084c953148c44359a164693a0f020",
-    "content-hash": "316a529b223047726beffc57de5c318c",
+    "hash": "a4e1fc7dd0339256e812d26f10651192",
+    "content-hash": "1257fcec808beaaf66f0d721eda8edf5",
     "packages": [
         {
             "name": "alchemy/zippy",
@@ -4594,11 +4594,17 @@
         },
         {
             "name": "drupal/coder",
-            "version": "dev-8.x-2.x",
+            "version": "8.2.7",
             "source": {
                 "type": "git",
                 "url": "https://git.drupal.org/project/coder",
                 "reference": "a5b5f6b5769393a016da0d106a3b33f932c73331"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/coder-8.x-2.7.zip",
+                "reference": null,
+                "shasum": null
             },
             "require": {
                 "php": ">=5.4.0",
@@ -4609,11 +4615,6 @@
                 "phpunit/phpunit": ">=3.7"
             },
             "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-8.x-2.x": "8.2.x-dev"
-                }
-            },
             "notification-url": "https://packagist.drupal-composer.org/downloads/",
             "license": [
                 "GPL-2.0+"
@@ -6216,7 +6217,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "drupal/coder": 20,
         "drupal/config_update": 20,
         "drupal/devel": 20,
         "drupal/phingdrushtask": 20,

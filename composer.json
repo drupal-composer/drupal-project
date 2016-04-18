@@ -15,10 +15,6 @@
             "url": "https://packagist.drupal-composer.org"
         },
         {
-            "type": "vcs",
-            "url": "https://git.drupal.org/project/coder.git"
-        },
-        {
             "type": "package",
             "package": {
                 "name": "pfrenssen/phpcs-pre-push",
@@ -44,7 +40,7 @@
     "require-dev": {
         "behat/mink": "~1.6",
         "behat/mink-goutte-driver": "~1.2",
-        "drupal/coder": "dev-8.x-2.x",
+        "drupal/coder": "~8.2.7",
         "drupal/config_update": "8.1.*@dev",
         "drupal/devel": "8.1.*@dev",
         "drupal/drupal-extension": "~3.0",
