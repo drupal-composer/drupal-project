@@ -13,6 +13,23 @@
         {
             "type": "composer",
             "url": "https://packagist.drupal-composer.org"
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.drupal.org/project/coder.git"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "pfrenssen/phpcs-pre-push",
+                "version": "1.0",
+                "type": "git-hook",
+                "source": {
+                    "url": "https://gist.github.com/498fc52fea3f965f6640.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
         }
     ],
     "require": {
@@ -73,28 +90,5 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         }
-  },
-  "repositories": [
-      {
-          "type": "composer",
-          "url": "https://packagist.drupal-composer.org"
-      },
-      {
-          "type": "vcs",
-          "url": "http://git.drupal.org/project/coder.git"
-      },
-      {
-          "type": "package",
-          "package": {
-              "name": "pfrenssen/phpcs-pre-push",
-              "version": "1.0",
-              "type": "git-hook",
-              "source": {
-                  "url": "https://gist.github.com/498fc52fea3f965f6640.git",
-                  "type": "git",
-                  "reference": "master"
-              }
-          }
-      }
-  ]
+    }
 }
