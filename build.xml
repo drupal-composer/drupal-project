@@ -200,7 +200,7 @@
     <target
         name="setup-dev"
         description="Set up 'development mode' for an installed website."
-        depends="build-dev, enable-dev-settings, enable-dev-modules" />
+        depends="enable-dev-settings, enable-dev-modules" />
 
     <target
         name="setup-acceptance"
