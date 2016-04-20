@@ -23,7 +23,7 @@ function drush_policy_pm_download_validate() {
 
 function _deny_message() {
   if (!drush_get_option('pm-force')) {
-    $msg = 'This codebase should is assembled with Composer instead of Drush. Use `composer update` and `composer require` instead of `drush pm-updatecode` and `drush pm-download`. You may override this error by using the --pm-force option.';
+    $msg = 'This codebase is assembled with Composer instead of Drush. Use `composer update` and `composer require` instead of `drush pm-updatecode` and `drush pm-download`. You may override this error by using the --pm-force option.';
     return drush_set_error('POLICY_PM_DENY', dt($msg));
   }
 }
