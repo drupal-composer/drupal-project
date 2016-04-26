@@ -18,12 +18,12 @@
             "type": "package",
             "package": {
                 "name": "poetic/clutch",
-                "version": "dev-features/integration",
+                "version": "dev-features/refactor-find-and-replace",
                 "type": "drupal-profile",
                 "source": {
                     "url": "https://github.com/poetic/clutch",
                     "type": "git",
-                    "reference": "features/integration"
+                    "reference": "features/refactor-find-and-replace"
                 }
             }
         }
@@ -35,7 +35,7 @@
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
-        "poetic/clutch": "dev-features/integration",
+        "poetic/clutch": "dev-features/refactor-find-and-replace",
         "aws/aws-sdk-php": "3.*",
         "wa72/htmlpagedom": "^1.2",
         "drupal/admin_toolbar": "8.1.14",
