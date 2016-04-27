@@ -99,6 +99,9 @@
         "patches": {
             "drupal/s3fs": {
                 "Call to t() in Drush functions throws errors": "https://www.drupal.org/files/issues/s3fs-use_drush_translation_function-2679887-4-8.0.0.patch"
+            },
+            "drupal/core": {
+              "Cannot quick edit image": "https://www.drupal.org/files/issues/2635712-14.patch"
             }
         }
     }
