@@ -18,12 +18,12 @@
             "type": "package",
             "package": {
                 "name": "poetic/clutch",
-                "version": "dev-features/refactor-find-and-replace",
+                "version": "master",
                 "type": "drupal-profile",
                 "source": {
                     "url": "https://github.com/poetic/clutch",
                     "type": "git",
-                    "reference": "features/refactor-find-and-replace"
+                    "reference": "master"
                 }
             }
         }
@@ -35,7 +35,7 @@
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
         "drupal/console": "~0.10",
-        "poetic/clutch": "dev-features/refactor-find-and-replace",
+        "poetic/clutch": "master",
         "aws/aws-sdk-php": "3.*",
         "wa72/htmlpagedom": "^1.2",
         "drupal/admin_toolbar": "8.1.14",
@@ -52,6 +52,7 @@
         "drupal/layout_plugin": "8.1.0-alpha22",
         "drupal/metatag": "8.1.0-beta5",
         "drupal/migrate_plus": "8.1.0-beta1",
+        "drupal/page_manager": "8.1.0-alpha23",
         "drupal/pathauto": "8.1.0-alpha2",
         "drupal/paragraphs": "8.1.0-rc4",
         "drupal/token": "8.1.0-alpha2",
@@ -97,9 +98,6 @@
             "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "patches": {
-            "drupal/s3fs": {
-                "Call to t() in Drush functions throws errors": "https://www.drupal.org/files/issues/s3fs-use_drush_translation_function-2679887-4-8.0.0.patch"
-            },
             "drupal/core": {
               "Cannot quick edit image": "https://www.drupal.org/files/issues/2635712-14.patch"
             }
