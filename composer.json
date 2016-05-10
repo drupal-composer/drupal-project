@@ -14,9 +14,9 @@
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
-        "drunomics/drudrush": "dev-master",
         "drupal/console": "~0.10",
-        "wikimedia/composer-merge-plugin": "^1.3@dev"
+        "drunomics/drudrush": "1.*",
+        "wikimedia/composer-merge-plugin": "1.3.*"
     },
     "require-dev": {
         "behat/mink": "~1.6",
