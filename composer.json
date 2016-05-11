@@ -1,106 +1,109 @@
 {
-    "name": "poetic/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
-    "type": "project",
-    "license": "GPL-2.0+",
-    "authors": [
-        {
-            "name": "",
-            "role": ""
-        }
-    ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
-        },
-        {
-            "type": "package",
-            "package": {
-                "name": "poetic/clutch",
-                "version": "master",
-                "type": "drupal-profile",
-                "source": {
-                    "url": "https://github.com/poetic/clutch",
-                    "type": "git",
-                    "reference": "master"
-                }
-            }
-        }
-    ],
-    "require": {
-        "composer/installers": "^1.0.20",
-        "drupal-composer/drupal-scaffold": "^1.3.1",
-        "cweagans/composer-patches": "~1.0",
-        "drupal/core": "~8.0",
-        "drush/drush": "~8.0",
-        "drupal/console": "~0.10",
-        "poetic/clutch": "master",
-        "aws/aws-sdk-php": "3.*",
-        "wa72/htmlpagedom": "^1.2",
-        "drupal/admin_toolbar": "8.1.14",
-        "drupal/bg_image_formatter": "8.1.x-dev",
-        "drupal/coffee": "8.1.0-beta1",
-        "drupal/contact_storage": "8.1.0-beta2",
-        "drupal/ctools": "8.3.0-alpha23",
-        "drupal/devel": "8.1.*@dev",
-        "drupal/ds": "8.2.3",
-        "drupal/entity_reference_revisions": "8.1.0-rc4",
-        "drupal/fb_likebox": "8.2.0",
-        "drupal/iframe": "8.1.3",
-        "drupal/linkit": "8.4.1",
-        "drupal/layout_plugin": "8.1.0-alpha22",
-        "drupal/metatag": "8.1.0-beta5",
-        "drupal/migrate_plus": "8.1.0-beta1",
-        "drupal/page_manager": "8.1.0-alpha23",
-        "drupal/pathauto": "8.1.0-alpha2",
-        "drupal/paragraphs": "8.1.0-rc4",
-        "drupal/token": "8.1.0-alpha2",
-        "drupal/s3fs": "8.2.*@dev",
-        "drupal/special_menu_items": "8.1.*@dev"
-    },
-    "require-dev": {
-        "behat/mink": "~1.6",
-        "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "^1.1@dev",
-        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-        "mikey179/vfsStream": "~1.2",
-        "phpunit/phpunit": "~4.8",
-        "symfony/css-selector": "2.8.*"
-    },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ]
-    },
-    "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::buildScaffold",
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
-    },
-    "extra": {
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/custom/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
-        },
-        "patches": {
-            "drupal/core": {
-              "Cannot quick edit image": "https://www.drupal.org/files/issues/2635712-14.patch"
-            }
-        }
+  "name": "poetic/drupal-project",
+  "description": "Project template for Drupal 8 projects with composer",
+  "type": "project",
+  "license": "GPL-2.0+",
+  "authors": [
+    {
+      "name": "",
+      "role": ""
     }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://packagist.drupal-composer.org"
+    },
+    {
+      "type": "package",
+      "package": {
+        "name": "poetic/clutch",
+        "version": "dev-features/proposal-v2",
+        "type": "drupal-profile",
+        "source": {
+          "url": "https://github.com/poetic/clutch",
+          "type": "git",
+          "reference": "features/proposal-v2"
+        }
+      }
+    }
+  ],
+  "require": {
+    "composer/installers": "^1.0.20",
+    "drupal-composer/drupal-scaffold": "^1.3.1",
+    "cweagans/composer-patches": "~1.0",
+    "drupal/core": "~8.0",
+    "drush/drush": "~8.0",
+    "drupal/console": "~0.10",
+    "poetic/clutch": "dev-features/proposal-v2",
+    "aws/aws-sdk-php": "3.*",
+    "wa72/htmlpagedom": "^1.2",
+    "drupal/admin_toolbar": "8.1.14",
+    "drupal/bg_image_formatter": "8.1.x-dev",
+    "drupal/coffee": "8.1.0-beta1",
+    "drupal/contact_storage": "8.1.0-beta2",
+    "drupal/ctools": "8.3.0-alpha23",
+    "drupal/devel": "8.1.*@dev",
+    "drupal/ds": "8.2.3",
+    "drupal/entity_reference_revisions": "8.1.0-rc4",
+    "drupal/fb_likebox": "8.2.0",
+    "drupal/iframe": "8.1.3",
+    "drupal/linkit": "8.4.1",
+    "drupal/layout_plugin": "8.1.0-alpha22",
+    "drupal/metatag": "8.1.0-beta5",
+    "drupal/migrate_plus": "8.1.0-beta1",
+    "drupal/page_manager": "8.1.0-alpha23",
+    "drupal/pathauto": "8.1.0-alpha2",
+    "drupal/paragraphs": "8.1.0-rc4",
+    "drupal/token": "8.1.0-alpha2",
+    "drupal/s3fs": "8.2.*@dev",
+    "drupal/special_menu_items": "8.1.*@dev"
+  },
+  "require-dev": {
+    "behat/mink": "~1.6",
+    "behat/mink-goutte-driver": "~1.2",
+    "jcalderonzumba/gastonjs": "^1.1@dev",
+    "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
+    "mikey179/vfsStream": "~1.2",
+    "phpunit/phpunit": "~4.8",
+    "symfony/css-selector": "2.8.*"
+  },
+  "conflict": {
+    "drupal/drupal": "*"
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "autoload": {
+    "classmap": [
+      "scripts/composer/ScriptHandler.php"
+    ]
+  },
+  "scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "post-install-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::buildScaffold",
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ],
+    "post-update-cmd": [
+      "DrupalProject\\composer\\ScriptHandler::buildScaffold",
+      "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+    ]
+  },
+  "extra": {
+    "installer-paths": {
+      "web/core": ["type:drupal-core"],
+      "web/modules/contrib/{$name}": ["type:drupal-module"],
+      "web/profiles/custom/{$name}": ["type:drupal-profile"],
+      "web/themes/contrib/{$name}": ["type:drupal-theme"],
+      "drush/contrib/{$name}": ["type:drupal-drush"]
+    },
+    "patches": {
+      "drupal/page_manager": {
+        "Contextual Links don't work for blocks on page_manager pages": "https://www.drupal.org/files/issues/page-manager-contextual-temp.patch"
+      },
+      "drupal/core": {
+        "Cannot quick edit image": "https://www.drupal.org/files/issues/2635712-14.patch"
+      }
+    }
+  }
 }
