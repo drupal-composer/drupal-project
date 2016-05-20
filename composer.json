@@ -16,7 +16,7 @@
         }
     ],
     "require": {
-        "composer/installers": "^1.0.20",
+        "composer/installers": "^1.0.25",
         "drupal-composer/drupal-scaffold": "^1.3.1",
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
@@ -57,8 +57,10 @@
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/modules/custom/{$name}": ["type:drupal-custom-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/themes/custom/{$name}": ["type:drupal-custom-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         }
     }
