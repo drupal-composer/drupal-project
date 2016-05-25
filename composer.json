@@ -17,7 +17,7 @@
     ],
     "require": {
         "composer/installers": "^1.0.20",
-        "drupal-composer/drupal-scaffold": "^1.3.1",
+        "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
@@ -45,11 +45,9 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::buildScaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::buildScaffold",
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
