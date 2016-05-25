@@ -16,13 +16,6 @@ class ScriptHandler {
     return $project_root .  '/web';
   }
 
-  public static function buildScaffold(Event $event) {
-    $fs = new Filesystem();
-    if (!$fs->exists(static::getDrupalRoot(getcwd()) . '/autoload.php')) {
-      \DrupalComposer\DrupalScaffold\Plugin::scaffold($event);
-    }
-  }
-
   public static function createRequiredFiles(Event $event) {
     $fs = new Filesystem();
     $root = static::getDrupalRoot(getcwd());
