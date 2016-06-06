@@ -12,7 +12,7 @@
     "repositories": [
         {
             "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
+            "url": "https://packages.drupal.org/8"
         }
     ],
     "require": {
@@ -32,7 +32,7 @@
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8"
     },
-    "conflict": {
+    "replace": {
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
