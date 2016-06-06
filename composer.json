@@ -108,10 +108,8 @@
       "drupal/core": {
         "Cannot quick edit image": "https://www.drupal.org/files/issues/2635712-14.patch"
       },
-      "drupal/leaflet": {
-         "Add ability to have mulitiple icons for leaflet map using taxonomy": "https://raw.githubusercontent.com/poetic/leaflet-patch/master/multiple-dynamic-icons-for-leaflet.patch?token=AFnkxRxwUbK2BrEuMIt9lhf0XDmVBQWKks5XXvQ4wA%3D%3D"
-      },
-      "drupal/leaflet": {
+      "drupal/leaflet":{
+        "Add ability to have mulitiple icons for leaflet map using taxonomy": "https://raw.githubusercontent.com/poetic/leaflet-patch/master/multiple-dynamic-icons-for-leaflet.patch?token=AFnkxRxwUbK2BrEuMIt9lhf0XDmVBQWKks5XXvQ4wA%3D%3D",
         "The parameter in the options object is actually named iconUrl": "https://www.drupal.org/files/issues/leaflet-fix_incorrect_parameter_name_in_create_icon-2732267-2.patch"
       }
     }
