@@ -38,6 +38,7 @@
     "poetic/clutch": "dev-features/proposal-v2",
     "aws/aws-sdk-php": "3.*",
     "wa72/htmlpagedom": "^1.2",
+    "drupal/address": "8.1.0-beta3",
     "drupal/admin_toolbar": "8.1.14",
     "drupal/bg_image_formatter": "8.1.x-dev",
     "drupal/coffee": "8.1.0-beta1",
@@ -47,7 +48,10 @@
     "drupal/ds": "8.2.3",
     "drupal/entity_reference_revisions": "8.1.0-rc4",
     "drupal/fb_likebox": "8.2.0",
+    "drupal/geofield": "8.1.0-alpha2",
+    "drupal/geophp": "8.1.0-beta1",
     "drupal/iframe": "8.1.3",
+    "drupal/leaflet": "8.1.0-alpha1",
     "drupal/linkit": "8.4.1",
     "drupal/layout_plugin": "8.1.0-alpha22",
     "drupal/metatag": "8.1.0-beta5",
@@ -103,6 +107,12 @@
       },
       "drupal/core": {
         "Cannot quick edit image": "https://www.drupal.org/files/issues/2635712-14.patch"
+      },
+      "drupal/leaflet": {
+         "Add ability to have mulitiple icons for leaflet map using taxonomy": "https://raw.githubusercontent.com/poetic/leaflet-patch/master/multiple-dynamic-icons-for-leaflet.patch?token=AFnkxRxwUbK2BrEuMIt9lhf0XDmVBQWKks5XXvQ4wA%3D%3D"
+      },
+      "drupal/leaflet": {
+        "The parameter in the options object is actually named iconUrl": "https://www.drupal.org/files/issues/leaflet-fix_incorrect_parameter_name_in_create_icon-2732267-2.patch"
       }
     }
   }
