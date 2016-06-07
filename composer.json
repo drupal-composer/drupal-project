@@ -10,7 +10,7 @@
         }
     ],
     "repositories": [
-        {
+        "drupal": {
             "type": "composer",
             "url": "https://packagist.drupal-composer.org"
         }
