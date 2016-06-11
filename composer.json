@@ -54,7 +54,7 @@
         "post-create-project-cmd": [
             "rm README.md && mv README.md.dist README.md",
             "@process-replacements",
-            "drush dpsetup",
+            "drush dpsetup --force",
             "@init-setup"
         ],
         "post-install-cmd": [
