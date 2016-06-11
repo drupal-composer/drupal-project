@@ -54,8 +54,8 @@
         "post-create-project-cmd": [
             "rm README.md && mv README.md.dist README.md",
             "@process-replacements",
-            "@drupal-scaffold",
-            "drush dpsetup"
+            "drush dpsetup",
+            "@init-setup"
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
