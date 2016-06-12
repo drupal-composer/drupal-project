@@ -38,7 +38,8 @@ drush see http://docs.drush.org/en/master/.
 
  Initial install (without existing config):
  ```
- !chmod +w sites/default/settings.php; drush sql-create -y && \
+ cd web
+ chmod +w sites/default/settings.php; drush sql-create -y && \
    drush site-install --account-name=dru_admin --account-pass=dru_admin -y minimal
  ```
 
