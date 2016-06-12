@@ -15,7 +15,8 @@ $file_patterns = [
 ];
 
 $replacements = [
-  "{{ project }}" => $project
+  "{{ project }}" => $project,
+  "{{ hash_salt }}" => bin2hex(openssl_random_pseudo_bytes(32)),
 ];
 
 // Process replacements.

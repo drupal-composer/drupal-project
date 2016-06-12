@@ -17,9 +17,9 @@ $config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../config',
 );
 
+$settings['hash_salt'] = '{{ hash_salt }}';
 # $settings['deployment_identifier'] = \Drupal::VERSION;
-#$settings['hash_salt'] = 'HQ22SkTOCw4Cw8GF8eC__Byzer-4LUpEaBAYZJ-X3JOi49k0OsUmhp6NMJL1YavlzLL-J8F7Dg';
-#$settings['install_profile'] = 'standard';
+# $settings['install_profile'] = 'standard';
 
 # $settings['reverse_proxy'] = TRUE;
 # $settings['reverse_proxy_addresses'] = array('a.b.c.d', ...);
@@ -34,7 +34,7 @@ $settings['allow_authorize_operations'] = FALSE;
 # $settings['file_public_base_url'] = 'http://downloads.example.com/files';
 
 $settings['file_public_path'] = 'files';
-$settings['file_private_path'] = '../private';
+$settings['file_private_path'] = '../files-private';
 
 # $settings['session_write_interval'] = 180;
 # $settings['locale_custom_strings_en'][''] = array(
