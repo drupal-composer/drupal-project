@@ -18,3 +18,9 @@ $config['system.performance']['js']['preprocess'] = FALSE;
 
 $settings['extension_discovery_scan_tests'] = TRUE;
 $settings['rebuild_access'] = TRUE;
+
+// Load local override configuration, if available.
+// This can be used for local overrides not tracked by version control.
+if (file_exists(__DIR__ . '/settings.local.php')) {
+  include __DIR__ . '/settings.local.php';
+}
