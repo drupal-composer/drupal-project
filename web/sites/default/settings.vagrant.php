@@ -1,7 +1,7 @@
 <?php
 
 $databases['default']['default'] = array (
-  'database' => '{{ project }}',
+  'database' => '{{ project_underscore }}',
   'username' => 'root',
   'password' => '',
   'prefix' => '',
