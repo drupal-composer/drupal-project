@@ -14,7 +14,6 @@
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
         "drupal/admin_toolbar": "^8.1",
-        "_comment": "We need drush >=8.1.3 once it is released in order to have the fix for https://github.com/drush-ops/drush/issues/2176 included.",
         "drush/drush": "8.x-dev",
         "drupal/console": "~0.10",
         "drunomics/drudrush": "1.*",
