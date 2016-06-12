@@ -2,3 +2,59 @@
 developed by drunomics GmbH, office@drunomics.com
 
 This project is maintained using composer. Please refer to the documentation provided at https://github.com/drupal-composer/drupal-project and https://www.drupal.org/node/2471553.
+
+## Project setup
+
+ * `drush dpsetup` takes care of setting the project up automatically. In order
+ to do do it manually, you need to:
+
+   * Go into web/sites/default and link settings.vagrant.php to settings.php
+   ```
+   cd web/sites/default
+   ln -s settings.vagrant.php settings.php
+   ```
+
+ * If you cannot use the drunomics vagrant environment, you need to customize
+   the provided settings.php. Instead of linking the settings.vagrant.php, copy
+   it to settings.php and customize it to your needs. Usually, you'd have to
+   customize the database connection and the 'trusted_host_patterns'.
+
+## Command line tools
+
+ * Drush
+ To run Drupal console, execute from the "web" directory:
+ ```../vendor/bin/drush ```
+
+ The more convenient alternative is to install a global drush with version 8 or
+later. Then, drush picks up the project-local drush automatically. For docs on
+drush see http://docs.drush.org/en/master/.
+
+ * Drupal Console
+ To run Drupal console, execute from the "web" directory:
+ ```../vendor/bin/drupal ```
+ For docs on Drupal console see http://docs.drupalconsole.com/en/index.html.
+
+## Useful commands
+
+ Initial install (without existing config):
+ ```
+ !chmod +w sites/default/settings.php; drush sql-create -y && \
+   drush site-install --account-name=dru_admin --account-pass=dru_admin -y minimal
+ ```
+
+ Site install (with existing config):
+ ```
+ drush dsi
+ ```
+
+ Update install with upstream code/config changes:
+ ```drush deploy```
+
+ Config export (export your config changes):
+ ```drush cex -y```
+
+ Config import (manual import of config files):
+ ```drush cim -y```
+
+ Cache clear/rebuild:
+ ```drush cr```
