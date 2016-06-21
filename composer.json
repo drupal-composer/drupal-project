@@ -1,44 +1,94 @@
 {
-  "name": "drupal-composer/drupal-project",
-  "description": "Composer template for Drupal projects",
-  "repositories": [{
-    "type": "composer",
-    "url": "https://packagist.drupal-composer.org"
-  }],
-  "require": {
-    "composer/installers": "~1.0",
-    "derhasi/composer-preserve-paths": "0.1.*",
-    "drupal/drupal": "7.*"
-  },
-  "conflict": {
-    "drupal/core": "8.*"
-  },
-  "scripts": {
-    "post-create-project-cmd": [
-      "rm README.md LICENSE .travis.yml phpunit.xml.dist"
-    ]
-  },
-  "config": {
-    "vendor-dir": "vendor"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "installer-paths": {
-      "web/": ["type:drupal-core"],
-      "web/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
-      "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
-      "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
-      "web/sites/all/drush/{$name}/": ["type:drupal-drush"],
-      "web/profiles/{$name}/": ["type:drupal-profile"]
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
+    ],
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
     },
-    "preserve-paths": [
-      "web/sites/all/modules/contrib",
-      "web/sites/all/themes/contrib",
-      "web/sites/all/libraries",
-      "web/sites/all/drush",
-      "web/sites/default/settings.php",
-      "web/sites/default/files"
-    ]
-  }
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "conflict": {
+        "drupal/core": "8.*"
+    },
+    "description": "Project template for Drupal 7 projects with composer",
+    "extra": {
+        "installer-paths": {
+            "web/": [
+                "type:drupal-core"
+            ],
+            "web/profiles/{$name}/": [
+                "type:drupal-profile"
+            ],
+            "web/sites/all/drush/{$name}/": [
+                "type:drupal-drush"
+            ],
+            "web/sites/all/libraries/{$name}/": [
+                "type:drupal-library"
+            ],
+            "web/sites/all/modules/contrib/{$name}/": [
+                "type:drupal-module"
+            ],
+            "web/sites/all/themes/contrib/{$name}/": [
+                "type:drupal-theme"
+            ]
+        },
+        "preserve-paths": [
+            "web/sites/all/modules/contrib",
+            "web/sites/all/themes/contrib",
+            "web/sites/all/libraries",
+            "web/sites/all/drush",
+            "web/sites/default/settings.php",
+            "web/sites/default/files"
+        ]
+    },
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "name": "drupal-composer/drupal-project",
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packagist.drupal-composer.org"
+        }
+    ],
+    "require": {
+        "composer/installers": "~1.0",
+        "derhasi/composer-preserve-paths": "0.1.*",
+        "drupal/drupal": "7.*"
+    },
+    "scripts": {
+        "post-autoload-dump": [
+            "DrupalProject\\composer\\ScriptHandler::ensureHtaccess"
+        ],
+        "post-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-package-install": [
+            "DrupalProject\\composer\\ScriptHandler::vendorTestCodeCleanup",
+            "DrupalProject\\composer\\ScriptHandler::generateInfoMetadata"
+        ],
+        "post-package-update": [
+            "DrupalProject\\composer\\ScriptHandler::vendorTestCodeCleanup",
+            "DrupalProject\\composer\\ScriptHandler::generateInfoMetadata"
+        ],
+        "post-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "pre-autoload-dump": [
+            "DrupalProject\\composer\\ScriptHandler::preAutoloadDump"
+        ],
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ]
+    },
+    "type": "project"
 }
