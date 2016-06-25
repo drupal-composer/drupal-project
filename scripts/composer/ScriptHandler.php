@@ -8,6 +8,7 @@
 namespace DrupalProject\composer;
 
 use Composer\Script\Event;
+use Composer\Semver\Comparator;
 use Symfony\Component\Filesystem\Filesystem;
 
 class ScriptHandler {
@@ -54,6 +55,23 @@ class ScriptHandler {
       $fs->mkdir($root . '/sites/default/files', 0777);
       umask($oldmask);
       $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
+    }
+  }
+
+  public static function checkComposerVersion(Event $event) {
+    $composer = $event->getComposer();
+    $io = $event->getIO();
+
+    $version = $composer::VERSION;
+
+    // If Composer is installed through git we have no easy way to determine if
+    // it is new enough, just display a warning.
+    if ($version === '@package_version@') {
+      $io->writeError('<warning>You are running a development version of Composer. If you experience problems, please update Composer to the latest stable version.</warning>');
+    }
+    elseif (Comparator::lessThan($version, '1.0.0')) {
+      $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing.');
+      exit(1);
     }
   }
 
