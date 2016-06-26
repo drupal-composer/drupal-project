@@ -84,7 +84,7 @@ class ScriptHandler {
       $io->writeError('<warning>You are running a development version of Composer. If you experience problems, please update Composer to the latest stable version.</warning>');
     }
     elseif (Comparator::lessThan($version, '1.0.0')) {
-      $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing.');
+      $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing</error>.');
       exit(1);
     }
   }
