@@ -63,6 +63,9 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/modules/{$name}": ["type:custom-module"],
+            "web/themes/{$name}": ["type:custom-theme"],
+            "web/profiles/{$name}": ["type:custom-profile"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
         }
     }
