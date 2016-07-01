@@ -31,6 +31,6 @@ script:
   - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
   - sleep 3
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
-  - ./../vendor/bin/phpunit -c core --exclude-group Composer
+  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer
   - ./../vendor/bin/drush
   - ./../vendor/bin/drupal
