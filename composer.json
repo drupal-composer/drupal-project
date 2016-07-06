@@ -62,11 +62,25 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "post-autoload-dump": [
+            "DrupalProject\\composer\\ScriptHandler::ensureHtaccess"
+        ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "post-package-install": [
+            "DrupalProject\\composer\\ScriptHandler::vendorTestCodeCleanup",
+            "DrupalProject\\composer\\ScriptHandler::generateInfoMetadata"
+        ],
+        "post-package-update": [
+            "DrupalProject\\composer\\ScriptHandler::vendorTestCodeCleanup",
+            "DrupalProject\\composer\\ScriptHandler::generateInfoMetadata"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::installRequirementsFile"
+        ],
+        "pre-autoload-dump": [
+            "DrupalProject\\composer\\ScriptHandler::preAutoloadDump"
         ],
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
