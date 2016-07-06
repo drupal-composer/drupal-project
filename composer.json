@@ -1,14 +1,42 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
-    "type": "project",
-    "license": "GPL-2.0+",
     "authors": [
         {
             "name": "",
             "role": ""
         }
     ],
+    "autoload": {
+        "classmap": [
+            "scripts/composer/ScriptHandler.php"
+        ]
+    },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
+    "description": "Project template for Drupal 8 projects with composer",
+    "extra": {
+        "installer-paths": {
+            "drush/contrib/{$name}": [
+                "type:drupal-drush"
+            ],
+            "web/core": [
+                "type:drupal-core"
+            ],
+            "web/modules/contrib/{$name}": [
+                "type:drupal-module"
+            ],
+            "web/profiles/contrib/{$name}": [
+                "type:drupal-profile"
+            ],
+            "web/themes/contrib/{$name}": [
+                "type:drupal-theme"
+            ]
+        }
+    },
+    "license": "GPL-2.0+",
+    "minimum-stability": "dev",
+    "name": "drupal-composer/drupal-project",
+    "prefer-stable": true,
     "repositories": [
         {
             "type": "composer",
@@ -17,11 +45,11 @@
     ],
     "require": {
         "composer/installers": "^1.0.20",
-        "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
+        "drupal-composer/drupal-scaffold": "^2.0.1",
+        "drupal/console": "~1.0",
         "drupal/core": "~8.0",
-        "drush/drush": "~8.0",
-        "drupal/console": "~1.0"
+        "drush/drush": "~8.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -32,38 +60,20 @@
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8"
     },
-    "conflict": {
-        "drupal/drupal": "*"
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "autoload": {
-        "classmap": [
-            "scripts/composer/ScriptHandler.php"
-        ]
-    },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "pre-install-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+        ],
+        "pre-update-cmd": [
+            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ]
     },
-    "extra": {
-        "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
-        }
-    }
+    "type": "project"
 }
