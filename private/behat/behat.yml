@@ -1,0 +1,25 @@
+#
+# behat.yml file for testing with both Behat and the Drupal site running on
+# the local system.
+#
+default:
+  suites:
+    default:
+      paths:
+        - %paths.base%/features
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Drupal\DrupalExtension\Context\MinkContext
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2: ~
+      #show_cmd: 'mv %s ./behat_results.html; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://SITE.dev/behat_results.html'
+      files_path: './private/behat/data-files'
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drush'
+      text:
+        username_field: "E-mail"

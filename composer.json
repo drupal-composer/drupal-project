@@ -13,37 +13,64 @@
         {
             "type": "composer",
             "url": "https://packagist.drupal-composer.org"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/DrupalDriver.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/drupalextension.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/Robo.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/md-systems/redis.git"
         }
     ],
     "require": {
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.1.*",
-        "drush/drush": "~8.0",
+        "drupal/core": "8.1.5",
+        "drush/drush": "^8.1.0",
         "drupal/console": "~1.0",
         "drupal/admin_toolbar": "8.1.14",
         "drupal/contact_storage": "8.1.0-beta2",
-        "drupal/ctools": "8.3.0-alpha23",
-        "drupal/devel": "8.1.*@dev",
+        "drupal/ctools": "8.3.0-alpha25",
+        "drupal/devel": "8.1.x-dev",
         "drupal/ds": "8.2.3",
-        "drupal/entity_reference_revisions": "8.1.0-rc4",
+        "drupal/email_registration": "8.1.x-dev",
+        "drupal/google_analytics": "8.2.0-rc1",
+        "drupal/inline_entity_form": "8.1.0-alpha6",
         "drupal/linkit": "8.4.1",
         "drupal/layout_plugin": "8.1.0-alpha22",
         "drupal/metatag": "8.1.0-beta7",
-        "drupal/migrate_plus": "8.2.*@dev",
-        "drupal/pathauto": "8.1.0-alpha2",
+        "drupal/pathauto": "8.1.0-alpha3",
+        "drupal/r4032login": "8.x-1.x-dev",
         "drupal/simple_sitemap": "8.2.2",
-        "drupal/token": "8.1.0-alpha2"
+        "drupal/token": "8.1.0-alpha2",
+        "drupal/config_installer": "8.1.x-dev",
+        "vlucas/phpdotenv": "^2.2",
+        "drupal/redis": "dev-8.x-1.x"
     },
     "require-dev": {
-       "behat/mink": "~1.7",
-        "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "^1.1@dev",
+        "drupal/drupal-driver": "dev-master",
+        "drupal/drupal-extension": "dev-master",
+        "drush-ops/behat-drush-endpoint": "dev-master",
+        "jcalderonzumba/gastonjs": "1.1.x-dev",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
-        "symfony/css-selector": "~2.8"
+        "symfony/css-selector": "~2.8",
+        "codegyre/robo": "dev-master"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -52,17 +79,11 @@
     "prefer-stable": true,
     "autoload": {
         "classmap": [
-            "scripts/composer/ScriptHandler.php"
+            "private/scripts/composer/ScriptHandler.php"
         ]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
@@ -72,11 +93,23 @@
     },
     "extra": {
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "core": ["type:drupal-core"],
+            "modules/contrib/{$name}": ["type:drupal-module"],
+            "profiles/contrib/{$name}": ["type:drupal-profile"],
+            "themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "patches": {
+            "drupal/core": {
+                "Patch description": "https://www.drupal.org/files/issues/source_plugins_have_a-2560795-64.patch",
+                "Use 'view label' operation for ER label formatter - https://www.drupal.org/node/2692091#comment-11090279": "https://www.drupal.org/files/issues/2692091-10.patch",
+                "Telephone field with 5 digits or less fatally breaks formatter": "https://www.drupal.org/files/issues/min-length-telephone-link-2484693-26.patch"
+            },
+        },
+        "drupal-scaffold": {
+            "excludes": [
+                ".htaccess"
+            ]
         }
     }
 }
