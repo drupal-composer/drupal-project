@@ -1,0 +1,42 @@
+# Set the configuration system to use file-based managment.
+parameters:
+  twig.config:
+    # Twig debugging:
+    #
+    # When debugging is enabled:
+    # - The markup of each Twig template is surrounded by HTML comments that
+    #   contain theming information, such as template file name suggestions.
+    # - Note that this debugging markup will cause automated tests that directly
+    #   check rendered HTML to fail. When running automated tests, 'debug'
+    #   should be set to FALSE.
+    # - The dump() function can be used in Twig templates to output information
+    #   about template variables.
+    # - Twig templates are automatically recompiled whenever the source code
+    #   changes (see auto_reload below).
+    #
+    # For more information about debugging Twig templates, see
+    # https://www.drupal.org/node/1906392.
+    #
+    # Not recommended in production environments
+    # @default false
+    debug: true
+    # Twig auto-reload:
+    #
+    # Automatically recompile Twig templates whenever the source code changes.
+    # If you don't provide a value for auto_reload, it will be determined
+    # based on the value of debug.
+    #
+    # Not recommended in production environments
+    # @default null
+    auto_reload: true
+    # Twig cache:
+    #
+    # By default, Twig templates will be compiled and stored in the filesystem
+    # to increase performance. Disabling the Twig cache will recompile the
+    # templates from source each time they are used. In most cases the
+    # auto_reload setting above should be enabled rather than disabling the
+    # Twig cache.
+    #
+    # Not recommended in production environments
+    # @default true
+    cache: false

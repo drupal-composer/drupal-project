@@ -1,0 +1,8 @@
+services:
+  # File-based configuration.
+  config.storage:
+    class: Drupal\Core\Config\CachedStorage
+    arguments: ['@config.storage.active', '@cache.config']
+  config.storage.active:
+     class: Drupal\Core\Config\FileStorage
+     factory: Drupal\Core\Config\FileStorageFactory::getActive
