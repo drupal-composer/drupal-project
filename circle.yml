@@ -3,7 +3,6 @@ machine:
     version: 7.0.4
   hosts:
     localhost: 127.0.0.1
-    ncyl.dev: 127.0.0.1
   environment:
     PATH: $HOME/$CIRCLE_PROJECT_REPONAME/vendor/bin:$HOME/vendor/bin:$PATH
 dependencies:
@@ -14,14 +13,17 @@ dependencies:
     - sudo apt-get update; sudo apt-get install git
     - echo "date.timezone = America/Los_Angeles" > /opt/circleci/php/$(phpenv global)/etc/conf.d/timezone.ini
     - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
-    - mkdir -p $HOME/terminus;cd $HOME/terminus
     - composer global require "hirak/prestissimo:^0.3"
-    - composer global require pantheon-systems/terminus
-    - git config --global user.email "ci@thinkshout.com"
-    - git config --global user.name "ThinkShout CI Bot"
-    - terminus auth login --machine-token=$PANTHEON_TOKEN
+    #- composer global require pantheon-systems/terminus
+    #- git config --global user.email "ci@thinkshout.com"
+    #- git config --global user.name "ThinkShout CI Bot"
+    #- terminus auth login --machine-token=$PANTHEON_TOKEN
     - composer install
+database:
+  override:
+    - robo config --db-name=circle_test --db-user=circle --db-pass=NULL --db-host=127.0.0.1
+    - robo install
 test:
   pre:
-    - robo config --db-name=circle_test --db-user=circle --db-pass=NULL --db-host=127.0.0.1
-    - robo pantheon:deploy --y
+    - robo test
+    #- robo pantheon:deploy --y
