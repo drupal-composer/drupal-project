@@ -1,6 +1,8 @@
 machine:
+  timezone:
+    America/Los_Angeles
   php:
-    version: 7.0.4
+    version: 7.0.7
   hosts:
     localhost: 127.0.0.1
   environment:
@@ -11,7 +13,7 @@ dependencies:
   pre:
     # Install a more current version of git.
     - sudo apt-get update; sudo apt-get install git
-    - echo "date.timezone = America/Los_Angeles" > /opt/circleci/php/$(phpenv global)/etc/conf.d/timezone.ini
+    #- echo "date.timezone = America/Los_Angeles" > /opt/circleci/php/$(phpenv global)/etc/conf.d/timezone.ini
     - rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
     - composer global require "hirak/prestissimo:^0.3"
     #- composer global require pantheon-systems/terminus
