@@ -27,5 +27,6 @@ database:
     - robo install
 test:
   pre:
+    # Run tests via robo
     - robo test
     #- robo pantheon:deploy --y
