@@ -4,6 +4,14 @@
  * Customize this file as desired. See https://github.com/drush-ops/drush/blob/8.x/examples/policy.drush.inc for documentation.
  */
 
+ /**
+  * Implements drush_policy_pre_site_install().
+  */
+ function drush_policy_pre_site_install() {
+   // Set an environment variable so we know we're performing an install.
+   putenv("DRUPAL_INSTALL=TRUE");
+ }
+
 /**
  * Implements drush_hook_COMMAND_validate().
  *

@@ -1,0 +1,18 @@
+module:
+  block: 0
+  dblog: 0
+  dynamic_page_cache: 0
+  field: 0
+  file: 0
+  filter: 0
+  node: 0
+  page_cache: 0
+  system: 0
+  text: 0
+  update: 0
+  user: 0
+  minimal: 1000
+theme:
+  stark: 0
+_core:
+  default_config_hash: m2GVq11UAOVuNgj8x0t5fMOPujpvQQ_zxLoaly1BMEU

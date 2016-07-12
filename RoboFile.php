@@ -110,7 +110,6 @@ class RoboFile extends \Robo\Tasks
    */
   function install($opts = ['pantheon' => FALSE]) {
     $pantheon = $opts['pantheon'];
-//    $install_cmd = 'site-install config_installer --config-dir=' . $this->escapeArg($this->projectProperties['config_dir']) . ' -y';
     $install_cmd = 'site-install config_installer -y';
 
     if ($pantheon) {
