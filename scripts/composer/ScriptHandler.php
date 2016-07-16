@@ -23,11 +23,55 @@ use Symfony\Component\Process\Process;
 class ScriptHandler
 {
     protected static $packageToCleanup = [
-        'behat/mink' => '/(driver-testsuite|tests)$/',
+        'behat/mink' => '/(tests|driver-testsuite)$/',
+        'behat/mink-browserkit-driver' => '/(tests)$/',
+        'behat/mink-goutte-driver' => '/(tests)$/',
+        'doctrine/cache' => '/(tests)$/',
+        'doctrine/collections' => '/(tests)$/',
+        'doctrine/common' => '/(tests)$/',
+        'doctrine/inflector' => '/(tests)$/',
+        'doctrine/instantiator' => '/(tests)$/',
         'egulias/email-validator' => '/(documentation|tests)$/',
+        'fabpot/goutte' => '/(Goutte\/Tests)$/',
+        'guzzlehttp/promises' => '/(tests)$/',
+        'guzzlehttp/psr7' => '/(tests)$/',
+        'jcalderonzumba/gastonjs' => '/(docs|examples|tests)$/',
+        'jcalderonzumba/mink-phantomjs-driver' => '/(tests)$/',
+        'masterminds/html5' => '/(test)$/',
+        'mikey179/vfsStream' => '/(src\/test)$/',
+        'paragonie/random_compat' => '/(tests)$/',
+        'phpdocumentor/reflection-docblock' => '/(tests)$/',
+        'phpunit/php-code-coverage' => '/(tests)$/',
+        'phpunit/php-mock-objects' => '/(tests)$/',
+        'phpunit/php-timer' => '/(tests)$/',
+        'phpunit/php-token-stream' => '/(tests)$/',
+        'phpunit/phpunit' => '/(tests)$/',
+        'sebastian/comparator' => '/(tests)$/',
+        'sebastian/diff' => '/(tests)$/',
+        'sebastian/environment' => '/(tests)$/',
+        'sebastian/exporter' => '/(tests)$/',
+        'sebastian/global-state' => '/(tests)$/',
+        'sebastian/recursion-context' => '/(tests)$/',
+        'stack/builder' => '/(tests)$/',
+        'symfony-cmf/routing' => '/(Test|Tests)$/',
+        'symfony/browser-kit' => '/(Tests)$/',
+        'symfony/class-loader' => '/(Tests)$/',
+        'symfony/console' => '/(Tests)$/',
+        'symfony/css-selector' => '/(Tests)$/',
+        'symfony/debug' => '/(Tests)$/',
+        'symfony/dependency-injection' => '/(Tests)$/',
+        'symfony/dom-crawler' => '/(Tests)$/',
         // @see \Drupal\Tests\Component\EventDispatcher\ContainerAwareEventDispatcherTest
-        'symfony/event-dispatcher' => '/(?!.*)/',
+        // 'symfony/event-dispatcher' => '/(Tests)$/',
+        'symfony/http-foundation' => '/(Tests)$/',
+        'symfony/http-kernel' => '/(Tests)$/',
+        'symfony/process' => '/(Tests)$/',
+        'symfony/psr-http-message-bridge' => '/(Tests)$/',
+        'symfony/routing' => '/(Tests)$/',
+        'symfony/serializer' => '/(Tests)$/',
+        'symfony/translation' => '/(Tests)$/',
         'symfony/validator' => '/(Tests|Resources)$/',
+        'symfony/yaml' => '/(Tests)$/',
         'twig/twig' => '/(doc|ext|test)$/',
     ];
 
@@ -74,7 +118,6 @@ class ScriptHandler
      */
     public static function ensureHtaccess(Event $event)
     {
-
         // The current working directory for composer scripts is where you run
         // composer from.
         $vendor_dir = $event->getComposer()->getConfig()->get('vendor-dir');
@@ -150,17 +193,16 @@ EOT;
 
         $paths = [];
         if (!preg_match('/^drupal-(core|profile|module|theme)$/', $package->getType())) {
-            $path = isset(static::$packageToCleanup[$package->getName()])
-                ? static::$packageToCleanup[$package->getName()]
-                : '/(test|doc|example)[s]?$/i';
+            if (isset(static::$packageToCleanup[$package->getName()])) {
+                $finder = new Finder();
+                $finder
+                    ->directories()
+                    ->in($install_path)
+                    ->path(static::$packageToCleanup[$package->getName()]);
 
-            $finder = new Finder();
-            $finder->in($install_path)
-                ->directories()
-                ->path($path);
-
-            foreach ($finder as $file) {
-                $paths[] = $file->getRealpath();
+                foreach ($finder as $file) {
+                    $paths[] = $file->getRealpath();
+                }
             }
         }
 
@@ -253,8 +295,9 @@ EOT;
 
             // Generate version information for `.info` files in ini format.
             $finder = new Finder();
-            $finder->in($install_path)
+            $finder
                 ->files()
+                ->in($install_path)
                 ->name('*.info')
                 ->notContains('datestamp =');
             foreach ($finder as $file) {
@@ -267,8 +310,9 @@ EOT;
 
             // Generate version information for `.info.yml` files in YAML format.
             $finder = new Finder();
-            $finder->in($install_path)
+            $finder
                 ->files()
+                ->in($install_path)
                 ->name('*.info.yml')
                 ->notContains('datestamp :');
             foreach ($finder as $file) {
