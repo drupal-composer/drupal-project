@@ -6,6 +6,9 @@ web/modules/contrib
 web/themes/contrib
 web/profiles/contrib
 
+# Ignore sensitive information
+web/sites/*/settings.php
+
 # Ignore Drupal's file directory
 web/sites/*/files
 
