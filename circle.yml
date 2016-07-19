@@ -5,6 +5,7 @@ machine:
     version: 7.0.7
   hosts:
     localhost: 127.0.0.1
+    site.dev: 127.0.0.1
   environment:
     PATH: $HOME/$CIRCLE_PROJECT_REPONAME/vendor/bin:$HOME/vendor/bin:$PATH
 dependencies:
