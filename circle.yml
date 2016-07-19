@@ -22,7 +22,7 @@ dependencies:
     #- terminus auth login --machine-token=$PANTHEON_TOKEN
     - composer install
   post:
-    - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/circle.ini
+    - echo 'sendmail_path = /bin/true' >> /opt/circleci/php/$(phpenv global)/etc/conf.d/circle.ini
 database:
   override:
     - robo config --db-name=circle_test --db-user=circle --db-pass=NULL --db-host=127.0.0.1
