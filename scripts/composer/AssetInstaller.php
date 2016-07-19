@@ -22,6 +22,9 @@ class AssetInstaller {
       throw new \RuntimeException('Please configure drupal-web-dir in your composer.json');
     }
 
+    $fs = new Filesystem();
+    $fs->mkdir([$extra['drupal-app-dir'], $extra['drupal-web-dir']]);
+
     static::createSymlinks($extra['drupal-app-dir'], $extra['drupal-web-dir']);
 
     static::createStubPhpFile($extra['drupal-app-dir'], $extra['drupal-web-dir'], 'index.php');
@@ -38,7 +41,7 @@ class AssetInstaller {
 
   public static function createSymlinks($appDir, $webDir) {
     $finder = new Finder();
-    $fs = new Filesystem();
+    $cfs = new \Composer\Util\Filesystem();
 
     $names = [
       '.htaccess',
@@ -55,14 +58,11 @@ class AssetInstaller {
     foreach ($names as $name) {
       $finder->name($name);
     }
-
     $finder->exclude('sites/default/files');
 
     foreach ($finder->files() as $file) {
-      /**
-       * @TODO: Compute a relative path.
-       */
-      $fs->symlink($file->getRealPath(), $webDir . '/' . $file->getRelativePathname());
+      $cfs->ensureDirectoryExists($webDir . '/' . $file->getRelativePath());
+      $cfs->relativeSymlink($file->getRealPath(), realpath($webDir) . '/' . $file->getRelativePathname());
     }
   }
 
