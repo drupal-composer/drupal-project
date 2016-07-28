@@ -28,10 +28,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/thinkshout/Robo.git"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/md-systems/redis.git"
         }
     ],
@@ -70,7 +66,7 @@
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8",
-        "codegyre/robo": "dev-master"
+        "consolidation/robo": "~1"
     },
     "conflict": {
         "drupal/drupal": "*"
