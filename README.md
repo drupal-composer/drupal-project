@@ -36,17 +36,28 @@ and adding these lines:
 
 ### Building
 
-Start inside the ~/Sites directory and build your site (replace 'some-dir' with the name of the project folder):
+Start inside the ~/Sites directory and build your site (replace 'new-project-name' with the name of the project folder):
 
 ```
-composer create-project thinkshout/drupal-project:8.x-pantheon-dev some-dir --stability dev --no-interaction
+composer create-project thinkshout/drupal-project:8.x-pantheon-dev new-project-name --stability dev --no-interaction
 ```
 
 Enter the new site folder:
 
 ```
-cd some-dir
+cd new-project-name
 ```
+
+Initialize a repository on github https://github.com/new that matches your project name and connect your local directory to it:
+
+```
+git init
+git add .
+git commit -m "Initial commit."
+git remote add origin git@github.com:thinkshout/new-project-name.git
+git push -u origin master
+```
+
 
 Running the `robo configure` command will read the .env.dist, cli arguments and
 your local environment (`DEFAULT_PRESSFLOW_SETTINGS`) to generate a .env file. This file will be used to set
