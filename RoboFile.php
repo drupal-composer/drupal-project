@@ -476,7 +476,7 @@ EOF';
   }
 
   /**
-   * Update files with the correct project name
+   * Update files with the correct project name.
    */
   function findReplaceProjectName() {
     $git_repo = exec('basename `git rev-parse --show-toplevel`');
