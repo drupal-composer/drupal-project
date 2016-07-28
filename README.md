@@ -18,12 +18,28 @@ Check with:
 Update with:
 `export PATH=./vendor/bin:$PATH`
 
+Add the custom git repo to your list of available composer paths by opening (or creating) `~/.composer/config.json`
+and adding these lines:
+
+```
+{
+    "config": {
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/thinkshout/drupal-project"
+        }
+    ]
+}
+```
+
 ### Building
 
 Start inside the ~/Sites directory and build your site (replace 'some-dir' with the name of the project folder):
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project thinkshout/drupal-project:8.x-pantheon-dev some-dir --stability dev --no-interaction
 ```
 
 Start inside the ~/Sites/SITE directory you cloned (you may have named it something other than "SITE")
