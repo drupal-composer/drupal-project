@@ -20,6 +20,12 @@ Update with:
 
 ### Building
 
+Start inside the ~/Sites directory and build your site (replace 'some-dir' with the name of the project folder):
+
+```
+composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+```
+
 Start inside the ~/Sites/SITE directory you cloned (you may have named it something other than "SITE")
 
 Get the all the dependencies and modules with:
