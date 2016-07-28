@@ -42,11 +42,11 @@ Start inside the ~/Sites directory and build your site (replace 'some-dir' with 
 composer create-project thinkshout/drupal-project:8.x-pantheon-dev some-dir --stability dev --no-interaction
 ```
 
-Start inside the ~/Sites/SITE directory you cloned (you may have named it something other than "SITE")
+Enter the new site folder:
 
-Get the all the dependencies and modules with:
-
-`composer install`
+```
+cd some-dir
+```
 
 Running the `robo configure` command will read the .env.dist, cli arguments and
 your local environment (`DEFAULT_PRESSFLOW_SETTINGS`) to generate a .env file. This file will be used to set
