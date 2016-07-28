@@ -87,7 +87,7 @@ class RoboFile extends \Robo\Tasks
 
     $json_settings = json_encode($settings);
 
-    $this->defineComposerProjectName();
+    $this->findReplaceProjectName();
 
     // Start with the dist env file.
     $this->_remove('.env');
@@ -476,13 +476,21 @@ EOF';
   }
 
   /**
-   * Update composer file to the thinkshout git repo we're currently on.
+   * Update files with the correct project name
    */
-  function defineComposerProjectName() {
+  function findReplaceProjectName() {
     $git_repo = exec('basename `git rev-parse --show-toplevel`');
+
+    // Update the composer project name.
     $this->taskReplaceInFile('composer.json')
       ->from('"name": "thinkshout/drupal-project",')
       ->to('"name": "thinkshout/' . $git_repo .'",')
+      ->run();
+
+    // Update the site value in .env.dist
+    $this->taskReplaceInFile('.env.dist')
+      ->from('TS_PROJECT="SITE"')
+      ->to('TS_PROJECT="' . $git_repo .'"')
       ->run();
   }
 
