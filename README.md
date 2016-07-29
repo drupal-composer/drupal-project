@@ -18,6 +18,9 @@ Check with:
 Update with:
 `export PATH=./vendor/bin:$PATH`
 
+You can also make this change permanent by editing your `~/.zshrc` file:
+`export PATH="./vendor/bin:...`
+
 Add the custom git repo to your list of available composer paths by opening (or creating) `~/.composer/config.json`
 and adding these lines:
 
