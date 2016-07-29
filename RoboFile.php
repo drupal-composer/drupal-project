@@ -478,20 +478,61 @@ EOF';
   /**
    * Update files with the correct project name.
    */
-  function findReplaceProjectName() {
+  private function findReplaceProjectName() {
     $git_repo = exec('basename `git rev-parse --show-toplevel`');
 
-    // Update the composer project name.
-    $this->taskReplaceInFile('composer.json')
-      ->from('"name": "thinkshout/drupal-project",')
-      ->to('"name": "thinkshout/' . $git_repo .'",')
-      ->run();
+    // Remove instructions for creating a new repo, because we've got one now.
+    $readme_contents = file_get_contents('README.md');
+    $start_string = '### Initial build (new repo)';
+    $end_string = '### Initial build (existing repo)';
+    $from = $this->findAllTextBetween($start_string, $end_string, $readme_contents);
 
-    // Update the site value in .env.dist
-    $this->taskReplaceInFile('.env.dist')
-      ->from('TS_PROJECT="SITE"')
-      ->to('TS_PROJECT="' . $git_repo .'"')
-      ->run();
+    $find_replaces = array(
+      array(
+        'source' => 'composer.json',
+        'from' => '"name": "thinkshout/drupal-project",',
+        'to' => '"name": "thinkshout/' . $git_repo .'",',
+      ),
+      array(
+        'source' => '.env.dist',
+        'from' => 'TS_PROJECT="SITE"',
+        'to' => 'TS_PROJECT="' . $git_repo .'"',
+      ),
+      array(
+        'source' => 'README.md',
+        'from' => array($from, 'new-project-name'),
+        'to' => array($end_string, $git_repo),
+      ),
+    );
+
+    foreach ($find_replaces as $find_replace) {
+      $this->taskReplaceInFile($find_replace['source'])
+        ->from($find_replace['from'])
+        ->to($find_replace['to'])
+        ->run();
+    }
+  }
+
+  /**
+   * Finds the text between two strings within a third string.
+   *
+   * @param $beginning
+   * @param $end
+   * @param $string
+   *
+   * @return string
+   *   String containing $beginning, $end, and everything in between.
+   */
+  private function findAllTextBetween($beginning, $end, $string) {
+    $beginningPos = strpos($string, $beginning);
+    $endPos = strpos($string, $end);
+    if ($beginningPos === false || $endPos === false) {
+      return '';
+    }
+
+    $textToDelete = substr($string, $beginningPos, ($endPos + strlen($end)) - $beginningPos);
+
+    return $textToDelete;
   }
 
 }

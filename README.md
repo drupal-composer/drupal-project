@@ -34,7 +34,7 @@ and adding these lines:
 }
 ```
 
-### Building
+### Initial build (new repo)
 
 Start inside the ~/Sites directory and build your site (replace 'new-project-name' with the name of the project folder):
 
@@ -58,6 +58,17 @@ git remote add origin git@github.com:thinkshout/new-project-name.git
 git push -u origin master
 ```
 
+### Initial build (existing repo)
+
+From within your `~/Sites` directory run:
+
+```
+git clone git@github.com:thinkshout/new-project-name.git
+cd new-project-name
+composer install
+```
+
+### Building
 
 Running the `robo configure` command will read the .env.dist, cli arguments and
 your local environment (`DEFAULT_PRESSFLOW_SETTINGS`) to generate a .env file. This file will be used to set
