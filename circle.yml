@@ -30,8 +30,12 @@ database:
     - robo install
 test:
   pre:
+    - disable-php-email
+    - install-drupal
     - start-webserver:
         background: true
+    - wait-for-webserver
+
   override:
     - behat --profile=ci --config private/behat/behat.yml --format progress
   post:
