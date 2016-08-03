@@ -30,8 +30,6 @@ database:
     - robo install
 test:
   pre:
-    - disable-php-email
-    - install-drupal
     - start-webserver:
         background: true
     - wait-for-webserver
