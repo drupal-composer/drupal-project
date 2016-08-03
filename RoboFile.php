@@ -172,7 +172,7 @@ EOF';
    *
    * @return \Robo\Result
    */
-  function test($opts = ['url' => '', 'drush_param' => '', 'feature' => NULL, 'profile' => NULL]) {
+  function test($opts = ['url' => '', 'drush_param' => '', 'feature' => NULL]) {
 
     // @TODO don't hard code this.
     $url = 'http://' . $this->projectProperties['project'] . '.dev';
@@ -189,18 +189,12 @@ EOF';
       $drush_param = $opts['drush_param'];
     }
 
-    if (empty($opts['profile'])) {
-      // Add the specific behat config to our environment.
-      putenv('BEHAT_PARAMS={"extensions":{"Behat\\\\MinkExtension":{"base_url":"' . $url . '"},"Drupal\\\\DrupalExtension":{"drupal":{"drupal_root":"' . $root . '"},"drush":{' . $drush_param . '}}}}');
-    }
+    // Add the specific behat config to our environment.
+    putenv('BEHAT_PARAMS={"extensions":{"Behat\\\\MinkExtension":{"base_url":"' . $url . '"},"Drupal\\\\DrupalExtension":{"drupal":{"drupal_root":"' . $root . '"},"drush":{' . $drush_param . '}}}}');
 
     $behat_cmd = $this->taskExec('behat')
       ->arg('--config private/behat/behat.yml')
       ->arg(' --format progress');
-
-    if ($opts['profile']) {
-      $behat_cmd->arg(' --profile ' . $opts['profile']);
-    }
 
     if ($opts['feature']) {
       $behat_cmd->arg($opts['feature']);

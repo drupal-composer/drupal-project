@@ -31,5 +31,5 @@ database:
 test:
   pre:
     # Run tests via robo
-    - robo test --profile=ci
+    - robo test
     #- robo pantheon:deploy --y
