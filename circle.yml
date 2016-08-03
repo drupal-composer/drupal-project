@@ -30,6 +30,13 @@ database:
     - robo install
 test:
   pre:
-    # Run tests via robo
-    - robo test --url=http://localhost/
-    #- robo pantheon:deploy --y
+    - disable-php-email
+    - start-webserver:
+        background: true
+    - wait-for-webserver
+
+  override:
+    - cd behat; behat --profile=ci.yml
+
+  post:
+    - stop-webserver

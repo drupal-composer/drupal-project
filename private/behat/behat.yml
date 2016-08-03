@@ -23,3 +23,14 @@ default:
       api_driver: 'drush'
       text:
         username_field: "E-mail"
+ci:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://localhost:8088/
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drush'
+      drupal:
+        drupal_root: '../drupal'
+      drush:
+        alias: '@localtest'
