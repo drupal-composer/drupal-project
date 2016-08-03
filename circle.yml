@@ -31,5 +31,5 @@ database:
 test:
   pre:
     # Run tests via robo
-    - robo test --url=http://localhost:8088/ --drush_param='"alias": "@localtest"'
+    - robo test --url=http://localhost:8088/
     #- robo pantheon:deploy --y
