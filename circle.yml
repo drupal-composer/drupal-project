@@ -32,9 +32,7 @@ test:
   pre:
     - start-webserver:
         background: true
-
   override:
-    - cd behat; behat --profile=ci
-
+    - behat --profile=ci --config private/behat/behat.yml --format progress
   post:
     - stop-webserver
