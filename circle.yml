@@ -30,13 +30,11 @@ database:
     - robo install
 test:
   pre:
-    - disable-php-email
     - start-webserver:
         background: true
-    - wait-for-webserver
 
   override:
-    - cd behat; behat --profile=ci.yml
+    - cd behat; behat --profile=ci
 
   post:
     - stop-webserver
