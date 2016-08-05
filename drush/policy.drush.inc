@@ -44,4 +44,3 @@ function policy_drush_help_alter(&$command) {
     $command['options']['pm-force'] = 'Override site policy and allow Drush codebase management (pm-* commands)';
   }
 }
-
