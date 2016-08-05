@@ -26,10 +26,6 @@
             "type": "git",
             "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
         },
-        {
-            "type": "git",
-            "url": "https://github.com/md-systems/redis.git"
-        }
     ],
     "require": {
         "composer/installers": "^1.0.20",
@@ -43,7 +39,7 @@
         "drupal/ctools": "8.3.0-alpha25",
         "drupal/devel": "8.1.x-dev",
         "drupal/ds": "8.2.3",
-        "drupal/email_registration": "8.1.x-dev",
+        "drupal/email_registration": "8.1.0-rc3",
         "drupal/google_analytics": "8.2.0-rc1",
         "drupal/inline_entity_form": "8.1.0-alpha6",
         "drupal/linkit": "8.4.1",
@@ -55,7 +51,7 @@
         "drupal/token": "8.1.0-alpha2",
         "drupal/config_installer": "8.1.x-dev",
         "vlucas/phpdotenv": "^2.2",
-        "drupal/redis": "dev-8.x-1.x"
+        "drupal/redis": "8.1.0-alpha1"
     },
     "require-dev": {
         "drupal/drupal-driver": "dev-master",
@@ -66,7 +62,7 @@
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8",
-        "consolidation/robo": "dev-master",
+        "consolidation/robo": "1.0.0-beta1",
         "pantheon-systems/ci-scripts": "*"
     },
     "conflict": {
@@ -91,6 +87,7 @@
     "extra": {
         "installer-paths": {
             "core": ["type:drupal-core"],
+            "libraries/{$name}": ["type:drupal-library"],
             "modules/contrib/{$name}": ["type:drupal-module"],
             "profiles/contrib/{$name}": ["type:drupal-profile"],
             "themes/contrib/{$name}": ["type:drupal-theme"],
