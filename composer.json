@@ -25,13 +25,13 @@
         {
             "type": "git",
             "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
-        },
+        }
     ],
     "require": {
         "composer/installers": "^1.0.20",
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.1.5",
+        "drupal/core": "8.1.7",
         "drush/drush": "^8.1.0",
         "drupal/console": "~1.0",
         "drupal/admin_toolbar": "8.1.14",
@@ -62,7 +62,7 @@
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8",
-        "consolidation/robo": "1.0.0-beta1",
+        "consolidation/robo": "1.0.0-rc1",
         "pantheon-systems/ci-scripts": "*"
     },
     "conflict": {
