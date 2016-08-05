@@ -35,40 +35,40 @@ if (!defined('PANTHEON_ENVIRONMENT')) {
 }
 
 // Check for custom DRUPAL_INSTALL environment variable (set in
-// drush/SITE.drush.inc) OR $is_installer_url (set in settings.pantheon.php)
-// to determine if we should enable file base config.
-if (!(getenv('DRUPAL_INSTALL') || $is_installer_url)) {
+// drush/SITE.drush.inc) OR PANTHEON_ENVIRONMENT to determine if we should
+// enable file base config. We only use file based for local development.
+// We could use a module like config_devel locally as well.
+if (!(getenv('DRUPAL_INSTALL') || defined('PANTHEON_ENVIRONMENT'))) {
   // Bootstrap file based config.
   $settings['bootstrap_config_storage'] = array(
     'Drupal\Core\Config\BootstrapConfigStorageFactory',
     'getFileStorage'
   );
 
-  $config_directories[CONFIG_ACTIVE_DIRECTORY] =  $config_directories[CONFIG_SYNC_DIRECTORY];
+  $config_directories[CONFIG_ACTIVE_DIRECTORY] = $config_directories[CONFIG_SYNC_DIRECTORY];
 
   $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/services.config.yml';
+}
 
-  // If we have a redis host defined, setup redis. Doesn't work on install, so
-  // we keep it here.
-  if (!empty($conf['redis_client_host'])) {
+// If we are not installing and have a redis host defined, setup redis.
+if (!(getenv('DRUPAL_INSTALL') || $is_installer_url) && !empty($conf['redis_client_host'])) {
 
-    $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/services.redis.yml';
+  $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/default/services.redis.yml';
 
-    $settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
-    $settings['redis.connection']['host'] = $conf['redis_client_host'];
-    $settings['redis.connection']['port'] = $conf['redis_client_port'];
-    $settings['redis.connection']['password'] = $conf['redis_client_password'];
-    $settings['cache']['default'] = 'cache.backend.redis';
-    // Set a cache_prefix per https://github.com/md-systems/redis/issues/8
-    $env_name = (defined('PANTHEON_ENVIRONMENT')) ? PANTHEON_ENVIRONMENT : getenv('TERMINUS_ENV');
-    $settings['cache_prefix'] = 'SITE_' . $env_name;
+  $settings['redis.connection']['interface'] = 'PhpRedis'; // Can be "Predis".
+  $settings['redis.connection']['host'] = $conf['redis_client_host'];
+  $settings['redis.connection']['port'] = $conf['redis_client_port'];
+  $settings['redis.connection']['password'] = $conf['redis_client_password'];
+  $settings['cache']['default'] = 'cache.backend.redis';
+  // Set a cache_prefix per https://github.com/md-systems/redis/issues/8
+  $env_name = (defined('PANTHEON_ENVIRONMENT')) ? PANTHEON_ENVIRONMENT : getenv('TERMINUS_ENV');
+  $settings['cache_prefix'] = 'SITE_' . $env_name;
 
-    // Always set the fast backend for bootstrap, discover and config, otherwise
-    // this gets lost when redis is enabled.
-    $settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
-    $settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
-    $settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
-  }
+  // Always set the fast backend for bootstrap, discover and config, otherwise
+  // this gets lost when redis is enabled.
+  $settings['cache']['bins']['bootstrap'] = 'cache.backend.chainedfast';
+  $settings['cache']['bins']['discovery'] = 'cache.backend.chainedfast';
+  $settings['cache']['bins']['config'] = 'cache.backend.chainedfast';
 }
 
 /**
@@ -105,6 +105,3 @@ if (isset($_SERVER['PANTHEON_ENVIRONMENT']) &&
     exit();
   }
 }
-
-// Force disabling of render cache temporarily.
-//$settings['cache']['bins']['render'] = 'cache.backend.null';
