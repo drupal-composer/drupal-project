@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/thinkshout/drupal-project/tree/8.x-pantheon.svg?style=svg)](https://circleci.com/gh/thinkshout/drupal-project/tree/8.x-pantheon)
+
 # Drupal Project (Pantheon edition)
 
 **Note**: This project was forked from the [drupal-project](https://github.com/drupal-composer/drupal-project) repository.
