@@ -35,6 +35,6 @@ test:
     - wait-for-webserver
 
   override:
-    - behat --profile=ci --config private/behat/behat.yml --format progress
+    - behat --profile=ci --config behat/behat.yml --format progress
   post:
     - stop-webserver

@@ -17,7 +17,7 @@ default:
       goutte: ~
       selenium2: ~
       #show_cmd: 'mv %s ./behat_results.html; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://SITE.dev/behat_results.html'
-      files_path: './private/behat/data-files'
+      files_path: './behat/data-files'
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drush'

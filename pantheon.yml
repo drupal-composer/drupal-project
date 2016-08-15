@@ -1,13 +1,13 @@
 api_version: 1
-
+web_docroot: true
 workflows:
   clone_database:
     after:
       - type: webphp
         description: Sanitize the db
-        script: private/scripts/pantheon/db_sanitization_drupal.php
+        script: scripts/pantheon/db_sanitization_drupal.php
   deploy:
     after:
       - type: webphp
         description: Log deployment to New Relic
-        script: private/scripts/pantheon/new_relic_deploy.php
+        script: scripts/pantheon/new_relic_deploy.php
