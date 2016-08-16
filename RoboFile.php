@@ -191,7 +191,7 @@ EOF';
     putenv('BEHAT_PARAMS={"extensions":{"Behat\\\\MinkExtension":{"base_url":"' . $url . '"},"Drupal\\\\DrupalExtension":{"drupal":{"drupal_root":"' . $root . '"},"drush":{' . $drush_param . '}}}}');
 
     $behat_cmd = $this->taskExec('behat')
-      ->arg('--config private/behat/behat.yml')
+      ->arg('--config behat/behat.yml')
       ->arg(' --format progress');
 
     if ($opts['feature']) {
@@ -469,7 +469,7 @@ EOF';
           'page_compression' => false,
         ),
       'hash_salt' => '',
-      'config_directory_name' => 'sites/default/config',
+      'config_directory_name' => '../config',
     );
   }
 
