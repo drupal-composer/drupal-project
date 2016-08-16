@@ -126,6 +126,12 @@ chmod 644 code/sites/default/settings.php
 EOF';
       $this->_exec($sftp_command);
 
+      // Run the installation.
+      $result = $this->taskExec($install_cmd)
+        ->run();
+
+      // Put the site back into git mode.
+      $this->_exec('terminus site set-connection-mode --mode=git');
     }
     else {
       // Install dependencies. Only works locally.
@@ -134,21 +140,16 @@ EOF';
         ->run();
 
       $this->_chmod($this->projectProperties['web_root'] . '/sites/default/settings.php', 0755);
-
       $install_cmd = 'drush ' . $install_cmd;
+
+      // Run the installation.
+      $result = $this->taskExec($install_cmd)
+        ->dir($this->projectProperties['web_root'])
+        ->run();
     }
 
     // Set our install to TRUE to disable file based config on install.
 //    putenv("DRUPAL_INSTALL=TRUE");
-
-    // Run the installation.
-    $result = $this->taskExec($install_cmd)
-      ->run();
-
-    if ($pantheon) {
-      // Put the site back into git mode.
-      $this->_exec('terminus site set-connection-mode --mode=git');
-    }
 
     if ($result->wasSuccessful()) {
       $this->say('Install complete');
