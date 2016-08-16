@@ -4,7 +4,7 @@
  * If not on Pantheon - load our .env file.
  */
 if (!defined('PANTHEON_ENVIRONMENT')) {
-  $dotenv = new Dotenv\Dotenv(__DIR__ . '/../../');
+  $dotenv = new Dotenv\Dotenv(__DIR__ . '../../../');
   $dotenv->overload();
 }
 
