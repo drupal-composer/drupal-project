@@ -97,7 +97,7 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "web/drush/contrib/{$name}": ["type:drupal-drush"]
+            "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "patches": {
             "drupal/core": {
