@@ -63,6 +63,13 @@ git remote add origin git@github.com:thinkshout/new-project-name.git
 git push -u origin master
 ```
 
+To initialize the project name in several of the files run:
+
+```
+composer install
+robo init
+```
+
 ### Initial build (existing repo)
 
 From within your `~/Sites` directory run:
