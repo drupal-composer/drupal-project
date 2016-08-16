@@ -87,8 +87,6 @@ class RoboFile extends \Robo\Tasks
 
     $json_settings = json_encode($settings);
 
-    $this->findReplaceProjectName();
-
     // Start with the dist env file.
     $this->_remove('.env');
     $this->_copy('.env.dist', '.env');
@@ -476,9 +474,11 @@ EOF';
   }
 
   /**
-   * Update files with the correct project name.
+   * Initialize the project for the first time.
+   *
+   * @return \Robo\Result
    */
-  private function findReplaceProjectName() {
+  public function init() {
     $git_repo = exec('basename `git rev-parse --show-toplevel`');
 
     // Remove instructions for creating a new repo, because we've got one now.
