@@ -133,7 +133,7 @@ EOF';
         ->optimizeAutoloader()
         ->run();
 
-      $this->_chmod('sites/default/settings.php', 0755);
+      $this->_chmod($this->projectProperties['web_root'] . '/sites/default/settings.php', 0755);
 
       $install_cmd = 'drush ' . $install_cmd;
     }
