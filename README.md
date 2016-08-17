@@ -84,12 +84,14 @@ composer install
 
 Running the `robo configure` command will read the .env.dist, cli arguments and
 your local environment (`DEFAULT_PRESSFLOW_SETTINGS`) to generate a .env file. This file will be used to set
-the database and other standard configuration options. If no database name is provided, the project name and the git branch name will be used.
+the database and other standard configuration options. If no database name is provided, the project name and the git branch name will be used. If no database name is provided, the project name and the git branch name will be used. Note the argument to pass to robo configure can include: --db-pass; --db-user; --db-name; --db-host.
 
 ```
 robo configure
 # Use an alternate DB password
 robo configure --db-pass=<YOUR LOCAL DATABASE PASSWORD>
+# Use an alternate DB name
+robo configure --db-name=<YOUR DATABASE NAME>
 ```
 
 The structure of `DEFAULT_PRESSFLOW_SETTINGS` if you want to set it locally is:
