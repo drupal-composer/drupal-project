@@ -16,10 +16,6 @@
         },
         {
             "type": "git",
-            "url": "https://github.com/thinkshout/robo-drupal.git"
-        },
-        {
-            "type": "git",
             "url": "https://github.com/thinkshout/DrupalDriver.git"
         },
         {
