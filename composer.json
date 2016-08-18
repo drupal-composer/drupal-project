@@ -62,7 +62,7 @@
         "mikey179/vfsStream": "~1.2",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8",
-        "consolidation/robo": "1.0.0-rc1",
+        "thinkshout/robo-drupal": "dev-master",
         "pantheon-systems/ci-scripts": "*"
     },
     "conflict": {
