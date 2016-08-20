@@ -11,4 +11,4 @@ local:
       drupal:
         drupal_root: /Users/YOU/Sites/yoursite/web
       drush:
-        alias: '@localtest'
+        root: /Users/YOU/Sites/yoursite/web
