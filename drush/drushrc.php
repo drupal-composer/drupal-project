@@ -40,10 +40,12 @@ $options['drunomics-dump-dir'] = '../dumps';
 
 // Adjust deployment.
 $options['shell-aliases']['dply'] = "!drush deploy";
-$options['shell-aliases']['deploy'] = "!drush composer install && drush updatedb -y && drush cim -y && drush cr";
-$options['shell-aliases']['deploy-all'] = "!drush deploy";
+// Note that the trailing whitespace is necessary to make it differnt to "dply".
+// This seems necessary to work-a-round some drush bug not finding it else.
+$options['shell-aliases']['deploy-all'] = "!drush deploy" . " ";
+$options['shell-aliases']['deploy'] = "!drush composer install && drush entity-updates -y && drush updatedb -y && drush cim -y && drush cr";
 $options['shell-aliases']['composer'] = "!composer --working-dir=$(drush dd)/../ ";
-$options['shell-aliases']['dbup'] = "!drush status --fields=bootstrap | grep 'bootstrap *: *Successful' 2>/dev/null || { drush dimport -y && echo Database imported.; }";
 
 $dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admin -y --config-dir=../config minimal';
 $options['shell-aliases']['dsi'] = "!chmod +w sites/default/settings.php; drush sql-create -y && $dsi_base";
+$options['shell-aliases']['dbup'] = "!drush status --fields=bootstrap | grep 'bootstrap *: *Successful' 2>/dev/null || ( {$options['shell-aliases']['dsi']} )";
