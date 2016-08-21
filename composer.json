@@ -17,6 +17,7 @@
         "drush/drush": "8.x-dev",
         "drupal/console": "~0.10",
         "drunomics/drudrush": "1.*",
+        "oomphinc/composer-installers-extender": "*",
         "wikimedia/composer-merge-plugin": "1.3.*"
     },
     "require-dev": {
@@ -39,6 +40,10 @@
         {
             "type": "composer",
             "url": "https://packagist.drupal-composer.org"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "minimum-stability": "dev",
@@ -66,10 +71,12 @@
         ]
     },
     "extra": {
+        "installer-types": ["library"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/libraries/{$name}/": ["vendor:bower-asset", "vendor:npm-asset"],
             "drush/contrib/{$name}": ["type:drupal-drush"],
             "web/modules/drunomics/{$name}": ["vendor:drunomics"],
             "web/modules/contrib/{$name}": ["type:drupal-module"]
