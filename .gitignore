@@ -3,6 +3,7 @@ drush/contrib
 vendor
 web/core
 web/modules/contrib
+web/modules/drunomics
 web/themes/contrib
 web/profiles/contrib
 

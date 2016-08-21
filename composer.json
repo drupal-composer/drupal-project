@@ -68,10 +68,11 @@
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "drush/contrib/{$name}": ["type:drupal-drush"],
+            "web/modules/drunomics/{$name}": ["vendor:drunomics"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"]
         },
         "merge-plugin": {
             "include": [
@@ -83,6 +84,10 @@
         }
     },
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "preferred-install": {
+            "drunomics/*": "source",
+            "*": "dist"
+        }
     }
 }
