@@ -1,0 +1,11 @@
+#
+# behat.yml file for testing with both Behat and the Drupal site running on
+# the CI system.
+#
+ci:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://localhost:8088/
+    Drupal\DrupalExtension:
+      drush:
+        alias: '@localtest'

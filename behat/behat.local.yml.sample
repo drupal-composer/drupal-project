@@ -1,0 +1,14 @@
+#
+# behat.yml file for testing with both Behat and the Drupal site running on
+# the local system. You only need to add the variables below if your local site
+# setup doesn't match the values in the default: setup located in behat.yml
+#
+local:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://site.dev/
+    Drupal\DrupalExtension:
+      drupal:
+        drupal_root: /Users/YOU/Sites/yoursite/web
+      drush:
+        root: /Users/YOU/Sites/yoursite/web
