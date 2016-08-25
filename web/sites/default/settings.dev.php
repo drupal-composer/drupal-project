@@ -34,5 +34,5 @@ if (empty($env_settings_active) && getenv('DRUNOMICS_CI')) {
 // Show errors on dev or test environments.
 $config['system.logging']['error_level'] = 'verbose';
 
-// We usually run CI sites
+// We usually run CI sites in production mode.
 // include __DIR__ . '/../settings.devel.php';
