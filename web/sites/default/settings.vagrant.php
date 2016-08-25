@@ -1,8 +1,8 @@
 <?php
 
 // Add in shared based settings and optionally environment specific settings.
-require_once __DIR__ . '/settings.base.php';
-require_once __DIR__ . '/../settings.environment.php';
+require __DIR__ . '/settings.base.php';
+require __DIR__ . '/../settings.environment.php';
 
 // Define custom settings if no environment.json is present.
 if (empty($env_settings_active)) {
@@ -25,5 +25,4 @@ if (empty($env_settings_active)) {
   $settings['file_private_path'] = '../files-private';
 }
 
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
 include __DIR__ . '/../settings.devel.php';
