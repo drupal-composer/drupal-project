@@ -21,6 +21,9 @@ $settings['extension_discovery_scan_tests'] = TRUE;
 $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
+// Stage file proxy origin site for fetching public files.
+// $config['stage_file_proxy.settings']['origin'] = 'http://example.com'; // no trailing slash
+
 // Load local override configuration, if available.
 // This can be used for local overrides not tracked by version control.
 if (file_exists(__DIR__ . '/settings.local.php')) {
