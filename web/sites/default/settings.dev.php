@@ -13,7 +13,7 @@ if (empty($env_settings_active) && getenv('DRUNOMICS_CI')) {
     'username' => 'root',
     'password' => '',
     'prefix' => '',
-    'host' => '{{ project }}.local',
+    'host' => 'localhost',
     'port' => '3306',
     'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
     'driver' => 'mysql',
