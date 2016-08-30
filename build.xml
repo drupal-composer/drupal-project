@@ -132,6 +132,17 @@
     <!-- Create demo users. -->
     <target name="create-demo-users" description="Create demo users.">
         <foreach list="${drupal.demo.users}" param="drupal.demo.user" target="create-demo-user" delimiter="," />
+        <!-- Create a user with only "authenticated user" role assigned. -->
+        <drush
+                command="user-create"
+                assume="yes"
+                root="${website.drupal.dir}"
+                bin="${drush.bin}"
+                verbose="${drush.verbose}">
+            <option name="mail" value="user@example.com"/>
+            <option name="password" value="user"/>
+            <param>user</param>
+        </drush>
     </target>
 
     <!-- Create a demo user. Subtarget of "create-demo-users". -->
