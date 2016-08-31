@@ -11,13 +11,14 @@ env:
     - SIMPLETEST_DB=sqlite://tmp/site.sqlite
     - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
   matrix:
-    - RELEASE=stable
-    - RELEASE=dev
+    - RELEASE=stable COMPOSER_CHANNEL=stable
+    - RELEASE=dev COMPOSER_CHANNEL=stable
+    - RELEASE=stable COMPOSER_CHANNEL=snapshot
 
 before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
-  - composer --verbose self-update
+  - composer --verbose self-update --$COMPOSER_CHANNEL
   - composer --version
 
 install:
@@ -31,6 +32,7 @@ script:
   - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
   - sleep 3
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
-  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer
+  # Ignore PageCache group temporarily, @see https://www.drupal.org/node/2770673
+  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,PageCache
   - ./../vendor/bin/drush
   - ./../vendor/bin/drupal
