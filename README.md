@@ -115,8 +115,8 @@ drupal.db.password = hunter2
 drupal.admin.username = admin
 drupal.admin.password = admin
 
-# The base URL to use in Behat tests.
-behat.base_url = http://platform.local
+# The base URL to use in tests.
+drupal.base_url = http://platform.local
 
 # Verbosity of Drush commands. Set to 'yes' for verbose output.
 drush.verbose = yes
@@ -196,6 +196,20 @@ If you want to run the tests from a different folder, then provide the path to
 # Run the tests from the root folder of the project.
 $ ./vendor/bin/behat -c tests/behat.yml
 ```
+
+
+## Running PHPUnit tests
+
+Run the tests from the `web` folder:
+
+```
+$ cd web/
+$ ../vendor/bin/phpunit
+```
+
+By default all tests in the folders `web/modules/custom`, `web/profiles` and
+`web/themes/custom` are included when running the tests. Check the section on
+PHPUnit in the `build.properties.dist` to customize the tests.
 
 
 ## Checking for coding standards violations
