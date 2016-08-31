@@ -61,7 +61,7 @@ website.themes.dir = ${website.drupal.dir}/themes
 # -------------------
 
 # The location of the Behat executable.
-behat.bin = ${project.basedir}/bin/behat
+behat.bin = ${project.basedir}/vendor/bin/behat
 
 # The location of the Behat tests.
 behat.dir = ${project.basedir}/tests
