@@ -15,7 +15,8 @@ default:
       files_path: '${behat.files.path}'
       goutte: ~
       javascript_session: 'selenium2'
-      selenium2: ~
+      selenium2:
+        wd_host: '${behat.webdriver_url}'
     Drupal\DrupalExtension:
       api_driver: 'drupal'
       blackbox: ~
