@@ -21,6 +21,9 @@
     <echo msg="Loading PHP Codesniffer Configuration task." />
     <taskdef name="phpcodesnifferconfiguration" classname="\DrupalProject\Phing\PhpCodeSnifferConfigurationTask" />
 
+    <echo msg="Loading PHPUnit Configuration task." />
+    <taskdef name="phpunitconfiguration" classname="\DrupalProject\Phing\PhpUnitConfigurationTask" />
+
     <!-- Make the settings folder writeable so that the installer can copy settings.php. -->
     <target name="writable-settings-folder">
         <chmod mode="0755" failonerror="true" verbose="true" quiet="false" file="${website.settings.dir}" />
@@ -122,6 +125,26 @@
         <echo message="${behat.yml.content}" file="${behat.yml.path}" />
     </target>
 
+    <!-- Set up PHPUnit. -->
+    <target name="setup-phpunit" description="Generate the configuration file for PHPUnit.">
+        <if>
+            <available file="${phpunit.config}" type="file" property="phpunit.config.available" />
+            <then>
+                <echo message="Deleting existing PHPUnit configuration file." />
+                <delete file="${phpunit.config}" failonerror="false" />
+            </then>
+        </if>
+        <phpunitconfiguration
+                configFile="${phpunit.config}"
+                distFile="${phpunit.dist}"
+                files="${phpunit.files}"
+                directories="${phpunit.directories}"
+                testsuiteName="${phpunit.testsuite.name}"
+                baseUrl="${phpunit.base_url}"
+                dbUrl="${phpunit.db_url}"
+        />
+    </target>
+
     <!-- Link the site root to the document root of the webserver. -->
     <target
         name="link-docroot"
@@ -218,7 +241,7 @@
     <target
         name="build-dev"
         description="Build a development environment."
-        depends="install-composer-dependencies, setup-behat, setup-php-codesniffer" />
+        depends="install-composer-dependencies, setup-behat, setup-php-codesniffer, setup-phpunit" />
 
     <target
         name="setup-dev"

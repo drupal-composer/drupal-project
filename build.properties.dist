@@ -1,6 +1,9 @@
 # Drupal configuration
 # --------------------
 
+# The project name.
+project.name = myproject
+
 # The install profile to use.
 website.profile.name = standard
 
@@ -24,6 +27,9 @@ drupal.admin.email = admin@example.com
 # Comma-separated list of demo users to create. The username and password will
 # be taken from the role.
 drupal.demo.users = administrator
+
+# The base URL. This is used for doing functional tests in Behat and PHPUnit.
+drupal.base_url = http://localhost
 
 
 # Paths
@@ -67,7 +73,7 @@ behat.yml.template = ${behat.dir}/behat.yml.dist
 behat.yml.path = ${behat.dir}/behat.yml
 
 # The base URL to use in Behat tests.
-behat.base_url = http://localhost
+behat.base_url = ${drupal.base_url}
 
 # The location to search for Behat subcontexts.
 behat.subcontexts.path = ${website.modules.dir}
@@ -118,6 +124,34 @@ phpcs.prepush.enable = 0
 # The source and destination paths of the git pre-push hook.
 phpcs.prepush.source = ${project.basedir}/vendor/pfrenssen/phpcs-pre-push/pre-push
 phpcs.prepush.destination = ${project.basedir}/.git/hooks/pre-push
+
+
+# PHPUnit configuration
+# ---------------------
+
+# The path to the configuration file template.
+phpunit.dist = ${project.basedir}/phpunit.xml.dist
+
+# The path to the generated configuration file. This is typically inside the web
+# root.
+phpunit.config = ${website.drupal.dir}/phpunit.xml
+
+# The name to give to the test suite of the project.
+phpunit.testsuite.name = ${project.name}
+
+# Comma-separated list of directories containing tests to execute. These are
+# relative to the Drupal root.
+phpunit.directories = ./modules/custom,./profiles,./themes/custom
+
+# Comma-separated list of test files to execute. These are relative to the
+# Drupal root.
+phpunit.files =
+
+# The base URL to use in functional tests.
+phpunit.base_url = ${drupal.base_url}
+
+# The database URL to use in kernel tests and functional tests.
+phpunit.db_url = ${drupal.db.url}
 
 
 # Development options
