@@ -5,7 +5,11 @@
 ci:
   extensions:
     Behat\MinkExtension:
-      base_url: http://localhost:8088/
+      base_url: http://localhost/
     Drupal\DrupalExtension:
+      drupal:
+        drupal_root: '/src/docroot'
       drush:
-        alias: '@localtest'
+        root: '/src/docroot'
+imports:
+  - behat.yml

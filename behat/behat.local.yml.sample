@@ -9,6 +9,8 @@ local:
       base_url: http://site.dev/
     Drupal\DrupalExtension:
       drupal:
-        drupal_root: /Users/YOU/Sites/yoursite/web
+        drupal_root: /Users/YOU/Sites/yoursite/docroot
       drush:
-        root: /Users/YOU/Sites/yoursite/web
+        root: /Users/YOU/Sites/yoursite/docroot
+imports:
+  - behat.yml

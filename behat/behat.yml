@@ -16,14 +16,14 @@ default:
     Behat\MinkExtension:
       goutte: ~
       selenium2: ~
-      #show_cmd: 'mv %s ./behat_results.html; /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome http://SITE.dev/behat_results.html'
       files_path: './behat/data-files'
     Drupal\DrupalExtension:
       blackbox: ~
-      api_driver: 'drush'
+      api_driver: drupal
       text:
-        username_field: "E-mail"
-
-imports:
-  - behat.local.yml
-  - behat.ci.yml
+        username_field: "Username"
+      region_map:
+         primary_nav: ".region-primary-nav"
+         secondary_nav: ".region-secondary-nav"
+         content: ".region-content"
+         footer: ".region-footer"
