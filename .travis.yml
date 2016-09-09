@@ -1,36 +1,57 @@
 language: php
+
 php:
-  - 5.5
   - 5.6
   - 7.0
 
 sudo: false
 
+mysql:
+  database: myproject
+  username: root
+  encoding: utf8
+
 env:
-  global:
-    - SIMPLETEST_DB=sqlite://tmp/site.sqlite
-    - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
+  - TEST=PHP_CodeSniffer
+  - TEST=PHPUnit
+  - TEST=Behat
+
   matrix:
-    - RELEASE=stable
-    - RELEASE=dev
+  exclude:
+    - php: 5.6
+      env: TEST=PHP_CodeSniffer
 
 before_install:
-  - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
-  - phpenv config-rm xdebug.ini
+  # Remove Xdebug as we don't need it and it causes "PHP Fatal error: Maximum
+  # function nesting level of '256' reached". We don't care if that file exists
+  # or not on PHP 7.
+  - phpenv config-rm xdebug.ini || true
+
+  # Update composer.
   - composer --verbose self-update
-  - composer --version
+
+  # Create database.
+  - mysql -e 'create database myproject'
+
+  # Start a web server on port 8888 in the background.
+  - cd $TRAVIS_BUILD_DIR/web
+  - nohup php -S localhost:8888 > /dev/null 2>&1 &
+
+  # Wait until the web server is responding.
+  - until curl -s localhost:8888; do true; done > /dev/null
+  - cd $TRAVIS_BUILD_DIR
 
 install:
+  # Install Composer dependencies.
   - composer --verbose install
 
-script:
-  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.1.x-dev; fi;
-  - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
-  - cd $TRAVIS_BUILD_DIR/web
-  - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
-  - ./../vendor/bin/drush runserver http://127.0.0.1:8080 &
-  - sleep 3
-  # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
-  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer
-  - ./../vendor/bin/drush
-  - ./../vendor/bin/drupal
+  # Define build properties for the local test environment.
+  - echo -e "drupal.base_url = http://localhost:8888\n" > build.properties.local
+
+  # Build the project.
+  - ./vendor/bin/phing build-dev
+
+  # Install Drupal. This is not needed when doing a coding standards check.
+  - test ${TEST} == "PHP_CodeSniffer" || ./vendor/bin/phing install-dev
+
+script: ./scripts/travis-ci/run-test.sh ${TEST}
