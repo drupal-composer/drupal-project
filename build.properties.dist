@@ -12,9 +12,9 @@ website.site.name = MyDrupalProject
 
 # Database settings.
 drupal.db.type = mysql
-drupal.db.name = db_name
-drupal.db.user = db_user
-drupal.db.password = db_pass
+drupal.db.name = myproject
+drupal.db.user = root
+drupal.db.password =
 drupal.db.host = 127.0.0.1
 drupal.db.port = 3306
 drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
