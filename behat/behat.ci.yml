@@ -1,0 +1,15 @@
+#
+# behat.yml file for testing with both Behat and the Drupal site running on
+# the CI system.
+#
+ci:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://localhost/
+    Drupal\DrupalExtension:
+      drupal:
+        drupal_root: '/src/docroot'
+      drush:
+        root: '/src/docroot'
+imports:
+  - behat.yml
