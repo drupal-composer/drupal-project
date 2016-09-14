@@ -23,22 +23,6 @@ Update with:
 You can also make this change permanent by editing your `~/.zshrc` file:
 `export PATH="./vendor/bin:...`
 
-Add the custom git repo to your list of available composer paths by opening (or creating) `~/.composer/config.json`
-and adding these lines:
-
-```
-{
-    "config": {
-    },
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/thinkshout/drupal-project"
-        }
-    ]
-}
-```
-
 ### Initial build (new repo)
 
 Start inside the ~/Sites directory and build your site (replace 'new-project-name' with the name of the project folder):
