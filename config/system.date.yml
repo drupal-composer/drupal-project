@@ -2,7 +2,7 @@ country:
   default: ''
 first_day: 0
 timezone:
-  default: America/Chicago
+  default: America/Los_Angeles
   user:
     configurable: true
     warn: false

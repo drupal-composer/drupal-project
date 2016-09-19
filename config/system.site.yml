@@ -1,11 +1,11 @@
-uuid: f5af5d1f-8091-4676-9a50-b6ccb75eec4f
-name: D8 Site
+uuid: 5e894fc4-ff10-411f-ac71-f6384db8fd82
+name: Site-Install
 mail: admin@example.com
 slogan: ''
 page:
   403: ''
   404: ''
-  front: /user/login
+  front: /node
 admin_compact_mode: false
 weight_select_max: 100
 langcode: en

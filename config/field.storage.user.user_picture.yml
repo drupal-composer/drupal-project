@@ -1,0 +1,34 @@
+uuid: 0ac61f4f-e8f0-4c82-942a-a0500fa15ff7
+langcode: en
+status: true
+dependencies:
+  module:
+    - file
+    - image
+    - user
+_core:
+  default_config_hash: 6k-VBFilDLuzgSOT-77CFgHFlcd5D-kqRixtH89EShU
+id: user.user_picture
+field_name: user_picture
+entity_type: user
+type: image
+settings:
+  uri_scheme: public
+  default_image:
+    uuid: null
+    alt: ''
+    title: ''
+    width: null
+    height: null
+  target_type: file
+  display_field: false
+  display_default: false
+module: image
+locked: false
+cardinality: 1
+translatable: true
+indexes:
+  target_id:
+    - target_id
+persist_with_no_fields: false
+custom_storage: false

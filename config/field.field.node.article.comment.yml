@@ -1,0 +1,35 @@
+uuid: b0525bac-3750-4d29-88d8-4630c24471be
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.comment
+    - node.type.article
+  module:
+    - comment
+_core:
+  default_config_hash: szSOp-8eNsMcuh8usDre1x76RhDKaPhNUuwzRX5cgv4
+id: node.article.comment
+field_name: comment
+entity_type: node
+bundle: article
+label: Comments
+description: ''
+required: true
+translatable: true
+default_value:
+  -
+    status: 2
+    cid: 0
+    last_comment_name: null
+    last_comment_timestamp: 0
+    last_comment_uid: 0
+    comment_count: 0
+default_value_callback: ''
+settings:
+  default_mode: 1
+  per_page: 50
+  form_location: true
+  anonymous: 0
+  preview: 1
+field_type: comment
