@@ -1,6 +1,7 @@
 api_version: 1
 web_docroot: true
 php_version: 7.0
+drush_version: 8
 workflows:
   clone_database:
     after:
