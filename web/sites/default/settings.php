@@ -91,7 +91,7 @@ if (file_exists($local_settings)) {
   include $local_settings;
 }
 
-$settings['install_profile'] = 'minimal';
+$settings['install_profile'] = 'standard';
 
 // Require HTTPS.
 // Check if Drupal is running via command line
