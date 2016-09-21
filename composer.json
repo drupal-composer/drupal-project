@@ -13,7 +13,7 @@
         "drupal-composer/drupal-scaffold": "^2.0.1",
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
-        "drupal/admin_toolbar": "^8.1",
+        "drupal/admin_toolbar": "^1.0",
         "drush/drush": "8.x-dev",
         "drupal/console": "~0.10",
         "drunomics/drudrush": "1.*",
@@ -39,7 +39,7 @@
         },
         {
             "type": "composer",
-            "url": "https://packagist.drupal-composer.org"
+            "url": "https://packages.drupal.org/8"
         },
         {
             "type": "composer",
