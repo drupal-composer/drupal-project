@@ -64,6 +64,20 @@ class PhpUnitConfigurationTask extends \Task {
   private $dbUrl = 'mysql://root@localhost/db';
 
   /**
+   * The path to the directory where HTML output from browsertests is stored.
+   *
+   * @var string
+   */
+  private $browsertestOutputDirectory = '';
+
+  /**
+   * The path to the file that lists HTML output from browsertests.
+   *
+   * @var string
+   */
+  private $browsertestOutputFile = '';
+
+  /**
    * Configures PHPUnit.
    */
   public function main() {
@@ -81,6 +95,12 @@ class PhpUnitConfigurationTask extends \Task {
 
     // Set the database URL.
     $this->setEnvironmentVariable('SIMPLETEST_DB', $this->dbUrl, $document);
+
+    // Set the path to the browsertest output directory.
+    $this->setEnvironmentVariable('BROWSERTEST_OUTPUT_DIRECTORY', $this->browsertestOutputDirectory, $document);
+
+    // Set the path to the browsertest output file.
+    $this->setEnvironmentVariable('BROWSERTEST_OUTPUT_FILE', $this->browsertestOutputFile, $document);
 
     // Add a test suite for the Drupal project.
     $test_suite = $document->createElement('testsuite');
@@ -220,6 +240,26 @@ class PhpUnitConfigurationTask extends \Task {
    */
   public function setDbUrl($dbUrl) {
     $this->dbUrl = $dbUrl;
+  }
+
+  /**
+   * Sets the path to the browsertest output directory.
+   *
+   * @param string $browsertestOutputDirectory
+   *   The path to the directory.
+   */
+  public function setBrowsertestOutputDirectory($browsertestOutputDirectory) {
+    $this->browsertestOutputDirectory = $browsertestOutputDirectory;
+  }
+
+  /**
+   * Sets the path to the browsertest output file.
+   *
+   * @param string $browsertestOutputFile
+   *   The path to the file.
+   */
+  public function setBrowsertestOutputFile($browsertestOutputFile) {
+    $this->browsertestOutputFile = $browsertestOutputFile;
   }
 
 }

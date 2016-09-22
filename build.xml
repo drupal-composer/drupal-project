@@ -146,7 +146,12 @@
                 testsuiteName="${phpunit.testsuite.name}"
                 baseUrl="${phpunit.base_url}"
                 dbUrl="${phpunit.db_url}"
+                browsertestOutputDirectory="${phpunit.browsertest_output_dir}"
+                browsertestOutputFile="${phpunit.browsertest_output_file}"
         />
+        <!-- Create the directory and file for browsertest output. -->
+        <mkdir dir="${phpunit.browsertest_output_dir}" />
+        <touch file="${phpunit.browsertest_output_file}" />
     </target>
 
     <!-- Link the site root to the document root of the webserver. -->

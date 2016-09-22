@@ -156,6 +156,12 @@ phpunit.base_url = ${drupal.base_url}
 # The database URL to use in kernel tests and functional tests.
 phpunit.db_url = ${drupal.db.url}
 
+# The path to the directory where HTML output from browsertests is stored.
+phpunit.browsertest_output_dir = ${website.sites.dir}/simpletest/browser_output
+
+# The path to the file that lists HTML output from browsertests.
+phpunit.browsertest_output_file = ${phpunit.browsertest_output_dir}/outputfile.txt
+
 
 # Development options
 # -------------------
