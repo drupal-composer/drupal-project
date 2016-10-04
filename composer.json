@@ -32,7 +32,7 @@
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8"
     },
-    "replace": {
+    "conflict": {
         "drupal/drupal": "*"
     },
     "minimum-stability": "dev",
