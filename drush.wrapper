@@ -28,5 +28,5 @@
 # `../vendor/bin/drush.launcher --local $@` is a common variant for
 # composer-managed Drupal sites.
 #
-cd "`dirname $0`"
+cd "`dirname $0`/web"
 ../vendor/bin/drush.launcher --local "$@"
