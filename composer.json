@@ -14,8 +14,8 @@
         "cweagans/composer-patches": "~1.0",
         "drupal/core": "~8.0",
         "drupal/admin_toolbar": "^1.0",
-        "drush/drush": "8.x-dev",
-        "drupal/console": "~0.10",
+        "drush/drush": "8.*",
+        "drupal/console": "1.*",
         "drunomics/drudrush": "1.*",
         "oomphinc/composer-installers-extender": "*",
         "wikimedia/composer-merge-plugin": "1.3.*"
@@ -96,5 +96,9 @@
             "drunomics/*": "source",
             "*": "dist"
         }
+    },
+    "suggest": {
+        "drunomics/dsk_media": "1.*",
+        "drunomics/dsk_devel": "1.*"
     }
 }
