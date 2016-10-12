@@ -74,6 +74,7 @@
                 <delete file="${phpcs.global.config}" failonerror="false" />
             </then>
         </if>
+        <echo message="Generating PHP Codesniffer configuration files." />
         <phpcodesnifferconfiguration
             configFile="${phpcs.config}"
             extensions="${phpcs.extensions}"
