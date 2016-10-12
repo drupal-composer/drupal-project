@@ -29,7 +29,7 @@ With `composer require ...` you can download new dependencies to your
 installation.
 
 ```
-composer require drupal/devel:~8.0
+composer require drupal/devel:~1.0
 ```
 
 The `composer create-project` command passes ownership of all files to the 
