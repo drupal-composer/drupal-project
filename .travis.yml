@@ -33,14 +33,6 @@ before_install:
   # Create database.
   - mysql -e 'create database myproject'
 
-  # Start a web server on port 8888 in the background.
-  - cd $TRAVIS_BUILD_DIR/web
-  - nohup php -S localhost:8888 > /dev/null 2>&1 &
-
-  # Wait until the web server is responding.
-  - until curl -s localhost:8888; do true; done > /dev/null
-  - cd $TRAVIS_BUILD_DIR
-
 install:
   # Install Composer dependencies.
   - composer --verbose install
@@ -53,5 +45,14 @@ install:
 
   # Install Drupal. This is not needed when doing a coding standards check.
   - test ${TEST} == "PHP_CodeSniffer" || ./vendor/bin/phing install-dev
+
+  # Start a web server on port 8888 in the background.
+  - cd $TRAVIS_BUILD_DIR/web
+  - nohup php -S localhost:8888 > /dev/null 2>&1 &
+
+  # Wait until the web server is responding.
+  - until curl -s localhost:8888; do true; done > /dev/null
+  - cd $TRAVIS_BUILD_DIR
+
 
 script: ./scripts/travis-ci/run-test.sh ${TEST}
