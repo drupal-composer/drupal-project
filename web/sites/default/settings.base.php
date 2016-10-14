@@ -19,10 +19,16 @@ $settings['allow_authorize_operations'] = FALSE;
 # $settings['file_chmod_directory'] = 0775;
 # $settings['file_chmod_file'] = 0664;
 # $settings['file_public_base_url'] = 'http://downloads.example.com/files';
-
 # $settings['file_public_path'] = 'files';
 # $settings['file_private_path'] = '../files-private';
 
+$settings['file_scan_ignore_directories'] = [
+  'node_modules',
+  'bower_components',
+];
+
+# $settings['cache_ttl_4xx'] = 3600;
+# $settings['class_loader_auto_detect'] = FALSE;
 # $settings['session_write_interval'] = 180;
 # $settings['locale_custom_strings_en'][''] = array(
 #   'forum'      => 'Discussion board',
