@@ -39,16 +39,36 @@ all files not excluded by the .gitignore file.
 
 When installing the given `composer.json` some tasks are taken care of:
 
-* Drupal will be installed in the `web`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
+* Drupal will be installed in the project root directory.
+* A dedicated document root "web" directory will be created. This is where your
+* web server configuration should point to. See the web server section below.
+* Modules (packages of type `drupal-module`) will be placed in `modules/contrib/`
+* Theme (packages of type `drupal-theme`) will be placed in `themes/contrib/`
+* Profiles (packages of type `drupal-profile`) will be placed in `profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `sites/default/files`-directory.
+* Creates `web/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+
+
+## Web server configuration
+
+Because we use a dedicated web docroot for security reasons we need to have an
+additional web server config entry to map static assets files from core, modules
+and themes.
+
+Nginx:
+
+```
+location ~* ^/(core|modules|themes)/.+\.(js|css|png|jpg|jpeg|gif|ico|svg|ttf|eot|woff|otf)$ {
+  # @todo we need to change to docroot to one folder up here. With 'root'? Or
+  # with 'alias'? Can we make it work relatively by reusing to old docroot?
+  expires       max;
+  log_not_found off;
+  try_files     /web$uri $uri =404;
+}
+
+```
 
 ## Updating Drupal Core
 

@@ -14,7 +14,7 @@ use Symfony\Component\Filesystem\Filesystem;
 class ScriptHandler {
 
   protected static function getDrupalRoot($project_root) {
-    return $project_root . '/web';
+    return $project_root;
   }
 
   public static function createRequiredFiles(Event $event) {
@@ -25,6 +25,7 @@ class ScriptHandler {
       'modules',
       'profiles',
       'themes',
+      'web',
     ];
 
     // Required for unit testing
@@ -37,7 +38,20 @@ class ScriptHandler {
 
     // Prepare the settings file for installation
     if (!$fs->exists($root . '/sites/default/settings.php') and $fs->exists($root . '/sites/default/default.settings.php')) {
-      $fs->copy($root . '/sites/default/default.settings.php', $root . '/sites/default/settings.php');
+      $settings_content = file_get_contents($root . '/sites/default/default.settings.php');
+      $settings_content = str_replace(
+          "# \$settings['file_public_path'] = 'sites/default/files';",
+          "\$settings['file_public_path'] = 'web/files';",
+          $settings_content);
+
+      // We don't know the full URL of the site, so we can just put in localhost
+      // for now.
+      $settings_content = str_replace(
+          "# \$settings['file_public_base_url'] = 'http://downloads.example.com/files';",
+          "\$settings['file_public_base_url'] = 'http://localhost/files';",
+          $settings_content);
+
+      $fs->dumpFile($root . '/sites/default/settings.php', $settings_content);
       $fs->chmod($root . '/sites/default/settings.php', 0666);
       $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
     }
@@ -50,11 +64,30 @@ class ScriptHandler {
     }
 
     // Create the files directory with chmod 0777
-    if (!$fs->exists($root . '/sites/default/files')) {
+    if (!$fs->exists($root . '/web/files')) {
       $oldmask = umask(0);
-      $fs->mkdir($root . '/sites/default/files', 0777);
+      $fs->mkdir($root . '/web/files', 0777);
       umask($oldmask);
-      $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
+      $event->getIO()->write("Create a web/files directory with chmod 0777");
+    }
+
+    // Move .htaccess, web.config and robots.txt into web.
+    $web_files = ['robots.txt', '.htaccess', 'web.config'];
+    foreach ($web_files as $file) {
+      if ($fs->exists("$root/$file")) {
+        $fs->rename("$root/$file", "$root/web/$file", TRUE);
+      }
+    }
+
+    // Create index.php in web.
+    if (!$fs->exists('web/index.php')) {
+      $fs->dumpFile('web/index.php', <<<EOT
+<?php
+
+chdir('..');
+require 'index.php';
+EOT
+      );
     }
   }
 
