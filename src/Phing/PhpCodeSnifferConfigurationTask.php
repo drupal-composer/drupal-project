@@ -93,7 +93,7 @@ class PhpCodeSnifferConfigurationTask extends \Task {
     $document->appendChild($root_element);
 
     // Add the description.
-    $element = $document->createElement('description', 'Default PHP CodeSniffer configuration for Platform Building Materials.');
+    $element = $document->createElement('description', 'Default PHP CodeSniffer configuration for composer based Drupal projects.');
     $root_element->appendChild($element);
 
     // Add the coding standard.
