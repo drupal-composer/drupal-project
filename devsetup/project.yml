@@ -9,13 +9,3 @@ nodes:
   web:
     memory: 2048
     cpus: 4
-
-    ##
-    ## Some vagrant specific settings:
-    ##
-    vagrant_box: "ubuntu/trusty64"
-    ip: "192.168.55.111"
-    forwarded_ports: []
-     # - host: 35729
-     #   guest: 35729
-    run_syncd: true

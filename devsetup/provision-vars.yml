@@ -1,6 +1,6 @@
 # Various provisioning settings.
 ---
-php_version: 5.5
+php_version: 7.0
 
 # PHP - php.ini
 php_memory_limit: '512M'
@@ -41,7 +41,3 @@ elasticsearch_max_open_files: 65535
 elasticsearch_network_http_port: 9200
 elasticsearch_timezone: "{{ php_date_timezone }}"
 elasticsearch_plugins: []
-
- # misc
-composer_github_oauth: 164cf0cb3989bd3f17099708aa2b896daecab477
-drush_version: 8.*

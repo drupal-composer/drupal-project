@@ -1,0 +1,60 @@
+##
+# Ansible playbook for vagrant.
+#
+---
+
+# Do some initial vagrant specific setup to fix filesystem permission issues.
+- hosts: local
+  tags: provision
+  vars:
+    deploy_user: drunomics
+    deploy_group: drunomics
+    deploy_dir: "/srv/default/vcs"
+    deploy_files_dirs:
+     - "/srv/default/vcs/web/sites/default/files"
+     - "/srv/default/vcs/web/sites/default/private"
+
+  handlers:
+    - name: restart apache
+      service: name=apache2 state=restarted
+
+  tasks:
+    - name: Get UID from host user.
+      shell: stat -c '%u' {{ deploy_dir }}
+      register: uid
+    - name: Get GID from host user.
+      shell: stat -c '%g' {{ deploy_dir }}
+      register: gid
+
+    - name: Create drunomics group.
+      group: name="{{ deploy_group }}" state=present gid="{{ gid.stdout }}"
+
+    - name: Create drunomics user.
+      user:
+        name="{{ deploy_user }}"
+        state=present
+        group="{{ deploy_group }}"
+        uid="{{ uid.stdout }}"
+        shell="/bin/bash"
+
+    - name: Add the drunomics group to the www-data user.
+      user:
+        name=www-data
+        state=present
+        groups="{{ deploy_group }}"
+      # Restart apache, so it can pick up the permission changes.
+      notify: restart apache
+
+    - name: Set the right permissions for the deploy directory.
+      file:
+        path="{{ item }}"
+        owner="{{ deploy_user }}"
+        group="{{ deploy_group }}"
+        state=directory
+        mode="2770"
+        follow=yes
+        recurse=yes
+      with_items: "{{ deploy_files_dirs }}"
+
+    - name: Link the web directory to the docroot
+      file: src=/srv/default/vcs/web dest=/srv/default/web state=link

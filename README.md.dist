@@ -5,6 +5,7 @@ This project is maintained using composer. Please refer to the documentation pro
 
 ## Project setup
 
+ * Run `vagrant up` (see Vagrant section below).
  * `drush dpsetup` takes care of setting the project up automatically. In order
  to do do it manually, you need to:
 
@@ -17,7 +18,13 @@ This project is maintained using composer. Please refer to the documentation pro
  * If you cannot use the drunomics vagrant environment, you need to customize
    the provided settings.php. Instead of linking the settings.vagrant.php, copy
    it to settings.php and customize it to your needs. Usually, you'd have to
-   customize the database connection and the 'trusted_host_patterns'.
+   customize the database connection and the 'trusted_host_patterns'.  
+   
+## drunomics setup notes
+
+- The vagrant setup is added in the project, thus no special setup is required.
+- The drunomics drush extension is added to the project, so it just works.
+  
 
 ## Command line tools
 
@@ -59,3 +66,24 @@ drush see http://docs.drush.org/en/master/.
 
  Cache clear/rebuild:
  ```drush cr```
+
+## Vagrant
+
+The following describes the local development using Vagrant.
+
+### Prerequesites
+ 
+ - Make sure latest docker and vagrant versions are installed.
+ - Make sure necessary vagrant plugins are installed:
+ 
+       vagrant plugin install vagrant-hosts-provisioner
+
+### Using vagrant
+
+  You can access the site http://{{ project }}.local. The project name is
+  defined in devsetup/project.yml.
+
+ * vagrant up - Starts the container.
+ * vagrant halt - Stops the container
+ * vagrant reload - Restarts the container.
+ * vagrant provision - Provisions the container again.

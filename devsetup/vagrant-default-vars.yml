@@ -1,0 +1,8 @@
+# Some vagrant default variables for the docker image.
+---
+# Make services publically available from the vagrant box, so drush on the host
+# can connect to them as well.
+memcached_bind_address: '0.0.0.0'
+mysql_bind_address: '0.0.0.0'
+elasticsearch_network_host: 0.0.0.0
+redis_bind: 0.0.0.0

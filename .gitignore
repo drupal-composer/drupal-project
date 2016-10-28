@@ -23,7 +23,6 @@ web/profiles/local
 
 # Ignore setup files.
 .vagrant
-Vagrantfile
 syncd.conf
 dransible
 dumps
