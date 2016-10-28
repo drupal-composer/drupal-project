@@ -5,6 +5,24 @@
 This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
+This is a fork of [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project)
+which is set up with support for Continuous Integration out of the box.
+
+## Additional features
+
+This fork has the following additions to the original version of drupal-project:
+
+* **Customizable builds**: Different builds for production and development
+  environments are created with [Phing](https://www.phing.info/). These can be
+  fully customized using a set of configuration files.
+* **Behat support**: Behat is included so you can easily test user scenarios.
+* **Preconfigured test suites**: PHPUnit is fully set up for running unit tests
+  as well as kernel tests, web tests and javascript tests.
+* **PHP CodeSniffer**: Check compliance with coding standards with a single
+  command, or set it up to scan automatically whenever you `git push`.
+* **Travis CI**: Integrates seamlessly with [Travis CI](https://travis-ci.com/)
+  so you can automate your tests right from the start. No setup needed!
+
 If you want to know how to use it as replacement for
 [Drush Make](https://github.com/drush-ops/drush/blob/master/docs/make.md) visit
 the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
