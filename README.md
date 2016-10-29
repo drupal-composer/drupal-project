@@ -80,6 +80,18 @@ With using [the "Composer Generate" drush extension](https://www.drupal.org/proj
 you can now generate a basic `composer.json` file from an existing project. Note
 that the generated `composer.json` might differ from this project's file.
 
+## Local development
+
+This project have added [Drupal VM](https://www.drupalvm.com/) as a development dependency with the config file located in `./drupal-vm/`.
+To start the environment you need to:
+
+```
+cp Vagrantfile.dist Vagrantfile
+cp drupal-vm/config.yml.dist drupal-vm/config.yml
+vagrant up
+```
+
+Refer to the [Drupal VM documentation](http://docs.drupalvm.com/en/latest/) for any customizations.
 
 ## FAQ
 
