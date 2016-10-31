@@ -105,3 +105,40 @@ section of composer.json:
     }
 }
 ```
+
+### How can I add libraries using composer.json?
+
+It is possible to use libraries with composer with an extra repository for each
+library you want to use. For example, to use colorbox:
+```json
+"repositories": [
+    ...,
+    {
+        "type": "package",
+        "package": {
+            "name": "jackmoore/colorbox",
+            "type": "drupal-library",
+            "version": "1.6.4",
+            "dist": {
+                "url": "https://github.com/jackmoore/colorbox/archive/1.6.4.zip",
+                "type": "zip"
+            },
+            "source": {
+                "url": "https://github.com/jackmoore/colorbox.git",
+                "type": "git",
+                "reference": "tags/1.6.4"
+            }
+        }
+    }
+],
+```
+
+The version has to be manually updated with a new release as composer can't
+detect a new version from the above package.
+
+When managing libraries with composer this way, you may not want to add it to
+version control. In that case, add specific directories to the .gitignore file.
+```
+# Specific libraries (which we manage with composer)
+docroot/libraries/colorbox
+```
