@@ -215,6 +215,124 @@ If you want to run the tests from a different folder, then provide the path to
 $ ./vendor/bin/behat -c tests/behat.yml
 ```
 
+### Testing JavaScript functionality
+
+For testing functionality written in JavaScript you can use software such as
+Selenium and PhantomJS to run Behat tests in a real browser.
+
+To enable JavaScript testing for a Behat scenario, add the `@javascript` tag to
+the test, and make sure the WebDriver of your choice is running in the
+background.
+
+#### Chrome
+
+Set the following build property in your `build.properties` file:
+
+```
+# The browser to use for testing, either 'firefox' or 'chrome'.
+behat.browser_name = chrome
+```
+
+Make sure to regenerate your Behat configuration file after making this change:
+
+```
+$ ./vendor/bin/phing setup-behat
+```
+
+You can install Selenium and Chrome / Chromium locally on your system and start
+Selenium with `java -jar selenium-server-standalone.jar`.
+
+However the simplest way of running Chrome on Selenium is using a container.
+You can use Docker to install and run it with a single command. This will
+download all necessary files and start it in the background in headless mode:
+
+```
+$ docker run -d -p 4444:4444 --network=host selenium/standalone-chrome
+```
+
+If you want to look at the browser running, you can run the 'debug' version and
+use a VNC client such as TigerVNC to connect to the browser (the password is
+'secret'):
+
+```
+$ docker run -d -p 4444:4444 -p 5900:5900 --network=host selenium/standalone-chrome-debug
+```
+
+For more information on running a containerized Selenium, see
+[SeleniumHQ/docker-selenium](https://github.com/SeleniumHQ/docker-selenium).
+
+
+#### Firefox
+
+Set the following build property in your `build.properties` file:
+
+```
+# The browser to use for testing, either 'firefox' or 'chrome'.
+behat.browser_name = firefox
+```
+Make sure to regenerate your Behat configuration file after making this change:
+
+```
+$ ./vendor/bin/phing setup-behat
+```
+
+You can install Selenium and Firefox locally on your system and start Selenium
+with `java -jar selenium-server-standalone.jar`.
+
+However the simplest way of running Firefox on Selenium is using a container.
+You can use Docker to install and run it with a single command. This will
+download all necessary files and start it in the background in headless mode:
+
+
+```
+$ docker run -d -p 4444:4444 --network=host selenium/standalone-firefox:2.53.1
+```
+
+Note that the WebDriver implementation for Firefox
+([Marionette](https://developer.mozilla.org/en-US/docs/Mozilla/QA/Marionette))
+is not yet complete for Selenium 3, so we are specifying the latest 2.x
+version. This will probably be ready soon, when Selenium 3 is out of beta.
+
+If you want to look at the browser running, you can run the 'debug' version and
+use a VNC client such as TigerVNC to connect to the browser (the password is
+'secret'):
+
+```
+$ docker run -d -p 4444:4444 -p 5900:5900 --network=host selenium/standalone-firefox-debug:2.53.1
+```
+
+For more information on running a containerized Selenium, see
+[SeleniumHQ/docker-selenium](https://github.com/SeleniumHQ/docker-selenium).
+
+
+#### PhantomJS
+
+PhantomJS is a headless browser based on Webkit, which is the same engine which
+Chrome uses. You can install it from your package manager, or [download
+it](http://phantomjs.org/download.html).
+
+Declare that you are using a Chrome-alike browser in your `build.properties`
+file:
+
+
+```
+# The browser to use for testing, either 'firefox' or 'chrome'.
+behat.browser_name = chrome
+```
+
+Make sure to regenerate your Behat configuration file after making this change:
+
+```
+$ ./vendor/bin/phing setup-behat
+```
+
+Now you can run PhantomJS in WebDriver mode, and run your tests. All your tests
+marked with `@javascript` will now be executed using PhantomJS.
+
+```
+$ phantomjs --webdriver=4444
+```
+
 
 ## Running PHPUnit tests
 

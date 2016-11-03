@@ -46,6 +46,7 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "behat/mink-selenium2-driver": "dev-master#721cbbaf37f71434f6acb604dc3a17a6a9be0c4c",
         "drupal/coder": "~8.2.7",
         "drupal/config_update": "1.*@dev",
         "drupal/devel": "1.*@dev",

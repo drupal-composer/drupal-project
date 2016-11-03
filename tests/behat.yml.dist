@@ -8,13 +8,14 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\MinkContext
       filters:
-        tags: "~@wip"
+        tags: '~@wip'
   extensions:
     Behat\MinkExtension:
       base-url: '${behat.base_url}'
       files_path: '${behat.files.path}'
       goutte: ~
       javascript_session: 'selenium2'
+      browser_name: '${behat.browser_name}'
       selenium2:
         wd_host: '${behat.webdriver_url}'
     Drupal\DrupalExtension:
