@@ -53,11 +53,11 @@
             root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
-            <option name="db-url" value="${drupal.db.url}"/>
-            <option name="site-name" value="${website.site.name}"/>
-            <option name="account-name" value="${drupal.admin.username}"/>
-            <option name="account-pass" value="${drupal.admin.password}"/>
-            <option name="account-mail" value="${drupal.admin.email}"/>
+            <option name="db-url" value="${drupal.db.url}" />
+            <option name="site-name" value="${website.site.name}" />
+            <option name="account-name" value="${drupal.admin.username}" />
+            <option name="account-pass" value="${drupal.admin.password}" />
+            <option name="account-mail" value="${drupal.admin.email}" />
             <param>${website.profile.name}</param>
             <!-- Disable sending of e-mails during installation. -->
             <param>install_configure_form.update_status_module='array(FALSE,FALSE)'</param>
@@ -94,7 +94,7 @@
         />
 
         <!-- Set up the git pre-push hook. -->
-        <phingcall target="disable-pre-push"/>
+        <phingcall target="disable-pre-push" />
         <if>
             <equals arg1="${phpcs.prepush.enable}" arg2="1" />
             <then>
@@ -167,8 +167,8 @@
                 root="${website.drupal.dir}"
                 bin="${drush.bin}"
                 verbose="${drush.verbose}">
-            <option name="mail" value="user@example.com"/>
-            <option name="password" value="user"/>
+            <option name="mail" value="user@example.com" />
+            <option name="password" value="user" />
             <param>user</param>
         </drush>
     </target>
@@ -181,8 +181,8 @@
             root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
-            <option name="mail" value="${drupal.demo.user}@example.com"/>
-            <option name="password" value="${drupal.demo.user}"/>
+            <option name="mail" value="${drupal.demo.user}@example.com" />
+            <option name="password" value="${drupal.demo.user}" />
             <param>${drupal.demo.user}</param>
         </drush>
         <drush
@@ -191,18 +191,18 @@
             root="${website.drupal.dir}"
             bin="${drush.bin}"
             verbose="${drush.verbose}">
-            <option name="name" value="${drupal.demo.user}"/>
+            <option name="name" value="${drupal.demo.user}" />
             <param>${drupal.demo.user}</param>
         </drush>
     </target>
 
     <!-- Set up development configuration, including on-screen error logging and debugging options. -->
     <target name="enable-dev-settings">
-        <phingcall target="writable-settings-folder"/>
+        <phingcall target="writable-settings-folder" />
         <!-- Copy settings file containing development values, but preserve any existing local settings. -->
         <copy file="${website.settings.local.php.example}" tofile="${website.settings.local.php}" overwrite="false" />
         <!-- Uncomment the inclusion of the local settings file in settings.php. -->
-        <phingcall target="writable-settings-php"/>
+        <phingcall target="writable-settings-php" />
         <reflexive>
             <fileset dir="${website.settings.dir}">
                 <include pattern="settings.php" />
