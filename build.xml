@@ -118,17 +118,7 @@
             </then>
         </if>
         <echo message="Creating behat.yml configuration file" />
-        <loadfile property="behat.yml.content" file="${behat.yml.template}">
-            <filterchain>
-                <replacetokens>
-                    <token key="behat.base_url" value="${behat.base_url}" />
-                    <token key="behat.files.path" value="${behat.files.path}" />
-                    <token key="website.drupal.dir" value="${website.drupal.dir}" />
-                    <token key="behat.subcontexts.path" value="${behat.subcontexts.path}" />
-                    <token key="behat.formatter.name" value="${behat.formatter.name}" />
-                </replacetokens>
-            </filterchain>
-        </loadfile>
+        <loadfile property="behat.yml.content" file="${behat.yml.template}" />
         <echo message="${behat.yml.content}" file="${behat.yml.path}" />
     </target>
 
