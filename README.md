@@ -142,3 +142,12 @@ version control. In that case, add specific directories to the .gitignore file.
 # Specific libraries (which we manage with composer)
 docroot/libraries/colorbox
 ```
+
+*Note*: This has a few limitations and should be avoided when possible.
+
+* Composer will not update the package unless you change the `version` field.
+* Composer will not update the commit references, so if you use master as
+  reference you will have to delete the package to force an update, and will
+  have to deal with an unstable lock file.
+
+For more details, see https://getcomposer.org/doc/05-repositories.md#package-2
