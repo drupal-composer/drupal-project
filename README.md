@@ -83,11 +83,32 @@ that the generated `composer.json` might differ from this project's file.
 
 ## FAQ
 
-### Should I commit the contrib modules I download
+### Should I commit the contrib modules I download?
 
 Composer recommends **no**. They provide [argumentation against but also 
 workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
 
+### Should I commit the scaffolding files?
+
+The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
+index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
+to not check them into your version control system (e.g. git). If that is the case for your project it might be
+convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
+achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
+
+```json
+"scripts": {
+    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+    "post-install-cmd": [
+        "@drupal-scaffold",
+        ...
+    ],
+    "post-update-cmd": [
+        "@drupal-scaffold",
+        ...        
+    ]
+},
+```
 ### How can I apply patches to downloaded modules?
 
 If you need to apply patches (depending on the project being modified, a pull 
