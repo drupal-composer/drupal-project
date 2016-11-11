@@ -3,7 +3,7 @@
   "description": "Composer template for Drupal projects",
   "repositories": [{
     "type": "composer",
-    "url": "https://packages.drupal.org/8"
+    "url": "https://packages.drupal.org/7"
   }],
   "require": {
     "composer/installers": "~1.0",
