@@ -3,15 +3,15 @@
   "description": "Composer template for Drupal projects",
   "repositories": [{
     "type": "composer",
-    "url": "https://packagist.drupal-composer.org"
+    "url": "https://packages.drupal.org/7"
   }],
   "require": {
     "composer/installers": "~1.0",
     "derhasi/composer-preserve-paths": "0.1.*",
-    "drupal/drupal": "7.*"
+    "drupal/core": "7.*"
   },
   "conflict": {
-    "drupal/core": "8.*"
+    "drupal/drupal": "*"
   },
   "scripts": {
     "post-create-project-cmd": [
