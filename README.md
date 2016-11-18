@@ -101,11 +101,11 @@ achieve that by registering `@drupal-scaffold` as post-install and post-update c
     "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
     "post-install-cmd": [
         "@drupal-scaffold",
-        ...
+        "..."
     ],
     "post-update-cmd": [
         "@drupal-scaffold",
-        ...        
+        "..."
     ]
 },
 ```
