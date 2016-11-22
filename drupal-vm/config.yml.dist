@@ -1,0 +1,22 @@
+---
+vagrant_hostname: drupalvm.dev
+vagrant_machine_name: drupalvm
+vagrant_ip: 192.168.88.88
+
+vagrant_synced_folders:
+  - local_path: .
+    destination: /var/www/drupalvm
+    type: nfs
+    create: true
+
+build_makefile: false
+build_composer: true
+build_composer_project: false
+
+drupal_composer_path: false
+drupal_composer_install_dir: "/var/www/drupalvm"
+drupal_composer_dependencies:
+drupal_core_path: "{{ drupal_composer_install_dir }}/web"
+drupal_enable_modules: []
+
+install_site: true
