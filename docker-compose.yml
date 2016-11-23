@@ -1,0 +1,41 @@
+# PHP Web Server
+web:
+  # Build the Drupal 8 image
+  # https://hub.docker.com/r/_/drupal/
+  image: drush/drush
+  # Environment variables
+  environment:
+    # Drupal settings
+    DRUPAL_PROFILE: config_installer
+    DRUPAL_SITE_NAME: Drupal
+    DRUPAL_USER: admin
+    DRUPAL_PASS: admin
+    DRUPAL_DBURL: mysql://drupal:drupal@database:3306/drupal
+  ports:
+    # Host's port 8000 will map to the web server's port 80
+    - "8000:80"
+  volumes:
+    # Mount the current folder to the root /dais directory
+    - ./:/app
+  links:
+    - database:database
+  # Start the webserver in Drupal's docroot
+  entrypoint: php
+  command: -S 0.0.0.0:80 -t web
+  working_dir: /app
+  restart: always
+
+# SQL Server
+database:
+  # Build on the MariaDB image
+  # https://hub.docker.com/r/_/mariadb/
+  image: mariadb:10
+  environment:
+    MYSQL_USER: drupal
+    MYSQL_PASSWORD: drupal
+    MYSQL_DATABASE: drupal
+    MYSQL_ROOT_PASSWORD: ''
+    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+  expose:
+    - "3306"
+  restart: always
