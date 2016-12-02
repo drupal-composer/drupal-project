@@ -1,2 +1,7 @@
+# Pantheon Configuration
+# https://pantheon.io/docs/pantheon-yml/
 api_version: 1
+
+# Nested "web" Docroot
+# https://pantheon.io/docs/pantheon-yml/#nested-docroot
 web_docroot: true
