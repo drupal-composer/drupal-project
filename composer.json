@@ -1,6 +1,6 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "kalamuna/drupal-project",
+    "description": "Project template for Kalamuna projects with Drupal",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
@@ -55,6 +55,9 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "deploy": [
+            "rm .gitignore"
         ]
     },
     "extra": {

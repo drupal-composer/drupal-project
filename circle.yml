@@ -1,0 +1,19 @@
+machine:
+  node:
+    version: 4.2.2
+  php:
+    version: 5.5.31
+  hosts:
+    localhost: 127.0.0.1
+
+deployment:
+  pantheon:
+    # Deploy only when:
+    #   1. The branch isn't a feature branch (no /).
+    #   2. The branch name is less then or equal to 11 characters long.
+    branch: /^[^./A-Z]{0,11}$/
+    commands:
+      - git config --global user.name "Kala C. Bot"
+      - git config --global user.email "kalacommitbot@kalamuna.com"
+      - echo -e "Host *drush.in\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+      - npm run deploy
