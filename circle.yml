@@ -3,8 +3,6 @@ machine:
     version: 4.2.2
   php:
     version: 5.5.31
-  hosts:
-    localhost: 127.0.0.1
 
 deployment:
   pantheon:
