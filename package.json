@@ -5,6 +5,7 @@
   "private": true,
   "scripts": {
     "test": "echo 'No tests yet.'",
+    "predeploy": "npm i && composer install",
     "deploy": "npm run deploy:gitignore && git add -A && npm run deploy:push",
     "deploy:gitignore": "rm -rf .gitignore",
     "deploy:push": "grunt buildcontrol:deploy"
