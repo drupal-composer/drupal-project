@@ -55,6 +55,9 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "deploy": [
+            "rm .gitignore"
         ]
     },
     "extra": {
