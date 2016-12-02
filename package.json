@@ -4,6 +4,7 @@
   "license": "GPL-2.0",
   "private": true,
   "scripts": {
+    "test": "echo 'No tests yet.'",
     "deploy": "npm run deploy:gitignore && git add -A && npm run deploy:push",
     "deploy:gitignore": "rm -rf .gitignore",
     "deploy:push": "grunt buildcontrol:deploy"
