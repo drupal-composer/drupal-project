@@ -14,7 +14,7 @@ if (file_exists($filepath)) {
   // Setup reverse-proxies and varnish.
   if (!empty($env['reverse_proxy'])) {
     $settings['reverse_proxy'] = TRUE;
-    $settings['reverse_proxy_addresses'] = array($env['reverse_proxy_host']);
+    $settings['reverse_proxy_addresses'] = isset($env['reverse_proxy_ips']) ? $env['reverse_proxy_ips'] : ['127.0.0.1'];
     // Support reverse-proxies that take care of HTTPS.
     if (isset($_SERVER['HTTP_X_FORWARDED_PROTO']) && $_SERVER['HTTP_X_FORWARDED_PROTO'] == 'https') {
       $_SERVER['HTTPS'] = 'on';
