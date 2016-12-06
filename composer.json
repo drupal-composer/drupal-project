@@ -35,8 +35,8 @@
     ],
     "require": {
         "composer/composer": "~1.0",
-        "composer/installers": "^1.0.20",
-        "drupal-composer/drupal-scaffold": "^2.0.1",
+        "composer/installers": "^1.2",
+        "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0",
         "drupal/console": "~1.0",
         "drupal/core": "~8.0",
