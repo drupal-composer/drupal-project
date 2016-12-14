@@ -121,9 +121,6 @@ All options you can use can be found in the `build.properties.dist` file. Just
 copy the lines you want to override and change their values. For example:
 
 ```
-# The location of the Composer binary.
-composer.bin = /usr/bin/composer
-
 # Database settings.
 drupal.db.name = my_database
 drupal.db.user = root
@@ -134,7 +131,7 @@ drupal.admin.username = admin
 drupal.admin.password = admin
 
 # The base URL to use in tests.
-drupal.base_url = http://platform.local
+drupal.base_url = http://myproject.local
 
 # Verbosity of Drush commands. Set to 'yes' for verbose output.
 drush.verbose = yes
