@@ -1,41 +1,101 @@
-# PHP Web Server
-web:
-  # Build the Drupal 8 image
-  # https://hub.docker.com/r/_/drupal/
-  image: drush/drush
-  # Environment variables
-  environment:
-    # Drupal settings
-    DRUPAL_PROFILE: config_installer
-    DRUPAL_SITE_NAME: Drupal
-    DRUPAL_USER: admin
-    DRUPAL_PASS: admin
-    DRUPAL_DBURL: mysql://drupal:drupal@database:3306/drupal
-  ports:
-    # Host's port 8000 will map to the web server's port 80
-    - "8000:80"
-  volumes:
-    # Mount the current folder to the root /dais directory
-    - ./:/app
-  links:
-    - database:database
-  # Start the webserver in Drupal's docroot
-  entrypoint: php
-  command: -S 0.0.0.0:80 -t web
-  working_dir: /app
-  restart: always
+version: "2"
 
-# SQL Server
-database:
-  # Build on the MariaDB image
-  # https://hub.docker.com/r/_/mariadb/
-  image: mariadb:10
-  environment:
-    MYSQL_USER: drupal
-    MYSQL_PASSWORD: drupal
-    MYSQL_DATABASE: drupal
-    MYSQL_ROOT_PASSWORD: ''
-    MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
-  expose:
-    - "3306"
-  restart: always
+services:
+  mariadb:
+    image: wodby/drupal-mariadb
+    environment:
+      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_DATABASE: drupal
+      MYSQL_USER: drupal
+      MYSQL_PASSWORD: drupal
+#    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # The simple way to override the mariadb config.
+    volumes:
+      - ./docker-runtime/mariadb:/var/lib/mysql
+#      - ./docker-runtime/mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
+
+  php:
+    image: wodby/drupal-php:7.0 # Allowed: 7.0, 5.6.
+    environment:
+      PHP_SITE_NAME: dev
+      PHP_HOST_NAME: localhost:8000
+      PHP_DOCROOT: web # Relative path inside the /var/www/html/ directory.
+      PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
+      # PHP_XDEBUG_ENABLED: 1
+      # PHP_XDEBUG_AUTOSTART: 1
+      # PHP_XDEBUG_REMOTE_CONNECT_BACK: 0         # This is needed to respect remote.host setting bellow
+      # PHP_XDEBUG_REMOTE_HOST: "10.254.254.254"  # You will also need to 'sudo ifconfig lo0 alias 10.254.254.254'
+    volumes:
+      - ./:/var/www/html
+
+  nginx:
+    image: wodby/drupal-nginx
+    environment:
+      NGINX_SERVER_NAME: localhost
+      NGINX_UPSTREAM_NAME: php
+#      NGINX_DOCROOT: public # Relative path inside the /var/www/html/ directory.
+      DRUPAL_VERSION: 8 # Allowed: 7, 8.
+    volumes_from:
+      - php
+    ports:
+      - "8000:80"
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: mariadb
+      PMA_USER: drupal
+      PMA_PASSWORD: drupal
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    ports:
+     - "8001:80"
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "8002:8025"
+
+#  redis:
+#    image: redis:3.2-alpine
+
+#  memcached:
+#    image: memcached:1.4-alpine
+
+#  memcached-admin:
+#    image: phynias/phpmemcachedadmin
+#    ports:
+#      - "8006:80"
+
+#  solr:
+#    image: solr:5.5-alpine
+#    volumes:
+#      - ./docker-runtime/solr:/opt/solr/server/solr/mycores
+#    entrypoint:
+#      - docker-entrypoint.sh
+#      - solr-precreate
+#      - main
+#    ports:
+#      - "8003:8983"
+
+#  varnish:
+#    image: wodby/drupal-varnish
+#    depends_on:
+#      - nginx
+#    environment:
+#      VARNISH_SECRET: secret
+#      VARNISH_BACKEND_HOST: nginx
+#      VARNISH_BACKEND_PORT: 80
+#      VARNISH_MEMORY_SIZE: 256M
+#      VARNISH_STORAGE_SIZE: 1024M
+#    ports:
+#      - "8004:6081" # HTTP Proxy
+#      - "8005:6082" # Control terminal
+
+#  sshd:
+#    image: wodby/drupal-sshd
+#    environment:
+#      SSH_PUB_KEY: "ssh-rsa ..."
+#    volumes_from:
+#      - php
+#    ports:
+#      - "8006:22"
