@@ -25,7 +25,8 @@ drupal.admin.password = admin
 drupal.admin.email = admin@example.com
 
 # Comma-separated list of demo users to create. The username and password will
-# be taken from the role.
+# be taken from the role. A normal authenticated user with username and password
+# 'user' will also be created.
 drupal.demo.users = administrator
 
 # The base URL. This is used for doing functional tests in Behat and PHPUnit.
