@@ -189,7 +189,7 @@
             <filterchain>
                 <replaceregexp>
                     <regexp
-                        pattern="^# (if \(file_exists\(__DIR__ \. '\/settings\.local\.php'\)\) \{\n)# (  include __DIR__ \. '\/settings\.local\.php';\n)# (\})"
+                        pattern="^# (if \(file_exists\(\$app_root \. '\/' \. \$site_path \. '\/settings\.local\.php'\)\) \{\n)# (  include \$app_root \. '\/' \. \$site_path \. '\/settings\.local\.php';\n)# (\})"
                         replace="\1\2\3"
                         modifiers="m" />
                 </replaceregexp>
