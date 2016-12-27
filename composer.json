@@ -1,10 +1,12 @@
 {
   "name": "drupal-composer/drupal-project",
   "description": "Composer template for Drupal projects",
-  "repositories": [{
-    "type": "composer",
-    "url": "https://packagist.drupal-composer.org"
-  }],
+  "repositories": {
+    "drupal": {
+      "type": "composer",
+      "url":  "https://packages.drupal.org/7"
+    }
+  },
   "require": {
     "composer/installers": "~1.0",
     "derhasi/composer-preserve-paths": "0.1.*",
