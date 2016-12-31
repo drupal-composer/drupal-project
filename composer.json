@@ -56,19 +56,19 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "scripts/composer/process-replacements.php",
-        "init-setup": "@post-install-cmd",
-        "post-create-project-cmd": [
+        "init-setup": [
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
-            "@process-replacements",
+            "@process-replacements"
+        ],
+        "post-create-project-cmd": [
             "drush dpsetup --force",
             "@init-setup"
         ],
-        "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ]
+        "post-install-cmd": "@init-setup",
+        "post-update-cmd": "@init-setup"
     },
     "extra": {
         "installer-types": ["library"],
