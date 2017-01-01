@@ -7,8 +7,8 @@
 ## Install with vagrant plugin install $name
 ####################################################
 
-# Get the right base directory if the Vagrantfile was a symlink.
-base_path = File.dirname(File.realdirpath(__FILE__));
+# Get the right base directory.
+base_path = File.dirname(__FILE__);
 ENV['VAGRANT_DEFAULT_PROVIDER'] = 'docker'
 require 'yaml'
 
