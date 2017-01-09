@@ -8,12 +8,6 @@
             "role": "Creator."
         }
     ],
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
     "require": {
         "composer/installers": "^1.2",
         "drupal-composer/drupal-scaffold": "^2.2",
@@ -86,6 +80,7 @@
         "installer-types": ["library"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
+            "web/modules/drunomics/{$name}": ["vendor:drunomics"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
@@ -94,9 +89,7 @@
                 "vendor:bower-asset",
                 "vendor:npm-asset"
             ],
-            "drush/contrib/{$name}": ["type:drupal-drush"],
-            "web/modules/drunomics/{$name}": ["vendor:drunomics"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"]
+            "drush/contrib/{$name}": ["type:drupal-drush"]
         },
         "merge-plugin": {
             "include": [
