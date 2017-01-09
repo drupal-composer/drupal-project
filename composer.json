@@ -70,7 +70,7 @@
             "@process-replacements"
         ],
         "post-create-project-cmd": [
-            "drush dpsetup --force",
+            "ln -sr web/sites/default/settings.vagrant.php web/sites/default/settings.php",
             "@init-setup"
         ],
         "post-install-cmd": "@init-setup",
