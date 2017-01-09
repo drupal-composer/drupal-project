@@ -2,7 +2,7 @@
 
 // Add in shared based settings and optionally environment specific settings.
 require __DIR__ . '/settings.base.php';
-require __DIR__ . '/../settings.environment.php';
+require DRUPAL_ROOT . '/sites/settings.environment.php';
 
 // Support drunomics ci-environment.
 if (empty($env_settings_active) && getenv('DRUNOMICS_CI')) {

@@ -2,7 +2,7 @@
 
 // Add in shared based settings and optionally environment specific settings.
 require __DIR__ . '/settings.base.php';
-require __DIR__ . '/../settings.environment.php';
+require DRUPAL_ROOT . '/sites/settings.environment.php';
 
 // Define custom settings if no environment.json is present.
 if (empty($env_settings_active)) {
