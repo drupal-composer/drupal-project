@@ -73,6 +73,7 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-root-package-install": [
+            "rm README.md && mv README.md.dist README.md",
             "@fetch-devsetup",
             "@process-replacements"
         ],
