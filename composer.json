@@ -56,6 +56,13 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "scripts/composer/process-replacements.php",
+        "fetch-devsetup" : [
+            "mkdir devsetup-tmp",
+            "git clone git@bitbucket.org:drunomics/project-devsetup.git devsetup-tmp",
+            "rm -rf devsetup-tmp/.git",
+            "cp -rf devsetup-tmp/* .",
+            "rm -rf devsetup-tmp"
+        ],
         "init-setup": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
@@ -66,7 +73,7 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-root-package-install": [
-            "rm README.md && mv README.md.dist README.md",
+            "@fetch-devsetup",
             "@process-replacements"
         ],
         "post-create-project-cmd": [
