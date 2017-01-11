@@ -12,7 +12,7 @@ website.site.name = MyDrupalProject
 
 # Database settings.
 drupal.db.type = mysql
-drupal.db.name = myproject
+drupal.db.name = ${project.name}
 drupal.db.user = root
 drupal.db.password =
 drupal.db.host = 127.0.0.1
