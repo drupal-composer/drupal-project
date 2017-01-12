@@ -5,6 +5,7 @@
 /web/modules/contrib/
 /web/themes/contrib/
 /web/profiles/contrib/
+/web/libraries/
 
 # Ignore Drupal's file directory
 /web/sites/*/files/
