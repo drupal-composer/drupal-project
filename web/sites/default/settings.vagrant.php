@@ -1,8 +1,8 @@
 <?php
 
 // Add in shared based settings and optionally environment specific settings.
-require __DIR__ . '/settings.base.php';
-require DRUPAL_ROOT . '/sites/settings.environment.php';
+require __DIR__ . '/base.settings.php';
+require DRUPAL_ROOT . '/sites/environment.settings.php';
 
 // Define custom settings if no environment.json is present.
 if (empty($env_settings_active)) {
@@ -25,4 +25,4 @@ if (empty($env_settings_active)) {
   $settings['file_private_path'] = '../files-private';
 }
 
-include __DIR__ . '/../settings.devel.php';
+include __DIR__ . '/../development.settings.php';

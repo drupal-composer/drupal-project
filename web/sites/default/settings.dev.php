@@ -1,8 +1,8 @@
 <?php
 
 // Add in shared based settings and optionally environment specific settings.
-require __DIR__ . '/settings.base.php';
-require DRUPAL_ROOT . '/sites/settings.environment.php';
+require __DIR__ . '/base.settings.php';
+require DRUPAL_ROOT . '/sites/environment.settings.php';
 
 // Support drunomics ci-environment.
 if (empty($env_settings_active) && getenv('DRUNOMICS_CI')) {
@@ -34,5 +34,6 @@ if (empty($env_settings_active) && getenv('DRUNOMICS_CI')) {
 // Show errors on dev or test environments.
 $config['system.logging']['error_level'] = 'verbose';
 
-// We usually run CI sites in production mode.
-// include __DIR__ . '/../settings.devel.php';
+// Neither add production or development setting overrides on CI.
+// include __DIR__ . '/../development.settings.php';
+// include __DIR__ . '/../production.settings.php';

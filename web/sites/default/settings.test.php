@@ -1,8 +1,8 @@
 <?php
 
 // Add in shared based settings and optionally environment specific settings.
-require __DIR__ . '/settings.base.php';
-require DRUPAL_ROOT . '/sites/settings.environment.php';
+require __DIR__ . '/base.settings.php';
+require DRUPAL_ROOT . '/sites/environment.settings.php';
 
 
 // Settings are handled via environment.json.
@@ -13,5 +13,5 @@ if (empty($env_settings_active)) {
 // Show errors on dev or test environments.
 $config['system.logging']['error_level'] = 'verbose';
 
-// Ususally, there are no development settings on production environments.
-// include __DIR__ . '/../settings.devel.php';
+// Add production settings.
+include __DIR__ . '/../production.settings.php';

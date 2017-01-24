@@ -1,6 +1,3 @@
-# Custom file, combining development.services.yml and default.services.yml with
-# dev settings.
-
 services:
   cache.backend.null:
     class: Drupal\Core\Cache\NullBackendFactory
