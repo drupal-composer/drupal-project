@@ -46,6 +46,10 @@ $options['shell-aliases']['deploy-all'] = "!drush deploy" . " ";
 $options['shell-aliases']['deploy'] = "!drush composer install && drush entity-updates -y && drush updatedb -y && drush cim -y && drush cr";
 $options['shell-aliases']['composer'] = "!composer --working-dir=$(drush dd)/../ ";
 
-$dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admin -y --config-dir=../config minimal';
+# Install command for "dsi" and "dbup" aliases:
+$dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admin -y standard';
+# Variant once config is exported:
+#$dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admin -y --config-dir=../config standard';
+
 $options['shell-aliases']['dsi'] = "!chmod +w sites/default/settings.php; drush sql-create -y && $dsi_base";
 $options['shell-aliases']['dbup'] = "!drush status --fields=bootstrap | grep 'bootstrap *: *Successful' 2>/dev/null || ( {$options['shell-aliases']['dsi']} )";
