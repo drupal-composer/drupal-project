@@ -20,7 +20,7 @@ dependencies:
     #- composer global require pantheon-systems/terminus
     #- git config --global user.email "ci@thinkshout.com"
     #- git config --global user.name "ThinkShout CI Bot"
-    #- terminus auth login --machine-token=$PANTHEON_TOKEN
+    #- terminus auth:login --machine-token=$PANTHEON_TOKEN
     - composer install
   post:
     - echo 'sendmail_path = /bin/true' >> /opt/circleci/php/$(phpenv global)/etc/conf.d/circle.ini
