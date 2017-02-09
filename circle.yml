@@ -32,7 +32,6 @@ test:
   pre:
     - start-webserver:
         background: true
-    - wait-for-webserver
 
   override:
     - behat --profile=ci --config behat/behat.ci.yml --format progress
