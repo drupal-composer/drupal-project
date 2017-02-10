@@ -115,7 +115,14 @@
         "patches": {
             "drupal/core": {
                 "Use 'view label' operation for ER label formatter - https://www.drupal.org/node/2692091#comment-11090279": "https://www.drupal.org/files/issues/2692091-10.patch",
-                "Telephone field with 5 digits or less fatally breaks formatter": "https://www.drupal.org/files/issues/min-length-telephone-link-2484693-26.patch"
+                "Telephone field with 5 digits or less fatally breaks formatter": "https://www.drupal.org/files/issues/min-length-telephone-link-2484693-26.patch",
+                "Repetitive warning message about uasort": "https://www.drupal.org/files/issues/2628884-3.patch",
+                "Plugin Lazy loading can cause usort warning": "https://www.drupal.org/files/issues/Iterating-through-array--2699157.patch",
+                "Make menu block follow active item": "https://www.drupal.org/files/issues/drupal-n2631468-95.patch",
+                "Fix views to correctly use IN queries that have an array of values": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
+                "Problems with a number of views grouped filters": "https://www.drupal.org/files/issues/grouped_filters-2369119-104.patch",
+                "ImageWidget::validateRequiredFields() produces a PHP Warning message if triggering element is a non-button": "https://www.drupal.org/files/issues/2745491-15.patch",
+                "DrupalBehaviorError: attach ; quickedit: entityElement.get(...) is undefined https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-18.patch"
             }
         },
         "drupal-scaffold": {
