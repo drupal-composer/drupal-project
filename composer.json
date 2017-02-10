@@ -64,7 +64,7 @@
         "drupal/redis": "^1.0-beta1",
         "drupal/simple_sitemap": "^2.8",
         "drupal/token": "^1.0-rc1",
-        "thinkshout/media": "dev-8.x-1.x",
+        "thinkshout/media": "dev-8.x-1.x"
     },
     "require-dev": {
         "drupal/drupal-driver": "dev-master",
