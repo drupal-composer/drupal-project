@@ -25,6 +25,10 @@
         {
             "type": "git",
             "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/media.git"
         }
     ],
     "require": {
@@ -48,6 +52,7 @@
         "drupal/simple_sitemap": "2.7.0",
         "drupal/token": "1.0.0-beta2",
         "drupal/config_installer": "1.3.0"
+        "thinkshout/media": "dev-8.x-1.x",
     },
     "require-dev": {
         "drupal/drupal-driver": "dev-master",
