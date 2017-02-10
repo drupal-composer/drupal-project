@@ -123,6 +123,12 @@
                 "Problems with a number of views grouped filters": "https://www.drupal.org/files/issues/grouped_filters-2369119-104.patch",
                 "ImageWidget::validateRequiredFields() produces a PHP Warning message if triggering element is a non-button": "https://www.drupal.org/files/issues/2745491-15.patch",
                 "DrupalBehaviorError: attach ; quickedit: entityElement.get(...) is undefined https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-18.patch"
+            },
+            "drupal/ctools": {
+                "Views exposed filters missing autosubmit option https://www.drupal.org/node/2475595": "https://www.drupal.org/files/issues/2475595-ctools-autocomplete-fix-24.patch"
+            },
+            "drupal/simple_sitemap": {
+                "Fix \"invalid arg supplied for foreach()\" warning on install": "https://www.drupal.org/files/issues/simple_sitemap-invalid_argument_supplied_for_foreach_sitemap_generator-2846875-5.patch"
             }
         },
         "drupal-scaffold": {
