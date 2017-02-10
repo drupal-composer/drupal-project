@@ -14,18 +14,18 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-      {
-        "type": "git",
-        "url": "https://github.com/thinkshout/DrupalDriver.git"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/thinkshout/drupalextension.git"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
-      }
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/DrupalDriver.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/drupalextension.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
+        }
     ],
     "require": {
         "composer/installers": "^1.2",
