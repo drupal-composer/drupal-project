@@ -50,10 +50,16 @@ services:
     ports:
      - "8001:80"
 
-  mailhog:
-    image: mailhog/mailhog
-    ports:
-      - "8002:8025"
+#  mailhog:
+#    image: mailhog/mailhog
+#    ports:
+#      - "8002:8025"
+
+  node:
+    image: node:6
+    volumes_from:
+      - php
+    working_dir: /var/www/html
 
 #  redis:
 #    image: redis:3.2-alpine
