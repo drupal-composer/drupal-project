@@ -1,11 +1,15 @@
 # Sites directory configuration
 
 The primary purpose of this setup is to allow for modular inclusion of settings
-files. The default setup includes settings in this order:
+files. Note that later includes override earlier ones. The default setup
+includes settings files in this order:
 
-1.  `web/sites/settings.common.php` (production settings)
-1.  `web/sites/settings.development.php` (development settings that override production settings)
-1.  `web/sites/default/settings.local.php` (local settings that override all earlier ones).
+1.  `web/sites/settings.common.php` » configuration common to all environments
+1.  `web/sites/settings.ENVIRONMENT.php` » environment-specific configuration
+    that overrides configuration in the "common" settings; e.g., "development"
+    and "production"
+1.  `web/sites/default/settings.local.php` » local environment configuration
+    that overrides all earlier configuration
 
 Because there tend to be many development environments but only one or two
 production environments, we choose to run the former out of the `default` sites
