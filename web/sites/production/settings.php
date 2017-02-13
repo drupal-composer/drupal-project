@@ -6,7 +6,7 @@
  */
 
 // Always include the "common" settings first.
-include $app_root . '/sites/settings.common.php';
+require $app_root . '/sites/settings.common.php';
 
 // Include environmental settings next.
 require "$app_root/sites/settings.production.php";
