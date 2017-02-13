@@ -15,3 +15,8 @@ deployment:
       - git config --global user.email "kalacommitbot@kalamuna.com"
       - echo -e "Host *drush.in\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
       - npm run deploy
+
+dependencies:
+  cache_directories:
+    - "node_modules"
+    - ~/.composer/cache

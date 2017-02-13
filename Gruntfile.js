@@ -8,6 +8,8 @@ module.exports = function(grunt) {
         dir: '.',
         commit: true,
         push: true,
+        shallowFetch: false,
+        fetchProgress: false,
         force: true,
         message: 'Built %sourceName% from commit %sourceCommit%',
         connectCommits: false

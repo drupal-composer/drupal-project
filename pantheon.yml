@@ -5,3 +5,8 @@ api_version: 1
 # Nested "web" Docroot
 # https://pantheon.io/docs/pantheon-yml/#nested-docroot
 web_docroot: true
+
+# Drush version
+# Target the latest version of Drush 8.
+# https://pantheon.io/docs/pantheon-yml/#drush-version
+drush_version: 8
