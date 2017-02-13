@@ -21,9 +21,12 @@ this problem.
 
 ## Usage
 
-1.  Edit `sites.php` and replace `example.com` and `stage.example.com` with the
-    URLs of your production and staging websites (whichever ones you want to run
-    with production settings).
+1.  Edit `web/sites/sites.php` and replace `example.com` and `stage.example.com`
+    with the URLs of your production and staging websites (whichever ones you
+    want to run with production settings).
+1.  Edit `web/sites/production.settings.php` and replace `^www\.example\.com$`
+    with regular expression(s) to match all possible URLs for the environment(s)
+    you listed in step (1).
 1.  Edit `settings.common.php` and modify it to match your hosting environment.
     E.g., if on Pantheon, remove the Acquia section, and vice versa.
 1.  Add a `settings.local.php` to the `web/sites/default` directory to specify
