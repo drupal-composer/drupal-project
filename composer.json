@@ -2,6 +2,7 @@
     "name": "drunomics/drupal-project",
     "description": "Project template for drunomics Drupal 8 projects with composer",
     "type": "project",
+    "license": "proprietary",
     "authors": [
         {
             "name": "drunomics GmbH",
@@ -23,7 +24,11 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/mink-phantomjs-driver": "~0.3"
+        "devinci/devinci-behat-extension": "^0.1.0",
+        "drupal/coder": "^8.2",
+        "drupal/drupal-extension": "^3.2",
+        "phpunit/phpunit": "~4.8",
+        "sensiolabs/security-checker": "^4.0"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -84,7 +89,11 @@
             "@init-setup"
         ],
         "post-install-cmd": "@init-setup",
-        "post-update-cmd": "@init-setup"
+        "post-update-cmd": "@init-setup",
+        "cs": "phpcs --colors",
+        "cbf": "phpcbf",
+        "check-security": "security-checker security:check",
+        "test": "behat -p vagrant --colors"
     },
     "extra": {
         "installer-types": ["library"],

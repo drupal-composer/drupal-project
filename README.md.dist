@@ -67,6 +67,37 @@ drush see http://docs.drush.org/en/master/.
  Cache clear/rebuild:
  ```drush cr```
 
+
+## Coding style
+
+To check the coding style for the project's custom code, run PHP code sniffer:
+
+    composer cs
+
+To automatically fix the coding style errors (as far as possible), run the PHP
+code beautifier:
+
+    composer cbf
+
+### Pre-commit checks
+
+Coding style can be checked automatically via Git's pre-commit hooks. To do so, just make sure to run the script `devsetup/setup-git-config.sh` at least once.
+
+Once configured, running pre-commit hooks can be bypassed via the Git commmit
+`--no-verify` option.
+
+### PHPstorm coding style configuration
+
+Configure the following settings:
+* Under Languages / PHP / Code Sniffer
+  - Select "local" configuration and make it point to `vendor/bin/phpcs`).
+* Under Editor / Inspections / PHP Code Sniffer validation:
+  - Select "warning" as severity.
+  - Show warnings as "warning"
+  - Show sniff name "true"
+  - Coding standard: "custom", make it point to the phpcs.xml.dist file in the
+    vcs root.
+
 ## Vagrant
 
 The following describes the local development using Vagrant.
