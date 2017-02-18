@@ -14,52 +14,69 @@
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         },
-      {
-        "type": "git",
-        "url": "https://github.com/thinkshout/DrupalDriver.git"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/thinkshout/drupalextension.git"
-      },
-      {
-        "type": "git",
-        "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
-      }
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/DrupalDriver.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/drupalextension.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/behat-drush-endpoint.git"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/thinkshout/media.git"
+        }
     ],
     "require": {
         "composer/installers": "^1.2",
         "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0",
-        "drupal/core": "8.2.*",
-        "drush/drush": "~8.0",
+        "drupal/core": "8.3.*",
+        "drush/drush": "^8.1.9",
         "drupal/console": "~1.0",
-        "drupal/admin_toolbar": "1.18.0",
-        "drupal/contact_storage": "1.0.0-beta8",
-        "drupal/ctools": "3.0.0-alpha27",
-        "drupal/devel": "1.0.0-beta1",
-        "drupal/ds": "2.6.0",
-        "drupal/entity_reference_revisions": "1.0.0",
-        "drupal/linkit": "5.0.0-beta3",
-        "drupal/layout_plugin": "1.0.0-alpha23",
-        "drupal/metatag": "1.0.0-beta11",
-        "drupal/migrate_plus": "3.0.0-beta1",
-        "drupal/pathauto": "1.0.0-beta1",
-        "drupal/simple_sitemap": "2.7.0",
-        "drupal/token": "1.0.0-beta2",
-        "drupal/config_installer": "1.3.0"
+        "drupal/admin_toolbar": "^1.18",
+        "drupal/config_installer": "^1.3",
+        "drupal/contact_storage": "^1.0-beta8",
+        "drupal/ctools": "^3.0-alpha27",
+        "drupal/ds": "^2.6",
+        "drupal/editor_advanced_link": "^1.3",
+        "drupal/entity_reference_revisions": "^1.2",
+        "drupal/email_registration": "^1.0-rc4",
+        "drupal/fast_404": "^1.0-alpha2",
+        "drupal/field_group": "1.x-dev",
+        "drupal/google_analytics": "~2.1",
+        "drupal/honeypot": "~1.23",
+        "drupal/inline_entity_form": "~1.0",
+        "drupal/layout_plugin": "^1.0-alpha23",
+        "drupal/linkit": "^5.0-beta4",
+        "drupal/menu_block": "~1.4",
+        "drupal/metatag": "^1.0",
+        "drupal/migrate_google_sheets": "1.x-dev",
+        "drupal/migrate_plus": "^3.0-beta1",
+        "drupal/migrate_tools": "^3.0-beta1",
+        "drupal/pathauto": "^1.0-rc1",
+        "drupal/redirect": "^1.0-alpha3",
+        "drupal/redis": "^1.0-beta1",
+        "drupal/simple_sitemap": "^2.8",
+        "drupal/token": "^1.0-rc1",
+        "thinkshout/media": "dev-8.x-1.x"
     },
     "require-dev": {
+        "drupal/devel": "^1.0-rc1",
         "drupal/drupal-driver": "dev-master",
         "drupal/drupal-extension": "dev-master",
         "drush-ops/behat-drush-endpoint": "dev-master",
         "jcalderonzumba/gastonjs": "^1.1@dev",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsStream": "~1.2",
+        "pantheon-systems/ci-scripts": "*",
         "phpunit/phpunit": "~4.8",
         "symfony/css-selector": "~2.8",
-        "thinkshout/robo-drupal": "dev-master",
-        "pantheon-systems/ci-scripts": "*"
+        "thinkshout/robo-drupal": "dev-master"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -98,7 +115,20 @@
         "patches": {
             "drupal/core": {
                 "Use 'view label' operation for ER label formatter - https://www.drupal.org/node/2692091#comment-11090279": "https://www.drupal.org/files/issues/2692091-10.patch",
-                "Telephone field with 5 digits or less fatally breaks formatter": "https://www.drupal.org/files/issues/min-length-telephone-link-2484693-26.patch"
+                "Telephone field with 5 digits or less fatally breaks formatter": "https://www.drupal.org/files/issues/min-length-telephone-link-2484693-26.patch",
+                "Repetitive warning message about uasort": "https://www.drupal.org/files/issues/2628884-3.patch",
+                "Plugin Lazy loading can cause usort warning": "https://www.drupal.org/files/issues/Iterating-through-array--2699157.patch",
+                "Make menu block follow active item": "https://www.drupal.org/files/issues/drupal-n2631468-95.patch",
+                "Fix views to correctly use IN queries that have an array of values": "https://www.drupal.org/files/issues/2744069-5-views-in-queries.patch",
+                "Problems with a number of views grouped filters": "https://www.drupal.org/files/issues/grouped_filters-2369119-104.patch",
+                "ImageWidget::validateRequiredFields() produces a PHP Warning message if triggering element is a non-button": "https://www.drupal.org/files/issues/2745491-15.patch",
+                "DrupalBehaviorError: attach ; quickedit: entityElement.get(...) is undefined https://www.drupal.org/node/2314185": "https://www.drupal.org/files/issues/drupalbehaviorerror-2314185-18.patch"
+            },
+            "drupal/ctools": {
+                "Views exposed filters missing autosubmit option https://www.drupal.org/node/2475595": "https://www.drupal.org/files/issues/2475595-ctools-autocomplete-fix-24.patch"
+            },
+            "drupal/simple_sitemap": {
+                "Fix \"invalid arg supplied for foreach()\" warning on install": "https://www.drupal.org/files/issues/simple_sitemap-invalid_argument_supplied_for_foreach_sitemap_generator-2846875-5.patch"
             }
         },
         "drupal-scaffold": {
