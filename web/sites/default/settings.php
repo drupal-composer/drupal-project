@@ -29,9 +29,17 @@ if (!empty($drupal_hash_salt)) {
   $settings['hash_salt'] = $drupal_hash_salt;
 }
 
-// If we're on pantheon we don't overwrite the sync directory.
+// If we're NOT on Pantheon we overwrite the sync directory with the value from
+// our pressflow settings.
 if (!defined('PANTHEON_ENVIRONMENT')) {
   $config_directories[CONFIG_SYNC_DIRECTORY] = $config_directory_name;
+}
+// If we are on Pantheon, we overwrite the sync directory with a hard-coded
+// value because Pantheon injects their own environment settings via the
+// PRESSFLOW_SETTINGS env variable and $config_directory_name will be set to
+// sites/default/config.
+else {
+  $config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
 }
 
 // Check for custom DRUPAL_INSTALL environment variable (set in
