@@ -39,6 +39,20 @@ When installing the given `composer.json` some tasks are taken care of:
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
 * Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` - _more on this soon..._
 
+## Adding patches to core, contrib modules or themes
+
+You may add a patch so you don't need to maintain separate a modified module or theme to get faster a fix or make a critical change for your project. Use as in the example.
+
+```
+"extra": {
+  "patches": {
+    "drupal/drupal": {
+      "Add startup configuration for PHP server": "https://www.drupal.org/files/issues/add_a_startup-1543858-30.patch"
+    }
+  }
+}
+```
+
 
 ## FAQ
 
