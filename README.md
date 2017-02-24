@@ -37,11 +37,11 @@ When installing the given `composer.json` some tasks are taken care of:
 * Modules (packages of type `drupal-module`) will be placed in `web/sites/all/modules/contrib/`
 * Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
-* Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` - _more on this soon..._
+* Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` (See Libraries)
 
 ## Adding patches to core, contrib modules or themes
 
-You may add a patch so you don't need to maintain separate a modified module or theme to get faster a fix or make a critical change for your project. Use as in the example.
+You may add a patch so you don't need to maintain separate a modified module or theme to get faster a fix or make a critical change for your project. Add in `composer.json` as in the example.
 
 ```
 "extra": {
@@ -53,6 +53,39 @@ You may add a patch so you don't need to maintain separate a modified module or 
 }
 ```
 
+## Libraries
+
+Libraries normally would be extra packages that need to be public available (CSS and JS).
+Normally this are not maintained using Composer, but if you want to have a 100% Composer deployment and benefit from patches you can use in `composer.json` this example, changing the `repositories` section and adding in `require` section:
+```
+
+"repositories": {
+  ...
+  "slick": {
+    "type": "package",
+    "package": {
+        "name": "kenwheeler/slick",
+        "version": "1.6.0",
+        "dist": {
+            "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
+            "type": "zip"
+        },
+        "source": {
+            "url": "https://github.com/kenwheeler/slick.git",
+            "type": "git",
+            "reference": "1.6.0"
+        },
+        "type": "drupal-library"
+    }
+  }
+},
+"require": {
+  ...
+  "kenwheeler/slick": "~1.6.0"
+},
+```
+After this run `composer update --lock` to install just the manually managed package.
+_(You may run `composer require "kenwheeler/slick:~1.6.0"` as well if you add just the package definition)_
 
 ## FAQ
 
