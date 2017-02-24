@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=7.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
-This project template should provide a kickstart for managing your site 
+This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
 If you want to know, how to use it as replacement for
@@ -26,7 +26,7 @@ With `composer require ...` you can download new dependencies to your installati
 
 ```
 cd some-dir
-composer require drupal/ctools:7.*
+composer require "drupal/ctools:~1.12"
 ```
 
 ## What does the template do?
@@ -37,12 +37,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Modules (packages of type `drupal-module`) will be placed in `web/sites/all/modules/contrib/`
 * Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
+* Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` - _more on this soon..._
 
 
 ## FAQ
@@ -50,4 +45,3 @@ that the generated `composer.json` might differ from this project's file.
 ### Should I commit the contrib modules I download
 
 Composer recommends **no**. They provide [argumentation against but also workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
-
