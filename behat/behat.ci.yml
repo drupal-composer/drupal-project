@@ -8,8 +8,8 @@ ci:
       base_url: http://localhost/
     Drupal\DrupalExtension:
       drupal:
-        drupal_root: '\home\ubuntu\drupal-project\web'
+        drupal_root: '/home/ubuntu/drupal-project/web'
       drush:
-        root: '\home\ubuntu\drupal-project\web'
+        root: '/home/ubuntu/drupal-project/web'
 imports:
   - behat.yml
