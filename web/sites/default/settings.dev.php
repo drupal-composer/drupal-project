@@ -29,6 +29,7 @@ if (empty($env_settings_active) && getenv('DRUNOMICS_CI')) {
   $settings['file_chmod_directory'] = octdec(2770);
   $settings['file_public_path'] = 'files';
   $settings['file_private_path'] = '../private';
+  $config['system.file']['path']['temporary'] = '../files-tmp';
 }
 
 // Show errors on dev or test environments.
