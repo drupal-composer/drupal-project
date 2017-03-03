@@ -20,7 +20,6 @@
     "cweagans/composer-patches": "~1.0",
     "derhasi/composer-preserve-paths": "0.1.*",
     "drush/drush": "~8.0",
-    "drush/config-extra": "1.*",
     "drupal/drupal": "7.*",
     "drupal/composer_autoloader": "1.*"
   },
