@@ -28,9 +28,8 @@
             }
         },
         {
-            "_comment": "The PhingDrushTask module does not currently have a D8 release and is not available on https://packages.drupal.org/8. See https://www.drupal.org/node/2817131.",
             "type": "vcs",
-            "url": "git@github.com:pfrenssen/phingdrushtask.git"
+            "url": "https://git.drupal.org/project/phingdrushtask.git"
         }
     ],
     "require": {
