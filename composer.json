@@ -1,6 +1,6 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "pfrenssen/drupal-project",
+    "description": "Project template for Drupal 8 projects with Composer, Phing and Behat",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
@@ -13,22 +13,49 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "pfrenssen/phpcs-pre-push",
+                "version": "1.0",
+                "type": "git-hook",
+                "source": {
+                    "url": "https://gist.github.com/498fc52fea3f965f6640.git",
+                    "type": "git",
+                    "reference": "master"
+                }
+            }
+        },
+        {
+            "type": "vcs",
+            "url": "https://git.drupal.org/project/phingdrushtask.git"
         }
     ],
     "require": {
+        "composer/composer": "~1.0",
         "composer/installers": "^1.2",
         "drupal-composer/drupal-scaffold": "^2.2",
         "cweagans/composer-patches": "~1.0",
+        "drupal/console": "~1.0",
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
-        "drupal/console": "~1.0"
+        "php": ">=5.5.9"
     },
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "~1.0.2",
+        "behat/mink-selenium2-driver": "dev-master#721cbbaf37f71434f6acb604dc3a17a6a9be0c4c",
+        "drupal/coder": "~8.2.7",
+        "drupal/config_update": "1.*@dev",
+        "drupal/devel": "1.*@dev",
+        "drupal/drupal-extension": "~3.0",
+        "drupal/phingdrushtask": "dev-7.x-2.x",
+        "jcalderonzumba/gastonjs": "^1.1@dev",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-        "mikey179/vfsstream": "~1.2",
+        "mikey179/vfsStream": "~1.2",
+        "pfrenssen/phpcs-pre-push": "1.0",
+        "phing/phing": "~2.10",
         "phpunit/phpunit": ">=4.8.28 <5",
         "symfony/css-selector": "~2.8"
     },
@@ -38,6 +65,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "autoload": {
+        "psr-4": {
+            "Drupal\\DrupalProject\\": "tests/src",
+            "DrupalProject\\": "src"
+        },
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ]

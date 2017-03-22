@@ -1,0 +1,180 @@
+# Drupal configuration
+# --------------------
+
+# The project name.
+project.name = myproject
+
+# The install profile to use.
+website.profile.name = standard
+
+# The site name.
+website.site.name = MyDrupalProject
+
+# Database settings.
+drupal.db.type = mysql
+drupal.db.name = ${project.name}
+drupal.db.user = root
+drupal.db.password =
+drupal.db.host = 127.0.0.1
+drupal.db.port = 3306
+drupal.db.url = ${drupal.db.type}://${drupal.db.user}:${drupal.db.password}@${drupal.db.host}:${drupal.db.port}/${drupal.db.name}
+
+# Admin user.
+drupal.admin.username = admin
+drupal.admin.password = admin
+drupal.admin.email = admin@example.com
+
+# Comma-separated list of demo users to create. The username and password will
+# be taken from the role. A normal authenticated user with username and password
+# 'user' will also be created.
+drupal.demo.users = administrator
+
+# The base URL. This is used for doing functional tests in Behat and PHPUnit.
+drupal.base_url = http://localhost
+
+
+# Paths
+# -----
+
+# Paths to executables.
+composer.bin = ${project.basedir}/vendor/bin/composer
+drush.bin = ${project.basedir}/vendor/bin/drush
+phing.bin = ${project.basedir}/vendor/bin/phing
+
+# Files and directories inside the Drupal installation.
+website.drupal.dir = ${project.basedir}/web
+
+website.sites.dir = ${website.drupal.dir}/sites
+website.site.dir = ${website.drupal.sites.dir}/all
+
+website.settings.dir = ${website.sites.dir}/default
+website.settings.php = ${website.settings.dir}/settings.php
+website.settings.local.php.example = ${website.sites.dir}/example.settings.local.php
+website.settings.local.php = ${website.settings.dir}/settings.local.php
+website.files.dir = ${website.settings.dir}/files
+
+website.modules.dir = ${website.drupal.dir}/modules
+website.profiles.dir = ${website.drupal.dir}/profiles
+website.themes.dir = ${website.drupal.dir}/themes
+
+
+# Behat configuration
+# -------------------
+
+# The location of the Behat executable.
+behat.bin = ${project.basedir}/vendor/bin/behat
+
+# The location of the Behat tests.
+behat.dir = ${project.basedir}/tests
+
+# The location of the Behat configuration template.
+behat.yml.template = ${behat.dir}/behat.yml.dist
+
+# The location of the generated Behat configuration file.
+behat.yml.path = ${behat.dir}/behat.yml
+
+# The base URL to use in Behat tests.
+behat.base_url = ${drupal.base_url}
+
+# The browser to use for testing, either 'firefox' or 'chrome'.
+behat.browser_name = chrome
+
+# The port of the webdriver host (e.g. Selenium or PhantomJS).
+behat.webdriver_port = 4444
+
+# The URL of the webdriver host (e.g. Selenium or PhantomJS).
+behat.webdriver_url = http://localhost:${behat.webdriver_port}/wd/hub
+
+# The location to search for Behat subcontexts.
+behat.subcontexts.path = ${website.modules.dir}
+
+# The output format to use for Behat tests, either 'progress' or 'pretty'.
+behat.formatter.name = progress
+
+# The location of the test files.
+behat.files.path = ${behat.dir}/fixtures/files
+
+
+# PHP CodeSniffer configuration
+# -----------------------------
+
+# The file extensions to test.
+phpcs.extensions = php inc module install info test profile theme css js
+
+# The default configuration file to generate.
+phpcs.config = ${project.basedir}/phpcs.xml
+
+# The coding standard to use. If you want to customize the rules, make a copy of
+# the file and name it 'phpcs-ruleset.xml'. Then copy this property to your
+# build.properties file and remove the '.dist' suffix.
+phpcs.standard = ${project.basedir}/phpcs-ruleset.xml.dist
+
+# Paths to check, delimited by semicolons.
+phpcs.files = ${website.modules.dir};${website.profiles.dir};${website.themes.dir}
+
+# Paths to ignore, delimited by semicolons.
+phpcs.ignore = ${website.modules.dir}/contrib
+
+# The report format. For example 'full', 'summary', 'diff', 'xml', 'json'.
+phpcs.report = full
+
+# Whether or not to show sniff codes in the report.
+phpcs.sniffcodes = 0
+
+# Whether or not to show the progress of the run.
+phpcs.progress = 1
+
+# The location of the file containing the global configuration options.
+phpcs.global.config = ${project.basedir}/vendor/squizlabs/php_codesniffer/CodeSniffer.conf
+
+# Whether or not to run a coding standards check before doing a git push. Note
+# that this will abort the push if the coding standards check fails.
+phpcs.prepush.enable = 0
+
+# The source and destination paths of the git pre-push hook.
+phpcs.prepush.source = ${project.basedir}/vendor/pfrenssen/phpcs-pre-push/pre-push
+phpcs.prepush.destination = ${project.basedir}/.git/hooks/pre-push
+
+
+# PHPUnit configuration
+# ---------------------
+
+# The path to the configuration file template.
+phpunit.dist = ${project.basedir}/phpunit.xml.dist
+
+# The path to the generated configuration file. This is typically inside the web
+# root.
+phpunit.config = ${website.drupal.dir}/phpunit.xml
+
+# The name to give to the test suite of the project.
+phpunit.testsuite.name = ${project.name}
+
+# Comma-separated list of directories containing tests to execute. These are
+# relative to the Drupal root.
+phpunit.directories = ./modules/custom,./profiles,./themes/custom
+
+# Comma-separated list of test files to execute. These are relative to the
+# Drupal root.
+phpunit.files =
+
+# The base URL to use in functional tests.
+phpunit.base_url = ${drupal.base_url}
+
+# The database URL to use in kernel tests and functional tests.
+phpunit.db_url = ${drupal.db.url}
+
+# The path to the directory where HTML output from browsertests is stored.
+phpunit.browsertest_output_dir = ${website.sites.dir}/simpletest/browser_output
+
+# The path to the file that lists HTML output from browsertests.
+phpunit.browsertest_output_file = ${phpunit.browsertest_output_dir}/outputfile.txt
+
+
+# Development options
+# -------------------
+
+# Development modules to enable.
+drupal.modules.dev = config_update field_ui menu_ui views_ui
+
+# Verbosity of Drush commands. Set to 'yes' for verbose output.
+drush.verbose = no
