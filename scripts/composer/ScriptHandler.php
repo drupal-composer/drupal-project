@@ -9,19 +9,17 @@ namespace DrupalProject\composer;
 
 use Composer\Script\Event;
 use Composer\Semver\Comparator;
+use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
 use Webmozart\PathUtil\Path;
 
 class ScriptHandler {
 
-  protected static function getDrupalRoot($project_root) {
-    return $project_root . '/web';
-  }
-
   public static function createRequiredFiles(Event $event) {
     $fs = new Filesystem();
-    $projectRoot = getcwd();
-    $drupalRoot = static::getDrupalRoot($projectRoot);
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $drupalRoot = $drupalFinder->getDrupalRoot();
 
     $dirs = [
       'modules',
@@ -44,7 +42,7 @@ class ScriptHandler {
       require_once $drupalRoot . '/core/includes/install.inc';
       $settings['config_directories'] = [
         CONFIG_SYNC_DIRECTORY => (object) [
-          'value' => Path::makeRelative($projectRoot . '/config/sync', $drupalRoot),
+          'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
           'required' => TRUE,
         ],
       ];
