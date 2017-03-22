@@ -46,7 +46,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `sites/default/files`-directory.
+* Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
 
