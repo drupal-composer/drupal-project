@@ -18,4 +18,5 @@ web/sites/all/modules/*
 web/sites/all/themes/*
 !web/sites/all/themes/custom
 
-composer.lock # remove this in real projects!
+# remove this in real projects!
+composer.lock
