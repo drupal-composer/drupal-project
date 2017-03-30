@@ -14,7 +14,7 @@ services:
 #      - ./docker-runtime/mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
 
   php:
-    image: wodby/drupal-php:7.0 # Allowed: 7.0, 5.6.
+    image: wodby/drupal-php:7.0-1.0.0 # Allowed: 7.0, 5.6.
     environment:
       PHP_SITE_NAME: dev
       PHP_HOST_NAME: localhost:8000
@@ -28,7 +28,7 @@ services:
       - ./:/var/www/html
 
   nginx:
-    image: wodby/drupal-nginx
+    image: wodby/drupal-nginx:1.10
     environment:
       NGINX_SERVER_NAME: localhost
       NGINX_UPSTREAM_NAME: php
@@ -55,11 +55,11 @@ services:
 #    ports:
 #      - "8002:8025"
 
-  node:
-    image: node:6
-    volumes_from:
-      - php
-    working_dir: /var/www/html
+#  node:
+#    image: node:6
+#    volumes_from:
+#      - php
+#    working_dir: /var/www/html
 
 #  redis:
 #    image: redis:3.2-alpine
