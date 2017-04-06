@@ -13,6 +13,24 @@ use Symfony\Component\Finder\Finder;
 
 class AssetInstaller {
 
+  public static $assetFileTypes = [
+    '.htaccess',
+    '*.css',
+    '*.ico',
+    '*.jpeg',
+    '*.jpg',
+    '*.js',
+    '*.png',
+    '*.svg'
+  ];
+
+  public static $frontControllers = [
+    'index.php',
+    'core/install.php',
+    'core/rebuild.php',
+    'core/modules/statistics/statistics.php',
+  ];
+
   public static function install(Event $event) {
     $extra = $event->getComposer()->getPackage()->getExtra();
     if (!isset($extra['drupal-app-dir'])) {
@@ -21,18 +39,9 @@ class AssetInstaller {
     if (!isset($extra['drupal-web-dir'])) {
       throw new \RuntimeException('Please configure drupal-web-dir in your composer.json');
     }
-
-    $fs = new Filesystem();
-    $fs->mkdir([$extra['drupal-app-dir'], $extra['drupal-web-dir']]);
-
-    static::createSymlinks($extra['drupal-app-dir'], $extra['drupal-web-dir']);
-
-    static::createStubPhpFile($extra['drupal-app-dir'], $extra['drupal-web-dir'], 'index.php');
-    static::createStubPhpFile($extra['drupal-app-dir'], $extra['drupal-web-dir'], 'core/install.php');
-    static::createStubPhpFile($extra['drupal-app-dir'], $extra['drupal-web-dir'], 'core/rebuild.php');
-
-    // Optional?
-    static::createStubPhpFile($extra['drupal-app-dir'], $extra['drupal-web-dir'], 'core/modules/statistics/statistics.php');
+    foreach (static::$frontControllers as $fileName) {
+      static::createStubPhpFile($extra['drupal-app-dir'], $extra['drupal-web-dir'], $fileName);
+    }
 
     // Symlink public files
     $fs = new Filesystem();
@@ -43,19 +52,8 @@ class AssetInstaller {
     $finder = new Finder();
     $cfs = new \Composer\Util\Filesystem();
 
-    $names = [
-      '.htaccess',
-      '*.css',
-      '*.ico',
-      '*.jpeg',
-      '*.jpg',
-      '*.js',
-      '*.png',
-      '*.svg'
-    ];
-
     $finder = $finder->ignoreDotFiles(FALSE)->in($appDir);
-    foreach ($names as $name) {
+    foreach (static::$assetFileTypes as $name) {
       $finder->name($name);
     }
     $finder->exclude('sites/default/files');
