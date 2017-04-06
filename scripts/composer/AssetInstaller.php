@@ -46,6 +46,9 @@ class AssetInstaller {
     // Symlink public files
     $fs = new Filesystem();
     $fs->symlink(realpath($extra['drupal-app-dir']) . '/sites/default/files', $extra['drupal-web-dir'] . '/sites/default/files');
+
+    // Create symlinks
+    static::createSymlinks($extra['drupal-app-dir'], $extra['drupal-web-dir']);
   }
 
   public static function createSymlinks($appDir, $webDir) {
