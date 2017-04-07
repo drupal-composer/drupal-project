@@ -6,8 +6,9 @@
   "scripts": {
     "test": "echo 'No tests yet.'",
     "predeploy": "npm i && composer install",
-    "deploy": "npm run deploy:gitignore && git add -A && npm run deploy:push",
-    "deploy:gitignore": "rm -rf .gitignore",
+    "deploy": "npm run deploy:gitignore && npm run deploy:removegit && git add -A && npm run deploy:push",
+    "deploy:gitignore": "cp -f .gitignore-deploy .gitignore",
+    "deploy:removegit": "find web/sites/all/modules/contrib -type d -name '.git*' -exec rm -rf {} +",
     "deploy:push": "grunt buildcontrol:deploy"
   },
   "repository": {
