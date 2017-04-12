@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=7.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
-This project template should provide a kickstart for managing your site 
+This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
 If you want to know, how to use it as replacement for
@@ -26,7 +26,7 @@ With `composer require ...` you can download new dependencies to your installati
 
 ```
 cd some-dir
-composer require drupal/ctools:7.*
+composer require "drupal/ctools:~1.12"
 ```
 
 ## What does the template do?
@@ -37,17 +37,58 @@ When installing the given `composer.json` some tasks are taken care of:
 * Modules (packages of type `drupal-module`) will be placed in `web/sites/all/modules/contrib/`
 * Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
+* Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` (See Libraries)
 
-## Generate composer.json from existing project
+## Adding patches to core, contrib modules or themes
 
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
+You may add a patch so you don't need to maintain separate a modified module or theme to get faster a fix or make a critical change for your project. Add in `composer.json` as in the example.
 
+```
+"extra": {
+  "patches": {
+    "drupal/drupal": {
+      "Add startup configuration for PHP server": "https://www.drupal.org/files/issues/add_a_startup-1543858-30.patch"
+    }
+  }
+}
+```
+
+## Libraries
+
+Libraries normally would be extra packages that need to be public available (CSS and JS).
+Normally this are not maintained using Composer, but if you want to have a 100% Composer deployment and benefit from patches you can use in `composer.json` this example, changing the `repositories` section and adding in `require` section:
+```
+
+"repositories": {
+  ...
+  "slick": {
+    "type": "package",
+    "package": {
+        "name": "kenwheeler/slick",
+        "version": "1.6.0",
+        "dist": {
+            "url": "https://github.com/kenwheeler/slick/archive/1.6.0.zip",
+            "type": "zip"
+        },
+        "source": {
+            "url": "https://github.com/kenwheeler/slick.git",
+            "type": "git",
+            "reference": "1.6.0"
+        },
+        "type": "drupal-library"
+    }
+  }
+},
+"require": {
+  ...
+  "kenwheeler/slick": "~1.6.0"
+},
+```
+After this run `composer update --lock` to install just the manually managed package.
+_(You may run `composer require "kenwheeler/slick:~1.6.0"` as well if you add just the package definition)_
 
 ## FAQ
 
 ### Should I commit the contrib modules I download
 
 Composer recommends **no**. They provide [argumentation against but also workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
-

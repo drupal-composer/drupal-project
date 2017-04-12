@@ -8,9 +8,20 @@
     }
   },
   "require": {
+    "php": ">=5.2.5",
+    "ext-gd": "*",
+    "ext-xml": "*",
+    "ext-json": "*",
+    "ext-openssl": "*",
+    "ext-curl": "*",
+    "ext-pdo": "*",
+    "ext-pdo_mysql": "*",
     "composer/installers": "~1.0",
+    "cweagans/composer-patches": "~1.0",
     "derhasi/composer-preserve-paths": "0.1.*",
-    "drupal/drupal": "7.*"
+    "drush/drush": "~8.0",
+    "drupal/drupal": "7.*",
+    "drupal/composer_autoloader": "1.*"
   },
   "conflict": {
     "drupal/core": "8.*"
