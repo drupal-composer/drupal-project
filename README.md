@@ -38,6 +38,12 @@ When installing the given `composer.json` some tasks are taken care of:
 * Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
 * Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` (See Libraries)
+* Helps for using othe PHP packages almost similar to the Drupal 8 version
+
+## How to enable the Composer autoloader in your Drupal 7 website
+
+The skeleton already installs the `composer_autoloader` module. Just enable it in the website before enabling
+any possible module that have dependencies various packages.
 
 ## Adding patches to core, contrib modules or themes
 
