@@ -20,9 +20,10 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "~1.0",
-        "drupal/core": "~8.0",
-        "drush/drush": "~8.0",
+        "drupal/core": "^8",
+        "drush/drush": "^8",
         "webflo/drupal-finder": "^0.2.1",
+        "webflo/drupal-core-strict": "^8",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
