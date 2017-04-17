@@ -37,6 +37,9 @@
     "conflict": {
         "drupal/drupal": "*"
     },
+    "conflict": {
+        "drupal/drupal": "*"
+    },
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
