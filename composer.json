@@ -1,7 +1,7 @@
 {
     "name": "drupal-composer/drupal-project",
     "description": "Project template for Drupal 8 projects with composer",
-    "type": "project",
+    "type": "drupal-project",
     "license": "GPL-2.0+",
     "authors": [
         {
