@@ -1,6 +1,6 @@
 # Composer template for Drupal projects
 
-[![Build Status](https://travis-ci.org/Pronovix/drupal-project.svg?branch=8.x)](https://travis-ci.org/Pronovix/drupal-project)
+[![Build Status](https://travis-ci.org/pronovix/drupal-project.svg?branch=8.x)](https://travis-ci.org/pronovix/drupal-project)
 
 This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
@@ -20,7 +20,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project Pronovix/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project pronovix/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your 
