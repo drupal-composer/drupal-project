@@ -51,13 +51,6 @@ class ScriptHandler {
       $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
     }
 
-    // Prepare the services file for installation
-    if (!$fs->exists($drupalRoot . '/sites/default/services.yml') and $fs->exists($drupalRoot . '/sites/default/default.services.yml')) {
-      $fs->copy($drupalRoot . '/sites/default/default.services.yml', $drupalRoot . '/sites/default/services.yml');
-      $fs->chmod($drupalRoot . '/sites/default/services.yml', 0666);
-      $event->getIO()->write("Create a sites/default/services.yml file with chmod 0666");
-    }
-
     // Create the files directory with chmod 0777
     if (!$fs->exists($drupalRoot . '/sites/default/files')) {
       $oldmask = umask(0);
