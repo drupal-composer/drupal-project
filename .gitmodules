@@ -1,0 +1,3 @@
+[submodule "drupal-vm"]
+	path = drupal-vm
+	url = https://github.com/geerlingguy/drupal-vm.git
