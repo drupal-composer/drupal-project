@@ -1,0 +1,78 @@
+# If you need to run multiple instances of Drupal VM, set a unique hostname,
+# machine name, and IP address for each instance.
+vagrant_hostname: pxproject.drupalvm.dev
+vagrant_machine_name: pxproject
+vagrant_ip: 0.0.0.0
+
+# A list of synced folders, with the keys 'local_path', 'destination', and
+# a 'type' of [nfs|rsync|smb] (leave empty for slow native shares). See
+# http://docs.drupalvm.com/en/latest/getting-started/syncing-folders/ for more.
+vagrant_synced_folders:
+  # The first synced folder will be used for the default Drupal installation, if
+  # any of the build_* settings are 'true'. By default the folder is set to
+  # the drupal-vm folder.
+  - local_path: .
+    destination: /var/www/drupalvm
+    type: nfs
+    create: true
+
+# Set 'build_makefile' to 'false' and this to 'true' if you are using a
+# composer based site deployment strategy.
+drupal_build_composer: true
+drupal_composer_path: "{{ config_dir }}/../composer.json"
+drupal_composer_install_dir: "/var/www/drupalvm"
+drupal_composer_dependencies: [ ]
+
+# Set this to 'true' and 'build_makefile', 'build_composer' to 'false' if you
+# are using Composer's create-project as a site deployment strategy.
+drupal_build_composer_project: false
+
+# Required Drupal settings.
+drupal_core_path: "/var/www/drupalvm/docroot"
+drupal_core_owner: "{{ drupalvm_user }}"
+drupal_db_user: pxproject
+drupal_db_password: pxproject
+drupal_db_name: pxproject
+
+# Settings for installing a Drupal site if 'install_site:' is 'true'.
+drupal_major_version: 8
+drupal_domain: "{{ vagrant_hostname }}"
+drupal_site_name: "Drupal"
+drupal_install_profile: standard
+drupal_enable_modules: [ 'admin_toolbar_tools' ]
+drupal_account_name: admin
+drupal_account_pass: admin
+
+# Comment out any extra utilities you don't want to install. If you don't want
+# to install *any* extras, set this value to an empty set, e.g. `[]`.
+installed_extras:
+  - adminer
+  # - blackfire
+  - drupalconsole
+  - drush
+  # - elasticsearch
+  # - java
+  - mailhog
+  # - memcached
+  # - newrelic
+  # - nodejs
+  # - pimpmylog
+  # - redis
+  # - ruby
+  # - selenium
+  # - solr
+  # - tideways
+  # - upload-progress
+  # - varnish
+  - xdebug
+  # - xhprof
+
+# XDebug configuration. XDebug is disabled by default for better performance.
+php_xdebug_default_enable: 1
+php_xdebug_coverage_enable: 0
+php_xdebug_cli_enable: 1
+php_xdebug_remote_enable: 1
+php_xdebug_remote_connect_back: 1
+# Use PHPSTORM for PHPStorm, sublime.xdebug for Sublime Text.
+php_xdebug_idekey: PHPSTORM
+php_xdebug_max_nesting_level: 256
