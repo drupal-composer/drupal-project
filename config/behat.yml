@@ -1,0 +1,26 @@
+default:
+  suites:
+    default:
+      paths:
+        - %paths.base%/../features
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\DrupalContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+  extensions:
+    pxproject\MinkExtension:
+      goutte: ~
+      selenium2:
+        wd_host: http://pxproject.dev:4444/wd/hub
+      base_url: http://pxproject.dev
+      javascript_session: selenium2
+      browser_name: phantomjs
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: drupal
+      drush:
+        alias: pxproject.dev
+      drupal:
+        drupal_root: /var/www/drupalvm/docroot

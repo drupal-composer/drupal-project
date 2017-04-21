@@ -1,8 +1,21 @@
+---
+# 'vagrant_box' can also be set to geerlingguy/centos6, geerlingguy/centos7,
+# geerlingguy/debian8, geerlingguy/ubuntu1404, geerlingguy/ubuntu1204, etc.
+vagrant_box: geerlingguy/ubuntu1604
+vagrant_user: vagrant
+vagrant_synced_folder_default_type: nfs
+vagrant_gui: false
+
 # If you need to run multiple instances of Drupal VM, set a unique hostname,
 # machine name, and IP address for each instance.
-vagrant_hostname: pxproject.drupalvm.dev
+vagrant_hostname: pxproject.dev
 vagrant_machine_name: pxproject
-vagrant_ip: 0.0.0.0
+vagrant_ip: 192.168.88.88
+
+# Allow Drupal VM to be accessed via a public network interface on your host.
+# Vagrant boxes are insecure by default, so be careful. You've been warned!
+# See: https://docs.vagrantup.com/v2/networking/public_network.html
+vagrant_public_ip: ""
 
 # A list of synced folders, with the keys 'local_path', 'destination', and
 # a 'type' of [nfs|rsync|smb] (leave empty for slow native shares). See
@@ -16,35 +29,167 @@ vagrant_synced_folders:
     type: nfs
     create: true
 
+# Memory and CPU to use for this VM.
+vagrant_memory: 2048
+vagrant_cpus: 1
+
+# Minimum required versions.
+drupalvm_vagrant_version_min: '1.8.6'
+drupalvm_ansible_version_min: '2.2'
+
+# Force use of ansible_local provisioner, even if Ansible is installed on host.
+force_ansible_local: false
+
+# The web server software to use. Can be either 'apache' or 'nginx'.
+drupalvm_webserver: nginx
+
+# The database system to use. Can be either 'mysql' or 'pgsql'.
+drupal_db_backend: mysql
+
+# Set this to 'false' if you are using a different site deployment strategy and
+# would like to configure 'vagrant_synced_folders' and 'apache_vhosts' manually.
+drupal_build_makefile: false
+drush_makefile_path: "{{ config_dir }}/drupal.make.yml"
+drush_make_options: "--no-gitinfofile"
+
 # Set 'build_makefile' to 'false' and this to 'true' if you are using a
 # composer based site deployment strategy.
 drupal_build_composer: true
 drupal_composer_path: "{{ config_dir }}/../composer.json"
 drupal_composer_install_dir: "/var/www/drupalvm"
-drupal_composer_dependencies: [ ]
+drupal_composer_dependencies:
+  - "drupal/devel:1.x-dev"
 
 # Set this to 'true' and 'build_makefile', 'build_composer' to 'false' if you
 # are using Composer's create-project as a site deployment strategy.
 drupal_build_composer_project: false
+drupal_composer_project_package: "drupal-composer/drupal-project:8.x-dev"
+drupal_composer_project_options: "--prefer-dist --stability dev --no-interaction"
+
+# Set this to 'false' if you don't need to install drupal (using the drupal_*
+# settings below), but instead copy down a database (e.g. using drush sql-sync).
+drupal_install_site: true
 
 # Required Drupal settings.
-drupal_core_path: "/var/www/drupalvm/docroot"
+drupal_core_path: "{{ drupal_composer_install_dir }}/docroot"
 drupal_core_owner: "{{ drupalvm_user }}"
-drupal_db_user: pxproject
-drupal_db_password: pxproject
-drupal_db_name: pxproject
+drupal_db_user: drupal
+drupal_db_password: drupal
+drupal_db_name: drupal
 
 # Settings for installing a Drupal site if 'install_site:' is 'true'.
 drupal_major_version: 8
 drupal_domain: "{{ vagrant_hostname }}"
 drupal_site_name: "Drupal"
 drupal_install_profile: standard
-drupal_enable_modules: [ 'admin_toolbar_tools' ]
+drupal_enable_modules: [ 'devel' ]
 drupal_account_name: admin
 drupal_account_pass: admin
 
+# Additional arguments or options to pass to 'drush site-install'.
+drupal_site_install_extra_args: []
+
+# Cron jobs are added to the vagrant user's crontab. Keys include name
+# (required), minute, hour, day, weekday, month, job (required), and state.
+drupalvm_cron_jobs: []
+
+# Drupal VM automatically creates a drush alias file in your ~/.drush folder if
+# this variable is 'true'.
+configure_drush_aliases: true
+
+# Helper variable to configure the PHP-FPM connection for each Apache
+# VirtualHost in the 'apache_vhosts' list.
+apache_vhost_php_fpm_parameters: |
+    <FilesMatch \.php$>
+      SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
+    </FilesMatch>
+# Apache VirtualHosts. Add one for each site you are running inside the VM. For
+# multisite deployments, you can point multiple servernames at one documentroot.
+# View the geerlingguy.apache Ansible Role README for more options.
+apache_vhosts:
+  - servername: "{{ drupal_domain }}"
+    serveralias: "www.{{ drupal_domain }}"
+    documentroot: "{{ drupal_core_path }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "adminer.{{ vagrant_hostname }}"
+    documentroot: "{{ adminer_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "xhprof.{{ vagrant_hostname }}"
+    documentroot: "{{ php_xhprof_html_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "pimpmylog.{{ vagrant_hostname }}"
+    documentroot: "{{ pimpmylog_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+  - servername: "{{ vagrant_ip }}"
+    serveralias: "dashboard.{{ vagrant_hostname }}"
+    documentroot: "{{ dashboard_install_dir }}"
+    extra_parameters: "{{ apache_vhost_php_fpm_parameters }}"
+
+apache_packages_state: latest
+apache_remove_default_vhost: true
+apache_mods_enabled:
+  - expires.load
+  - ssl.load
+  - rewrite.load
+  - proxy.load
+  - proxy_fcgi.load
+
+# Nginx hosts. Each site will get a server entry using the configuration defined
+# here. Set the 'is_php' property for document roots that contain PHP apps like
+# Drupal.
+nginx_hosts:
+  - server_name: "{{ drupal_domain }} www.{{ drupal_domain }}"
+    root: "{{ drupal_core_path }}"
+    is_php: true
+
+  - server_name: "adminer.{{ vagrant_hostname }}"
+    root: "{{ adminer_install_dir }}"
+    is_php: true
+
+  - server_name: "xhprof.{{ vagrant_hostname }}"
+    root: "{{ php_xhprof_html_dir }}"
+    is_php: true
+
+  - server_name: "pimpmylog.{{ vagrant_hostname }}"
+    root: "{{ pimpmylog_install_dir }}"
+    is_php: true
+
+  - server_name: "{{ vagrant_ip }} dashboard.{{ vagrant_hostname }}"
+    root: "{{ dashboard_install_dir }}"
+    is_php: true
+
+nginx_remove_default_vhost: true
+nginx_ppa_use: true
+nginx_vhosts_filename: "vhosts.conf"
+
+# MySQL databases and users.
+mysql_databases:
+  - name: "{{ drupal_db_name }}"
+    encoding: utf8mb4
+    collation: utf8mb4_general_ci
+
+mysql_users:
+  - name: "{{ drupal_db_user }}"
+    host: "%"
+    password: "{{ drupal_db_password }}"
+    priv: "{{ drupal_db_name }}.*:ALL"
+
+# PostgreSQL databases and users.
+postgresql_databases:
+  - name: "{{ drupal_db_name }}"
+
+postgresql_users:
+  - name: "{{ drupal_db_user }}"
+    password: "{{ drupal_db_password }}"
+    db: "{{ drupal_db_name }}"
+    priv: "ALL"
+
 # Comment out any extra utilities you don't want to install. If you don't want
-# to install *any* extras, set this value to an empty set, e.g. `[]`.
+# to install *any* extras, set this value to an empty set, e.g. '[]'.
 installed_extras:
   - adminer
   # - blackfire
@@ -55,20 +200,107 @@ installed_extras:
   - mailhog
   # - memcached
   # - newrelic
-  # - nodejs
-  # - pimpmylog
+  - nodejs
+  - pimpmylog
   # - redis
   # - ruby
-  # - selenium
+  - selenium
   # - solr
   # - tideways
   # - upload-progress
-  # - varnish
+  - varnish
   - xdebug
   # - xhprof
 
+# Add any extra apt or yum packages you would like installed.
+extra_packages:
+  - sqlite
+
+# You can configure almost anything else on the server in the rest of this file.
+extra_security_enabled: false
+
+drush_version: "8.1.10"
+
+firewall_allowed_tcp_ports:
+  - "22"
+  - "25"
+  - "80"
+  - "81"
+  - "443"
+  - "4444"
+  - "8025"
+  - "8080"
+  - "8443"
+  - "8983"
+  - "9200"
+firewall_log_dropped_packets: false
+firewall_disable_firewalld: true
+firewall_disable_ufw: true
+
+# PHP Configuration. Currently-supported versions: 5.6, 7.0, 7.1.
+# See version-specific notes: http://docs.drupalvm.com/en/latest/configurations/php/
+php_version: "7.1"
+php_install_recommends: no
+php_memory_limit: "192M"
+php_display_errors: "On"
+php_display_startup_errors: "On"
+php_realpath_cache_size: "1024K"
+php_sendmail_path: "/opt/mailhog/mhsendmail"
+php_opcache_enabled_in_ini: true
+php_opcache_memory_consumption: "192"
+php_opcache_max_accelerated_files: 4096
+php_max_input_vars: "4000"
+
+# Drupal VM defaults to using PHP-FPM with either Apache or Nginx. If you wish
+# to instead use Apache + mod_php with an Ubuntu base box, make sure you add
+# libapache2-mod-php7.0 to 'extra_packages' elsewhere in this config file.
+php_enable_php_fpm: true
+php_fpm_listen: "127.0.0.1:9000"
+
+composer_path: /usr/bin/composer
+composer_home_path: "/home/{{ drupalvm_user }}/.composer"
+composer_home_owner: "{{ drupalvm_user }}"
+composer_home_group: "{{ drupalvm_user }}"
+composer_global_packages:
+  - { name: hirak/prestissimo, release: '^0.3' }
+
+# Run specified scripts before or after VM is provisioned. Path is relative to
+# the 'provisioning/playbook.yml' file.
+pre_provision_scripts: []
+post_provision_scripts:
+  - "{{ config_dir }}/../scripts/post_provision.sh"
+
+# MySQL Configuration.
+mysql_root_password: root
+mysql_slow_query_log_enabled: true
+mysql_slow_query_time: 2
+mysql_wait_timeout: 300
+adminer_install_filename: index.php
+
+# Node.js configuration (if enabled above).
+# Valid examples: "0.10", "0.12", "4.x", "5.x".
+nodejs_version: "0.12"
+nodejs_npm_global_packages:
+  - name: phantomjs
+nodejs_install_npm_user: "{{ drupalvm_user }}"
+npm_config_prefix: "/home/{{ drupalvm_user }}/.npm-global"
+
+# Ruby Configuration (if enabled above).
+ruby_install_gems_user: "{{ drupalvm_user }}"
+ruby_install_gems: []
+
+# Varnish Configuration (if enabled above).
+varnish_listen_port: "81"
+varnish_default_vcl_template_path: templates/drupalvm.vcl.j2
+varnish_default_backend_host: "127.0.0.1"
+varnish_default_backend_port: "80"
+
+# Pimp my Log settings.
+pimpmylog_install_dir: /usr/share/php/pimpmylog
+pimpmylog_grant_all_privs: true
+
 # XDebug configuration. XDebug is disabled by default for better performance.
-php_xdebug_default_enable: 1
+php_xdebug_default_enable: 0
 php_xdebug_coverage_enable: 0
 php_xdebug_cli_enable: 1
 php_xdebug_remote_enable: 1
@@ -76,3 +308,18 @@ php_xdebug_remote_connect_back: 1
 # Use PHPSTORM for PHPStorm, sublime.xdebug for Sublime Text.
 php_xdebug_idekey: PHPSTORM
 php_xdebug_max_nesting_level: 256
+
+# Solr Configuration (if enabled above).
+solr_version: "5.5.3"
+solr_xms: "64M"
+solr_xmx: "128M"
+
+# Selenium configuration.
+selenium_version: 2.53.0
+selenium_install_firefox: true
+selenium_install_chrome: true
+
+# Other configuration.
+dashboard_install_dir: /var/www/dashboard
+known_hosts_path: ~/.ssh/known_hosts
+ssh_home: "{{ drupal_core_path }}"
