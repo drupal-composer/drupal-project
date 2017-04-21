@@ -10,7 +10,7 @@ default:
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
   extensions:
-    pxproject\MinkExtension:
+    Behat\MinkExtension:
       goutte: ~
       selenium2:
         wd_host: http://pxproject.dev:4444/wd/hub
