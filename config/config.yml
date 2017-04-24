@@ -194,7 +194,7 @@ postgresql_users:
 installed_extras:
   - adminer
   # - blackfire
-  - drupalconsole
+  # - drupalconsole
   - drush
   # - elasticsearch
   # - java
@@ -324,3 +324,6 @@ selenium_install_chrome: true
 dashboard_install_dir: /var/www/dashboard
 known_hosts_path: ~/.ssh/known_hosts
 ssh_home: "{{ drupal_core_path }}"
+
+composer_add_project_to_path: true
+composer_project_path: "{{ drupal_composer_install_dir }}/bin"
