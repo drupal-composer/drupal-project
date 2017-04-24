@@ -57,8 +57,7 @@ drush_make_options: "--no-gitinfofile"
 drupal_build_composer: true
 drupal_composer_path: "{{ config_dir }}/../composer.json"
 drupal_composer_install_dir: "/var/www/drupalvm"
-drupal_composer_dependencies:
-  - "drupal/devel:1.x-dev"
+drupal_composer_dependencies: [ ]
 
 # Set this to 'true' and 'build_makefile', 'build_composer' to 'false' if you
 # are using Composer's create-project as a site deployment strategy.
