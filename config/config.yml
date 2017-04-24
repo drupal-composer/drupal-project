@@ -1,5 +1,5 @@
 ---
-# 'vagrant_box' can also be set to geerlingguy/centos6, geerlingguy/centos7,
+# `vagrant_box` can also be set to geerlingguy/centos6, geerlingguy/centos7,
 # geerlingguy/debian8, geerlingguy/ubuntu1404, geerlingguy/ubuntu1204, etc.
 vagrant_box: geerlingguy/ubuntu1604
 vagrant_user: vagrant
@@ -82,11 +82,11 @@ drupal_major_version: 8
 drupal_domain: "{{ vagrant_hostname }}"
 drupal_site_name: "Drupal"
 drupal_install_profile: standard
-drupal_enable_modules: [ 'devel' ]
+drupal_enable_modules: [ 'admin_toolbar_tools' ]
 drupal_account_name: admin
 drupal_account_pass: admin
 
-# Additional arguments or options to pass to 'drush site-install'.
+# Additional arguments or options to pass to `drush site-install`.
 drupal_site_install_extra_args: []
 
 # Cron jobs are added to the vagrant user's crontab. Keys include name
@@ -98,11 +98,12 @@ drupalvm_cron_jobs: []
 configure_drush_aliases: true
 
 # Helper variable to configure the PHP-FPM connection for each Apache
-# VirtualHost in the 'apache_vhosts' list.
+# VirtualHost in the `apache_vhosts` list.
 apache_vhost_php_fpm_parameters: |
     <FilesMatch \.php$>
       SetHandler "proxy:fcgi://{{ php_fpm_listen }}"
     </FilesMatch>
+
 # Apache VirtualHosts. Add one for each site you are running inside the VM. For
 # multisite deployments, you can point multiple servernames at one documentroot.
 # View the geerlingguy.apache Ansible Role README for more options.
@@ -189,7 +190,7 @@ postgresql_users:
     priv: "ALL"
 
 # Comment out any extra utilities you don't want to install. If you don't want
-# to install *any* extras, set this value to an empty set, e.g. '[]'.
+# to install *any* extras, set this value to an empty set, e.g. `[]`.
 installed_extras:
   - adminer
   # - blackfire
@@ -253,7 +254,7 @@ php_max_input_vars: "4000"
 
 # Drupal VM defaults to using PHP-FPM with either Apache or Nginx. If you wish
 # to instead use Apache + mod_php with an Ubuntu base box, make sure you add
-# libapache2-mod-php7.0 to 'extra_packages' elsewhere in this config file.
+# libapache2-mod-php7.0 to `extra_packages` elsewhere in this config file.
 php_enable_php_fpm: true
 php_fpm_listen: "127.0.0.1:9000"
 
@@ -265,7 +266,7 @@ composer_global_packages:
   - { name: hirak/prestissimo, release: '^0.3' }
 
 # Run specified scripts before or after VM is provisioned. Path is relative to
-# the 'provisioning/playbook.yml' file.
+# the `provisioning/playbook.yml` file.
 pre_provision_scripts: []
 post_provision_scripts:
   - "{{ config_dir }}/../scripts/post_provision.sh"
