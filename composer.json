@@ -44,11 +44,13 @@
     },
     "autoload": {
         "classmap": [
+            "scripts/composer/AssetInstaller.php",
             "scripts/composer/ScriptHandler.php"
         ]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "drupal-paranoia": "DrupalProject\\composer\\AssetInstaller::install",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -56,20 +58,24 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalProject\\composer\\AssetInstaller::install"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalProject\\composer\\AssetInstaller::install"
         ]
     },
     "extra": {
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "app/core": ["type:drupal-core"],
+            "app/libraries/{$name}": ["type:drupal-library"],
+            "app/modules/contrib/{$name}": ["type:drupal-module"],
+            "app/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "app/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
-        }
+        },
+        "drupal-app-dir": "app",
+        "drupal-web-dir": "web"
     }
 }
