@@ -56,7 +56,7 @@ This project will attempt to keep all of your Drupal Core files up-to-date; the
 project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
 is used to ensure that your scaffold files are updated every time drupal/core is 
 updated. If you customize any of the "scaffolding" files (commonly .htaccess), 
-you may need to merge conflicts if any of your modfied files are updated in a 
+you may need to merge conflicts if any of your modified files are updated in a 
 new release of Drupal core.
 
 Follow the steps below to update your core files.
