@@ -42,4 +42,4 @@ script:
   # Ignore PageCache group temporarily, @see https://www.drupal.org/node/2770673
   - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,DependencyInjection,PageCache
   - ./../vendor/bin/drush
-  - if [[ $RELEASE = stable ]]; then ./../vendor/bin/drupal; fi;  - ./../vendor/bin/drupal
+  - if [[ $RELEASE = stable ]]; then ./../vendor/bin/drupal; fi;
