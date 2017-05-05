@@ -31,7 +31,7 @@ install:
   - composer --verbose install
 
 script:
-  - if [[ $RELEASE = dev ]]; then composer --verbose remove drupal/console; fi;
+  - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.4.x-dev drush/drush:9.0.x-dev; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
   - cd $TRAVIS_BUILD_DIR/web
@@ -42,4 +42,4 @@ script:
   # Ignore PageCache group temporarily, @see https://www.drupal.org/node/2770673
   - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,DependencyInjection,PageCache
   - ./../vendor/bin/drush
-  - ./../vendor/bin/drupal
+  - if [[ $RELEASE = stable ]]; then ./../vendor/bin/drupal; fi;  - ./../vendor/bin/drupal
