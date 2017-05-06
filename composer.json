@@ -31,6 +31,7 @@
         "sensiolabs/security-checker": "^4.0"
     },
     "conflict": {
+        "drupal/console-extend-plugin" : "0.6.0",
         "drupal/drupal": "*"
     },
     "repositories": [
