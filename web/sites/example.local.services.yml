@@ -1,0 +1,10 @@
+# Local development overrides. This overrides are ignored by Git.
+# Move to local.services.yml to enable.
+---
+parameters:
+  twig.config:
+    # Note that twig_debugging causes issues with some AJAX requests like
+    # entity-embedding from ckeditor. Enable only when needed.
+    debug: false
+    auto_reload: null
+    cache: true
