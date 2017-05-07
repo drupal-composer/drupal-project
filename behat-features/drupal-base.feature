@@ -1,6 +1,9 @@
 @api
 Feature: Drupal basically works.
 
+  Make sure Drupal generates the front page, error pages as well as logging in
+  and out.
+
   Scenario: Drupal generates a page
     Given I am on "/"
     Then the response should contain "Drupal 8 (https://www.drupal.org)"
@@ -17,6 +20,6 @@ Feature: Drupal basically works.
 
   Scenario: I can log in and logout.
     Given I am logged in as a user with the "authenticated user" role
-    Then I should see the link "ausloggen"
-    When I click "ausloggen"
-    Then I should not see the link "ausloggen"
+    Then I should see the link "Log out"
+    When I click "Log out"
+    Then I should not see the link "Log out"
