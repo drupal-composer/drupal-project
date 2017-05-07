@@ -34,7 +34,7 @@ default:
 vagrant:
   extensions:
     Behat\MinkExtension:
-      base_url: http://{{ project_name }}.local
+      base_url: http://{{ project }}.local
 
 selenium:
   extensions:
