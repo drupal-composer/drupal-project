@@ -87,7 +87,7 @@
         ],
         "post-create-project-cmd": [
             "cp web/sites/example.local.services.yml web/sites/local.services.yml",
-            "cp web/sites/example.local.settings.yml web/sites/local.settings.yml",
+            "cp web/sites/example.local.settings.php web/sites/local.settings.php",
             "ln -sr web/sites/default/settings.vagrant.php web/sites/default/settings.php",
             "@init-setup"
         ],
