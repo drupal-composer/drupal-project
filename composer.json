@@ -69,20 +69,17 @@
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
             "@drupal-scaffold",
-            "@kalastatic"
+            "if hash npm; then npm install; fi"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
-        ],
-        "kalastatic": [
-            "npm install",
-            "npm test"
         ],
         "test": [
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
             "phpcs --standard=Drupal web/modules/custom",
             "phpcs --standard=Drupal web/themes",
-            "echo 'CALL PHPUNIT TESTS HERE'"
+            "echo 'CALL PHPUNIT TESTS HERE'",
+            "if hash npm; then npm test; fi"
         ]
     },
     "extra": {
