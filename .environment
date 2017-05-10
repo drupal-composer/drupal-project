@@ -1,0 +1,6 @@
+# Statements in this file will be executed (sourced) by the shell in SSH
+# sessions, in deploy hooks, in cron jobs, and in the application's runtime
+# environment.
+
+# Allow executable app dependencies from Composer to be run from the path.
+export PATH=/app/vendor/bin:$PATH
