@@ -46,7 +46,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `sites/default/files`-directory.
+* Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
 
@@ -56,7 +56,7 @@ This project will attempt to keep all of your Drupal Core files up-to-date; the
 project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
 is used to ensure that your scaffold files are updated every time drupal/core is 
 updated. If you customize any of the "scaffolding" files (commonly .htaccess), 
-you may need to merge conflicts if any of your modfied files are updated in a 
+you may need to merge conflicts if any of your modified files are updated in a 
 new release of Drupal core.
 
 Follow the steps below to update your core files.
