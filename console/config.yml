@@ -1,0 +1,4 @@
+application:
+  language: 'en'
+  options:
+    root: 'web'
