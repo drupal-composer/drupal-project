@@ -28,8 +28,9 @@ $settings['file_scan_ignore_directories'] = [
 // @see http://dgo.to/2431247
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
 
-// A local file system path where private files will be stored.
+// Local file system paths for storing public and private files.
 $settings['file_private_path'] = '../private';
+$settings['file_public_path'] = 'sites/default/files';
 
 // Include settings specific to sites hosted on Pantheon.
 if (file_exists("$app_root/sites/default/settings.pantheon.php")) {
