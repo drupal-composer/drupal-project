@@ -1,0 +1,56 @@
+# KalaStatic
+#
+# This file configures how KalaStatic operates. For information on the
+# configuration options, visit:
+#
+# https://github.com/kalamuna/kalastatic
+
+# The source directory.
+source: web/themes/THEME_NAME/kalastatic
+
+# Where to build kalastatic out to, relative to base.
+destination: web/kalastatic
+
+# What BrowserSync will consider the start page.
+bsIndex: kalastatic/browsersync-redirect.html
+
+# What BrowserSync will consider the web root.
+bsWebroot: web
+
+# Allows changing some of the plugin options.
+pluginOpts:
+  # The layouts will live in the templates directory.
+  metalsmith-jstransformer:
+    # Do not process components as content pages.
+    pattern: "!components/**"
+    layoutPattern: layouts/**
+
+    # Options that are applied to just specific engines.
+    engineOptions:
+      # SASS settings.
+      scss:
+        outputStyle: nested
+        sourceMap: true
+        sourceComments: false
+        includePaths:
+          - node_modules/bootstrap-sass/assets/stylesheets
+          - node_modules/font-awesome/scss
+          - web/themes/THEME_NAME/kalastatic/components
+
+      # Twig settings.
+      twig:
+        # Introduce the "kstat" Twig namespace.
+        namespaces:
+          kstat: web/themes/THEME_NAME/kalastatic
+
+        # Mimic some of the Drupal 8 Twig filters.
+        filters:
+          clean_class: twig-drupal-filters/filters/clean_class
+          safe_join: twig-drupal-filters/filters/safe_join
+          t: twig-drupal-filters/filters/trans
+
+kss:
+  css: ../styles/main.css
+  source:
+    - node_modules/kss-bootstrap/styleguide
+    - web/themes/THEME_NAME/kalastatic

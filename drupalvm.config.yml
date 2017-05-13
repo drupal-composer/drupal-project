@@ -1,0 +1,45 @@
+# @file
+# Drupal VM configuration overrides.
+
+# Specify basic virtual machine settings.
+vagrant_hostname: CHANGEME.dvm
+vagrant_machine_name: drupalvm-CHANGEME
+vagrant_ip: 192.168.89.88
+
+# Configure Drupal VM to run via composer.
+# @see http://docs.drupalvm.com/en/latest/deployment/composer-dependency
+build_composer: true
+drupal_composer_path: false
+drupal_composer_dependencies: []
+drupal_composer_install_dir: "/var/www/drupalvm"
+drupal_install_profile: config_installer
+build_composer_project: false
+install_site: false
+
+# Set preferred tools and versions.
+drupalvm_webserver: nginx
+nodejs_version: "6.x"
+
+# Enable and configure system packages.
+php_xdebug_cli_enable: 0
+installed_extras:
+  - adminer
+  - blackfire
+  - drupalconsole
+  - drush
+  # - elasticsearch
+  # - java
+  - mailhog
+  # - memcached
+  # - newrelic
+  - nodejs
+  - pimpmylog
+  - redis
+  # - ruby
+  # - selenium
+  - solr
+  # - tideways
+  - upload-progress
+  - varnish
+  - xdebug
+  - xhprof
