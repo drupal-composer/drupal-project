@@ -1,8 +1,8 @@
 machine:
   node:
-    version: 6.1.0
+    version: 7.10.0
   php:
-    version: 5.6.22
+    version: 7.1.5
 
 deployment:
   pantheon:
