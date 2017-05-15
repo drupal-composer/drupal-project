@@ -1,131 +1,128 @@
-# Composer template for Drupal projects
+# Template for composer-based Drupal 8 projects with Drupal VM
 
-[![Build Status](https://travis-ci.org/pronovix/drupal-project.svg?branch=8.x)](https://travis-ci.org/pronovix/drupal-project)
+This template is the fork of [drupal-composer](https://github.com/drupal-composer/drupal-project) and also contains 
+[Drupal VM](https://github.com/geerlingguy/drupal-vm) as a git submodule. 
 
-This project template should provide a kickstart for managing your site
-dependencies with [Composer](https://getcomposer.org/).
+For further information about these projects check the project pages.
 
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/master/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+## Requirements
 
-## Usage
+* Install (latest stable) [Virtualbox](https://www.virtualbox.org/wiki/Downloads) on your host machine.
+* Install [Vagrant](https://www.vagrantup.com/downloads.html) on your host machine with some of its plugins:
+  * `vagrant plugin install vagrant-hostsupdater`
+  * `vagrant plugin install vagrant-auto_network`
+  * `vagrant plugin install vagrant-vbguest`
+  * `vagrant plugin install vagrant-cachier`
+  
+## Good to know
 
-First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+* Composer installs the following files (these should NOT be committed):
+  * Drupal core (latest stable drupal-8.x.x) in `docroot/` folder
+  * Drupal libraries and contrib modules/profiles/themes in `docroot/` folder
+  * PHP libs in the `vendor/` folder
+  * PHP libs' binaries in the `bin/` folder
+* As the gitroot will be NFS-mounted into the VM, any changes made to the files in it here will be available there 
+  as well.
+* You can use XDebug.
+* You can use `vagrant ssh` to SSH into a running Vagrant machine.
+  
+## Working with an already existing project
 
-> Note: The instructions below refer to the [global composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar) 
-for your setup.
+1. Clone the project `git clone some-project --recursive` (the `--recursive` switch is needed to have Drupal VM cloned as well).
+2. Start the VM: `vagrant up`
+3. For adding custom/contrib modules or patches, follow the below instructions.
+  
+## Creating a new project
 
-After that you can create the project:
+1. Clone this repository: `git clone https://github.com/Pronovix/drupal-project.git . --recursive`
+2. Update the `vagrant_hostname` and `vagrant_machine_name` in `/config/config.yml` according to your project 
+(these two must be unique on your host)
+3. Start the VM: `vagrant up`
+  * It takes quite a bit of time to do it for the first time on your host, as it has to download the base image which is 
+  about 700MB (or more). Later on, provisioning a (new) VM is usually just a matter of 5-15 minutes, depending on 
+  the config of it (amount of packages to install, the number of Drupal modules, composer vs bandwidth, etc.).
+4. For adding custom/contrib modules or patches, follow the below instructions.
+ 
+### Notes
 
+* The `.htaccess` and `robots.txt` files are ignored by `drupal-scaffold` by default (so they get updated instead of 
+getting overridden) and they are committed to the repository to make sure they exist in the file system. 
+* The scaffold files (except for `.htaccess` and `robots.txt`) and the other files that shouldn't be committed in a Drupal 
+project (e.g. settings.php) are in the `.gitignore` file by default.
+
+## Adding a new contrib module
+
+1. SSH into the machine: `vagrant ssh`
+2. In the VM, run `composer require drupal/some_module --no-interaction --prefer-dist -o`
+  * Adds a `some_module` module to `docroot/modules/contrib/` (per pronovix/drupal-project's `composer.json`)
+  * Adds the contrib modules that are dependencies of this module to the same folder (per `some_module.info.yml`)
+  * Adds the PHP libraries that are dependencies of this module to `vendor/` (per the module's own `composer.json`)
+  * The autoloader will be optimized (because of `-o`)
+3. Add Composer files to git: `git add composer.json composer.lock`
+  * Do NOT add the code itself as it should be built by composer automatically
+  * The Pronovix/drupal-project MUST NOT have composer.lock, as it's a skeleton for other/real projects
+  * The other/real projects MUST have composer.lock committed, as it's the only way to ensure the very same codebase is 
+  built by composer in whatever environments
+4. Commit these files: `git commit -m "Commit message."`.
+
+## Adding a contrib submodule (don't do it)
+
+So you don't know the machine name of the project on drupal.org that provides a certain (sub)module you want to have? 
+Not a problem, drupal.org's composer repository can resolve it for you:
+1. In the VM: `composer require drupal/admin_toolbar_tools --no-interaction --prefer-dist -o`
+  * However, this approach is not recommended, as the submodule is the one that gets added to composer.json instead of 
+  the drupal.org project, which might be confusing. This above command will display something like "Installing 
+  drupal/admin_toolbar (1.19.0)", which is the machine name of the drupal.org project – let's stick to that.
+2. `git reset --hard`
+3. `composer require drupal/admin_toolbar --no-interaction --prefer-dist -o`
+  * Well, that module is already part of the base package, but anyway :)
+4. `git add composer.json composer.lock`
+5. `git commit -m "New contrib: admin_toolbar.module."`
+
+## Adding a new custom module
+
+1. Copy it into the `docroot/modules/custom/` folder.
+2. Make sure its composer.json has the appropriate type info: `"type": "drupal-custom-module"`
+3. Add the module to git: `git add modules/custom/custom_module` (custom modules SHOULD be committed to the repo)
+4. Commit the module: `git commit -m "New custom module: custom_module."`
+
+## Applying patches to core or any contrib module
+
+1. Add a `patches` section into the `extra` section of your composer.json (if it hasn't been added yet) for each project 
+you want to patch; each Drupal project should have a separate section and each patch should have a separate line 
+(within the project section). So the end of your composer.json looks something like this:
 ```
-composer create-project pronovix/drupal-project:8.x-dev some-dir --stability dev --no-interaction
-```
-
-With `composer require ...` you can download new dependencies to your 
-installation.
-
-```
-cd some-dir
-composer require drupal/devel:~1.0
-```
-
-The `composer create-project` command passes ownership of all files to the 
-project that is created. You should create a new git repository, and commit 
-all files not excluded by the .gitignore file.
-
-## What does the template do?
-
-When installing the given `composer.json` some tasks are taken care of:
-
-* Drupal will be installed in the `docroot`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `docroot/vendor/autoload.php`,
-  instead of the one provided by Drupal (`docroot/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `docroot/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `docroot/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `docroot/profiles/contrib/`
-* Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `docroot/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `docroot/vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `docroot/vendor/bin/drupal`.
-
-## Updating Drupal Core
-
-This project will attempt to keep all of your Drupal Core files up-to-date; the 
-project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
-is used to ensure that your scaffold files are updated every time drupal/core is 
-updated. If you customize any of the "scaffolding" files (commonly .htaccess), 
-you may need to merge conflicts if any of your modfied files are updated in a 
-new release of Drupal core.
-
-Follow the steps below to update your core files.
-
-1. Run `composer update drupal/core --with-dependencies` to update Drupal Core and its dependencies.
-1. Run `git diff` to determine if any of the scaffolding files have changed. 
-   Review the files for any changes and restore any customizations to 
-  `.htaccess` or `robots.txt`.
-1. Commit everything all together in a single commit, so `docroot` will remain in
-   sync with the `core` when checking out branches or running `git bisect`.
-1. In the event that there are non-trivial conflicts in step 2, you may wish 
-   to perform these steps on a branch, and use `git merge` to combine the 
-   updated core files with your customized files. This facilitates the use 
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple; 
-   keeping all of your modifications at the beginning or end of the file is a 
-   good strategy to keep merges easy.
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
-
-
-## FAQ
-
-### Should I commit the contrib modules I download?
-
-Composer recommends **no**. They provide [argumentation against but also 
-workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
-
-### Should I commit the scaffolding files?
-
-The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
-index.php, update.php, …) to the docroot/ directory of your project. If you have not customized those files you could choose
-to not check them into your version control system (e.g. git). If that is the case for your project it might be
-convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
-
-```json
-"scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-    "post-install-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ],
-    "post-update-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ]
-},
-```
-### How can I apply patches to downloaded modules?
-
-If you need to apply patches (depending on the project being modified, a pull 
-request is often a better solution), you can do so with the 
-[composer-patches](https://github.com/cweagans/composer-patches) plugin.
-
-To add a patch to drupal module foobar insert the patches section in the extra 
-section of composer.json:
-```json
 "extra": {
+    "installer-paths": {
+        "docroot/core": ["type:drupal-core"],
+        "docroot/libraries/{$name}": ["type:drupal-library"],
+        "docroot/modules/contrib/{$name}": ["type:drupal-module"],
+        "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
+        "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
+        "drush/contrib/{$name}": ["type:drupal-drush"]
+    },
     "patches": {
-        "drupal/foobar": {
-            "Patch description": "URL to patch"
+        "drupal/core": {
+            "Use ROW_FORMAT=dynamic with InnoDB [#2857359]": "https://www.drupal.org/files/issues/row_format_dynamic_innodb_0.patch"
+        },
+        "drupal/node_clone": {
+            "Configurations cannot be changed and publishing options missing [#2724919]": "https://www.drupal.org/files/issues/fix_set_data_on_admin_page-2724919-2.patch",
+            "Warning: Invalid argument supplied for foreach() [#2712079]": "https://www.drupal.org/files/issues/update_settings_and_schema-2712079-3.patch"
         }
     }
 }
 ```
-### How do I switch from packagist.drupal-composer.org to packages.drupal.org?
+2. Run `composer install` in the VM to apply the patch.
 
-Follow the instructions in the [documentation on drupal.org](https://www.drupal.org/docs/develop/using-composer/using-packagesdrupalorg).
+## Writing tests
+
+Put your tests into the features directory. Then run `vagrant ssh` and `cd .. && bin/behat`. If you need a specially prepared 
+database to run tests, copy the dump to `docroot/mock.sql`.
+
+## Acknowledgements
+
+This is basically Proudly Found Elsewhere:
+* [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) (our own pronovix/drupal-project is a fork of it)
+* [Drupal VM](https://github.com/geerlingguy/drupal-vm) (it's added to our own repo as a git submodule)
+* [Composer howto](https://www.drupal.org/docs/develop/using-composer) on drupal.org
+* etc.
