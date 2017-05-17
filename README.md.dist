@@ -50,22 +50,31 @@ drush see http://docs.drush.org/en/master/.
    drush site-install --account-name=dru_admin --account-pass=dru_admin -y minimal
  ```
 
- Site install (with existing config):
- ```
- drush dsi
- ```
+Site install (with existing config):
+```
+drush dsi
+```
 
- Update install with upstream code/config changes:
- ```drush deploy```
+Build the application and update install with upstream code/config changes:
+```drush deploy```
 
- Config export (export your config changes):
- ```drush cex -y```
+Update install with upstream code/config changes:
+```drush update```
 
- Config import (manual import of config files):
- ```drush cim -y```
+Build the application, i.e. run composer install and build the theme assets.
+```drush build```
 
- Cache clear/rebuild:
- ```drush cr```
+Config export (export your config changes):
+```drush cex -y```
+
+Config import (manual import of config files):
+```drush cim -y```
+
+Cache clear/rebuild:
+```drush cr```
+
+See all the defined aliases:
+```drush sha```
 
 
 ## Coding style
