@@ -125,7 +125,13 @@
             "phapp": {
                 "url": "https://github.com/drunomics/phapp-cli/releases/download/0.2.3/phapp.phar"
             }
-        }
+        },
+        "patches": {
+            "drush/drush" : {
+                "post-updates option": "https://patch-diff.githubusercontent.com/raw/drush-ops/drush/pull/2740.patch"
+            }
+        },
+        "enable-patching": true
     },
     "config": {
         "sort-packages": true,

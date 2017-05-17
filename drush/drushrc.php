@@ -42,9 +42,10 @@ $options['drunomics-dump-dir'] = '../dumps';
 $options['shell-aliases']['dply'] = "!drush deploy";
 // Note that the trailing whitespace is necessary to make it differnt to "dply".
 // This seems necessary to work-a-round some drush bug not finding it else.
-$options['shell-aliases']['deploy-all'] = "!drush deploy" . " ";
-$options['shell-aliases']['deploy'] = "!drush composer install && drush entity-updates -y && drush updatedb -y && drush cim -y && drush cr";
+$options['shell-aliases']['deploy-all'] = "!drush deploy ";
+$options['shell-aliases']['deploy'] = "!drush build:drupal && drush update";
 $options['shell-aliases']['composer'] = "!composer --working-dir=$(drush dd)/../ ";
+$options['shell-aliases']['dbup'] = "!drush status --fields=bootstrap | grep 'bootstrap *: *Successful' 2>/dev/null || ( drush dsi )";
 
 # Install command for "dsi" and "dbup" aliases:
 $dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admin -y standard';
@@ -52,4 +53,15 @@ $dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admi
 #$dsi_base = 'drush site-install --account-name=dru_admin --account-pass=dru_admin -y --config-dir=../config standard';
 
 $options['shell-aliases']['dsi'] = "!chmod +w sites/default/settings.php; drush sql-create -y && $dsi_base";
-$options['shell-aliases']['dbup'] = "!drush status --fields=bootstrap | grep 'bootstrap *: *Successful' 2>/dev/null || ( {$options['shell-aliases']['dsi']} )";
+
+$options['shell-aliases']['update:drupal'] = '! drush updatedb --entity-updates --no-post-updates -y && drush cim -y && drush updatedb --no-cache-clear -y && drush cr';
+$options['shell-aliases']['update:theme'] = '! drush build:theme';
+$options['shell-aliases']['update'] = '! drush update:drupal && drush update:theme';
+
+$options['shell-aliases']['dev:pl'] = '!SCRIPT=dev:pl ./themes/custom/{{ project }}_theme/scripts/build.sh';
+$options['shell-aliases']['dev:theme'] = '!SCRIPT=dev ./themes/custom/{{ project }}_theme/scripts/build.sh';
+
+$options['shell-aliases']['build:drupal'] = '! cd $(readlink -f `pwd`)/.. && composer install --ignore-platform-reqs';
+$options['shell-aliases']['build:theme'] = '! ./themes/custom/{{ project }}_theme/scripts/build.sh';
+$options['shell-aliases']['build:pl'] = '! composer install -d themes/custom/{{ project }}_theme/pattern-lab --no-interaction && php themes/custom/{{ project }}_theme/pattern-lab/core/console --generate';
+$options['shell-aliases']['build'] = '!drush build:drupal && drush build:theme';
