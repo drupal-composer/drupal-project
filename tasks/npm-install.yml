@@ -1,0 +1,5 @@
+---
+- name: Run npm install for given paths.
+  shell:  "cd {{ item }}; npm install"
+  become: no
+  with_items: "{{ npm_package_json_paths }}"
