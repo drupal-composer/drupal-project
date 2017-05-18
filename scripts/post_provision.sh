@@ -1,2 +1,7 @@
 #!/bin/sh
-ln -s /home/vagrant/.npm-global/bin/phantomjs /usr/local/bin
+
+BIN_DIR=/usr/local/bin
+
+if [ ! -L ${BIN_DIR}/phantomjs ] ; then
+   ln -s /home/vagrant/.npm-global/bin/phantomjs ${BIN_DIR}
+fi
