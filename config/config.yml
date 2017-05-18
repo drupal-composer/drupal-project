@@ -269,6 +269,7 @@ composer_global_packages:
 pre_provision_scripts: []
 post_provision_scripts:
   - "{{ config_dir }}/../scripts/post_provision.sh"
+post_provision_tasks_dir: "{{ config_dir }}/../tasks/*.yml"
 
 # MySQL Configuration.
 mysql_root_password: root
@@ -284,6 +285,9 @@ nodejs_npm_global_packages:
   - name: phantomjs
 nodejs_install_npm_user: "{{ drupalvm_user }}"
 npm_config_prefix: "/home/{{ drupalvm_user }}/.npm-global"
+# Specify an array of package.json paths if you would like to install packages
+# during provisioning.
+npm_package_json_paths: []
 
 # Ruby Configuration (if enabled above).
 ruby_install_gems_user: "{{ drupalvm_user }}"
