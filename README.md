@@ -1,7 +1,12 @@
 # Composer template for Drupal projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+[![Build Status](https://travis-ci.org/renanmfd/drupal-project.svg?branch=8.x)](https://travis-ci.org/renanmfd/drupal-project)
 
+This is an adptation of the main project [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project).
+The goal is to install Drupal on the root folder of the project.
+
+# Original
+ 
 This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
@@ -41,14 +46,14 @@ When installing the given `composer.json` some tasks are taken care of:
 
 * Drupal will be installed in the root directory of the repository.
 * Autoloader is implemented to use the generated composer autoloader in `drupal-project/composer/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
+  instead of the one provided by Drupal (`vendor/autoload.php`).
+* Modules (packages of type `drupal-module`) will be placed in `modules/contrib/`
+* Theme (packages of type `drupal-theme`) will be placed in `themes/contrib/`
+* Profiles (packages of type `drupal-profile`) will be placed in `profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `web/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+* Creates `sites/default/files`-directory.
+* Latest version of drush is installed locally for use at `drupal-project/composer/bin/drush`.
+* Latest version of DrupalConsole is installed locally for use at `drupal-project/composer/bin/drupal`.
 
 ## Updating Drupal Core
 
