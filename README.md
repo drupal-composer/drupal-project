@@ -39,8 +39,8 @@ all files not excluded by the .gitignore file.
 
 When installing the given `composer.json` some tasks are taken care of:
 
-* Drupal will be installed in the `web`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
+* Drupal will be installed in the root directory of the repository.
+* Autoloader is implemented to use the generated composer autoloader in `drupal-project/composer/autoload.php`,
   instead of the one provided by Drupal (`web/vendor/autoload.php`).
 * Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
 * Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
