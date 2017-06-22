@@ -27,7 +27,10 @@ install:
 
 script:
   - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
-  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.4.x-dev drush/drush:9.0.x-dev; fi;
+  # Remove symfony/routing once https://www.drupal.org/node/2882456 is fixed
+  # @see https://www.drupal.org/node/2887000
+  # @see https://www.drupal.org/node/2874909
+  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update symfony/event-dispatcher:~3.2.9 symfony/routing:~3.2.9 drupal/core:8.4.x-dev drush/drush:9.0.x-dev; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
   - cd $TRAVIS_BUILD_DIR/web
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
