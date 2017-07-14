@@ -46,12 +46,15 @@
       "web/profiles/{$name}/": ["type:drupal-profile"]
     },
     "preserve-paths": [
-      "web/sites/all/modules/contrib",
-      "web/sites/all/themes/contrib",
-      "web/sites/all/libraries",
       "web/sites/all/drush",
-      "web/sites/default/settings.php",
-      "web/sites/default/files"
+      "web/sites/all/libraries",
+      "web/sites/all/modules/contrib",
+      "web/sites/all/modules/custom",
+      "web/sites/all/modules/features",
+      "web/sites/all/themes/contrib",
+      "web/sites/all/themes/custom",
+      "web/sites/all/translations",
+      "web/sites/default"
     ]
   }
 }
