@@ -43,7 +43,7 @@
       "sort-packages": true,
       "platform": {
         "php": "5.5.9"
-      },
+      }
     },
     "autoload": {
         "classmap": [
