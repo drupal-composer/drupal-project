@@ -18,9 +18,9 @@ services:
       - "8010:3306" # Expose mariadb port, to make it accessible from localhost, e.g. with SequelPro.
 
   php:
-    # wodby/drupal:[DRUPAL_VERSION]-[PHP_VERSION]-[STABILITY_TAG].
-    image: wodby/drupal:8-7.1-2.4.4
-    # image: wodby/drupal:8-7.0-2.4.4
+    # wodby/drupal-php:[PHP_VERSION]-[STABILITY_TAG].
+    image: wodby/drupal-php:7.1-2.4.5
+    # image: wodby/drupal-php:7.0-2.4.5
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
       PHP_XDEBUG: 1
