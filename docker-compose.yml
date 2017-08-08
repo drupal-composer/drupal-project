@@ -9,7 +9,7 @@ services:
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
       # The simple way to override the mariadb config.
-      # command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci 
+      # command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
     volumes:
      - ./docker-runtime/mariadb:/var/lib/mysql
      # Uncomment the following line and place a .sql file(s) to auto-import on docker init
@@ -32,7 +32,7 @@ services:
 
   nginx:
     # wodby/drupal-nginx:[DRUPAL_VERSION]-[NGINX_VERSION]-[STABILITY_TAG].
-    image: wodby/drupal-nginx:8-1.13-2.4.2
+    image: wodby/drupal-nginx:8-1.13-2.4.3
     environment:
       NGINX_BACKEND_HOST: php
       NGINX_ERROR_LOG_LEVEL: debug
