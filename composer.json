@@ -80,6 +80,8 @@
                 "sites/development.services.yml",
                 "sites/example.settings.local.php"
             ]
-        }
+        },
+        "enable-patching": true,
+        "patches-file": "composer.patches.json"
     }
 }
