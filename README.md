@@ -1,5 +1,7 @@
 # Composer template for Drupal 8 projects
 
+[![Build Status](https://api.travis-ci.org/ramsalt/drupal-project.svg?branch=8.x)](https://travis-ci.org/ramsalt/drupal-project)
+
 This project template should provide a kickstart for managing your site 
 dependencies with [Composer](https://getcomposer.org/).  It is based on the 
 [original Drupal Composer Template](https://github.com/drupal-composer/drupal-project), 
