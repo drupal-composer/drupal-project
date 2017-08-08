@@ -1,0 +1,15 @@
+# See http://docker-sync.io/ for more info
+version: "2"
+#options:
+#  verbose: true
+
+syncs:
+  #IMPORTANT: ensure this name is unique and does not match your other application container name
+  CHANGEME-htdocs-sync:
+    src: './'
+    notify_terminal: false
+    sync_args: '-prefer newer'
+    sync_userid: '82'
+    sync_host_port: '10871'
+    sync_strategy: 'unison'
+    sync_excludes: ['docker-runtime/**', '.gitignore', '.git/**', '.idea/**']

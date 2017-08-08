@@ -1,0 +1,25 @@
+# this is our development docker-compose building on top of the prodicker docker-compose, just mounting
+# the sync image - not redefining anything else
+version: "2"
+
+services:
+  php:
+    environment:
+      PHP_XDEBUG: 1
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG_REMOTE_CONNECT_BACK: 0         # This is needed to respect remote.host setting bellow
+      PHP_XDEBUG_REMOTE_HOST: "10.254.254.254"  # You will also need to 'sudo ifconfig lo0 alias 10.254.254.254'
+    volumes:
+      - codebase:/var/www/html:cached
+      - CHANGEME-htdocs-sync:/var/www/html:nocopy
+
+  nginx:
+    volumes:
+      # Options for macOS users (http://docs.docker4drupal.org/en/latest/macos)
+      - codebase:/var/www/html:cached # User-guided caching
+      - CHANGEME-htdocs-sync:/var/www/html:nocopy # Docker-sync
+
+# that the important thing
+volumes:
+  CHANGEME-htdocs-sync:
+    external: true
