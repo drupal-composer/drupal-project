@@ -1,13 +1,9 @@
-# Composer template for Drupal projects
+# Composer template for Drupal 8 projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
-
-This project template should provide a kickstart for managing your site
-dependencies with [Composer](https://getcomposer.org/).
-
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+This project template should provide a kickstart for managing your site 
+dependencies with [Composer](https://getcomposer.org/).  It is based on the 
+[original Drupal Composer Template](https://github.com/drupal-composer/drupal-project), 
+but includes everything necessary to run on Wodby.
 
 ## Usage
 
@@ -20,8 +16,10 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project ramsalt/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 ```
+
+Optionally edit `wodby.yml` and `docker-compose.yml` based on your needs.
 
 With `composer require ...` you can download new dependencies to your 
 installation.
