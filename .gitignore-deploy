@@ -1,0 +1,2 @@
+# Files and folders to not deploy to the production server.
+node_modules
