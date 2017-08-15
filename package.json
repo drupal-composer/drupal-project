@@ -31,6 +31,6 @@
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
     "kss-bootstrap": "^4.0.0",
-    "twig-drupal-filters": "^0.2.1"
+    "twig-drupal-filters": "^1.1.0"
   }
 }
