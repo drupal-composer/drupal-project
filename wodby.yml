@@ -1,0 +1,39 @@
+# For more info about Post deployment scripts in Wodby see:
+# https://docs.wodby.com/deployment/post-deployment-scripts.html
+pipeline:
+  # To avoid any issues this needs to be the first command that we run
+  - name: Git sub-modules setup
+    type: command
+    command: git submodule update --init --checkout
+    directory: $WODBY_APP_ROOT
+  
+  - name: Download composer dependencies in parallel
+    type: command
+    command: composer global require hirak/prestissimo:^0.3 --optimize-autoloader > /dev/null 2>&1
+    directory: $WODBY_APP_ROOT
+
+  - name: Composer install (Live)
+    type: command
+    command: composer install --no-dev --optimize-autoloader --no-progress
+    directory: $WODBY_APP_ROOT
+    only_if: '[ "$WODBY_ENVIRONMENT_TYPE" = "prod" ]'
+
+  - name: Composer install (Dev/Staging)
+    type: command
+    command: composer install --no-progress
+    directory: $WODBY_APP_ROOT
+    only_if: '[ "$WODBY_ENVIRONMENT_TYPE" != "prod" ]'
+
+  - name: Run DB Updates
+    type: command
+    command: drush -q -y updb --entity-updates
+    directory: $WODBY_APP_DOCROOT
+    # Do *not* run in Production and if Drupal can't bootstrap
+    only_if: '[ ! -z "$(drush st --fields=bootstrap)" ] && [ "$WODBY_ENVIRONMENT_TYPE" != "prod" ]'
+
+  - name: Rebuild Caches
+    type: command
+    command: drush -q -y cache-rebuild
+    directory: $WODBY_APP_DOCROOT
+    # Do *not* run in Production and if Drupal can't bootstrap
+    only_if: '[ ! -z "$(drush st --fields=bootstrap)" ] && [ "$WODBY_ENVIRONMENT_TYPE" != "prod" ]'

@@ -60,6 +60,20 @@ class ScriptHandler {
     }
   }
 
+  public static function renameLocalSettingsFile(Event $event) {
+    $fs = new Filesystem();
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $drupalRoot = $drupalFinder->getDrupalRoot();
+
+    $local_settings_file = $drupalRoot . '/sites/default/settings.ramsalt.local.php';
+    $local_settings_file_boilerplate = $local_settings_file . '.removeme';
+
+    if ($fs->exists($local_settings_file_boilerplate)) {
+      $fs->rename($local_settings_file_boilerplate, $local_settings_file);
+    }
+  }
+
   /**
    * Checks if the installed version of Composer is compatible.
    *

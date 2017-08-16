@@ -1,11 +1,15 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "ramsalt/drupal-project",
+    "description": "Project template for Drupal 8 projects built by Ramsalt Lab and deployed on Wodby",
     "type": "project",
     "license": "GPL-2.0+",
     "authors": [
         {
-            "name": "",
+            "name": "Marlon <marlon@ramsalt.com>",
+            "role": ""
+        },
+        {
+            "name": "Stephan <stephan@ramsalt.com>",
             "role": ""
         }
     ],
@@ -13,6 +17,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
@@ -23,7 +31,8 @@
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^0|^1.0.0",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "oomphinc/composer-installers-extender": "^1.1"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -56,20 +65,30 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "DrupalProject\\composer\\ScriptHandler::renameLocalSettingsFile"
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ]
     },
     "extra": {
+        "installer-types": ["bower-asset", "npm-asset"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
-        }
+        },
+        "drupal-scaffold": {
+            "excludes": [
+                "sites/development.services.yml",
+                "sites/example.settings.local.php"
+            ]
+        },
+        "enable-patching": true,
+        "patches-file": "composer.patches.json"
     }
 }
