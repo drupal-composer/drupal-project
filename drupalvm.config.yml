@@ -19,6 +19,7 @@ install_site: false
 # Set preferred tools and versions.
 drupalvm_webserver: nginx
 nodejs_version: "6.x"
+php_version: "7.0"
 
 # Enable and configure system packages.
 php_xdebug_cli_enable: 0
