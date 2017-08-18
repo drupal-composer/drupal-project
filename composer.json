@@ -69,12 +69,10 @@
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@drupal-scaffold",
             "if hash npm; then npm install; fi"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@drupal-scaffold"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "test": [
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
