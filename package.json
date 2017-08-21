@@ -9,7 +9,7 @@
     "predeploy": "npm i && composer install",
     "deploy": "npm run deploy:gitignore && npm run deploy:removegit && git add -A && npm run deploy:push",
     "deploy:gitignore": "mv .gitignore-deploy .gitignore",
-    "deploy:removegit": "find web -type d -name '.git*' -exec rm -rf {} +",
+    "deploy:removegit": "find web -type d -name .git -exec rm -rf {} +",
     "deploy:push": "grunt buildcontrol:deploy"
   },
   "repository": {
