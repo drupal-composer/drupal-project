@@ -1,0 +1,2 @@
+RewriteEngine on
+RewriteRule ^$ /web/ [L,R=301]
