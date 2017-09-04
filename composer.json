@@ -21,7 +21,7 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.0",
-        "drush/drush": "~8.0",
+        "drush/drush": "~8.0|^9.0.0-beta4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
