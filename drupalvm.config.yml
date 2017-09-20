@@ -6,9 +6,6 @@ vagrant_hostname: CHANGEME.dvm
 vagrant_machine_name: drupalvm-CHANGEME
 vagrant_ip: 192.168.89.88
 
-# Specify a custom database name for visual safety check.
-drupal_db_name: CHANGEME_drupalvm
-
 # Configure Drupal VM to run via composer.
 # @see http://docs.drupalvm.com/en/latest/deployment/composer-dependency
 build_composer: true
