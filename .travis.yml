@@ -23,6 +23,7 @@ before_install:
   - composer --version
 
 install:
+  - composer --verbose validate
   - composer --verbose install
 
 script:
