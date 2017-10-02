@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies: {  }
+id: test
+label: Test environment
+folder: ../config/test
+module:
+  stage_file_proxy: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0

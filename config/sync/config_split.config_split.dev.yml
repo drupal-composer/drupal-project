@@ -1,0 +1,19 @@
+langcode: en
+status: true
+dependencies: {  }
+id: dev
+label: Development environments
+folder: ../config/dev
+module:
+  devel: 0
+  devel_generate: 0
+  kint: 0
+  stage_file_proxy: 0
+  twig_xdebug: 0
+  views_ui: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0
