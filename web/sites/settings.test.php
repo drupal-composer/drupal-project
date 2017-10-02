@@ -22,3 +22,7 @@ $config['stage_file_proxy.settings']['origin'] = 'https://EXAMPLE.com';
 // only differences between TEST & LIVE are API keys and the Stage File Proxy
 // module status.
 $config['config_split.config_split.test']['status'] = TRUE;
+
+// Don't commit config changes in the TEST environment to the configuration
+// files respository.
+$config['config_tools.settings']['disabled'] = 1;

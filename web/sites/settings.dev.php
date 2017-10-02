@@ -46,6 +46,10 @@ $config['stage_file_proxy.settings']['origin'] = 'https://EXAMPLE.com';
 // Enable dev environment-specific settings via a config split.
 $config['config_split.config_split.dev']['status'] = TRUE;
 
+// Don't commit config changes in DEV environments to the configuration files
+// respository.
+$config['config_tools.settings']['disabled'] = 1;
+
 // Prevent Kint from loading too much debug output and crashing the request.
 if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
   require_once "$app_root/modules/contrib/devel/kint/kint/Kint.class.php";
