@@ -14,7 +14,7 @@
 /web/sites/*/settings.php
 
 # Ignore local overrides and modules.
-/web/sites/settings.local.php
+/web/sites/local.*
 /web/modules/local
 /web/themes/local
 /web/profiles/local
