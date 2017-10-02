@@ -23,9 +23,10 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "devinci/devinci-behat-extension": "^0.1.0",
+        "drupal/coder": "^8.2",
         "drupal/drupal-extension": "^3.2",
         "phpunit/phpunit": ">=4.8.28 <5",
-        "drupal/coder": "^8.2",
         "sensiolabs/security-checker": "^4.0"
     },
     "conflict": {
