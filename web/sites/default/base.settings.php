@@ -1,7 +1,7 @@
 <?php
 
 $config_directories = array(
-  CONFIG_SYNC_DIRECTORY => '../config',
+  CONFIG_SYNC_DIRECTORY => '../config/sync',
 );
 
 $settings['hash_salt'] = '{{ hash_salt }}';
