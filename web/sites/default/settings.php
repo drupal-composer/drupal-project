@@ -2,28 +2,19 @@
 
 /**
  * @file
- * Includes the settings files appropriate for development environments.
+ * Includes the settings files appropriate to the current environment.
  *
  * @see default.settings.php
  * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
-// Always include the "common" settings first.
+// Include settings common to all environments first.
 include "$app_root/sites/settings.common.php";
 
-// Include development overrides next.
-include "$app_root/sites/settings.dev.php";
+// Include environment-specific settings.
+include "$app_root/sites/settings.$env.php";
 
-// Local settings. These come last so that they can override anything.
+// Allow local settings to override anything specified above.
 if (file_exists("$app_root/$site_path/settings.local.php")) {
   include "$app_root/$site_path/settings.local.php";
 }
-
-// Add a shutdown function to help debug 500 errors.
-// @see http://dropbucket.org/node/7127
-register_shutdown_function(function () {
-  if (($error = error_get_last())) {
-    $dump = print_r($error, TRUE);
-    die("<pre>$dump</pre>");
-  }
-});

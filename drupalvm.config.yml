@@ -14,12 +14,37 @@ drupal_composer_dependencies: []
 drupal_composer_install_dir: "/var/www/drupalvm"
 drupal_install_profile: config_installer
 build_composer_project: false
-install_site: false
+drupal_install_site: false
 
 # Set preferred tools and versions.
 drupalvm_webserver: nginx
 nodejs_version: "6.x"
 php_version: "7.0"
+
+# In order to bump the fastcgi buffer size, we have to set the whole variable.
+nginx_hosts:
+  - server_name: "{{ drupal_domain }} www.{{ drupal_domain }}"
+    root: "{{ drupal_core_path }}"
+    is_php: true
+    extra_parameters: |
+      fastcgi_buffers 16 16k;
+      fastcgi_buffer_size 32k;
+
+  - server_name: "adminer.{{ vagrant_hostname }}"
+    root: "{{ adminer_install_dir }}"
+    is_php: true
+
+  - server_name: "xhprof.{{ vagrant_hostname }}"
+    root: "{{ php_xhprof_html_dir }}"
+    is_php: true
+
+  - server_name: "pimpmylog.{{ vagrant_hostname }}"
+    root: "{{ pimpmylog_install_dir }}"
+    is_php: true
+
+  - server_name: "{{ vagrant_ip }} dashboard.{{ vagrant_hostname }}"
+    root: "{{ dashboard_install_dir }}"
+    is_php: true
 
 # Enable and configure system packages.
 php_xdebug_cli_enable: 0

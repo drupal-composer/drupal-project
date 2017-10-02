@@ -31,10 +31,12 @@ pluginOpts:
       scss:
         outputStyle: nested
         sourceMap: true
+        outFile: 'main.css'
         sourceComments: false
         includePaths:
           - node_modules/bootstrap-sass/assets/stylesheets
           - node_modules/font-awesome/scss
+          - web/themes/THEME_NAME/kalastatic/styles
           - web/themes/THEME_NAME/kalastatic/components
 
       # Twig settings.
@@ -42,15 +44,41 @@ pluginOpts:
         # Introduce the "kstat" Twig namespace.
         namespaces:
           kstat: web/themes/THEME_NAME/kalastatic
+          atoms: web/themes/THEME_NAME/kalastatic/components/atoms
+          molecules: web/themes/THEME_NAME/kalastatic/components/molecules
+          organisms: web/themes/THEME_NAME/kalastatic/components/organisms
+          layouts: web/themes/THEME_NAME/kalastatic/components/layouts
 
         # Mimic some of the Drupal 8 Twig filters.
         filters:
           clean_class: twig-drupal-filters/filters/clean_class
+          clean_id: twig-drupal-filters/filters/clean_id
           safe_join: twig-drupal-filters/filters/safe_join
           t: twig-drupal-filters/filters/trans
-
 kss:
-  css: ../styles/main.css
+  builder: "node_modules/kstat-kss-builder"
+  css:
+    - ../styles/main.css
+    - ../styles/styleguide.css
+  js:
+    - ../vendor/bootstrap/bootstrap.min.js
+    - ../vendor/jquery-once/jquery.once.min.js
+    - /kalastatic/vendor/matchheight/dist/jquery.matchHeight-min.js
+    - ../js/drupal_pre.js
+    - ../js/THEME_NAME.js
+    - ../js/drupal_post.js
   source:
-    - node_modules/kss-bootstrap/styleguide
+    - node_modules/kss-bootstrap/styleguide/sections
+    - node_modules/kss-bootstrap/styleguide/css/table
+    - node_modules/kss-bootstrap/styleguide/css/button
+    - node_modules/kss-bootstrap/styleguide/css/code
+    - node_modules/kss-bootstrap/styleguide/css/grid
+    - node_modules/kss-bootstrap/styleguide/css/helper
+    - node_modules/kss-bootstrap/styleguide/css/form
+    - node_modules/kss-bootstrap/styleguide/css/typography
+    - node_modules/kss-bootstrap/styleguide/components/nav
+    - node_modules/kss-bootstrap/styleguide/components/btn-group
+    - node_modules/kss-bootstrap/styleguide/components/pagination
+    - node_modules/kss-bootstrap/styleguide/components/media
+    - node_modules/kss-bootstrap/styleguide/javascript/dropdown
     - web/themes/THEME_NAME/kalastatic
