@@ -4,6 +4,11 @@
 // We get the project name from the name of the path that Composer created for
 // us.
 $project = basename(realpath("."));
+// Support folder structure like "PROJECT/vcs" as well.
+if ($project == 'vcs') {
+  $project = basename(realpath(".."));
+}
+
 echo "Project name $project taken from directory name\n";
 
 // Specify files for which replacement will be applied.
