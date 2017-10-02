@@ -14,7 +14,6 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/admin_toolbar": "^1.0",
-        "drupal/console": "^1.0.1",
         "drupal/core": "~8.4",
         "drush/drush": "9.0.x-dev",
         "oomphinc/composer-installers-extender": "1.*",
@@ -30,7 +29,6 @@
         "sensiolabs/security-checker": "^4.0"
     },
     "conflict": {
-        "drupal/console-extend-plugin" : "0.5.0 - 0.6.0",
         "drupal/drupal": "*"
     },
     "repositories": [
