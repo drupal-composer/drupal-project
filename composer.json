@@ -2,7 +2,7 @@
     "name": "drunomics/drupal-project",
     "description": "Project template for drunomics Drupal 8 projects with composer",
     "type": "project",
-    "license": "proprietary",
+    "license": "GPL-2.0+",
     "authors": [
         {
             "name": "drunomics GmbH",
