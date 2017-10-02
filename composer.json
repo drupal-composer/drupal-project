@@ -15,9 +15,8 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/admin_toolbar": "^1.0",
         "drupal/console": "^1.0.1",
-        "drupal/core": "~8.0",
-        "drush/drush": "~8.0",
-        "drunomics/drudrush": "1.*",
+        "drupal/core": "~8.4",
+        "drush/drush": "~9.0",
         "oomphinc/composer-installers-extender": "1.*",
         "wikimedia/composer-merge-plugin": "1.3.*"
     },
@@ -123,11 +122,6 @@
         "tools": {
             "phapp": {
                 "url": "https://github.com/drunomics/phapp-cli/releases/download/0.2.3/phapp.phar"
-            }
-        },
-        "patches": {
-            "drush/drush" : {
-                "post-updates option": "https://patch-diff.githubusercontent.com/raw/drush-ops/drush/pull/2740.patch"
             }
         },
         "enable-patching": true

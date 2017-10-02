@@ -5,9 +5,6 @@
  * Holds project specific drush settings.
  */
 
-// Add-in drunomics drush config.
-$options['config'][] = dirname(__FILE__) . '/contrib/drudrush/';
-
 /**
  * List of tables whose *data* is skipped by the 'sql-dump' and 'sql-sync'
  * commands when the "--structure-tables-key=common" option is provided.
