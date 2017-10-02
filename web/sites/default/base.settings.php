@@ -13,8 +13,11 @@ $settings['hash_salt'] = '{{ hash_salt }}';
 # $settings['reverse_proxy_header'] = 'HTTP_X_CLUSTER_CLIENT_IP';
 # $settings['omit_vary_cookie'] = TRUE;
 # $settings['class_loader_auto_detect'] = FALSE;
-
 $settings['allow_authorize_operations'] = FALSE;
+
+# $settings['cache_ttl_4xx'] = 3600;
+# $settings['form_cache_expiration'] = 21600;
+# $settings['session_write_interval'] = 180;
 
 # $settings['file_chmod_directory'] = 0775;
 # $settings['file_chmod_file'] = 0664;
@@ -27,7 +30,6 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
-# $settings['cache_ttl_4xx'] = 3600;
 # $settings['class_loader_auto_detect'] = FALSE;
 # $settings['session_write_interval'] = 180;
 # $settings['locale_custom_strings_en'][''] = array(
