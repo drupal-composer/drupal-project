@@ -3,6 +3,8 @@
 /**
  * @file
  * Holds project specific drush settings.
+ *
+ * @todo: Port to drush.yml.
  */
 
 /**

@@ -13,6 +13,7 @@ $file_patterns = [
   'devsetup/*\.yml',
   'web/sites/default/*\.php',
   'drush/*\.php',
+  'drush/*\.yml',
 ];
 
 $replacements = [
