@@ -97,7 +97,7 @@
         "test": "behat -p vagrant --colors"
     },
     "extra": {
-        "installer-types": ["library"],
+        "installer-types": ["library", "npm-asset", "bower-asset"],
         "installer-paths": {
             "drush/contrib/{$name}": ["type:drupal-drush"],
             "web/core": ["type:drupal-core"],
@@ -105,8 +105,8 @@
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "web/libraries/{$name}/": [
                 "type:drupal-library",
-                "vendor:bower-asset",
-                "vendor:npm-asset"
+                "type:npm-asset",
+                "type:bower-asset"
             ],
             "web/modules/drunomics/{$name}": ["vendor:drunomics"],
             "web/modules/contrib/{$name}": ["type:drupal-module"]
