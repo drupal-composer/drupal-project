@@ -49,9 +49,6 @@
     ],
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "config": {
-        "sort-packages": true
-    },
     "autoload": {
         "classmap": [
             "scripts/composer/PharInstaller.php",
