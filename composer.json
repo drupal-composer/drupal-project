@@ -16,7 +16,7 @@
         "drupal/admin_toolbar": "^1.0",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.4",
-        "drush/drush": "~9.0",
+        "drush/drush": "9.0.x-dev",
         "oomphinc/composer-installers-extender": "1.*",
         "wikimedia/composer-merge-plugin": "1.3.*"
     },
