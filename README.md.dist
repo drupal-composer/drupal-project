@@ -23,23 +23,18 @@ This project is maintained using composer. Please refer to the documentation pro
 ## drunomics setup notes
 
 - The vagrant setup is added in the project, thus no special setup is required.
-- The drunomics drush extension is added to the project, so it just works.
-  
+- The drunomics drush extension is *not* added to the project. It does *not*
+  work with drush 9.
 
 ## Command line tools
 
  * Drush
- To run Drupal console, execute from the "web" directory:
- ```../vendor/bin/drush ```
+ To run drush, execute from the root repository directory:
+ ```./vendor/bin/drush ```
 
- The more convenient alternative is to install a global drush with version 8 or
-later. Then, drush picks up the project-local drush automatically. For docs on
-drush see http://docs.drush.org/en/master/.
-
- * Drupal Console
- To run Drupal console, execute from the "web" directory:
- ```../vendor/bin/drupal ```
- For docs on Drupal console see http://docs.drupalconsole.com/en/index.html.
+ The more convenient alternative is to install a global launcher or a global
+ drush 8. Then, drush picks up the project-local drush automatically. For docs on
+ drush see http://docs.drush.org/en/master/.
 
 ## Useful commands
 
