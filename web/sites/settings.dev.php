@@ -56,6 +56,20 @@ if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
   Kint::$maxLevels = 5;
 }
 
+// Provide sane defaults for local development.
+if (empty($databases['default']['default'])) {
+  $databases['default']['default'] = [
+    'database' => 'drupal',
+    'username' => 'drupal',
+    'password' => 'drupal',
+    'prefix' => '',
+    'host' => 'localhost',
+    'port' => '3306',
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'driver' => 'mysql',
+  ];
+}
+
 // Add a shutdown function to help debug 500 errors.
 // @see http://dropbucket.org/node/7127
 register_shutdown_function(function () {

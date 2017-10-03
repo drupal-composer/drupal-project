@@ -101,3 +101,8 @@ $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 // Disable configuration splits by default on all environments.
 $config['config_split.config_split.dev']['status'] = FALSE;
 $config['config_split.config_split.test']['status'] = FALSE;
+$config['config_split.config_split.live']['status'] = FALSE;
+
+// Set a hash salt. Consider changing this via an environment variable for added
+// security.
+$settings['hash_salt'] = 'CHANGE-ME-PER-PROJECT-OR-ENVIRONMENT';
