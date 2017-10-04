@@ -13,6 +13,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/gazzur/druboo"
         }
     ],
     "require": {
@@ -23,7 +27,8 @@
         "drupal/core": "~8.0",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "gazzur/druboo_profile": "dev-master"
     },
     "require-dev": {
         "behat/mink": "~1.7",
