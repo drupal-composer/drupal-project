@@ -28,7 +28,7 @@
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
-        "gazzur/druboo_profile": "dev-master"
+        "gazzur/druboo": "dev-master"
     },
     "require-dev": {
         "behat/mink": "~1.7",

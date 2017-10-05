@@ -20,7 +20,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project gazzur/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project gazzur/drupal-project:8.x-dev some-dir --stability dev --no-interaction --repository-url="http://www.digitex.co.uk/gazrepo" --no-secure-http
 ```
 
 With `composer require ...` you can download new dependencies to your 
