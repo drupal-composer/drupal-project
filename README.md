@@ -20,7 +20,13 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project gazzur/drupal-project:8.x-dev some-dir --stability dev --no-interaction --repository-url="http://www.digitex.co.uk/gazrepo" --no-secure-http
+composer create-project gazzur/drupal-project:8.x-dev some-dir --stability dev --no-interaction --repository-url="https://www.digitex.co.uk/gazrepo"
+```
+
+Then install Drupal with Drush using desired options, e.g:
+
+```
+..\vendor\bin\drush si druboo --db-su=DB_SU_USER --db-url=mysql://DBUSER:DBPASS@localhost:DBPORT/DBNAME --account-pass=ACCOUNT_PASS --site-name=SITE_NAME
 ```
 
 With `composer require ...` you can download new dependencies to your 
