@@ -1,6 +1,6 @@
 hotlink: false
 origin: ''
-origin_dir: sites/default/files
+origin_dir: false
 use_imagecache_root: true
 verify: true
 _core: {  }
