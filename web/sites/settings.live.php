@@ -10,11 +10,11 @@
 
 // Always use the official domain for live.
 if ('EXAMPLE.COM' !== $_SERVER['HTTP_HOST']) {
-  // $redirect('https', 'EXAMPLE.COM');
+  // KalaUtil::redirect('https', 'EXAMPLE.COM');
 }
 
 // Redirect HTTP to HTTPS.
-// $enforce_ssl();
+// KalaUtil::enforceSSL();
 
 // Set the Drupal 8 "Trusted Host Patterns" for added security.
 $settings['trusted_host_patterns'] = [

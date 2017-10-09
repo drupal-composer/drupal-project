@@ -14,22 +14,44 @@ use Drupal\Component\Assertion\Handle;
 assert_options(ASSERT_ACTIVE, TRUE);
 Handle::register();
 
-// Enable local development services.
+// Enable development services.
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
 // Show all error messages, with backtrace information.
+// Consider changing this to "all" if pages are crashing from kint output.
 $config['system.logging']['error_level'] = 'verbose';
 
-// Disable CSS and JS aggregation.
+// Disable CSS and JS aggregation and compression.
 $config['system.performance']['css']['preprocess'] = FALSE;
 $config['system.performance']['js']['preprocess'] = FALSE;
+$config['system.performance']['css']['gzip'] = FALSE;
+$config['system.performance']['js']['gzip'] = FALSE;
+$config['system.performance']['response']['gzip'] = FALSE;
 
-// Disable the render cache (this includes the page cache).
-// Do not use this setting until after the site is installed.
-// $settings['cache']['bins']['render'] = 'cache.backend.null';
-
-// Disable Dynamic Page Cache.
-$settings['cache']['bins']['dynamic_page_cache'] = 'cache.backend.null';
+// Find all cache bins and turn them off?
+// https://www.drupal.org/node/2598914
+$cache_bins = [
+  'bootstrap',
+  'cache_tags.invalidator',
+  'cacheable_response_subscriber',
+  'config',
+  'data',
+  'default',
+  'discovery',
+  'dynamic_page_cache',
+  'entity',
+  'menu',
+  'migrate',
+  // Do not disable page or render caching until after the site is installed.
+  // 'page',
+  // 'render',
+  'rest',
+  'static',
+  'toolbar',
+];
+foreach ($cache_bins as $bin) {
+  $settings['cache']['bins'][$bin] = 'cache.backend.null';
+}
 
 // Allow test modules and themes to be installed.
 $settings['extension_discovery_scan_tests'] = TRUE;
@@ -47,7 +69,8 @@ $config['stage_file_proxy.settings']['origin'] = 'https://EXAMPLE.com';
 $config['config_split.config_split.dev']['status'] = TRUE;
 
 // Don't commit config changes in DEV environments to the configuration files
-// respository.
+// repo. This is just a precautionary step, as the Config Tools modules should
+// actually get disabled in all but the live environment via config split.
 $config['config_tools.settings']['disabled'] = 1;
 
 // Prevent Kint from loading too much debug output and crashing the request.
@@ -55,6 +78,9 @@ if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
   require_once "$app_root/modules/contrib/devel/kint/kint/Kint.class.php";
   Kint::$maxLevels = 5;
 }
+
+// Allow anyone to execute pending updates.
+$settings['update_free_access'] = TRUE;
 
 // Provide sane defaults for local development.
 if (empty($databases['default']['default'])) {

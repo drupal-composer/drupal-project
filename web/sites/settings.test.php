@@ -9,7 +9,7 @@
  */
 
 // Redirect HTTP to HTTPS.
-// $enforce_ssl();
+// KalaUtil::enforceSSL();
 
 $settings['trusted_host_patterns'] = array(
   // '^test\.EXAMPLE\.COM$',
@@ -24,5 +24,6 @@ $config['stage_file_proxy.settings']['origin'] = 'https://EXAMPLE.com';
 $config['config_split.config_split.test']['status'] = TRUE;
 
 // Don't commit config changes in the TEST environment to the configuration
-// files respository.
+// files repo. This is just a precautionary step, as the Config Tools modules
+// should actually get disabled in all but the live environment via configsplit.
 $config['config_tools.settings']['disabled'] = 1;
