@@ -27,6 +27,9 @@
     "drupal/core": "8.*"
   },
   "scripts": {
+    "post-install-cmd": [
+      "sh ./scripts/composer/post-install.sh"
+    ],
     "post-create-project-cmd": [
       "rm README.md LICENSE .travis.yml phpunit.xml.dist"
     ]

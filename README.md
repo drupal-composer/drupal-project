@@ -45,7 +45,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
 * Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` (See Libraries)
 * Helps for using other PHP packages almost similar to the Drupal 8 version
-* Creates default writable versions of `settings.php` and `services.yml`.
+* Creates default writable versions of `settings.php`.
 * Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 
