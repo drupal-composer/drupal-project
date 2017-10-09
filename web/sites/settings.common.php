@@ -41,9 +41,9 @@ $settings['file_scan_ignore_directories'] = [
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/staged';
 
 // Disable configuration splits by default on all environments.
-$config['config_split.config_split.dev']['status'] = FALSE;
-$config['config_split.config_split.test']['status'] = FALSE;
-$config['config_split.config_split.live']['status'] = FALSE;
+foreach (['dev', 'test', 'live'] as $split) {
+  $config["config_split.config_split.$split"]['status'] = FALSE;
+}
 
 // Set a hash salt if the hosting provider settings have not already done so.
 // Consider setting this via an environment variable for added security.
