@@ -66,9 +66,9 @@ Libraries normally would be extra packages that need to be public available (CSS
 Normally this are not maintained using Composer, but if you want to have a 100% Composer deployment and benefit from patches you can use in `composer.json` this example, changing the `repositories` section and adding in `require` section:
 ```
 
-"repositories": {
+"repositories": [
   ...
-  "slick": {
+  {
     "type": "package",
     "package": {
         "name": "kenwheeler/slick",
@@ -85,7 +85,7 @@ Normally this are not maintained using Composer, but if you want to have a 100% 
         "type": "drupal-library"
     }
   }
-},
+],
 "require": {
   ...
   "kenwheeler/slick": "~1.6.0"

@@ -1,61 +1,69 @@
 {
-  "name": "drupal-composer/drupal-project",
-  "description": "Composer template for Drupal projects",
-  "repositories": {
-    "drupal": {
-      "type": "composer",
-      "url":  "https://packages.drupal.org/7"
-    }
-  },
-  "require": {
-    "php": ">=5.2.5",
-    "ext-gd": "*",
-    "ext-xml": "*",
-    "ext-json": "*",
-    "ext-openssl": "*",
-    "ext-curl": "*",
-    "ext-pdo": "*",
-    "ext-pdo_mysql": "*",
-    "composer/installers": "~1.0",
-    "cweagans/composer-patches": "~1.0",
-    "drupal-composer/preserve-paths": "0.1.*",
-    "drush/drush": "~8.0",
-    "drupal/drupal": "7.*",
-    "drupal/composer_autoloader": "1.*"
-  },
-  "conflict": {
-    "drupal/core": "8.*"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "sh ./scripts/composer/post-install.sh"
+    "name": "drupal-composer/drupal-project",
+    "description": "Project template for Drupal 7 projects with composer",
+    "type": "project",
+    "license": "GPL-2.0+",
+    "authors": [
+        {
+            "name": "",
+            "role": ""
+        }
     ],
-    "post-create-project-cmd": [
-      "rm README.md LICENSE .travis.yml phpunit.xml.dist",
-      "sh ./scripts/composer/post-install.sh"
-    ]
-  },
-  "config": {
-    "vendor-dir": "vendor"
-  },
-  "minimum-stability": "dev",
-  "prefer-stable": true,
-  "extra": {
-    "installer-paths": {
-      "web/": ["type:drupal-core"],
-      "web/profiles/{$name}/": ["type:drupal-profile"],
-      "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
-      "web/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
-      "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
-      "web/sites/all/drush/{$name}/": ["type:drupal-drush"]
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://packages.drupal.org/7"
+        }
+    ],
+    "require": {
+        "php": ">=5.2.5",
+        "ext-gd": "*",
+        "ext-xml": "*",
+        "ext-json": "*",
+        "ext-openssl": "*",
+        "ext-curl": "*",
+        "ext-pdo": "*",
+        "ext-pdo_mysql": "*",
+        "composer/installers": "^1.2",
+        "cweagans/composer-patches": "^1.6",
+        "drupal-composer/preserve-paths": "0.1.*",
+        "drush/drush": "~8.0",
+        "drupal/drupal": "7.*",
+        "drupal/composer_autoloader": "1.*"
     },
-    "preserve-paths": [
-      "web/sites/all/libraries",
-      "web/sites/all/modules/custom",
-      "web/sites/all/modules/features",
-      "web/sites/all/themes/custom",
-      "web/sites/all/translations",
-      "web/sites/default"
-    ]
-  }
+    "conflict": {
+        "drupal/core": "8.*"
+    },
+    "scripts": {
+        "post-install-cmd": [
+            "sh ./scripts/composer/post-install.sh"
+        ],
+        "post-create-project-cmd": [
+            "rm README.md LICENSE .travis.yml phpunit.xml.dist",
+            "sh ./scripts/composer/post-install.sh"
+        ]
+    },
+    "config": {
+        "vendor-dir": "vendor"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "extra": {
+        "installer-paths": {
+            "web/": ["type:drupal-core"],
+            "web/profiles/{$name}/": ["type:drupal-profile"],
+            "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
+            "web/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
+            "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
+            "web/sites/all/drush/{$name}/": ["type:drupal-drush"]
+        },
+        "preserve-paths": [
+            "web/sites/all/libraries",
+            "web/sites/all/modules/custom",
+            "web/sites/all/modules/features",
+            "web/sites/all/themes/custom",
+            "web/sites/all/translations",
+            "web/sites/default"
+        ]
+    }
 }

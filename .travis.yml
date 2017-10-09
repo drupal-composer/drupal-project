@@ -14,7 +14,6 @@ env:
     - RELEASE=dev COMPOSER_CHANNEL=stable
     - RELEASE=stable COMPOSER_CHANNEL=snapshot
 
-
 before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
