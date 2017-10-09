@@ -31,7 +31,8 @@
       "sh ./scripts/composer/post-install.sh"
     ],
     "post-create-project-cmd": [
-      "rm README.md LICENSE .travis.yml phpunit.xml.dist"
+      "rm README.md LICENSE .travis.yml phpunit.xml.dist",
+      "sh ./scripts/composer/post-install.sh"
     ]
   },
   "config": {
