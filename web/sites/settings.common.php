@@ -94,9 +94,9 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
-// Define the version-controlled configuration directory.
+// Define the directory for "staged" (aka "sync") configuration.
 // @see http://dgo.to/2431247
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
+$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/staged';
 
 // Disable configuration splits by default on all environments.
 $config['config_split.config_split.dev']['status'] = FALSE;
