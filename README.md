@@ -5,8 +5,8 @@
 This project template should provide a kickstart for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
-If you want to know, how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/master/docs/make.md) visit
+If you want to know how to use it as replacement for
+[Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
 the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
 
 ## Usage
@@ -14,7 +14,8 @@ the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
 First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
 
 > Note: The instructions below refer to the [global composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar) for your setup.
+You might need to replace `composer` with `php composer.phar` (or similar) 
+for your setup.
 
 After that you can create the project:
 
@@ -22,12 +23,17 @@ After that you can create the project:
 composer create-project drupal-composer/drupal-project:7.x-dev some-dir --stability dev --no-interaction
 ```
 
-With `composer require ...` you can download new dependencies to your installation.
+With `composer require ...` you can download new dependencies to your 
+installation.
 
 ```
 cd some-dir
-composer require "drupal/ctools:~1.12"
+composer require drupal/devel:~1.0
 ```
+
+The `composer create-project` command passes ownership of all files to the 
+project that is created. You should create a new git repository, and commit 
+all files not excluded by the .gitignore file.
 
 ## What does the template do?
 
@@ -38,26 +44,21 @@ When installing the given `composer.json` some tasks are taken care of:
 * Theme (packages of type `drupal-module`) will be placed in `web/sites/all/themes/contrib/`
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/`
 * Libraries (packages of type `drupal-library`) will be placed in `web/sites/all/libraries/` (See Libraries)
-* Helps for using othe PHP packages almost similar to the Drupal 8 version
+* Helps for using other PHP packages almost similar to the Drupal 8 version
+* Creates default writable versions of `settings.php` and `services.yml`.
+* Creates `web/sites/default/files`-directory.
+* Latest version of drush is installed locally for use at `vendor/bin/drush`.
+
+## Generate composer.json from existing project
+
+With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
+you can now generate a basic `composer.json` file from an existing project. Note
+that the generated `composer.json` might differ from this project's file.
 
 ## How to enable the Composer autoloader in your Drupal 7 website
 
 The skeleton already installs the `composer_autoloader` module. Just enable it in the website before enabling
 any possible module that have dependencies various packages.
-
-## Adding patches to core, contrib modules or themes
-
-You may add a patch so you don't need to maintain separate a modified module or theme to get faster a fix or make a critical change for your project. Add in `composer.json` as in the example.
-
-```
-"extra": {
-  "patches": {
-    "drupal/drupal": {
-      "Add startup configuration for PHP server": "https://www.drupal.org/files/issues/add_a_startup-1543858-30.patch"
-    }
-  }
-}
-```
 
 ## Libraries
 
@@ -95,6 +96,28 @@ _(You may run `composer require "kenwheeler/slick:~1.6.0"` as well if you add ju
 
 ## FAQ
 
-### Should I commit the contrib modules I download
+### Should I commit the contrib modules I download?
 
-Composer recommends **no**. They provide [argumentation against but also workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+Composer recommends **no**. They provide [argumentation against but also 
+workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
+
+### How can I apply patches to downloaded modules?
+
+If you need to apply patches (depending on the project being modified, a pull 
+request is often a better solution), you can do so with the 
+[composer-patches](https://github.com/cweagans/composer-patches) plugin.
+
+To add a patch to drupal module foobar insert the patches section in the extra 
+section of composer.json:
+```json
+"extra": {
+    "patches": {
+        "drupal/foobar": {
+            "Patch description": "URL to patch"
+        }
+    }
+}
+```
+### How do I switch from packagist.drupal-composer.org to packages.drupal.org?
+
+Follow the instructions in the [documentation on drupal.org](https://www.drupal.org/docs/develop/using-composer/using-packagesdrupalorg).

@@ -39,19 +39,16 @@
   "extra": {
     "installer-paths": {
       "web/": ["type:drupal-core"],
+      "web/profiles/{$name}/": ["type:drupal-profile"],
+      "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
       "web/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
       "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"],
-      "web/sites/all/libraries/{$name}/": ["type:drupal-library"],
-      "web/sites/all/drush/{$name}/": ["type:drupal-drush"],
-      "web/profiles/{$name}/": ["type:drupal-profile"]
+      "web/sites/all/drush/{$name}/": ["type:drupal-drush"]
     },
     "preserve-paths": [
-      "web/sites/all/drush",
       "web/sites/all/libraries",
-      "web/sites/all/modules/contrib",
       "web/sites/all/modules/custom",
       "web/sites/all/modules/features",
-      "web/sites/all/themes/contrib",
       "web/sites/all/themes/custom",
       "web/sites/all/translations",
       "web/sites/default"
