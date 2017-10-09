@@ -2,19 +2,37 @@
     "name": "kalamuna/drupal-project",
     "description": "Project template for Kalamuna projects with Drupal",
     "type": "project",
+    "keywords": ["Drupal"],
+    "homepage": "https://github.com/kalamuna/drupal-project",
+    "support": {
+        "issues": "https://github.com/kalamuna/drupal-project/issues",
+        "source": "https://github.com/kalamuna/drupal-project.git"
+    },
     "license": "GPL-2.0+",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "Derek \"Hawkeye Tenderwolf\" DeRaps",
+            "homepage": "https://www.drupal.org/user/1571646",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Rob Loach",
+            "email": "robloach@gmail.com",
+            "homepage": "https://robloach.net",
+            "role": "Maintainer"
+        },
+        {
+            "name": "Josh \"Eaglelips Toughbear\" Walker",
+            "homepage": "https://www.drupal.org/u/sonictruth",
+            "role": "Maintainer"
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
         }
-    ],
+    },
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
