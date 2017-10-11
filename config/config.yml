@@ -219,7 +219,7 @@ extra_packages:
 # You can configure almost anything else on the server in the rest of this file.
 extra_security_enabled: false
 
-drush_version: "8.1.10"
+drush_version: "8.1.15"
 
 firewall_allowed_tcp_ports:
   - "22"
