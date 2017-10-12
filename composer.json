@@ -134,7 +134,8 @@
                 "url": "https://github.com/drunomics/phapp-cli/releases/download/0.2.3/phapp.phar"
             }
         },
-        "enable-patching": true
+        "enable-patching": true,
+        "composer-exit-on-patch-failure": true
     },
     "config": {
         "sort-packages": true,
