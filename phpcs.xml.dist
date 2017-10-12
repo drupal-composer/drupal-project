@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset name="drunomics_d8">
+
+  <description>Default drunomics Coding Style for Drupal 8.</description>
+
+  <file>./behat-features/src</file>
+  <file>./devsetup</file>
+  <file>./scripts</file>
+  <file>./web/modules/custom</file>
+
+  <exclude-pattern>./scripts/composer/ScriptHandler.php</exclude-pattern>
+
+  <arg name="extensions" value="inc,install,module,php,profile,test,theme"/>
+  <arg value="s"/>
+
+  <!-- We always want short array syntax only. -->
+  <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
+
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal">
+    <!--Blacklist of coding standard rules we don't care about. -->
+    <exclude name="Drupal.Commenting.FunctionComment.MissingReturnComment"/>
+  </rule>
+  <rule ref="./vendor/drupal/coder/coder_sniffer/DrupalPractice">
+    <exclude name="DrupalPractice.Commenting.CommentEmptyLine"/>
+  </rule>
+
+  <rule ref="Drupal.NamingConventions.ValidVariableName.LowerCamelName">
+    <!-- Annotations must use the same property names as in the configuration. -->
+    <exclude-pattern>*/src/Annotation</exclude-pattern>
+  </rule>
+  <rule ref="Drupal.Commenting.FunctionComment.MissingParamComment">
+    <!-- Allow undocumented parameters in tests and scripts. -->
+    <exclude-pattern>./scripts</exclude-pattern>
+    <exclude-pattern>*/tests</exclude-pattern>
+  </rule>
+
+  <rule ref="Drupal.Commenting.FileComment.WrongStyle">
+    <!-- Scripts have different file comments. -->
+    <exclude-pattern>./scripts</exclude-pattern>
+  </rule>
+
+  <rule ref="Drupal.Commenting.DocComment.MissingShort">
+    <!-- Behat step definitions have different comments. -->
+    <exclude-pattern>./behat-features</exclude-pattern>
+  </rule>
+
+  <!-- Some exception for drush config. -->
+  <rule ref="Drupal.Commenting.DocComment.ShortSingleLine">
+    <exclude-pattern>./drush</exclude-pattern>
+  </rule>
+  <rule ref="Drupal.Commenting.InlineComment.SpacingAfter">
+    <exclude-pattern>./drush</exclude-pattern>
+  </rule>
+  <rule ref="Drupal.Commenting.InlineComment.InvalidEndChar">
+    <exclude-pattern>./drush</exclude-pattern>
+  </rule>
+
+</ruleset>
