@@ -16,7 +16,7 @@ class PharInstaller {
    *
    * This is like tm/tooly-composer-script but faster.
    *
-   * @param Event $event
+   * @param \Composer\Script\Event $event
    */
   public static function installPharTools(Event $event) {
 
@@ -50,12 +50,11 @@ class PharInstaller {
   }
 
   /**
-   * @param string $url
-   *
-   * @return string
+   * Downloads the URL.
    */
   protected static function download($url) {
     $context = StreamContextFactory::getContext($url);
     return file_get_contents($url, FALSE, $context);
   }
+
 }
