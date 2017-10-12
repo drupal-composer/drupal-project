@@ -1,0 +1,11 @@
+; Alternative .gitignore file which is used when commit build artifcats.
+.vagrant
+dumps
+npm-debug.log
+node_modules
+bower_components
+web/sites/default/settings.php
+web/sites/default/files
+web/sites/default/private
+web/files
+web/files-private

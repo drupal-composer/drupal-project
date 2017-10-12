@@ -1,13 +1,6 @@
-# Composer template for Drupal projects
+# Composer template for drunomics Drupal projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
-
-This project template should provide a kickstart for managing your site
-dependencies with [Composer](https://getcomposer.org/).
-
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+Builds upon https://github.com/drupal-composer/drupal-project.
 
 ## Usage
 
@@ -20,14 +13,17 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+// Last stable version:
+composer create-project drunomics/drupal-project:3.* PROJECT
+// Last development version:
+composer create-project drunomics/drupal-project:3.*@dev --stability dev PROJECT
 ```
 
 With `composer require ...` you can download new dependencies to your 
 installation.
 
 ```
-cd some-dir
+cd PROJECT
 composer require drupal/devel:~1.0
 ```
 
@@ -90,25 +86,8 @@ workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faq
 
 ### Should I commit the scaffolding files?
 
-The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
-index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
-to not check them into your version control system (e.g. git). If that is the case for your project it might be
-convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
+Yes - just follow the prepared .gitignore.
 
-```json
-"scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-    "post-install-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ],
-    "post-update-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ]
-},
-```
 ### How can I apply patches to downloaded modules?
 
 If you need to apply patches (depending on the project being modified, a pull 
@@ -126,6 +105,3 @@ section of composer.json:
     }
 }
 ```
-### How do I switch from packagist.drupal-composer.org to packages.drupal.org?
-
-Follow the instructions in the [documentation on drupal.org](https://www.drupal.org/docs/develop/using-composer/using-packagesdrupalorg).

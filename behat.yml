@@ -1,0 +1,42 @@
+default:
+  autoload: [ %paths.base%/behat-features/src ]
+  suites:
+    default:
+      paths:
+        - %paths.base%/behat-features
+      contexts:
+        - FeatureContext
+        - Drupal\DrupalExtension\Context\MinkContext
+        - Drupal\DrupalExtension\Context\MessageContext
+        - Drupal\DrupalExtension\Context\DrushContext
+        - Devinci\DevinciExtension\Context\DebugContext:
+            asset_dump_path: %paths.base%/behat-features/debug/
+        - Devinci\DevinciExtension\Context\JavascriptContext:
+            maximum_wait: 30
+  extensions:
+    Behat\MinkExtension:
+      goutte: ~
+      selenium2:
+        wd_host: "http://localhost:8643/wd/hub"
+      default_session: 'goutte'
+      show_cmd: xdg-open %s
+    Drupal\DrupalExtension:
+      blackbox: ~
+      api_driver: 'drupal'
+      drupal:
+        drupal_root: %paths.base%/web
+      drush:
+        alias: 'self'
+      text:
+        username_field: 'name'
+        password_field: 'pass'
+
+vagrant:
+  extensions:
+    Behat\MinkExtension:
+      base_url: http://{{ project }}.local
+
+selenium:
+  extensions:
+    Behat\MinkExtension:
+      default_session: 'selenium2'

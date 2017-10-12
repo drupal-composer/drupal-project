@@ -1,0 +1,5 @@
+default:
+  root: /srv/default/web
+  remote-host: '{{ project }}.local'
+  remote-user: vagrant
+  uri: '{{ project }}.local'
