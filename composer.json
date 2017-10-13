@@ -60,7 +60,7 @@
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
         ],
         "post-create-project-cmd": [
-            "rm README.md LICENSE .travis.yml phpunit.xml.dist"
+            "DrupalProject\\composer\\ScriptHandler::removeInternalFiles"
         ]
     },
     "extra": {

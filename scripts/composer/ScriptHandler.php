@@ -52,6 +52,27 @@ class ScriptHandler {
   }
 
   /**
+   * Remove project-internal files after create project.
+   */
+  public static function removeInternalFiles(Event $event) {
+    $fs = new Filesystem();
+
+    // List of files to be removed.
+    $files = [
+      '.travis.yml',
+      'LICENSE',
+      'README.md',
+      'phpunit.xml.dist',
+    ];
+
+    foreach ($files as $file) {
+      if ($fs->exists($file)) {
+        $fs->remove($file);
+      }
+    }
+  }
+
+  /**
    * Checks if the installed version of Composer is compatible.
    *
    * Composer 1.0.0 and higher consider a `composer install` without having a
