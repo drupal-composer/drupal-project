@@ -6,7 +6,7 @@
   "scripts": {
     "test": "kalastatic build",
     "start": "kalastatic start",
-    "predeploy": "npm i && composer drupal-scaffold",
+    "predeploy": "composer drupal-scaffold",
     "deploy": "npm run deploy:gitprep && git add -A && npm run deploy:push",
     "deploy:gitprep": "rm -f .gitignore && find web -type d -name .git -print0|xargs -0 rm -rf",
     "deploy:push": "grunt buildcontrol:deploy"
@@ -17,7 +17,7 @@
   },
   "config": {
     "deploy": {
-      "origin": "URL-TO-REPO",
+      "origin": "INSERT-URL-TO-REPO",
       "branch": "master"
     }
   },
