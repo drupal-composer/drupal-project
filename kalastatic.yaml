@@ -6,7 +6,7 @@
 # https://github.com/kalamuna/kalastatic
 
 # The source directory.
-source: web/themes/THEME_NAME/kalastatic
+source: web/themes/custom/kalastarter/kalastatic/src
 
 # Where to build kalastatic out to, relative to base.
 destination: web/kalastatic
@@ -44,6 +44,7 @@ pluginOpts:
         # Introduce the "kstat" Twig namespace.
         namespaces:
           kstat: web/themes/THEME_NAME/kalastatic
+          kalastatic: web/themes/THEME_NAME/kalastatic
           atoms: web/themes/THEME_NAME/kalastatic/components/atoms
           molecules: web/themes/THEME_NAME/kalastatic/components/molecules
           organisms: web/themes/THEME_NAME/kalastatic/components/organisms
@@ -68,17 +69,33 @@ kss:
     - ../js/THEME_NAME.js
     - ../js/drupal_post.js
   source:
-    - node_modules/kss-bootstrap/styleguide/sections
-    - node_modules/kss-bootstrap/styleguide/css/table
+    - node_modules/kss-bootstrap/styleguide/components/alert
+    - node_modules/kss-bootstrap/styleguide/components/badge
+    - node_modules/kss-bootstrap/styleguide/components/breadcrumb
+    - node_modules/kss-bootstrap/styleguide/components/btn-group
+    - node_modules/kss-bootstrap/styleguide/components/dropdown
+    - node_modules/kss-bootstrap/styleguide/components/jumbotron
+    - node_modules/kss-bootstrap/styleguide/components/label
+    - node_modules/kss-bootstrap/styleguide/components/list-group
+    - node_modules/kss-bootstrap/styleguide/components/media
+    - node_modules/kss-bootstrap/styleguide/components/nav
+    - node_modules/kss-bootstrap/styleguide/components/pagination
+    - node_modules/kss-bootstrap/styleguide/components/panel
+    - node_modules/kss-bootstrap/styleguide/components/progress
     - node_modules/kss-bootstrap/styleguide/css/button
     - node_modules/kss-bootstrap/styleguide/css/code
+    - node_modules/kss-bootstrap/styleguide/css/form
     - node_modules/kss-bootstrap/styleguide/css/grid
     - node_modules/kss-bootstrap/styleguide/css/helper
-    - node_modules/kss-bootstrap/styleguide/css/form
+    - node_modules/kss-bootstrap/styleguide/css/image
+    - node_modules/kss-bootstrap/styleguide/css/table
     - node_modules/kss-bootstrap/styleguide/css/typography
-    - node_modules/kss-bootstrap/styleguide/components/nav
-    - node_modules/kss-bootstrap/styleguide/components/btn-group
-    - node_modules/kss-bootstrap/styleguide/components/pagination
-    - node_modules/kss-bootstrap/styleguide/components/media
+    - node_modules/kss-bootstrap/styleguide/javascript/carousel
+    - node_modules/kss-bootstrap/styleguide/javascript/collapse
     - node_modules/kss-bootstrap/styleguide/javascript/dropdown
+    - node_modules/kss-bootstrap/styleguide/javascript/modal
+    - node_modules/kss-bootstrap/styleguide/javascript/popover
+    - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
+    - node_modules/kss-bootstrap/styleguide/javascript/tooltip
+    - node_modules/kss-bootstrap/styleguide/sections
     - web/themes/THEME_NAME/kalastatic

@@ -25,7 +25,8 @@
     "grunt": "^1.0.1",
     "grunt-build-control": "^0.7.1",
     "grunt-cli": "^1.2.0",
-    "kalastatic": "github:kalamuna/kalastatic"
+    "kalastatic": "^3.1.0",
+    "sass-lint": "^1.12.0"
   },
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
@@ -34,8 +35,8 @@
     "jquery-match-height": "^0.7.2",
     "jquery-once": "^2.2.0",
     "kalastatic-twig-filters": "^0.2.0",
-    "kss-bootstrap": "4.1.1",
     "kstat-kss-builder": "^0.13.4",
-    "twig-drupal-filters": "^0.2.1"
+    "kss-bootstrap": "^4.0.0",
+    "twig-drupal-filters": "^1.1.0"
   }
 }

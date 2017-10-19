@@ -1,6 +1,6 @@
 {
     "name": "kalamuna/drupal-project",
-    "description": "Project template for Kalamuna projects with Drupal 8",
+    "description": "Project template for Kalamuna projects with Drupal via Composer.",
     "type": "project",
     "keywords": ["Drupal"],
     "homepage": "https://github.com/kalamuna/drupal-project",
@@ -116,7 +116,7 @@
     "extra": {
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:component"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/{$name}": ["drupal/config_installer"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
