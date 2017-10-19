@@ -38,7 +38,7 @@ $settings['file_scan_ignore_directories'] = [
 
 // Define the directory for "staged" (aka "sync") configuration.
 // @see http://dgo.to/2431247
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/staged';
+$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 
 // Disable configuration splits by default on all environments.
 foreach (['dev', 'test', 'live'] as $split) {

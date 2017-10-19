@@ -13,8 +13,8 @@
 /config/splits/dev/.htaccess
 /config/splits/test/.htaccess
 /config/splits/live/.htaccess
-/config/staged/.htaccess
-/config/tracked/.htaccess
+/config/sync/.htaccess
+/config/autocommit/.htaccess
 
 # Ignore SimpleTest multi-site environment.
 /web/sites/simpletest
