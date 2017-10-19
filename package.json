@@ -17,7 +17,7 @@
   },
   "config": {
     "deploy": {
-      "origin": "INSERT-URL-TO-REPO",
+      "destination": "INSERT-URL-TO-REPO",
       "branch": "master"
     }
   },
