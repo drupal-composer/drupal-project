@@ -2,9 +2,9 @@
 # Drupal VM configuration overrides.
 
 # Specify basic virtual machine settings.
-vagrant_hostname: foo.dvm
-vagrant_machine_name: drupalvm-foo
-vagrant_ip: 192.168.90.88
+vagrant_hostname: CHANGEME.dvm
+vagrant_machine_name: drupalvm-CHANGEME
+vagrant_ip: 192.168.88.88
 
 # Configure Drupal VM to run via composer.
 # @see http://docs.drupalvm.com/en/latest/deployment/composer-dependency
