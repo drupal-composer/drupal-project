@@ -12,6 +12,7 @@ drupal_build_composer_project: false
 drupal_build_composer: true
 drupal_composer_path: false
 drupal_composer_install_dir: "/var/www/drupalvm"
+drupal_composer_dependencies: []
 drupal_core_path: "{{ drupal_composer_install_dir }}/web"
 drupal_install_site: true
 drupal_enable_modules: [ 'kalaconfig' ]
