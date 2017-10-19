@@ -17,8 +17,8 @@ Handle::register();
 // Enable development services.
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
-// Show all error messages, with backtrace information.
-// Consider changing this to "all" if pages are crashing from kint output.
+// Show all error messages, with backtrace information. If pages crash from kint
+// output, turn off the backtrace dump by changing this from "verbose" to "all".
 $config['system.logging']['error_level'] = 'verbose';
 
 // Disable CSS and JS aggregation and compression.
@@ -82,7 +82,7 @@ if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
 // Allow anyone to execute pending updates.
 $settings['update_free_access'] = TRUE;
 
-// Provide sane defaults for local development.
+// Provide sane defaults for local development database settings.
 if (empty($databases['default']['default'])) {
   $databases['default']['default'] = [
     'database' => 'drupal',

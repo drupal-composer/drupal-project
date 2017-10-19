@@ -16,7 +16,7 @@
   include "$app_root/sites/settings.common.php";
 
   // Include environment-specific settings.
-  // @see settings.common.php for definition of $env variable.
+  // @see settings.common.php for definition of the $env variable.
   include "$app_root/sites/settings.$env.php";
 
   // Allow local settings to override anything specified above.

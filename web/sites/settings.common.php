@@ -22,7 +22,7 @@ $env = defined('PANTHEON_ENVIRONMENT') && in_array(PANTHEON_ENVIRONMENT, ['test'
 $settings['update_free_access'] = FALSE;
 
 // Indicate the active installation profile.
-// Leave this unset for the initial (standard profile) install,and then
+// Leave this unset for the initial (standard profile) install, and then
 // uncomment for subsequent "Configuration Installer" initializations.
 // $settings['install_profile'] = 'config_installer';
 
