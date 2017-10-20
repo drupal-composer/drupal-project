@@ -13,12 +13,19 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "git",
+            "url": "https://github.com/ASU-OKED-WEB-DEV/asu_brand"
         }
     ],
     "require": {
+        "asu/asu_brand": "8.x",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
+        "drupal/bootstrap": "^3.5",
+        "drupal/cas": "^1.0@RC",
         "drupal/console": "^1.0.1",
         "drupal/core": "~8.0",
         "drush/drush": "~8.0|^9.0.0-beta7",
@@ -28,11 +35,16 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "drupal/coder": "8.2.9",
+        "drupal/console": "^1.0",
+        "drupal/masquerade": "^2.0@beta",
         "jcalderonzumba/gastonjs": "~1.0.2",
         "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
         "mikey179/vfsstream": "~1.2",
+        "overtrue/phplint": "^0.2.4",
         "phpunit/phpunit": ">=4.8.28 <5",
-        "symfony/css-selector": "~2.8|~3.0"
+        "squizlabs/php_codesniffer": "2.7.0",
+        "symfony/css-selector": "~2.8"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -60,6 +72,10 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "test": [
+            "./vendor/bin/phplint --configuration=.phplint.yml --no-cache ./web/modules/custom",
+            "./vendor/bin/phpcs --standard=./vendor/drupal/coder/coder_sniffer/Drupal ./web/modules/custom --extensions=php,module,install"
         ]
     },
     "extra": {
