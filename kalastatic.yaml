@@ -6,7 +6,7 @@
 # https://github.com/kalamuna/kalastatic
 
 # The source directory.
-source: web/themes/custom/kalastarter/kalastatic/src
+source: web/themes/THEME_NAME/kalastatic
 
 # Where to build kalastatic out to, relative to base.
 destination: web/kalastatic
@@ -64,11 +64,23 @@ kss:
   js:
     - ../vendor/bootstrap/bootstrap.min.js
     - ../vendor/jquery-once/jquery.once.min.js
-    - /kalastatic/vendor/matchheight/dist/jquery.matchHeight-min.js
     - ../js/drupal_pre.js
-    - ../js/THEME_NAME.js
+    - ../js/main.js
     - ../js/drupal_post.js
   source:
+    - node_modules/kss-bootstrap/styleguide/sections
+    - node_modules/kss-bootstrap/styleguide/css/table
+    - node_modules/kss-bootstrap/styleguide/css/button
+    - node_modules/kss-bootstrap/styleguide/css/code
+    - node_modules/kss-bootstrap/styleguide/css/grid
+    - node_modules/kss-bootstrap/styleguide/css/helper
+    - node_modules/kss-bootstrap/styleguide/css/form
+    - node_modules/kss-bootstrap/styleguide/css/typography
+    - node_modules/kss-bootstrap/styleguide/components/nav
+    - node_modules/kss-bootstrap/styleguide/components/btn-group
+    - node_modules/kss-bootstrap/styleguide/components/pagination
+    - node_modules/kss-bootstrap/styleguide/components/media
+    - node_modules/kss-bootstrap/styleguide/javascript/dropdown
     - node_modules/kss-bootstrap/styleguide/components/alert
     - node_modules/kss-bootstrap/styleguide/components/badge
     - node_modules/kss-bootstrap/styleguide/components/breadcrumb
