@@ -6,7 +6,7 @@
 # https://github.com/kalamuna/kalastatic
 
 # The source directory.
-source: web/themes/THEME_NAME/kalastatic
+source: web/themes/custom/THEME_NAME/kalastatic
 
 # Where to build kalastatic out to, relative to base.
 destination: web/kalastatic
@@ -36,19 +36,19 @@ pluginOpts:
         includePaths:
           - node_modules/bootstrap-sass/assets/stylesheets
           - node_modules/font-awesome/scss
-          - web/themes/THEME_NAME/kalastatic/styles
-          - web/themes/THEME_NAME/kalastatic/components
+          - web/themes/custom/THEME_NAME/kalastatic/styles
+          - web/themes/custom/THEME_NAME/kalastatic/components
 
       # Twig settings.
       twig:
         # Introduce the "kstat" Twig namespace.
         namespaces:
-          kstat: web/themes/THEME_NAME/kalastatic
-          kalastatic: web/themes/THEME_NAME/kalastatic
-          atoms: web/themes/THEME_NAME/kalastatic/components/atoms
-          molecules: web/themes/THEME_NAME/kalastatic/components/molecules
-          organisms: web/themes/THEME_NAME/kalastatic/components/organisms
-          layouts: web/themes/THEME_NAME/kalastatic/components/layouts
+          kstat: web/themes/custom/THEME_NAME/kalastatic
+          kalastatic: web/themes/custom/THEME_NAME/kalastatic
+          atoms: web/themes/custom/THEME_NAME/kalastatic/components/atoms
+          molecules: web/themes/custom/THEME_NAME/kalastatic/components/molecules
+          organisms: web/themes/custom/THEME_NAME/kalastatic/components/organisms
+          layouts: web/themes/custom/THEME_NAME/kalastatic/components/layouts
 
         # Mimic some of the Drupal 8 Twig filters.
         filters:
@@ -110,4 +110,4 @@ kss:
     - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
     - node_modules/kss-bootstrap/styleguide/javascript/tooltip
     - node_modules/kss-bootstrap/styleguide/sections
-    - web/themes/THEME_NAME/kalastatic
+    - web/themes/custom/THEME_NAME/kalastatic
