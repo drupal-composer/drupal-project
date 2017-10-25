@@ -31,21 +31,6 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
-        },
-        "chosen": {
-            "type": "package",
-            "package": {
-                "name": "harvesthq/chosen",
-                "version": "1.8.2",
-                "type": "drupal-library",
-                "dist": {
-                    "url": "https://github.com/harvesthq/chosen/releases/download/v1.8.2/chosen_v1.8.2.zip",
-                    "type": "zip"
-                },
-                "require": {
-                    "composer/installers": "^1.2.0"
-                }
-            }
         }
     },
     "require": {
@@ -57,13 +42,17 @@
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
+        "components/chosen": "^1.8.2",
         "drupal/admin_toolbar": "^1.18",
         "drupal/cache_control_override": "^1.0",
+        "drupal/chosen": "^2.0",
         "drupal/config_split": "^1.1",
         "drupal/config_tools": "^1.0",
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.0",
-        "drupal/stage_file_proxy": "^1.0"
+        "drupal/stage_file_proxy": "^1.0",
+        "kalamuna/autogrow_textarea": "^1.0",
+        "oomphinc/composer-installers-extender": "^1.1"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -75,7 +64,6 @@
         "symfony/css-selector": "~2.8",
         "drupal/config_installer": "^1.3",
         "geerlingguy/drupal-vm": "^4.2",
-        "harvesthq/chosen": "^1.0",
         "kalamuna/kalaconfig": "1.x-dev"
     },
     "conflict": {
@@ -110,15 +98,19 @@
         "test": [
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
             "phpcs --standard=Drupal web/modules/custom",
-            "phpcs --standard=Drupal web/themes",
+            "phpcs --standard=Drupal web/themes/custom",
             "echo 'CALL PHPUNIT TESTS HERE'",
             "if hash npm; then npm test; fi"
         ]
     },
     "extra": {
+        "installer-types": ["component"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library", "type:component"],
+            "web/libraries/{$name}": [
+              "type:drupal-library",
+              "type:component"
+            ],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/{$name}": ["drupal/config_installer"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
