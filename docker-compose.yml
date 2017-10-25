@@ -17,7 +17,7 @@ services:
   webserver:
     build: .
     volumes:
-      - code:/app
+      - .:/var/www/app
     ports:
       - 80
       - 443
@@ -30,7 +30,7 @@ services:
   drush:
     image: drush/drush
     volumes:
-      - code:/app 
+      - .:/var/www/app 
   git:
     image: alpine/git 
     volumes:

@@ -29,9 +29,6 @@ COPY .docker-build/scripts /scripts
 # Create DocumentRoot directory
 RUN mkdir -p /var/www/app/web 
 
-# Add sample php file to DocumentRoot
-COPY .docker-build/index.php /var/www/app/web/
-
 EXPOSE 80 443
 
 CMD ["/bin/bash", "/scripts/start.sh"]
