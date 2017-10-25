@@ -1,5 +1,9 @@
 version: '3'
 
+volumes:
+  mysql:
+  code:
+
 services:
   database:
     image: mysql
@@ -13,7 +17,7 @@ services:
   webserver:
     build: .
     volumes:
-      - .:/app
+      - code:/app
     ports:
       - 80
       - 443
@@ -25,13 +29,11 @@ services:
     image: composer
   drush:
     image: drush/drush
-    volumes_from:
-      - webserver 
+    volumes:
+      - code:/app 
   git:
     image: alpine/git 
     volumes:
       - $HOME:/root
       - .:/git
 
-volumes:
- mysql:
