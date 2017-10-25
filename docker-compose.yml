@@ -8,10 +8,12 @@ services:
       MYSQL_DATABASE: drupal
     ports:
       - 3306
+    volumes:
+      - mysql:/var/lib/mysql
   webserver:
     build: .
     volumes:
-      - .:/var/www/docroot
+      - .:/app
     ports:
       - 80
       - 443
@@ -19,3 +21,17 @@ services:
       - database
     links:
       - database
+  composer:
+    image: composer
+  drush:
+    image: drush/drush
+    volumes_from:
+      - webserver 
+  git:
+    image: alpine/git 
+    volumes:
+      - $HOME:/root
+      - .:/git
+
+volumes:
+ mysql:
