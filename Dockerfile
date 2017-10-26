@@ -1,17 +1,22 @@
 FROM centos:latest
 
-MAINTAINER "KoKsPfLaNzE" <kokspflanze@protonmail.com>
+MAINTAINER "Maximo Mena" <mmenavas@asu.edu>
 
 ENV container docker
 
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
  && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
-# normal updates
+# Normal updates
 RUN yum -y update
 
-# php && httpd
+# PHP && HTTPD
 RUN yum -y install php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-intl php70w-mbstring php70w-mcrypt php70w-mysql php70w-mssql php70w-pdo php70w-odbc php70w-pear php70w-soap php70w-xml php70w-xmlrpc php70w-pecl-xdebug httpd
+
+# Composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \ 
+ && php composer-setup.php --install-dir=bin --filename=composer \ 
+ && php -r "unlink('composer-setup.php');" \ 
 
 # Set timezone 
 RUN  rm -rf /etc/localtime \

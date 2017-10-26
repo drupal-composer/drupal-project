@@ -2,7 +2,6 @@ version: '3'
 
 volumes:
   mysql:
-  code:
 
 services:
   database:
@@ -25,17 +24,3 @@ services:
       - database
     links:
       - database
-  composer:
-    image: composer
-    volumes:
-      - .:/app
-  drush:
-    image: drush/drush
-    volumes:
-      - .:/app 
-  git:
-    image: alpine/git 
-    volumes:
-      - $HOME:/root
-      - .:/git
-
