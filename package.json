@@ -6,10 +6,9 @@
   "scripts": {
     "test": "kalastatic build",
     "start": "kalastatic start",
-    "predeploy": "npm i && composer install",
-    "deploy": "npm run deploy:gitignore && npm run deploy:removegit && git add -A && npm run deploy:push",
-    "deploy:gitignore": "mv .gitignore-deploy .gitignore",
-    "deploy:removegit": "find web -type d -name .git -exec rm -rf {} +",
+    "predeploy": "composer drupal-scaffold",
+    "deploy": "npm run deploy:gitprep && git add -A && npm run deploy:push",
+    "deploy:gitprep": "rm -f .gitignore && find web -type d -name .git -print0|xargs -0 rm -rf",
     "deploy:push": "grunt buildcontrol:deploy"
   },
   "repository": {
@@ -18,7 +17,7 @@
   },
   "config": {
     "deploy": {
-      "pantheon": "ssh://codeserver.dev.d4237bc4-ae30-4cab-a506-543aca056e86@codeserver.dev.d4237bc4-ae30-4cab-a506-543aca056e86.drush.in:2222/~/repository.git",
+      "destination": "INSERT-URL-TO-REPO",
       "branch": "master"
     }
   },
@@ -32,6 +31,10 @@
   "dependencies": {
     "bootstrap-sass": "^3.3.7",
     "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-match-height": "^0.7.2",
+    "jquery-once": "^2.2.0",
+    "kalastatic-twig-filters": "^0.2.0",
     "kstat-kss-builder": "^0.13.4",
     "kss-bootstrap": "^4.0.0",
     "twig-drupal-filters": "^1.1.0"

@@ -6,7 +6,7 @@
 # https://github.com/kalamuna/kalastatic
 
 # The source directory.
-source: web/themes/custom/kalastarter/kalastatic/src
+source: web/themes/custom/THEME_NAME/kalastatic
 
 # Where to build kalastatic out to, relative to base.
 destination: web/kalastatic
@@ -31,23 +31,24 @@ pluginOpts:
       scss:
         outputStyle: nested
         sourceMap: true
+        outFile: 'main.css'
         sourceComments: false
         includePaths:
           - node_modules/bootstrap-sass/assets/stylesheets
           - node_modules/font-awesome/scss
-          - web/themes/custom/kalastarter/kalastatic/src/styles
-          - web/themes/custom/kalastarter/kalastatic/src/components
+          - web/themes/custom/THEME_NAME/kalastatic/styles
+          - web/themes/custom/THEME_NAME/kalastatic/components
 
       # Twig settings.
       twig:
         # Introduce the "kstat" Twig namespace.
         namespaces:
-          kstat: web/themes/custom/kalastarter/kalastatic/src
-          kalastatic: web/themes/custom/kalastarter/kalastatic/src
-          atoms: web/themes/custom/kalastarter/kalastatic/src/components/atoms
-          molecules: web/themes/custom/kalastarter/kalastatic/src/components/molecules
-          organisms: web/themes/custom/kalastarter/kalastatic/src/components/organisms
-          layouts: web/themes/custom/kalastarter/kalastatic/src/components/layouts
+          kstat: web/themes/custom/THEME_NAME/kalastatic
+          kalastatic: web/themes/custom/THEME_NAME/kalastatic
+          atoms: web/themes/custom/THEME_NAME/kalastatic/components/atoms
+          molecules: web/themes/custom/THEME_NAME/kalastatic/components/molecules
+          organisms: web/themes/custom/THEME_NAME/kalastatic/components/organisms
+          layouts: web/themes/custom/THEME_NAME/kalastatic/components/layouts
 
         # Mimic some of the Drupal 8 Twig filters.
         filters:
@@ -55,11 +56,31 @@ pluginOpts:
           clean_id: twig-drupal-filters/filters/clean_id
           safe_join: twig-drupal-filters/filters/safe_join
           t: twig-drupal-filters/filters/trans
-
 kss:
   builder: "node_modules/kstat-kss-builder"
-  css: ../styles/main.css
+  css:
+    - ../styles/main.css
+    - ../styles/styleguide.css
+  js:
+    - ../vendor/bootstrap/bootstrap.min.js
+    - ../vendor/jquery-once/jquery.once.min.js
+    - ../js/drupal_pre.js
+    - ../js/main.js
+    - ../js/drupal_post.js
   source:
+    - node_modules/kss-bootstrap/styleguide/sections
+    - node_modules/kss-bootstrap/styleguide/css/table
+    - node_modules/kss-bootstrap/styleguide/css/button
+    - node_modules/kss-bootstrap/styleguide/css/code
+    - node_modules/kss-bootstrap/styleguide/css/grid
+    - node_modules/kss-bootstrap/styleguide/css/helper
+    - node_modules/kss-bootstrap/styleguide/css/form
+    - node_modules/kss-bootstrap/styleguide/css/typography
+    - node_modules/kss-bootstrap/styleguide/components/nav
+    - node_modules/kss-bootstrap/styleguide/components/btn-group
+    - node_modules/kss-bootstrap/styleguide/components/pagination
+    - node_modules/kss-bootstrap/styleguide/components/media
+    - node_modules/kss-bootstrap/styleguide/javascript/dropdown
     - node_modules/kss-bootstrap/styleguide/components/alert
     - node_modules/kss-bootstrap/styleguide/components/badge
     - node_modules/kss-bootstrap/styleguide/components/breadcrumb
@@ -89,4 +110,4 @@ kss:
     - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
     - node_modules/kss-bootstrap/styleguide/javascript/tooltip
     - node_modules/kss-bootstrap/styleguide/sections
-    - web/themes/custom/kalastarter/kalastatic
+    - web/themes/custom/THEME_NAME/kalastatic

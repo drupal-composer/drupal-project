@@ -1,0 +1,1 @@
+This is where the "Config tools git configuration" (git_config) submodule of the [Config Tools](https://www.drupal.org/project/config_tools) (config_tools) project will commit all config changes made in the LIVE environment.

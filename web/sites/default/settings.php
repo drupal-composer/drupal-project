@@ -2,28 +2,25 @@
 
 /**
  * @file
- * Includes the settings files appropriate for development environments.
+ * Includes the settings files appropriate to the current environment.
  *
  * @see default.settings.php
  * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
-// Always include the "common" settings first.
-include "$app_root/sites/settings.common.php";
+// Isolate any subsequently-created variables from the global scope by
+// including settings files in a self-executing anonymous function.
+(function () use (&$app_root, &$site_path, &$class_loader, &$config_directories, &$config, &$settings, &$databases) {
 
-// Include development overrides next.
-include "$app_root/sites/settings.dev.php";
+  // Include settings common to all environments first.
+  include "$app_root/sites/settings.common.php";
 
-// Local settings. These come last so that they can override anything.
-if (file_exists("$app_root/$site_path/settings.local.php")) {
-  include "$app_root/$site_path/settings.local.php";
-}
+  // Include environment-specific settings.
+  // @see settings.common.php for definition of the $env variable.
+  include "$app_root/sites/settings.$env.php";
 
-// Add a shutdown function to help debug 500 errors.
-// @see http://dropbucket.org/node/7127
-register_shutdown_function(function () {
-  if (($error = error_get_last())) {
-    $dump = print_r($error, TRUE);
-    die("<pre>$dump</pre>");
+  // Allow local settings to override anything specified above.
+  if (file_exists("$app_root/$site_path/settings.local.php")) {
+    include "$app_root/$site_path/settings.local.php";
   }
-});
+})();

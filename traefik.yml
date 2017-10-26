@@ -1,0 +1,32 @@
+# Example docker-compose configuration for Traefik
+# This should file should be placed in root of your projects folder
+# Ex. ~/Sites/traefik.yml
+# Start traefik using this command: docker-compose -f traefik.yml up -d
+# Documentation: http://docs.docker4drupal.org/en/latest/multiple-projects/
+
+version: '2'
+
+services:
+  traefik:
+    image: traefik
+    restart: unless-stopped
+    command: -c /dev/null --web --docker --logLevel=DEBUG
+    # command: -c /dev/null --web --docker --logLevel=DEBUG --defaultEntryPoints='https' --entryPoints="Name:https Address::443 TLS:/certs/crt.txt,/certs/key.txt" --entryPoints="Name:http Address::80"
+    networks:
+      # - myproject
+      # - otherproject
+    ports:
+      - '80:80'
+      - '443:443'
+      - '8080:8080'
+    volumes:
+      - ./certs:/certs/
+      - /var/run/docker.sock:/var/run/docker.sock
+
+networks:
+  # myproject:
+  #   external:
+  #     name: myproject_default
+  # otherproject:
+  #   external:
+  #     name: otherproject_default

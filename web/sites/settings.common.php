@@ -8,11 +8,23 @@
  * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
-// Disallow running updates without root access.
+// Include a hosting provider-specific settings file here (Pantheon, Acquia,
+// etc.). Refer to the provider's documentation or canonical upstream (e.g.,
+// Pantheon's "drops8" repository) for sample code.
+
+// Determine the environment; one of "dev", "test", or "live".
+// E.g., for Pantheon, use "dev" settings on all sites except TEST and LIVE:
+$env = defined('PANTHEON_ENVIRONMENT') && in_array(PANTHEON_ENVIRONMENT, ['test', 'live'])
+  ? PANTHEON_ENVIRONMENT
+  : 'dev';
+
+// Restrict access to the update page by default.
 $settings['update_free_access'] = FALSE;
 
 // Indicate the active installation profile.
-$settings['install_profile'] = 'config_installer';
+// Leave this unset for the initial (standard profile) install, and then
+// uncomment for subsequent "Configuration Installer" initializations.
+// $settings['install_profile'] = 'config_installer';
 
 // Load the services definition file. Note that services.yml was moved up one
 // directory from the default location (`/sites` instead of `/sites/default`).
@@ -24,31 +36,17 @@ $settings['file_scan_ignore_directories'] = [
   'bower_components',
 ];
 
-// Define the version-controlled configuration directory.
+// Define the directory for "staged" (aka "sync") configuration.
 // @see http://dgo.to/2431247
-$config_directories[CONFIG_SYNC_DIRECTORY] = '../config';
+$config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 
-// Local file system paths for storing public and private files.
-$settings['file_private_path'] = '../private';
-$settings['file_public_path'] = 'sites/default/files';
-
-// Include settings specific to sites hosted on Pantheon.
-if (file_exists("$app_root/sites/default/settings.pantheon.php")) {
-  // n.b. The settings.pantheon.php file makes some changes that affect all
-  // envrionments that this site exists in. Always include this file, even in a
-  // local development environment, to insure that the site settings remain
-  // consistent.
-  include "$app_root/sites/default/settings.pantheon.php";
+// Disable configuration splits by default on all environments.
+foreach (['dev', 'test', 'live'] as $split) {
+  $config["config_split.config_split.$split"]['status'] = FALSE;
 }
 
-// Include settings specific to sites hosted on Acquia.
-elseif (isset($_SERVER['AH_SITE_ENVIRONMENT'])) {
-  // When using Acquia, update "sitename" in the path below (two places).
-  include '/var/www/site-php/sitename/sitename-settings.inc';
-}
-
-// Include settings specific to sites hosted on Platform.sh.
-// @see https://github.com/platformsh/platformsh-example-drupal8/blob/master/web/sites/default/settings.platformsh.php
-elseif (file_exists("$app_root/sites/default/settings.platformsh.php")) {
-  include "$app_root/sites/default/settings.platformsh.php";
+// Set a hash salt if the hosting provider settings have not already done so.
+// Consider setting this via an environment variable for added security.
+if (empty($settings['hash_salt'])) {
+  $settings['hash_salt'] = 'CHANGE-ME-PER-PROJECT-OR-ENVIRONMENT';
 }

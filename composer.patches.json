@@ -1,0 +1,7 @@
+{
+  "patches": {
+    "drupal/core": {
+      "https://dgo.to/2788087 You have requested a non-existent service 'router.route_provider.old'": "https://www.drupal.org/files/issues/2788087-7.patch"
+    }
+  }
+}

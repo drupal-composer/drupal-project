@@ -16,8 +16,9 @@ module.exports = function(grunt) {
       },
       deploy: {
         options: {
-          remote: pkg.config.deploy.pantheon,
-          branch: process.env.CIRCLE_BRANCH || pkg.config.deploy.branch
+          remote: pkg.config.deploy.destination,
+          branch: process.env.CIRCLE_BRANCH || pkg.config.deploy.branch,
+          force: true
         }
       }
     }
