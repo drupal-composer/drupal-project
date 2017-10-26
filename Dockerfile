@@ -13,13 +13,15 @@ RUN yum -y update
 # PHP && HTTPD
 RUN yum -y install php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-intl php70w-mbstring php70w-mcrypt php70w-mysql php70w-mssql php70w-pdo php70w-odbc php70w-pear php70w-soap php70w-xml php70w-xmlrpc php70w-pecl-xdebug httpd
 
-# Composer
-RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \ 
- && php composer-setup.php --install-dir=bin --filename=composer \ 
- && php -r "unlink('composer-setup.php');" \ 
+# Addition tools
+RUN yum -y install curl git
 
-# Set timezone 
-RUN  rm -rf /etc/localtime \
+# Composer
+RUN yum clean all \
+ && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+ && php composer-setup.php --install-dir=bin --filename=composer \
+ && php -r "unlink('composer-setup.php');" \
+ && rm -rf /etc/localtime \
  && ln -s /usr/share/zoneinfo/America/Phoenix /etc/localtime
 
 # Config changes
