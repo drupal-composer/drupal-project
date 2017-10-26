@@ -61,11 +61,13 @@ npm-debug.log
 /web/autoload.php
 /web/index.php
 /web/modules/.gitkeep
+/web/profiles/.gitkeep
 /web/robots.txt
 /web/sites/default/default.services.yml
 /web/sites/default/default.settings.php
 /web/sites/example.settings.local.php
 /web/sites/example.sites.php
+/web/themes/.gitkeep
 /web/update.php
 /web/web.config
 
