@@ -71,10 +71,6 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "config": {
-        "sort-packages": true,
-        "component-dir": "web/libraries"
-    },
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
