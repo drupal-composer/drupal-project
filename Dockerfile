@@ -11,7 +11,27 @@ RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.
 RUN yum -y update
 
 # PHP && HTTPD
-RUN yum -y install php70w php70w-opcache php70w-cli php70w-common php70w-gd php70w-intl php70w-mbstring php70w-mcrypt php70w-mysql php70w-mssql php70w-pdo php70w-odbc php70w-pear php70w-soap php70w-xml php70w-xmlrpc php70w-pecl-xdebug httpd
+RUN yum -y install \
+    httpd \
+    mod_ssl \
+    which \
+    php70w \
+    php70w-cli \
+    php70w-common \
+    php70w-gd \
+    php70w-intl \
+    php70w-mbstring \
+    php70w-mcrypt \
+    php70w-mssql \
+    php70w-mysql \
+    php70w-odbc \
+    php70w-opcache \
+    php70w-pdo \
+    php70w-pear \
+    php70w-pecl-xdebug \
+    php70w-soap \
+    php70w-xml \
+    php70w-xmlrpc
 
 # Addition tools
 RUN yum -y install curl git
