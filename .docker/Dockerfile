@@ -33,6 +33,7 @@ RUN yum -y install \
     php70w-soap \
     php70w-xml \
     php70w-xmlrpc \
+    mysql \
     curl \
     git \
  && yum clean all
@@ -43,11 +44,11 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
  && php -r "unlink('composer-setup.php');"
 
 # Transfer files from host
-COPY .docker-build/php.d/ /etc/php.d/
-COPY .docker-build/v-host.conf /etc/httpd/conf.d/
-COPY .docker-build/odbcinst.ini /tmp/odbcinst.ini
-COPY .docker-build/ssl.conf /tmp/ssl.conf
-COPY .docker-build/scripts /scripts
+COPY php.d/ /etc/php.d/
+COPY v-host.conf /etc/httpd/conf.d/
+COPY odbcinst.ini /tmp/odbcinst.ini
+COPY ssl.conf /tmp/ssl.conf
+COPY scripts /scripts
 
 # Configuration changes
 RUN rm -rf /etc/localtime \

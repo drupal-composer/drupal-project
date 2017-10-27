@@ -14,7 +14,7 @@ services:
     volumes:
       - mysql:/var/lib/mysql
   webserver:
-    build: .
+    build: ./.docker
     volumes:
       - .:/var/www/app
     ports:
