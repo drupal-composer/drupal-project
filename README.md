@@ -1,131 +1,50 @@
-# Composer template for Drupal projects
+# RTD Drupal Composer Template #
+This project is a fork of https://github.com/drupal-composer/drupal-project.
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+## Docker ready ##
+A `docker-compose.yml` file and a `.docker` directory is included in this repo to allow you to quickly create a container-based LAMP stack.
 
-This project template should provide a kickstart for managing your site
-dependencies with [Composer](https://getcomposer.org/).
+### Docker lingo ###
+The following definitions may not be 100% accurate, but they will help you understand how Docker works.
 
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+- Docker: The software that allows you to build or fetch images; create containers; and execute programs provided by the containers.
+- Docker compose: A tool bundled with Docker that allows you to orchestrate containers.
+- Container: A lightweight 
 
-## Usage
+instance. Think of it as a strip-down version of CentOS.
+- Image: The footprint of a container.
+- Base image: An image can be built on top a base image.
+- Dockerfile: A file that tells Docker how to create an image.
+- docker-compose.yml: A file that tells docker how to link services together.
+- Service: A name to reference a container. The service that a container provides.
 
-First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+### Spin up a site ###
+1. Install [docker](https://store.docker.com/editions/community/docker-ce-desktop-mac).
+2. Run `docker-compose up -d` to build docker images and to create the webserver and database containers.
+3. Run `docker-compose ps` to find out what the **webserver's name** and **port numbers** are (e.g. 32827->80).
+4. Run `bash .docker/create-site.sh` to create drupal project via composer.
+5. Optionally run `bash .docker/install-site.sh drupal` to install a site by skipping the web-based wizard.
+6. Open a web browser and go to http://localhost:[port-number]
 
-> Note: The instructions below refer to the [global composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar) 
-for your setup.
+### Database Information ###
+- Host: database
+- Database: drupal (created by default).
+- UN: root
+- PW: password
+- Port: The port is assigned randomly every time the the mysql container is started. Follow step 3 on **Spin up a site** to find out how to check the port number for a service.
 
-After that you can create the project:
+### XDebug ###
+XDebug is already installed, but it's disabled by default as it slows down the site. To enable it run the following commands:
+- Run `docker exec -it [webserver-name] /bin/bash` to ssh into the webserver container.
+- Run `vi /etc/php.d/xdebug.ini` and remove the leading ';' on line 1.
+- Run `docker-compose restart`.
+- Run `docker-compose ps` to see the containers new port numbers.
 
-```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
-```
+## Drush ##
+Sample command to get a URL to log in as user 1:
+`docker exec -i [webserver-name] bash -c "cd web && ../vendor/bin/drush uli"`
 
-With `composer require ...` you can download new dependencies to your 
-installation.
+## TODO ##
+- Write script to automate enabling and disabling xdebug.
+- Switch from using **volumes** to **bind mounts** per https://docs.docker.com/engine/admin/volumes/#choose-the-right-type-of-mount.
 
-```
-cd some-dir
-composer require drupal/devel:~1.0
-```
-
-The `composer create-project` command passes ownership of all files to the 
-project that is created. You should create a new git repository, and commit 
-all files not excluded by the .gitignore file.
-
-## What does the template do?
-
-When installing the given `composer.json` some tasks are taken care of:
-
-* Drupal will be installed in the `web`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
-* Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `web/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
-
-## Updating Drupal Core
-
-This project will attempt to keep all of your Drupal Core files up-to-date; the 
-project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) 
-is used to ensure that your scaffold files are updated every time drupal/core is 
-updated. If you customize any of the "scaffolding" files (commonly .htaccess), 
-you may need to merge conflicts if any of your modified files are updated in a 
-new release of Drupal core.
-
-Follow the steps below to update your core files.
-
-1. Run `composer update drupal/core --with-dependencies` to update Drupal Core and its dependencies.
-1. Run `git diff` to determine if any of the scaffolding files have changed. 
-   Review the files for any changes and restore any customizations to 
-  `.htaccess` or `robots.txt`.
-1. Commit everything all together in a single commit, so `web` will remain in
-   sync with the `core` when checking out branches or running `git bisect`.
-1. In the event that there are non-trivial conflicts in step 2, you may wish 
-   to perform these steps on a branch, and use `git merge` to combine the 
-   updated core files with your customized files. This facilitates the use 
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple; 
-   keeping all of your modifications at the beginning or end of the file is a 
-   good strategy to keep merges easy.
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
-
-
-## FAQ
-
-### Should I commit the contrib modules I download?
-
-Composer recommends **no**. They provide [argumentation against but also 
-workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
-
-### Should I commit the scaffolding files?
-
-The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
-index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
-to not check them into your version control system (e.g. git). If that is the case for your project it might be
-convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
-
-```json
-"scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-    "post-install-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ],
-    "post-update-cmd": [
-        "@drupal-scaffold",
-        "..."
-    ]
-},
-```
-### How can I apply patches to downloaded modules?
-
-If you need to apply patches (depending on the project being modified, a pull 
-request is often a better solution), you can do so with the 
-[composer-patches](https://github.com/cweagans/composer-patches) plugin.
-
-To add a patch to drupal module foobar insert the patches section in the extra 
-section of composer.json:
-```json
-"extra": {
-    "patches": {
-        "drupal/foobar": {
-            "Patch description": "URL to patch"
-        }
-    }
-}
-```
-### How do I switch from packagist.drupal-composer.org to packages.drupal.org?
-
-Follow the instructions in the [documentation on drupal.org](https://www.drupal.org/docs/develop/using-composer/using-packagesdrupalorg).

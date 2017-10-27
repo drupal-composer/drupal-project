@@ -1,0 +1,26 @@
+version: '3'
+
+volumes:
+  mysql:
+
+services:
+  database:
+    image: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+      MYSQL_DATABASE: drupal
+    ports:
+      - 3306
+    volumes:
+      - mysql:/var/lib/mysql
+  webserver:
+    build: ./.docker
+    volumes:
+      - .:/var/www/app
+    ports:
+      - 80
+      - 443
+    depends_on:
+      - database
+    links:
+      - database
