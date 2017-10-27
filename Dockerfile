@@ -4,13 +4,14 @@ MAINTAINER "Maximo Mena" <mmenavas@asu.edu>
 
 ENV container docker
 
+# Add EPEL and Webtatic repos
 RUN rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
  && rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm
 
 # Normal updates
 RUN yum -y update
 
-# PHP && HTTPD
+# PHP, HTTPD, and other tools
 RUN yum -y install \
     httpd \
     mod_ssl \
@@ -31,30 +32,34 @@ RUN yum -y install \
     php70w-pecl-xdebug \
     php70w-soap \
     php70w-xml \
-    php70w-xmlrpc
+    php70w-xmlrpc \
+    curl \
+    git \
+ && yum clean all
 
-# Addition tools
-RUN yum -y install curl git
-
-# Composer
-RUN yum clean all \
- && php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
+# Install composer
+RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
  && php composer-setup.php --install-dir=bin --filename=composer \
- && php -r "unlink('composer-setup.php');" \
- && rm -rf /etc/localtime \
- && ln -s /usr/share/zoneinfo/America/Phoenix /etc/localtime
+ && php -r "unlink('composer-setup.php');"
 
-# Config changes
+# Transfer files from host
 COPY .docker-build/php.d/ /etc/php.d/
 COPY .docker-build/v-host.conf /etc/httpd/conf.d/
 COPY .docker-build/odbcinst.ini /tmp/odbcinst.ini
-RUN cat /tmp/odbcinst.ini >> /etc/odbcinst.ini
-
-# Add scripts
+COPY .docker-build/ssl.conf /tmp/ssl.conf
 COPY .docker-build/scripts /scripts
+
+# Configuration changes
+RUN rm -rf /etc/localtime \
+ && ln -s /usr/share/zoneinfo/America/Phoenix /etc/localtime \
+ && cat /tmp/odbcinst.ini >> /etc/odbcinst.ini \
+ && sed -i -e 's/#DocumentRoot "\/var\/www\/html"/DocumentRoot "\/var\/www\/app\/web"/' /etc/httpd/conf.d/ssl.conf \
+ && sed -i -e '/ServerName/r /tmp/ssl.conf' /etc/httpd/conf.d/ssl.conf
 
 # Create DocumentRoot directory
 RUN mkdir -p /var/www/app/web 
+
+WORKDIR /var/www/app
 
 EXPOSE 80 443
 
