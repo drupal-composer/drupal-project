@@ -25,6 +25,7 @@ class ScriptHandler {
       'modules',
       'profiles',
       'themes',
+      '../config/sync',
     ];
 
     // Required for unit testing
