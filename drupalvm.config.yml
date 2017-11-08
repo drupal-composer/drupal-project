@@ -25,6 +25,11 @@ drupalvm_webserver: nginx
 nodejs_version: "6.x"
 php_version: "7.0"
 
+# Use Host Manager instead of Hosts Updater.
+vagrant_plugins:
+  - name: vagrant-vbguest
+  - name: vagrant-hostmanager
+
 # In order to bump the fastcgi buffer size, we have to set the whole variable.
 nginx_hosts:
   - server_name: "{{ drupal_domain }} www.{{ drupal_domain }}"
