@@ -21,10 +21,9 @@ $env = defined('PANTHEON_ENVIRONMENT') && in_array(PANTHEON_ENVIRONMENT, ['test'
 // Restrict access to the update page by default.
 $settings['update_free_access'] = FALSE;
 
-// Indicate the active installation profile.
-// Leave this unset for the initial (standard profile) install, and then
-// uncomment for subsequent "Configuration Installer" initializations.
-// $settings['install_profile'] = 'config_installer';
+// Indicate the active installation profile. Even if the site was installed with
+// Config Installer, specify here the profile used to install originally.
+// $settings['install_profile'] = 'standard';
 
 // Load the services definition file. Note that services.yml was moved up one
 // directory from the default location (`/sites` instead of `/sites/default`).
