@@ -31,6 +31,10 @@
         "drupal": {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        "asset": {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     },
     "require": {
@@ -100,12 +104,18 @@
         ]
     },
     "extra": {
-        "installer-types": ["component"],
+        "installer-types": [
+            "component",
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
             "web/libraries/{$name}": [
-              "type:drupal-library",
-              "type:component"
+                "type:drupal-library",
+                "type:component",
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/{$name}": ["drupal/config_installer"],
@@ -118,6 +128,7 @@
                 "sites/development.services.yml": "sites/development.services.yml"
             }
         },
-        "patches-file": "composer.patches.json"
+        "patches-file": "composer.patches.json",
+        "enable-patching": true
     }
 }
