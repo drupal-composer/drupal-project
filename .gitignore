@@ -45,7 +45,6 @@ Thumbs.db
 node_modules
 npm-debug.log
 /web/kalastatic
-/web/themes/kalablog/kalastatic/build
 
 # Ignore files built out by Drupal Scaffold.
 /web/.csslintrc
