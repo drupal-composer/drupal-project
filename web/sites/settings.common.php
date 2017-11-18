@@ -39,6 +39,9 @@ $settings['file_scan_ignore_directories'] = [
 // @see http://dgo.to/2431247
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 
+// Define the private settings directory.
+$settings['file_private_path'] = '../private';
+
 // Disable configuration splits by default on all environments.
 foreach (['local', 'dev', 'test', 'live'] as $split) {
   $config["config_split.config_split.$split"]['status'] = FALSE;
