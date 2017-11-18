@@ -40,7 +40,7 @@ $settings['file_scan_ignore_directories'] = [
 $config_directories[CONFIG_SYNC_DIRECTORY] = '../config/sync';
 
 // Disable configuration splits by default on all environments.
-foreach (['dev', 'test', 'live'] as $split) {
+foreach (['local', 'dev', 'test', 'live'] as $split) {
   $config["config_split.config_split.$split"]['status'] = FALSE;
 }
 
