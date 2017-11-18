@@ -23,7 +23,7 @@ $settings['update_free_access'] = FALSE;
 
 // Indicate the active installation profile. Even if the site was installed with
 // Config Installer, specify here the profile used to install originally.
-// $settings['install_profile'] = 'standard';
+$settings['install_profile'] = 'standard';
 
 // Load the services definition file. Note that services.yml was moved up one
 // directory from the default location (`/sites` instead of `/sites/default`).
