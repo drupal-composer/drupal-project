@@ -31,7 +31,7 @@ class PharInstaller {
           if (empty($data['url'])) {
             throw new \LogicException("Missing tool url.");
           }
-          $filename = basename($data['url']);
+          $filename = basename($data['url']) . '-' . $data['version'];
           if (!$fs->exists("$bin_dir/$filename")) {
             if (!$fs->exists($bin_dir)) {
               $fs->mkdir($bin_dir);
@@ -40,9 +40,10 @@ class PharInstaller {
             $content = static::download($data['url']);
             $fs->dumpFile("$bin_dir/$filename", $content, 0755);
 
-            if (!$fs->exists("$bin_dir/$tool")) {
-              $fs->symlink("$bin_dir/$filename", "$bin_dir/$tool");
+            if ($fs->exists("$bin_dir/$tool")) {
+              $fs->remove("$bin_dir/$tool");
             }
+            $fs->symlink("$bin_dir/$filename", "$bin_dir/$tool");
           }
         }
       }
