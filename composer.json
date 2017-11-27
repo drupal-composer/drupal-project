@@ -54,9 +54,6 @@
             "scripts/composer/ScriptHandler.php"
         ]
     },
-    "platform": {
-        "php": "7.0"
-    },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "scripts/composer/process-replacements.php",
@@ -154,6 +151,9 @@
         "composer-exit-on-patch-failure": true
     },
     "config": {
+        "platform": {
+            "php": "7.0"
+        },
         "sort-packages": true,
         "preferred-install": {
             "drunomics/*": "source",
