@@ -54,6 +54,9 @@
             "scripts/composer/ScriptHandler.php"
         ]
     },
+    "platform": {
+        "php": "7.0"
+    },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "scripts/composer/process-replacements.php",
