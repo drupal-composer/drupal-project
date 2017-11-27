@@ -1,0 +1,40 @@
+name: {{ project }}
+description: 'Describe your application.'
+
+git:
+  url: 'git@bitbucket.org:drunomics/{{ project }}.git'
+
+commands:
+  setup: |
+    # Fallback to the dev environment for now.
+    PHAPP_ENV=$([ -f web/sites/default/settings.$PHAPP_ENV.php ] && echo $PHAPP_ENV || echo 'dev');
+    ln -sfr web/sites/default/settings.$PHAPP_ENV.php web/sites/default/settings.php
+    ln -sfr env/$PHAPP_ENV .env
+  build: |
+    # For now always build with dev-dependencies so they are usable on CI.
+    composer install --no-interaction
+  clean:
+    # Clean composer vendor via the provided script.
+    composer clean
+  status: |
+    drush status --fields=bootstrap | grep 'bootstrap' -q
+  init: |
+    drush sql-create -y &&
+    zcat dumps/init.sql.gz | drush sql:cli &&
+    drush updatedb -y &&
+    # Skip config-import when there is no config.
+    if [ -f config/sync/core.extension.yml ]; then
+      drush cim -y && drush cr
+    fi &&
+    drush locale:update
+  install: |
+    chmod +w web/sites/default/settings.php &&
+    drush sql-create -y &&
+    drush site-install -y --config-dir=../config/sync minimal
+  update: |
+    drush updatedb -y &&
+    # Skip config-import when there is no config.
+    if [ -f config/sync/core.extension.yml ]; then
+      drush cim -y && drush cr
+    fi &&
+    drush locale:update
