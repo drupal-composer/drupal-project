@@ -1,0 +1,3 @@
+PHAPP_ENV_MODE=development
+PHAPP_ENV=dev
+PHAPP_DOTENV_FILES=

@@ -26,6 +26,6 @@
 .idea
 
 # Ignore setup files.
+.env
 .vagrant
-dransible
-dumps
+dumps/sync
