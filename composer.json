@@ -49,6 +49,7 @@
     "prefer-stable": true,
     "autoload": {
         "classmap": [
+            "scripts/composer/CleanCommand.php",
             "scripts/composer/PharInstaller.php",
             "scripts/composer/ScriptHandler.php"
         ]
@@ -91,6 +92,9 @@
         ],
         "post-install-cmd": "@init-setup",
         "post-update-cmd": "@init-setup",
+        "clean": [
+            "drunomics\\Composer\\CleanCommand::runCommand"
+        ],
         "cs": "phpcs --colors",
         "cbf": "phpcbf",
         "check-security": "security-checker security:check",
@@ -133,6 +137,14 @@
             "phapp": {
                 "url": "https://github.com/drunomics/phapp-cli/releases/download/0.2.3/phapp.phar"
             }
+        },
+        "scripts-description": {
+            "clean": "Removes files of installed packages.",
+            "cs": "Run coding style checks using phpcs.",
+            "cbf": "Run coding style fixes using phpcbf.",
+            "check-security": "Verify only securie packages are installed.",
+            "install-phar-tools": "Installs phar tools used by this project.",
+            "test": "Run tests."
         },
         "enable-patching": true,
         "composer-exit-on-patch-failure": true
