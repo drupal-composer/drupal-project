@@ -13,16 +13,30 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.gentgrp.gent.be"
+        },
+        {
+            "type": "composer",
+            "url": "https://duplo.gentgrp.gent.be"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
+        "digipolisgent/robo-digipolis-drupal8": "^0.1",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.4",
         "drush/drush": "~8.0|^9.0.0-beta8",
         "webflo/drupal-finder": "^1.0.0",
+        "gent-drupal/digipolis": "~8.1",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
