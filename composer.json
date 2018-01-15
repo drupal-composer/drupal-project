@@ -13,16 +13,31 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://packagist.gentgrp.gent.be"
+        },
+        {
+            "type": "composer",
+            "url": "https://duplo.gentgrp.gent.be"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
+        "digipolisgent/robo-digipolis-drupal8": "^0.1",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.4",
         "drush/drush": "~8.0|^9.0.0-beta8",
         "webflo/drupal-finder": "^1.0.0",
+        "gent-drupal/digipolis": "~8.1",
+        "oomphinc/composer-installers-extender": "^1.1",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
@@ -40,7 +55,10 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "platform": {
+            "php": "5.6.20"
+        }
     },
     "autoload": {
         "classmap": [
@@ -56,16 +74,26 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@composer drupal-scaffold"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@composer drupal-scaffold"
         ]
     },
     "extra": {
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
