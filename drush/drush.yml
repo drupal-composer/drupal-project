@@ -31,3 +31,9 @@ command:
         # Dump to standard dump location by default.
         gzip: true
         result-file: ../dumps/dump.sql.gz
+  site:
+    install:
+      options:
+        # Set a predetermined username and password when using site-install.
+        account-name: dru_admin
+        # account-pass: 'secret'

@@ -13,7 +13,7 @@ commands:
   build: |
     # For now always build with dev-dependencies so they are usable on CI.
     composer install --no-interaction
-  clean:
+  clean: |
     # Clean composer vendor via the provided script.
     composer clean
   status: |
