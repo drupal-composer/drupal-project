@@ -29,8 +29,7 @@ command:
         structure-tables-key: common
         skip-tables-key: common
         # Dump to standard dump location by default.
-        gzip: true
-        result-file: ../dumps/dump.sql.gz
+        result-file: ../dumps/sync/dump.sql
   site:
     install:
       options:
