@@ -6,6 +6,8 @@ default:
         - %paths.base%/behat-features
       contexts:
         - FeatureContext
+        - MenuContext
+        - DesignSettingsContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
@@ -14,10 +16,10 @@ default:
         - Devinci\DevinciExtension\Context\JavascriptContext:
             maximum_wait: 30
   extensions:
+    DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
     Behat\MinkExtension:
+      browser_name: chrome
       goutte: ~
-      selenium2:
-        wd_host: "http://localhost:8643/wd/hub"
       default_session: 'goutte'
       show_cmd: xdg-open %s
     Drupal\DrupalExtension:
@@ -27,16 +29,26 @@ default:
         drupal_root: %paths.base%/web
       drush:
         alias: 'self'
+      selectors:
+        # Selectors used by the drupal-extension. Uncomment to use.
+        # error_message_selector: '.form-item--error-message'
       text:
-        username_field: 'name'
-        password_field: 'pass'
+        # Login text customizations used by drupal-extension. Uncomment to use.
+        # username_field: 'Benutzername'
+        # password_field: 'Passwort'
+        # log_in: 'Anmelden'
 
 vagrant:
   extensions:
     Behat\MinkExtension:
       base_url: http://{{ project }}.local
+      chrome:
+        api_url: "http://localhost:9222"
+      javascript_session: chrome
 
 selenium:
   extensions:
     Behat\MinkExtension:
       default_session: 'selenium2'
+      selenium2:
+        wd_host: "http://localhost:8643/wd/hub"

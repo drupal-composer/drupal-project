@@ -95,6 +95,23 @@ drush cim -y
 drush cr
 ```
 
+## Running tests
+
+Tests are implemented using behat. To run all tests, a recent chrome browser
+(59+) that is used for headless tests.
+
+To run the tests in the vagrant environment the following commands can be used:
+
+    ./scripts/run-tests.sh
+
+Any further arguments are forwarded to behat:
+
+    ./scripts/run-tests.sh --tags=javascript
+
+By default chrome is shown. To run it in headless mode use:
+
+    HEADLESS=1 ./scripts/run-tests.sh
+
 ## Coding style
 
 To check the coding style for the project's custom code, run PHP code sniffer:
