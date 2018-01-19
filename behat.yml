@@ -6,8 +6,6 @@ default:
         - %paths.base%/behat-features
       contexts:
         - FeatureContext
-        - MenuContext
-        - DesignSettingsContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
