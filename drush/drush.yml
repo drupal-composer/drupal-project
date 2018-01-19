@@ -1,3 +1,33 @@
 # Drush config.
-# @todo: Fix/extend once there are working examples.
 ---
+sql:
+  # List of tables whose *data* is skipped by the 'sql-dump' and 'sql-sync'
+  # commands when the "--structure-tables-key=common" option is provided.
+  # You may add specific tables to the existing array or add a new element.
+  structure-tables:
+    common:
+      - cache
+      - 'cache_*'
+      - history
+      - 'search_*'
+      - 'sessions'
+      - 'watchdog'
+  # List of tables to be omitted entirely from SQL dumps made by the 'sql-dump'
+  # and 'sql-sync' commands when the "--skip-tables-key=common" option is
+  # provided on the command line.  This is useful if your database contains
+  # non-Drupal tables used by some other application or during a migration for
+  # example.  You may add new tables to the existing array or add a new element.
+  skip-tables:
+    common:
+      - 'migration_*'
+
+command:
+  sql:
+    dump:
+      options:
+        # Use common tables by default.
+        structure-tables-key: common
+        skip-tables-key: common
+        # Dump to standard dump location by default.
+        gzip: true
+        result-file: ../dumps/dump.sql.gz
