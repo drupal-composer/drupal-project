@@ -135,8 +135,8 @@
         },
         "tools": {
             "phapp": {
-                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.5.0-beta2/phapp.phar",
-                "version": "0.5.0-beta2"
+                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.5.0/phapp.phar",
+                "version": "0.5.0"
             }
         },
         "scripts-description": {
