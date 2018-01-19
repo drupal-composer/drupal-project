@@ -27,7 +27,7 @@ class CleanCommand {
     foreach ($repo->getPackages() as $package) {
       $path = $composer->getInstallationManager()->getInstallPath($package);
       if (is_dir($path) && !$filesystem->isDirEmpty($path)) {
-        $io->write("Cleaning package <fg=green>" . $package->getPrettyName().'</>');
+        $io->write("Cleaning package <fg=green>" . $package->getPrettyName() . '</>');
         $filesystem->remove($path);
       }
     }
