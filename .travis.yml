@@ -1,40 +1,87 @@
 language: php
-dist: trusty
 sudo: false
 
 php:
-  - 5.6
-  - 7.0
   - 7.1
+
+git:
+  depth: 5
 
 env:
   global:
-    - SIMPLETEST_DB=sqlite://tmp/site.sqlite
-    - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
-  matrix:
-    - RELEASE=stable COMPOSER_CHANNEL=stable
-    - RELEASE=dev COMPOSER_CHANNEL=stable
-    - RELEASE=stable COMPOSER_CHANNEL=snapshot
+    # Set site environment
+    - AH_SITE_ENVIRONMENT=travis PHAPP_ENV=travis
 
+# travis will test and deploy only the branches and tags as show below
+# right now travis does not make a difference between branches and tags
+# tags starting with hotfix and tags in the form of "v1.0.0" will be tested
+branches:
+  only:
+    - master
+    - develop
+    - testing
+    - 8.x-1.x
+    - 8.x-2.x
+    - /^hotfix/
+    - /^v[0-9]+\.[0-9]+\.[0-9]+/
+    - /^release/
+    - /^version/
+
+mysql:
+  database: drupal
+  username: root
+  encoding: utf8
+
+# Cache Composer & Drush directories.
+cache:
+  directories:
+    - $HOME/.composer/cache
+    - $HOME/.drush/cache
+    # - docroot/themes/custom/haus_theme/node_modules
+
+# Setup the environment.
 before_install:
-  - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
+  # Install phapp
+  - |
+      mkdir $TRAVIS_BUILD_DIR/bin
+      php -r "
+        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
+        readfile(json_decode(file_get_contents('https://api.github.com/repos/drunomics/phapp-cli/releases/latest'))->assets[0]->browser_download_url);
+      " > $TRAVIS_BUILD_DIR/bin/phapp
+      chmod +x $TRAVIS_BUILD_DIR/bin/phapp
+  # Adjust path
+  - export PATH="$TRAVIS_BUILD_DIR/bin:$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
+  # Disable debugging
   - phpenv config-rm xdebug.ini
-  - composer --verbose self-update --$COMPOSER_CHANNEL
-  - composer --version
+  # Disable sendmail
+  - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # set php timeouts
+  - echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  - echo "default_socket_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+  # Increase the MySQL server timetout and packet size.
+  - mysql -e "SET GLOBAL wait_timeout = 36000;"
+  - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
 
 install:
-  - composer --verbose install
+  - phapp setup
+  # Run build separate from install so we see how long it takes in travis.
+  - phapp build
+  - phapp init --no-build
+
+before_script:
+  # Start web server
+  - cd $TRAVIS_BUILD_DIR/web
+  - drush runserver 8888 > /dev/null 2>&1 &
+  # Test if server started
+  - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
+  - cd $TRAVIS_BUILD_DIR
 
 script:
-  - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
-  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.4.x-dev drush/drush:9.0.x-dev; fi;
-  - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
-  - cd $TRAVIS_BUILD_DIR/web
-  - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
-  - ./../vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
-  - until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
-  # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
-  # Ignore PageCache group temporarily, @see https://www.drupal.org/node/2770673
-  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,DependencyInjection,PageCache
-  - ./../vendor/bin/drush
-  - if [[ $RELEASE = stable ]]; then ./../vendor/bin/drupal; fi;
+  # TODO: Test via ci-run-tests.sh
+  - curl -N http://localhost:8888 | grep  "Drupal 8" -q
+
+after_success:
+  # TODO: Configure as needed.
+
+notifications:
+  # TODO: Configure as needed.
