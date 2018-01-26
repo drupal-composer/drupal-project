@@ -22,6 +22,7 @@ if (empty($env_settings_active)) {
 
   $settings['file_chmod_directory'] = octdec(2770);
   $settings['file_public_path'] = 'files';
+  $config['locale.settings']['translation']['path'] = 'files/translations';
   $settings['file_private_path'] = '../files-private';
 }
 
