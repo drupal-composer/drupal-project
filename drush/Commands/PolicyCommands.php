@@ -1,4 +1,5 @@
 <?php
+
 namespace Drush\Commands;
 
 use Consolidation\AnnotatedCommand\CommandData;
@@ -8,7 +9,6 @@ use Symfony\Component\Console\Input\InputOption;
 /**
  * Edit this file to reflect your organization's needs.
  */
-
 class PolicyCommands extends DrushCommands {
 
   /**
