@@ -15,7 +15,7 @@ class PolicyCommands extends DrushCommands {
    * Prevent catastrophic braino. Note that this file has to be local to the
    * machine that initiates the sql:sync command.
    *
-   * hook validate sql:sync
+   * @hook validate sql:sync
    *
    * @throws \Exception
    */
@@ -28,7 +28,9 @@ class PolicyCommands extends DrushCommands {
   /**
    * Limit rsync operations to production site.
    *
-   * hook validate core:rsync
+   * @hook validate core:rsync
+   *
+   * @throws \Exception
    */
   public function rsyncValidate(CommandData $commandData) {
     if (preg_match("/^@prod/", $commandData->input()->getArgument('destination'))) {
@@ -40,6 +42,8 @@ class PolicyCommands extends DrushCommands {
    * Unauthorized may not execute updates.
    *
    * @hook validate updatedb
+   *
+   * @throws \Exception
    */
   public function validateUpdateDb(CommandData $commandData) {
     if (!$commandData->input()->getOption('secret') == 'mysecret') {
