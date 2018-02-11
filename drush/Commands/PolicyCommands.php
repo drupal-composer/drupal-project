@@ -4,7 +4,6 @@ namespace Drush\Commands;
 
 use Consolidation\AnnotatedCommand\CommandData;
 use Drush\Commands\DrushCommands;
-use Symfony\Component\Console\Input\InputOption;
 
 /**
  * Edit this file to reflect your organization's needs.
@@ -37,23 +36,4 @@ class PolicyCommands extends DrushCommands {
       throw new \Exception(dt('Per !file, you may never rsync to the production site.', ['!file' => __FILE__]));
     }
   }
-
-  /**
-   * Unauthorized may not execute updates.
-   *
-   * @hook validate updatedb
-   *
-   * @throws \Exception
-   */
-  public function validateUpdateDb(CommandData $commandData) {
-    if (!$commandData->input()->getOption('secret') == 'mysecret') {
-      throw new \Exception(dt('UpdateDb command requires a secret token per site policy.'));
-    }
-  }
-
-  /**
-   * @hook option updatedb
-   * @option secret A required token else user may not run updatedb command.
-   */
-  public function optionsetUpdateDb($options = ['secret' => self::REQ]) {}
 }
