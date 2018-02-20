@@ -25,10 +25,8 @@
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
+        "drupal/console": "^1.6.0",
         "webflo/drupal-core-require-dev": "~8.4"
-    },
-    "suggest": {
-        "drupal/console": "Generate boilerplate code and interact with Drupal through the CLI."
     },
     "conflict": {
         "drupal/drupal": "*"
