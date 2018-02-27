@@ -1,0 +1,84 @@
+version: "2"
+
+prepare:
+  fetch:
+  - url: "https://raw.githubusercontent.com/digipolisgent/ci_config-files-and-scripts/master/php/drupal8/.phpmd.xml"
+    path: ".phpmd.xml"
+  - url: "http://cgit.drupalcode.org/drupal/plain/.csslintrc"
+    path: ".csslintrc"
+  - url: "https://raw.githubusercontent.com/digipolisgent/ci_config-files-and-scripts/master/php/drupal8/.eslintrc.json"
+    path: ".eslintrc.json"
+  - url: "https://raw.githubusercontent.com/digipolisgent/ci_config-files-and-scripts/master/php/drupal8/.eslintignore"
+    path: ".eslintignore"
+
+checks:
+  argument-count:
+    enabled: false
+  complex-logic:
+    config:
+      threshold: 4
+  file-lines:
+    config:
+      threshold: 250
+  method-complexity:
+    config:
+      threshold: 5
+  method-count:
+    config:
+      threshold: 20
+  method-lines:
+    config:
+      threshold: 50
+  nested-control-flow:
+    config:
+      threshold: 4
+  return-statements:
+    config:
+      threshold: 4
+  similar-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languages.
+  identical-code:
+    config:
+      threshold: # language-specific defaults. an override will affect all languages.
+
+plugins:
+  phpcodesniffer:
+    enabled: true
+    config:
+      standard: "Drupal"
+      file_extensions: "php,inc,module,install"
+  phpmd:
+    enabled: true
+    config:
+      file_extensions:
+        - php
+        - inc
+        - module
+        - install
+      rulesets: ".phpmd.xml"
+  csslint:
+    enabled: true
+  eslint:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+        php:
+        javascript:
+  fixme:
+    enabled: true
+  markdownlint:
+    enabled: true
+    issue_override:
+      severity: minor
+
+exclude_patterns:
+- "config/"
+- "translations/"
+- "**/vendor/**/*"
+- "**/.idea/**/*"
+- "**/tests/**/*"
+- "**/*.settings.php"
+- "RoboFile.php"
