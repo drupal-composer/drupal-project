@@ -44,7 +44,7 @@ function _deny_message() {
  */
 function policy_drush_help_alter(&$command) {
   if (
-  in_array($command['command'], ['pm-updatecode', 'pm-update', 'pm-download'])
+    in_array($command['command'], ['pm-updatecode', 'pm-update', 'pm-download'])
   ) {
     $command['options']['pm-force'] = 'Override site policy and allow Drush codebase management (pm-* commands)';
   }
