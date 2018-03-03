@@ -4,14 +4,18 @@
 # See https://docs.platform.sh/user_guide/reference/platform-app-yaml.html
 
 # The name of this app. Must be unique within a project.
-name: 'YOURAPPNAMEHERE'
+name: '<MYPROJECT>'
 
 # The runtime the application uses.
-type: 'php:7.0'
+type: 'php:7.1'
 
 # Configuration of the build of this application.
 build:
-    flavor: composer
+    flavor: none
+
+variables:
+    php:
+        memory_limit: 256M
 
 # The relationships of the application with services or other applications.
 #
@@ -82,39 +86,51 @@ web:
             index:
                 - index.html
             root: 'web/kalastatic'
-            
+
 # The size of the persistent disk of the application (in MB).
 disk: 2048
 
-# The 'mounts' describe writable, persistent filesystem mounts in the application. The keys are
-# directory paths, relative to the application root. The values are strings such as
-# 'shared:files/NAME', where NAME is just a unique name for the mount.
+# The 'mounts' describe writable, persistent filesystem mounts in the application.
+# The keys are directory paths relative to the application root. The values are a
+# mount definition.
 mounts:
-    '/web/sites/default/files': 'shared:files/files'
-    '/tmp': 'shared:files/tmp'
-    '/private': 'shared:files/private'
-    '/drush-backups': 'shared:files/drush-backups'
+    # Note that the Drupal "temp directory" setting is provided by
+    # settings.platformsh.php, which overrides whatever is specified in the
+    # configuration files.
+    'tmp':
+        source: local
+        source_path: tmp
+    'web/sites/default/files':
+        source: local
+        source_path: public
+    'private':
+        source: local
+        source_path: private
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
+    # In enterprise environments, only the build hook has access to build tools
+    # like composer and npm.
+    build: |
+        # Update node version, per https://docs.platform.sh/languages/nodejs/nvm.html
+        unset NPM_CONFIG_PREFIX
+        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
+        export NVM_DIR="$HOME/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+        nvm install stable
+        # Continue with the actual build tasks.
+        composer install --no-interaction --optimize-autoloader
+        npm test
+        npm run predeploy
+
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
-      cd web
-      drush -y cache-rebuild
-      drush -y updatedb
-      drush -y config-import
-      drush -y cr all
-      drush -y entup
-      if [ "$PLATFORM_BRANCH" = master ]; then
-        # Use Drush to disable the Devel module on the Master environment.
-        drush dis devel -y
-      else
-        # Use Drush to enable the Devel module on other environments.
-        drush en devel -y
-        # Sanitize your database and get rid of sensitive information from Master environment.
-        # drush -y sql-sanitize --sanitize-email=user_%uid@example.com --sanitize-password=custompassword
-      fi
-      curl -X POST --data-urlencode 'payload={"channel": "#CHANNEL_NAME_HERE", "userme": "platformbot", "text": "'"Branch *$PLATFORM_BRANCH* of *$PLATFORM_APPLICATION_NAME* deploy complete"'."}' https://hooks.slack.com/services/SLACK/SERVICE/HOOK/URL/HERE
+        cd web
+        drush -y cache-rebuild
+        drush -y updatedb
+        drush -y config-import
+        drush -y cache-rebuild
+        drush -y entity-updates
 
 # The configuration of scheduled execution.
 crons:
