@@ -18,7 +18,7 @@
 # );
 
 // Set the Stage File Proxy source to fetch files from an upstream environment.
-$config['stage_file_proxy.settings']['origin'] = 'https://MYPROJECT.com';
+# $config['stage_file_proxy.settings']['origin'] = 'https://MYPROJECT.com';
 
 // Enable test environment-specific settings via a config split. Usually, the
 // only differences between TEST & LIVE are API keys and the Stage File Proxy

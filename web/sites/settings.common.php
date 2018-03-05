@@ -16,22 +16,22 @@
 
 // Determine the environment; one of "dev", "test", or "live".
 // E.g., for Pantheon, use "dev" settings on all sites except TEST and LIVE:
-$env = defined('PANTHEON_ENVIRONMENT') && in_array(PANTHEON_ENVIRONMENT, ['test', 'live'])
-  ? PANTHEON_ENVIRONMENT
-  : 'dev';
+# $env = defined('PANTHEON_ENVIRONMENT') && in_array(PANTHEON_ENVIRONMENT, ['test', 'live'])
+#   ? PANTHEON_ENVIRONMENT
+#   : 'dev';
 // E.g., for Platform.sh, use the current branch to determine environment.
-# $env = (function ($branch) {
-#   switch ($branch) {
-#     case 'production':
-#       return 'live';
-#
-#     case 'staging':
-#       return 'test';
-#
-#     default:
-#       return 'dev';
-#   }
-# })($_ENV['PLATFORM_BRANCH'] ?? NULL);
+$env = (function ($branch) {
+  switch ($branch) {
+    case 'production':
+      return 'live';
+
+    case 'staging':
+      return 'test';
+
+    default:
+      return 'dev';
+  }
+})($_ENV['PLATFORM_BRANCH'] ?? NULL);
 
 // Restrict access to the update page by default.
 $settings['update_free_access'] = FALSE;
