@@ -1,4 +1,4 @@
-# CHANGEME (replace "drupalproject" with project shortcode).
+# CHANGEME (replace "drupalproj" with project shortcode).
 name: drupalproj
 recipe: drupal8
 
