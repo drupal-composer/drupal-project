@@ -1,3 +1,4 @@
+# Usage: Replace <MYPROJECT> with your project short code.
 version: "2"
 
 services:
@@ -16,7 +17,7 @@ services:
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
       PHP_FPM_CLEAR_ENV: "no"
-      DB_HOST: sjwc_mariadb_1
+      DB_HOST: <MYPROJECT>_mariadb_1
       DB_USER: drupal
       DB_PASSWORD: drupal
       DB_NAME: drupal
@@ -42,9 +43,9 @@ services:
     volumes:
       - ./:/var/www/html:cached
     labels:
-      - 'traefik.backend=sjwc_nginx_1'
+      - 'traefik.backend=<MYPROJECT>_nginx_1'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:sjwc.docker.localhost'
+      - 'traefik.frontend.rule=Host:<MYPROJECT>.docker.localhost'
 
 #  varnish:
 #    image: wodby/drupal-varnish:4.1-2.2.0
@@ -55,9 +56,9 @@ services:
 #      VARNISH_BACKEND_HOST: nginx
 #      VARNISH_BACKEND_PORT: 80
 #    labels:
-#      - 'traefik.backend=sjwc_varnish_1'
+#      - 'traefik.backend=<MYPROJECT>_varnish_1'
 #      - 'traefik.port=6081'
-#      - 'traefik.frontend.rule=Host:varnish.sjwc.docker.localhost'
+#      - 'traefik.frontend.rule=Host:varnish.<MYPROJECT>.docker.localhost'
 
 #  redis:
 #    image: wodby/redis:4.0-2.1.3
@@ -67,47 +68,47 @@ services:
 #    environment:
 #      ADMINER_SALT: adminer-salt
 #    labels:
-#      - 'traefik.backend=sjwc_adminer_1'
+#      - 'traefik.backend=<MYPROJECT>_adminer_1'
 #      - 'traefik.port=9000'
-#      - 'traefik.frontend.rule=Host:adminer.sjwc.docker.localhost'
+#      - 'traefik.frontend.rule=Host:adminer.<MYPROJECT>.docker.localhost'
 
   pma:
     image: phpmyadmin/phpmyadmin
     environment:
-      PMA_HOST: sjwc_mariadb_1
+      PMA_HOST: <MYPROJECT>_mariadb_1
       PMA_USER: drupal
       PMA_PASSWORD: drupal
       PHP_UPLOAD_MAX_FILESIZE: 1G
       PHP_MAX_INPUT_VARS: 1G
     labels:
-      - 'traefik.backend=sjwc_pma_1'
+      - 'traefik.backend=<MYPROJECT>_pma_1'
       - 'traefik.port=80'
-      - 'traefik.frontend.rule=Host:pma.sjwc.docker.localhost'
+      - 'traefik.frontend.rule=Host:pma.<MYPROJECT>.docker.localhost'
 
 #  solr:
 #    image: wodby/drupal-solr:8-6.6-2.2.0
 #    environment:
 #      SOLR_HEAP: 1024m
 #    labels:
-#      - 'traefik.backend=sjwc_solr_1'
+#      - 'traefik.backend=<MYPROJECT>_solr_1'
 #      - 'traefik.port=8983'
-#      - 'traefik.frontend.rule=Host:solr.sjwc.docker.localhost'
+#      - 'traefik.frontend.rule=Host:solr.<MYPROJECT>.docker.localhost'
 
   mailhog:
     image: mailhog/mailhog
     labels:
-      - 'traefik.backend=sjwc_mailhog_1'
+      - 'traefik.backend=<MYPROJECT>_mailhog_1'
       - 'traefik.port=8025'
-      - 'traefik.frontend.rule=Host:mailhog.sjwc.docker.localhost'
+      - 'traefik.frontend.rule=Host:mailhog.<MYPROJECT>.docker.localhost'
 
 #  nodejs:
 #    image: wodby/drupal-node:1.0-1.0.0
 #    environment:
 #       NODE_SERVICE_KEY: node-service-key
 #    labels:
-#      - 'traefik.backend=sjwc_nodejs_1'
+#      - 'traefik.backend=<MYPROJECT>_nodejs_1'
 #      - 'traefik.port=8080'
-#      - 'traefik.frontend.rule=Host:nodejs.sjwc.docker.localhost'
+#      - 'traefik.frontend.rule=Host:nodejs.<MYPROJECT>.docker.localhost'
 #    volumes:
 #      - ./path/to/your/single-page-app:/app
 #    command: sh -c 'npm install && npm run start'
@@ -116,9 +117,9 @@ services:
 #    image: node:alpine
 #    working_dir: /app
 #    labels:
-#      - 'traefik.backend=sjwc_node_1'
+#      - 'traefik.backend=<MYPROJECT>_node_1'
 #      - 'traefik.port=3000'
-#      - 'traefik.frontend.rule=Host:front.sjwc.docker.localhost'
+#      - 'traefik.frontend.rule=Host:front.<MYPROJECT>.docker.localhost'
 #    expose:
 #      - "3000"
 #    volumes:
@@ -152,9 +153,9 @@ services:
 #    environment:
 #      WEBGRIND_PROFILER_DIR: /mnt/files/xdebug/profiler
 #    labels:
-#      - 'traefik.backend=sjwc_webgrind_1'
+#      - 'traefik.backend=<MYPROJECT>_webgrind_1'
 #      - 'traefik.port=8080'
-#      - 'traefik.frontend.rule=Host:webgrind.sjwc.docker.localhost'
+#      - 'traefik.frontend.rule=Host:webgrind.<MYPROJECT>.docker.localhost'
 #    volumes:
 #      - files:/mnt/files
 
@@ -164,9 +165,9 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     labels:
-      - 'traefik.backend=sjwc_portainer_1'
+      - 'traefik.backend=<MYPROJECT>_portainer_1'
       - 'traefik.port=9000'
-      - 'traefik.frontend.rule=Host:portainer.sjwc.docker.localhost'
+      - 'traefik.frontend.rule=Host:portainer.<MYPROJECT>.docker.localhost'
 
 #volumes:
 #  codebase:

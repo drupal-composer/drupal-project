@@ -64,7 +64,7 @@ $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
 // Set the Stage File Proxy source to fetch files from an upstream environment.
-// Some safety changes may be requied, e.g.,
+// Some conditional environment checks may be needed. E.g.,
 # if (!isset($_ENV['PLATFORM_BRANCH']) || 'master' !== $_ENV['PLATFORM_BRANCH']) {
 $config['stage_file_proxy.settings']['origin'] = 'https://<MYPROJECT>.com';
 

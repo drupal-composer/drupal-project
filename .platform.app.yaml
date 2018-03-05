@@ -94,9 +94,9 @@ disk: 2048
 # The keys are directory paths relative to the application root. The values are a
 # mount definition.
 mounts:
-    # Note that the Drupal "temp directory" setting is provided by
-    # settings.platformsh.php, which overrides whatever is specified in the
-    # configuration files.
+    # Note that the Platform.sh settings file overrides the Drupal "temporary
+    # files directory" setting to point at /app/tmp instead of whatever is
+    # specified in the configuration files.
     'tmp':
         source: local
         source_path: tmp
@@ -109,8 +109,8 @@ mounts:
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
-    # In enterprise environments, only the build hook has access to build tools
-    # like composer and npm.
+    # In enterprise environments, only the "build" hook has access to build
+    # tools like composer and npm.
     build: |
         # Update node.js (and npm) to latest stable version before building.
         # @see https://docs.platform.sh/languages/nodejs/nvm.html

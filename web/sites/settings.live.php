@@ -8,19 +8,21 @@
  * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
-// Force users to use the the official domain for the production environment.
-$url = '<MYPROJECT>.com';
-if ($_SERVER['HTTP_HOST'] !== $url) {
-  // KalaUtil::redirect('https', $url);
-}
+// Force using the canonical domain for the production environment.
+# $url = '<MYPROJECT>.com';
+# if ($_SERVER['HTTP_HOST'] !== $url) {
+#   require_once "$app_root/sites/KalaUtil.php";
+#   \Drupal\kalamuna\KalaUtil::redirect('https', $url);
+# }
 
 // Redirect HTTP to HTTPS.
-// KalaUtil::enforceSSL();
+# require_once "$app_root/sites/KalaUtil.php";
+# \Drupal\kalamuna\KalaUtil::enforceSSL();
 
-// Set the Drupal 8 "Trusted Host Patterns" for added security.
-$settings['trusted_host_patterns'] = [
-  // '^MYPROJECT\.com$',
-];
+// For added security, restrict the domains from which Drupal will serve.
+# $settings['trusted_host_patterns'] = [
+#   '^MYPROJECT\.com$',
+# ];
 
 // Just in case the Stage File Proxy module gets enabled in production (which it
 // shouldn't), neuter it by wiping the "origin URL".

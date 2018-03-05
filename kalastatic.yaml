@@ -84,7 +84,7 @@ kss:
     - node_modules/kss-bootstrap/styleguide/components/alert
     - node_modules/kss-bootstrap/styleguide/components/badge
     - node_modules/kss-bootstrap/styleguide/components/breadcrumb
-    - node_modules/kss-bootstrap/styleguide/components/dropdown
+    # - node_modules/kss-bootstrap/styleguide/components/dropdown
     # - node_modules/kss-bootstrap/styleguide/components/jumbotron
     - node_modules/kss-bootstrap/styleguide/components/label
     - node_modules/kss-bootstrap/styleguide/components/list-group
@@ -92,8 +92,8 @@ kss:
     # - node_modules/kss-bootstrap/styleguide/components/progress
     - node_modules/kss-bootstrap/styleguide/css/image
     # - node_modules/kss-bootstrap/styleguide/javascript/carousel
-    - node_modules/kss-bootstrap/styleguide/javascript/collapse
-    - node_modules/kss-bootstrap/styleguide/javascript/dropdown
+    # - node_modules/kss-bootstrap/styleguide/javascript/collapse
+    # - node_modules/kss-bootstrap/styleguide/javascript/dropdown
     # - node_modules/kss-bootstrap/styleguide/javascript/modal
     # - node_modules/kss-bootstrap/styleguide/javascript/popover
     # - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
