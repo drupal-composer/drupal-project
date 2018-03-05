@@ -1,3 +1,5 @@
+# Platform.sh only (unless you have your local configured to read .env files).
+#
 # Statements in this file will be executed (sourced) by the shell in SSH
 # sessions, in deploy hooks, in cron jobs, and in the application's runtime
 # environment. This file must be placed in the root of the application, not
