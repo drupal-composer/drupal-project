@@ -1,4 +1,5 @@
-name: <MYPROJECT>
+# CHANGEME (replace "drupalproject" with project shortcode).
+name: drupalproj
 recipe: drupal8
 
 services:

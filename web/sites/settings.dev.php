@@ -37,14 +37,15 @@ $cache_bins = [
   'config',
   'data',
   'default',
-  'discovery',
+  // This makes the site unbearably slow with kalastatic.module enabled.
+  # 'discovery',
   'dynamic_page_cache',
   'entity',
   'menu',
   'migrate',
   // Do not disable page or render caching until after the site is installed.
-  // 'page',
-  // 'render',
+  # 'page',
+  # 'render',
   'rest',
   'static',
   'toolbar',
@@ -63,7 +64,9 @@ $settings['rebuild_access'] = TRUE;
 $settings['skip_permissions_hardening'] = TRUE;
 
 // Set the Stage File Proxy source to fetch files from an upstream environment.
-$config['stage_file_proxy.settings']['origin'] = 'https://EXAMPLE.com';
+// Some safety changes may be requied, e.g.,
+# if (!isset($_ENV['PLATFORM_BRANCH']) || 'master' !== $_ENV['PLATFORM_BRANCH']) {
+$config['stage_file_proxy.settings']['origin'] = 'https://<MYPROJECT>.com';
 
 // Enable dev environment-specific settings via a config split.
 $config['config_split.config_split.dev']['status'] = TRUE;
@@ -85,11 +88,11 @@ $settings['update_free_access'] = TRUE;
 // Provide sane defaults for local development database settings.
 if (empty($databases['default']['default'])) {
   $databases['default']['default'] = [
-    'database' => 'drupal',
-    'username' => 'drupal',
-    'password' => 'drupal',
+    'database' => 'drupal8',
+    'username' => 'drupal8',
+    'password' => 'drupal8',
     'prefix' => '',
-    'host' => 'localhost',
+    'host' => 'database',
     'port' => '3306',
     'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
     'driver' => 'mysql',

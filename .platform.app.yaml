@@ -112,19 +112,23 @@ hooks:
     # In enterprise environments, only the build hook has access to build tools
     # like composer and npm.
     build: |
-        # Update node version, per https://docs.platform.sh/languages/nodejs/nvm.html
-        unset NPM_CONFIG_PREFIX
-        curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.8/install.sh | dash
-        export NVM_DIR="$HOME/.nvm"
-        [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-        nvm install stable
-        # Continue with the actual build tasks.
-        composer install --no-interaction --optimize-autoloader
+        # Update node.js (and npm) to latest stable version before building.
+        # @see https://docs.platform.sh/languages/nodejs/nvm.html
+        sh scripts/install-nodejs.sh
+
+        # Don't install dev dependencies in the live and test environments.
+        COMPOSER_INSTALL_FLAGS="--no-interaction --optimize-autoloader"
+        if [[ "$PLATFORM_BRANCH" =~ ^(production|staging)$ ]]; then
+            COMPOSER_INSTALL_FLAGS="$COMPOSER_INSTALL_FLAGS --no-dev"
+        fi
+        composer install $COMPOSER_INSTALL_FLAGS
         npm test
         npm run predeploy
 
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
+        unset NPM_CONFIG_PREFIX
+        nvm use stable
         cd web
         drush -y cache-rebuild
         drush -y updatedb

@@ -1,0 +1,3 @@
+toolbar_items:
+  - devel.container_info.service
+  - devel.route_info.item

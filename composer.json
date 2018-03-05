@@ -42,7 +42,7 @@
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/console": "^1.0.1",
-        "drupal/core": "~8.0",
+        "drupal/core": "~8.4",
         "drush/drush": "~8.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
@@ -50,12 +50,17 @@
         "drupal/admin_toolbar": "^1.18",
         "drupal/cache_control_override": "^1.0",
         "drupal/chosen": "^2.0",
+        "drupal/components": "^1.0",
         "drupal/config_split": "^1.1",
         "drupal/config_tools": "^1.0",
+        "drupal/linkit": "5.x-dev",
         "drupal/pathauto": "^1.0",
         "drupal/redirect": "^1.0",
         "drupal/stage_file_proxy": "^1.0",
+        "drupal/twig_tweak": "^2.0",
         "kalamuna/autogrow_textarea": "^1.0",
+        "kalamuna/kalabase": "dev-8.x-1.x",
+        "kalamuna/kalastatic": "dev-8.x-2.x",
         "oomphinc/composer-installers-extender": "^1.1"
     },
     "require-dev": {
@@ -82,6 +87,7 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "run-scaffold": "if [ ! -f ./web/index.php ]; then composer drupal-scaffold; fi",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -90,10 +96,12 @@
         ],
         "post-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@run-scaffold",
             "if hash npm; then npm install; fi"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
+            "@run-scaffold"
         ],
         "test": [
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",

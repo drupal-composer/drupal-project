@@ -12,10 +12,11 @@ source: web/themes/custom/THEME_NAME/kalastatic
 destination: web/kalastatic
 
 # What BrowserSync will consider the start page.
-bsIndex: kalastatic/browsersync-redirect.html
+bsIndex: index.html
 
 # What BrowserSync will consider the web root.
 bsWebroot: web
+bsStartPath: kalastatic
 
 # Allows changing some of the plugin options.
 pluginOpts:
@@ -34,7 +35,7 @@ pluginOpts:
         outFile: 'main.css'
         sourceComments: false
         includePaths:
-          - node_modules/bootstrap-sass/assets/stylesheets
+          - node_modules/bootstrap/scss
           - node_modules/font-awesome/scss
           - web/themes/custom/THEME_NAME/kalastatic/styles
           - web/themes/custom/THEME_NAME/kalastatic/components
@@ -49,6 +50,7 @@ pluginOpts:
           molecules: web/themes/custom/THEME_NAME/kalastatic/components/molecules
           organisms: web/themes/custom/THEME_NAME/kalastatic/components/organisms
           layouts: web/themes/custom/THEME_NAME/kalastatic/components/layouts
+          icons: node_modules/fontawesome-svg-twig
 
         # Mimic some of the Drupal 8 Twig filters.
         filters:
@@ -59,16 +61,15 @@ pluginOpts:
 kss:
   builder: "node_modules/kstat-kss-builder"
   css:
-    - ../styles/main.css
     - ../styles/styleguide.css
   js:
-    - ../vendor/bootstrap/bootstrap.min.js
-    - ../vendor/jquery-once/jquery.once.min.js
+    # - ../vendors/bootstrap/dropdown.js
+    # - ../vendors/bootstrap/collapse.js
+    - ../vendors/jquery-once/jquery.once.min.js
     - ../js/drupal_pre.js
     - ../js/main.js
     - ../js/drupal_post.js
   source:
-    - node_modules/kss-bootstrap/styleguide/sections
     - node_modules/kss-bootstrap/styleguide/css/table
     - node_modules/kss-bootstrap/styleguide/css/button
     - node_modules/kss-bootstrap/styleguide/css/code
@@ -80,34 +81,22 @@ kss:
     - node_modules/kss-bootstrap/styleguide/components/btn-group
     - node_modules/kss-bootstrap/styleguide/components/pagination
     - node_modules/kss-bootstrap/styleguide/components/media
-    - node_modules/kss-bootstrap/styleguide/javascript/dropdown
     - node_modules/kss-bootstrap/styleguide/components/alert
     - node_modules/kss-bootstrap/styleguide/components/badge
     - node_modules/kss-bootstrap/styleguide/components/breadcrumb
-    - node_modules/kss-bootstrap/styleguide/components/btn-group
     - node_modules/kss-bootstrap/styleguide/components/dropdown
-    - node_modules/kss-bootstrap/styleguide/components/jumbotron
+    # - node_modules/kss-bootstrap/styleguide/components/jumbotron
     - node_modules/kss-bootstrap/styleguide/components/label
     - node_modules/kss-bootstrap/styleguide/components/list-group
-    - node_modules/kss-bootstrap/styleguide/components/media
-    - node_modules/kss-bootstrap/styleguide/components/nav
-    - node_modules/kss-bootstrap/styleguide/components/pagination
     - node_modules/kss-bootstrap/styleguide/components/panel
-    - node_modules/kss-bootstrap/styleguide/components/progress
-    - node_modules/kss-bootstrap/styleguide/css/button
-    - node_modules/kss-bootstrap/styleguide/css/code
-    - node_modules/kss-bootstrap/styleguide/css/form
-    - node_modules/kss-bootstrap/styleguide/css/grid
-    - node_modules/kss-bootstrap/styleguide/css/helper
+    # - node_modules/kss-bootstrap/styleguide/components/progress
     - node_modules/kss-bootstrap/styleguide/css/image
-    - node_modules/kss-bootstrap/styleguide/css/table
-    - node_modules/kss-bootstrap/styleguide/css/typography
-    - node_modules/kss-bootstrap/styleguide/javascript/carousel
+    # - node_modules/kss-bootstrap/styleguide/javascript/carousel
     - node_modules/kss-bootstrap/styleguide/javascript/collapse
     - node_modules/kss-bootstrap/styleguide/javascript/dropdown
-    - node_modules/kss-bootstrap/styleguide/javascript/modal
-    - node_modules/kss-bootstrap/styleguide/javascript/popover
-    - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
-    - node_modules/kss-bootstrap/styleguide/javascript/tooltip
+    # - node_modules/kss-bootstrap/styleguide/javascript/modal
+    # - node_modules/kss-bootstrap/styleguide/javascript/popover
+    # - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
+    # - node_modules/kss-bootstrap/styleguide/javascript/tooltip
     - node_modules/kss-bootstrap/styleguide/sections
     - web/themes/custom/THEME_NAME/kalastatic

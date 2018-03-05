@@ -8,9 +8,10 @@
  * @see https://api.drupal.org/api/drupal/sites!default!default.settings.php/8
  */
 
-// Always use the official domain for live.
-if ('EXAMPLE.COM' !== $_SERVER['HTTP_HOST']) {
-  // KalaUtil::redirect('https', 'EXAMPLE.COM');
+// Force users to use the the official domain for the production environment.
+$url = '<MYPROJECT>.com';
+if ($_SERVER['HTTP_HOST'] !== $url) {
+  // KalaUtil::redirect('https', $url);
 }
 
 // Redirect HTTP to HTTPS.
@@ -18,7 +19,7 @@ if ('EXAMPLE.COM' !== $_SERVER['HTTP_HOST']) {
 
 // Set the Drupal 8 "Trusted Host Patterns" for added security.
 $settings['trusted_host_patterns'] = [
-  // '^EXAMPLE\.COM$',
+  // '^MYPROJECT\.com$',
 ];
 
 // Just in case the Stage File Proxy module gets enabled in production (which it

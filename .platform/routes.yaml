@@ -6,4 +6,4 @@
 # Without specifically adding a non-SSL route, Platform forces HTTPS.
 "https://{default}/":
     type: upstream
-    upstream: "sjwc:http"
+    upstream: "<MYPROJECT>:http"
