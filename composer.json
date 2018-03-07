@@ -114,11 +114,11 @@
             "@run-scaffold"
         ],
         "test": [
+            "if hash npm; then npm test; fi",
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
             "phpcs --standard=Drupal web/modules/custom",
             "phpcs --standard=Drupal web/themes/custom",
-            "echo 'CALL PHPUNIT TESTS HERE'",
-            "if hash npm; then npm test; fi"
+            "echo 'CALL PHPUNIT TESTS HERE'"
         ]
     },
     "extra": {

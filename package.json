@@ -4,9 +4,9 @@
   "license": "GPL-2.0",
   "private": true,
   "scripts": {
-    "test": "kalastatic build && npm run postcss",
     "start": "kalastatic start",
-    "postcss": "npx postcss -c postcss.config.js -o web/kalastatic/styles/main.css web/kalastatic/styles/main.css",
+    "test": "kalastatic build && npm run postcss",
+    "postcss": "postcss -c postcss.config.js -o web/kalastatic/styles/main.css web/kalastatic/styles/main.css",
     "deploy": "npm run deploy:gitprep && git add -A && npm run deploy:push",
     "deploy:gitprep": "rm -f .gitignore && find web -type d -name .git -print0|xargs -0 rm -rf",
     "deploy:push": "grunt buildcontrol:deploy"

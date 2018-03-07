@@ -110,7 +110,8 @@ mounts:
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
     # In enterprise environments, only the "build" hook has access to build
-    # tools like composer and npm.
+    # tools like composer and npm. Plus, the filesystem becomes read-only after
+    # this phase.
     build: |
         # Update node.js (and npm) to latest stable version before building.
         # @see https://docs.platform.sh/languages/nodejs/nvm.html
@@ -122,8 +123,7 @@ hooks:
             COMPOSER_INSTALL_FLAGS="$COMPOSER_INSTALL_FLAGS --no-dev"
         fi
         composer install $COMPOSER_INSTALL_FLAGS
-        npm test
-        npm run predeploy
+        composer test
 
     # The deploy hook runs after your application has been deployed and started.
     deploy: |
