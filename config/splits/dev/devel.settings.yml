@@ -1,7 +1,0 @@
-raw_names: true
-error_handlers:
-  1: 1
-  2: 2
-devel_dumper: kint
-page_alter: false
-rebuild_theme: false
