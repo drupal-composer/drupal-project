@@ -11,7 +11,7 @@ services:
     #  - "curl -sS https://platform.sh/cli/installer | php"
 
 # The following entry creates a `lando platform` command that will run
-# any Platform CLI command from inside the container if desired. 
+# any Platform CLI command from inside the container if desired.
 #tooling:
 #  platform:
 #    service: appserver
