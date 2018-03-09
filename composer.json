@@ -110,8 +110,7 @@
         "test": [
             "if hash npm; then npm test; fi",
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
-            "phpcs --standard=Drupal web/modules/custom",
-            "phpcs --standard=Drupal web/themes/custom",
+            "phpcs --standard=Drupal web/modules/custom web/themes/custom web/sites/KalaUtil.php",
             "echo 'CALL PHPUNIT TESTS HERE'"
         ]
     },

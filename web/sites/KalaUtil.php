@@ -83,7 +83,9 @@ class KalaUtil {
   /**
    * Forces use of SSL.
    */
+  // @codingStandardsIgnoreStart
   public static function enforceSSL() {
+  // @codingStandardsIgnoreEnd
     if (!isset($_SERVER['HTTP_X_SSL']) || $_SERVER['HTTP_X_SSL'] !== 'ON') {
       static::redirect('https', NULL, NULL, 301);
     }
