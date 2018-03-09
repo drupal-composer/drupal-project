@@ -119,7 +119,7 @@ hooks:
 
         # Don't install dev dependencies in the live and test environments.
         COMPOSER_INSTALL_FLAGS="--no-interaction --optimize-autoloader"
-        if [[ "$PLATFORM_BRANCH" =~ ^(production|staging)$ ]]; then
+        if [ "$PLATFORM_BRANCH" = "production" ] || [ "$PLATFORM_BRANCH" = "staging" ]; then
             COMPOSER_INSTALL_FLAGS="$COMPOSER_INSTALL_FLAGS --no-dev"
         fi
         composer install $COMPOSER_INSTALL_FLAGS
