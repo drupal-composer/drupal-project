@@ -4,8 +4,7 @@
             "http://dgo.to/2705891 Client-side-validation broken with Chosen": "https://www.drupal.org/files/issues/2705891-10.patch"
         },
         "drupal/core": {
-            "http://dgo.to/2788087 You have requested a non-existent service 'router.route_provider.old'": "https://www.drupal.org/files/issues/2788087-7.patch",
-            "http://dgo.to/1797438/12417144 HTML5 validation is preventing form submit and not fully accessible": "https://www.drupal.org/files/issues/1797438-131-8.4.x-backport.patch"
+            "http://dgo.to/1797438/12417144 HTML5 validation is preventing form submit and not fully accessible": "https://www.drupal.org/files/issues/1797438-130.patch"
         }
     }
 }

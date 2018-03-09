@@ -63,6 +63,7 @@ npm-debug.log
 /web/.eslintrc.json
 /web/.gitattributes
 /web/.htaccess
+/web/.ht.router.php
 /web/autoload.php
 /web/index.php
 /web/modules/.gitkeep

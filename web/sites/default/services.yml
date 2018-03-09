@@ -1,1 +1,1 @@
-Note that this Drupal does not use this file. Please see the `services.yml` file in the parent directory, `/web/sites/`.
+Note that Drupal does not use this file. Please see the `services.yml` file in the parent directory, `/web/sites/`.
