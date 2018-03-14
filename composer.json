@@ -1,5 +1,5 @@
 {
-    "name": "drupal-composer/drupal-project",
+    "name": "wunderio/drupal-project",
     "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
     "license": "GPL-2.0+",
@@ -19,11 +19,15 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
-        "drupal/console": "^1.0.1",
-        "drupal/core": "~8.0",
-        "drush/drush": "~8.0",
+        "drupal/console": "^1.0.2",
+        "drupal/core": "~8.4",
+        "drush/drush": "~9.1",
         "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3"
+        "webmozart/path-util": "^2.3",
+        "drupal/config_installer": "~1.0",
+        "drupal/warden": "*",
+        "drupal/simplei": "^1.0",
+        "wunderio/drupal-ping": "^1.0"
     },
     "require-dev": {
         "behat/mink": "~1.7",
@@ -40,7 +44,8 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "config": {
-        "sort-packages": true
+        "sort-packages": true,
+        "discard-changes": true
     },
     "autoload": {
         "classmap": [
@@ -70,6 +75,12 @@
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "composer-exit-on-patch-failure": true,
+        "dropin-paths": {
+            "web/": ["type:web-dropin"]
+        },
+        "patches": {
         }
     }
 }
