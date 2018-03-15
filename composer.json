@@ -101,6 +101,10 @@
             "phpcs --standard=Drupal web/themes/custom",
             "echo 'CALL PHPUNIT TESTS HERE'",
             "if hash npm; then npm test; fi"
+        ],
+        "it": [
+          "composer install",
+          "composer test"
         ]
     },
     "extra": {
