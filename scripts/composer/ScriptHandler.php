@@ -27,12 +27,23 @@ class ScriptHandler {
       'themes',
     ];
 
+    $docksalPath = '/.docksal/docksal-local.env';
+    $base_name = basename(getcwd());
+
     // Required for unit testing
     foreach ($dirs as $dir) {
       if (!$fs->exists($drupalRoot . '/'. $dir)) {
         $fs->mkdir($drupalRoot . '/'. $dir);
         $fs->touch($drupalRoot . '/'. $dir . '/.gitkeep');
       }
+    }
+
+    // Create the Docksal Local Configurations based on the folder name.
+    if (!$fs->exists( $base_name . $docksalPath)) {
+      $domain = 'VIRTUAL_HOST=' . urlencode(basename(getcwd())) . '.docksal';
+      $fs->touch(getcwd(). $docksalPath);
+      file_put_contents(getcwd() . $docksalPath, $domain, FILE_APPEND);
+      $event->getIO()->writeError('<warning>Set docksal url to: ' . urlencode(basename(getcwd())) . '.docksal</warning>');
     }
 
     // Create the files directory with chmod 0777
