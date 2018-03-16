@@ -38,7 +38,7 @@ site_install ()
 
 set_admin ()
 {
-drush -r $DOCROOT upwd admin admin
+	drush -r $DOCROOT upwd admin admin
 }
 #-------------------------- END: Functions --------------------------------
 
