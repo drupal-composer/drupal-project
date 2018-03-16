@@ -2,7 +2,7 @@
 
 [![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
-This project template should provide a kickstart for managing your site
+This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
 
 If you want to know how to use it as replacement for
@@ -49,6 +49,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
+* Creates environment variables based on your .env file. See [.env.example](.env.example).
 
 ## Updating Drupal Core
 
