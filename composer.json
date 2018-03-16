@@ -41,7 +41,7 @@
         "classmap": [
             "scripts/composer/ScriptHandler.php"
         ],
-        "files": ["early.composer.php"]
+        "files": ["load.environment.php"]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
