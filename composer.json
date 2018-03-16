@@ -45,7 +45,6 @@
         "drupal/redirect": "^1.1",
         "drupal/shield": "^1.2",
         "drupal/stage_file_proxy": "^1.0@alpha",
-        "drupal/taxonomy_access_fix": "^2.5",
         "drupal/twig_extender": "^2.1",
         "drupal/video_embed_field": "^2.0@alpha",
         "drupal/webform": "^5.0@RC",
