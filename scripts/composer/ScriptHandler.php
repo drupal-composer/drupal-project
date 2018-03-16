@@ -39,7 +39,7 @@ class ScriptHandler {
     }
 
     // Create the Docksal Local Configurations based on the folder name.
-    if (!$fs->exists( $base_name . $docksalPath)) {
+    if (!$fs->exists( getcwd() . $docksalPath)) {
       $domain = 'VIRTUAL_HOST=' . urlencode(basename(getcwd())) . '.docksal';
       $fs->touch(getcwd(). $docksalPath);
       file_put_contents(getcwd() . $docksalPath, $domain, FILE_APPEND);

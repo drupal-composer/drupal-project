@@ -1,0 +1,45 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_components
+    - node.type.landingpage
+    - paragraphs.paragraphs_type.link
+    - paragraphs.paragraphs_type.media
+    - paragraphs.paragraphs_type.text
+    - paragraphs.paragraphs_type.text_with_media
+  module:
+    - entity_reference_revisions
+id: node.landingpage.field_components
+field_name: field_components
+entity_type: node
+bundle: landingpage
+label: Components
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      link: link
+      media: media
+      text: text
+      text_with_media: text_with_media
+    target_bundles_drag_drop:
+      link:
+        enabled: true
+        weight: 5
+      media:
+        enabled: true
+        weight: 6
+      text:
+        enabled: true
+        weight: 7
+      text_with_media:
+        enabled: true
+        weight: 8
+field_type: entity_reference_revisions

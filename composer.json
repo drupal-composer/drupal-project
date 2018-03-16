@@ -13,6 +13,19 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "package",
+            "package": {
+                "name": "enyo/dropzone",
+                "version": "5.2.0",
+                "type": "drupal-library",
+                "source": {
+                    "url": "https://github.com/enyo/dropzone",
+                    "type": "git",
+                    "reference": "origin/master"
+                }
+            }
         }
     ],
     "require": {
@@ -50,7 +63,7 @@
         "drupal/video_embed_field": "^2.0@alpha",
         "drupal/webform": "^5.0@RC",
         "drush/drush": "^9.0.0",
-        "vardot/dropzone": "^5.1",
+        "enyo/dropzone": "^5.2",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },

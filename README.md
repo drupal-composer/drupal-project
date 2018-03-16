@@ -20,8 +20,15 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project merlin-tribukait/drupal-project:8.x some-dir --stability dev --no-interaction
+composer create-project merlin-tribukait/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 ```
+
+Install the project with:
+
+```
+composer install
+```
+> Note: The project automaticly creates a docksal-local.env file and fill this with <project-dir-name>.docksal as the Virtual Host.
 
 With `composer require ...` you can download new dependencies to your 
 installation.
