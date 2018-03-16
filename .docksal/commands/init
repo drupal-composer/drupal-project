@@ -45,6 +45,8 @@ init_settings ()
   copy_settings_file "${CONFIG_PATH}/example.settings.local.php" "${SITEDIR_PATH}/settings.local.php"
   copy_settings_file "${CONFIG_PATH}/default.settings.php" "${SITEDIR_PATH}/settings.php"
   copy_settings_file "${CONFIG_PATH}/default.services.yml" "${SITEDIR_PATH}/services.yml"
+  echo "Protecting the settings.php file..."
+  chmod 666 "${SITEDIR_PATH}/settings.php"
 }
 
 # Fix file/folder permissions
