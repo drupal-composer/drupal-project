@@ -22,6 +22,7 @@
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.5",
         "drush/drush": "^9.0.0",
+        "vardot/dropzone": "^5.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
