@@ -1,8 +1,0 @@
-langcode: en
-status: true
-dependencies: {  }
-id: media
-label: Media
-icon_uuid: null
-description: ''
-behavior_plugins: {  }
