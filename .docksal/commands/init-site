@@ -36,6 +36,10 @@ site_install ()
 	PHP_OPTIONS="-d sendmail_path=`which true`" drush site-install -y --site-name='My Drupal 8 Site'
 }
 
+set_admin ()
+{
+drush -r $DOCROOT upwd admin admin
+}
 #-------------------------- END: Functions --------------------------------
 
 #-------------------------- Execution --------------------------------
@@ -43,5 +47,6 @@ site_install ()
 # Project initialization steps
 fix_permissions
 time site_install
+time set_admin
 
 #-------------------------- END: Execution --------------------------------
