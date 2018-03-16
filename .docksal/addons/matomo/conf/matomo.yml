@@ -1,0 +1,16 @@
+
+  matomo:
+    image: crazymax/matomo
+    depends_on:
+      - matomo_db
+    links:
+      - matomo_db
+    labels:
+      - io.docksal.virtual-host=matomo.${VIRTUAL_HOST}
+  matomo_db:
+    image: mysql:5.6
+    environment:
+      - MYSQL_ROOT_PASSWORD=matomo
+      - MYSQL_DATABASE=matomo
+      - MYSQL_USER=matomo
+      - MYSQL_PASSWORD=matomo

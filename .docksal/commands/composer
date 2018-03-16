@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+echo $PROJECT_ROOT
+composer --working-dir=$PROJECT_ROOT install --no-interaction

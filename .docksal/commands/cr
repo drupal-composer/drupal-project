@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+drush -r /var/www/${DOCROOT} cr

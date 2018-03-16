@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+fin matomo enable
+
+WGET="wget --quiet"
+URL="http://matomo.${VIRTUAL_HOST}/index.php"
+
+echo "TRY INSTALL ${URL}"
+
+# make sure that these values are correctly url-encoded!
+MYSQL_DB="matomo"
+MYSQL_USER="matomo"
+MYSQL_HOST="matomo_db"
+MYSQL_PASSWORD="matomo"
+MYSQL_TABLE_PREFIX="matomo_"
+
+SITE_NAME="${VIRTUAL_HOST}"
+SUPERUSER="admin"
+SUPERUSER_PASSWORD="secret"
+SUPERUSER_EMAIL="piwik@example.com"
+ENCODED_SITE_URL="https%3A%2F%2F${VIRTUAL_HOST}%2F"
+TIMEZONE="Europe%Berlin"
+
+
+
+$WGET "${URL}?action=databaseSetup&module=Installation" \
+--post-data="type=InnoDB&host=$MYSQL_HOST&username=$MYSQL_USER&password=$MYSQL_PASSWORD&dbname=$MYSQL_DB&tables_prefix=$MYSQL_TABLE_PREFIX&adapter=PDO%5CMYSQL&submit=Next+%C2%BB"
+
+$WGET "${URL}?action=setupSuperUser&module=Installation" \
+--post-data="login=$SUPERUSER&password=$SUPERUSER_PASSWORD&password_bis=$SUPERUSER_PASSWORD&email=$SUPERUSER_EMAIL&subscribe_newsletter_piwikorg=0&subscribe_newsletter_professionalservices=0&submit=Next+%C2%BB"
+
+$WGET "${URL}?action=firstWebsiteSetup&module=Installation" \
+--post-data="siteName=$SITE_NAME&url=$ENCODED_SITE_URL&timezone=$TIMEZONE&ecommerce=0&submit=Next+%C2%BB"
+
+$WGET "${URL}?action=finished&module=Installation&site_idSite=1&site_name=$SITE_NAME" \
+--post-data="do_not_track=1&submit=Continue+to+Piwik+%C2%BB"

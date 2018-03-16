@@ -1,0 +1,47 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Initialize/reinstall site
+##
+## Usage: fin init-site
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+
+# PROJECT_ROOT and DOCROOT are set as env variables in cli
+SITE_DIRECTORY="default"
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+SITEDIR_PATH="${DOCROOT_PATH}/sites/${SITE_DIRECTORY}"
+
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+
+
+# Fix file/folder permissions
+fix_permissions ()
+{
+	echo "Making site directory writable..."
+	chmod 755 "${SITEDIR_PATH}"
+}
+
+# Install site
+site_install ()
+{
+	cd $DOCROOT_PATH
+	# We disable email sending here so site-install does not return an error
+	PHP_OPTIONS="-d sendmail_path=`which true`" drush site-install -y --site-name='My Drupal 8 Site'
+}
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+
+# Project initialization steps
+fix_permissions
+time site_install
+
+#-------------------------- END: Execution --------------------------------

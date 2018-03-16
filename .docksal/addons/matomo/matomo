@@ -1,0 +1,151 @@
+#!/usr/bin/env bash
+
+## Enable/disable matomo for current project
+##
+## Sub-commands:
+##   enable		Enable matomo
+##   disable	Disable matomo
+
+red='\033[0;31m'
+green='\033[0;32m'
+green_bg='\033[42m'
+yellow='\033[1;33m'
+NC='\033[0m'
+
+echo-red () { echo -e "${red}$1${NC}"; }
+echo-green () { echo -e "${green}$1${NC}"; }
+echo-green-bg () { echo -e "${green_bg}$1${NC}"; }
+echo-yellow () { echo -e "${yellow}$1${NC}"; }
+die () { echo -e "$1"; exit 1; }
+
+DOCKSAL_YML=".docksal/docksal.yml"
+DOCKSAL_YML_NEW=".docksal/docksal.yml.new"
+DOCKSAL_ENV=".docksal/docksal.env"
+DOCKSAL_STACKS="$HOME/.docksal/stacks"
+PHP_INI=".docksal/etc/php/php.ini"
+matomo_YML="$ADDON_ROOT/conf/matomo.yml"
+
+#----------------------------------- YML & config functions ------------------------------------------
+
+# Check whether given string is in config
+# $1 - string to find
+in_config ()
+{
+	fin config 2>/dev/null | grep "$1" >/dev/null
+}
+
+# Check that docksal.yml is valid
+yml_is_valid ()
+{
+	[[ -f "$DOCKSAL_YML" ]] && $(cat "$DOCKSAL_YML" 2>/dev/null | grep "services" >/dev/null)
+}
+
+# Prepares stack to editing docksal.yml config
+yml_prepare ()
+{
+	# Get yml version to use for a new file from existing stacks
+	YML_VERSION=$(head "$DOCKSAL_STACKS/volumes-bind.yml" | grep "version")
+	YML_DEFAULT_BODY="${YML_VERSION}\nservices:"
+	NEW_STACK='DOCKSAL_STACK="default"'
+
+	# Source docksal.env
+	source "$DOCKSAL_ENV" >/dev/null 2>&1
+
+	# If DOCKSAL_STACK is not set, then...
+	if [[ -z "$DOCKSAL_STACK" ]]; then
+		echo "  Configuring to use DOCKSAL_STACK=\"default\"..."
+		# ...set stack to default so we could use docksal.yml
+		echo -e "$NEW_STACK" >> "$DOCKSAL_ENV"
+	fi
+
+	# Create docksal.yml if needed
+	yml_is_valid || echo -e "$YML_DEFAULT_BODY" >> "$DOCKSAL_YML"
+}
+
+# Install tool required to edit yml from command line
+yml_install_tools ()
+{
+	fin exec "which yaml >/dev/null 2>&1 || npm install --silent -g yaml-cli >/dev/null"
+}
+
+# Add a service to docksal.yml from another yml
+# $1 - filename of yml get service from
+yml_add_service ()
+{
+	[[ -z "$1" ]] && echo "File not found: $1" && return 1
+	# TODO: use https://www.npmjs.com/package/merge-yaml
+	cat "$1" >> "$DOCKSAL_YML"
+}
+
+# Removes a service from docksal.yml
+# $1 - service name
+yml_remove_service ()
+{
+	[[ -z "$1" ]] && echo "Provide a service name to remove" && return 1
+	local service="$1"
+	read -r -d '' CODE_TO_EXEC <<-EOF
+		yaml set $DOCKSAL_YML services.$service | grep -v '$service:' | tee $DOCKSAL_YML_NEW >/dev/null;
+		[[ -z "\$(yaml get $DOCKSAL_YML_NEW services)" ]] && rm '$DOCKSAL_YML' || mv $DOCKSAL_YML_NEW $DOCKSAL_YML
+	EOF
+	# Remove service. If no services left after that, then remove docksal.yml
+	fin exec "$CODE_TO_EXEC"
+}
+
+#-------------------------------------- matomo functions ---------------------------------------------
+
+# Enable container and settings
+matomo_enable ()
+{
+	# Check that mailhog is not already enabled
+	if (in_config "image: crazymax\/matomo"); then
+		echo "  matomo is already enabled." && exit
+	fi
+
+	echo "  Enabling matomo..."
+	yml_prepare
+	# Add mailhog service to docksal.yml
+	yml_add_service "$matomo_YML"
+	# Apply stack changes.
+	fin up
+	echo "See documentation for more details: https://matomo.org/"
+}
+
+# Disable container and settings
+matomo_disable ()
+{
+	echo "  Running checks..."
+	# Make sure cli container is running
+	if ! (fin ps | grep "_cli_" | grep "Up" >/dev/null); then
+		echo "  ERROR: Start the project with fin start first" && exit 1
+	fi
+
+	# Make sure mailhog is installed
+	if ! in_config "image: crazymax\/matomo"; then
+		echo "  matomo is not enabled at the moment." && exit
+	fi
+
+	echo "  Preparing to remove matomo service..."
+	yml_install_tools
+	# Remove mailhog service from docksal.yml
+	yml_remove_service "matomo"
+  yml_remove_service "matomo_db"
+	# Apply stack changes
+	fin up
+}
+
+#------------------------------------------ Runtime -----------------------------------------------
+
+cd "$PROJECT_ROOT"
+
+case "$1" in
+	enable)
+		matomo_enable
+		;;
+	disable)
+		matomo_disable
+		;;
+	*)
+		echo "Usage: fin matomo <enable|disable>"
+		exit 1
+		;;
+esac
