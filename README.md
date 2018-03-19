@@ -30,6 +30,16 @@ composer install
 ```
 > Note: The project automaticly creates a docksal-local.env file and fill this with <project-dir-name>.docksal as the Virtual Host.
 
+Run the Docksal containers:
+```
+fin init
+```
+Install the Drupal Site:
+```
+fin init-site
+```
+> Note: The Drupal Administator account will be set automaticly to admin:admin, remember to change it before the site goes into production.
+
 With `composer require ...` you can download new dependencies to your 
 installation.
 
