@@ -39,6 +39,7 @@ Install the Drupal Site:
 fin init-site
 ```
 > Note: The Drupal Administator account will be set automaticly to admin:admin, remember to change it before the site goes into production.
+Following modules are enabled by default : Admin Toolbar, Admin Toolbar Tools, Adminimal Admin Toolbar and  Module Filter.
 
 With `composer require ...` you can download new dependencies to your 
 installation.
