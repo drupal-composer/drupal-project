@@ -53,6 +53,7 @@
         "drupal/media_entity_browser": "^2.0@alpha",
         "drupal/media_entity_video": "^2.0@alpha",
         "drupal/metatag": "^1.4",
+        "drupal/module_filter": "^3.1",
         "drupal/node_view_permissions": "^1.2",
         "drupal/paragraphs": "^1.2",
         "drupal/pathauto": "^1.1",
