@@ -78,9 +78,12 @@
             "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"]
         },
         "preserve-paths": [
+            "web/sites/all/drush",
             "web/sites/all/libraries",
+            "web/sites/all/modules/contrib",
             "web/sites/all/modules/custom",
             "web/sites/all/modules/features",
+            "web/sites/all/themes/contrib",
             "web/sites/all/themes/custom",
             "web/sites/all/translations",
             "web/sites/default"
