@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-if fin ps | grep -vq "Up"
+if [ ! -f docroot/sites/default/settings.php ];
 then
-    echo "Skipping fin init, project is already installed"
-else
     fin init
+else
+    echo "Skipping fin init since the project may has been setted up already."
 fi
