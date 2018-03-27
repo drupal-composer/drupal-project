@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!-- See http://pear.php.net/manual/en/package.php.php-codesniffer.annotated-ruleset.php -->
+<ruleset name="Relax Drupal">
+
+    <description>Drupal coding standard</description>
+
+    <file>web/themes/custom</file>
+    <file>web/modules/custom</file>
+    <file>web/sites/default</file>
+
+    <!-- exclude some Drupal files that contain issues -->
+    <exclude-pattern>web/sites/default/default.settings.php</exclude-pattern>
+
+    <!-- exclude content files -->
+    <exclude-pattern>web/sites/default/files</exclude-pattern>
+
+    <!-- exclude minified files -->
+    <exclude-pattern>*.min.*</exclude-pattern>
+
+    <!-- exclude third-party node modules -->
+    <exclude-pattern>node_modules/</exclude-pattern>
+
+    <rule ref="Drupal">
+        <exclude name="Drupal.Commenting.FileComment" />
+        <exclude name="Drupal.Commenting.DocComment" />
+        <exclude name="Drupal.Commenting.FunctionComment" />
+        <exclude name="Drupal.Commenting.InlineComment" />
+        <exclude name="Drupal.Array.Array" />
+        <exclude name="Drupal.Files.TxtFileLineLength" />
+        <exclude name="PEAR.Commenting.ClassComment" />
+    </rule>
+
+    <rule ref="Drupal.Files.LineLength">
+        <properties>
+            <!-- Be a bit more tolerant when it comes to line lengths -->
+            <property name="lineLimit" value="110"/>
+        </properties>
+    </rule>
+
+</ruleset>
