@@ -6,6 +6,7 @@ php:
   - 5.6
   - 7.0
   - 7.1
+  - 7.2
 
 env:
   global:
@@ -16,6 +17,13 @@ env:
     - RELEASE=dev COMPOSER_CHANNEL=stable
     - RELEASE=stable COMPOSER_CHANNEL=snapshot
 
+matrix:
+  exclude:
+    - php: 7.2
+      env: RELEASE=stable COMPOSER_CHANNEL=stable
+    - php: 7.2
+      env: RELEASE=stable COMPOSER_CHANNEL=snapshot
+
 before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
@@ -23,11 +31,12 @@ before_install:
   - composer --version
 
 install:
+  - composer --verbose validate
   - composer --verbose install
 
 script:
   - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
-  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.4.x-dev drush/drush:9.0.x-dev; fi;
+  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.6.x-dev webflo/drupal-core-require-dev:8.6.x-dev; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
   - cd $TRAVIS_BUILD_DIR/web
   - ./../vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
