@@ -30,8 +30,7 @@
         "drupal/composer_autoloader": "^1.0",
         "drupal/drupal": "~7.0",
         "drush/drush": "~8.0",
-        "webflo/drupal-finder": "^1.0.0",
-        "webmozart/path-util": "^2.3"
+        "webflo/drupal-finder": "^1.0.0"
     },
     "conflict": {
         "drupal/core": "8.*"
