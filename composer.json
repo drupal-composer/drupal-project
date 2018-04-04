@@ -112,7 +112,12 @@
             "phpcs --config-set installed_paths vendor/drupal/coder/coder_sniffer",
             "phpcs --standard=Drupal web/modules/custom web/themes/custom web/sites/KalaUtil.php",
             "echo 'CALL PHPUNIT TESTS HERE'"
+        ],
+        "it": [
+          "composer install",
+          "composer test"
         ]
+
     },
     "extra": {
         "installer-types": [
