@@ -4,9 +4,9 @@
   "license": "GPL-2.0",
   "private": true,
   "scripts": {
-    "test": "kalastatic build",
     "start": "kalastatic start",
-    "predeploy": "composer drupal-scaffold",
+    "test": "kalastatic build && npm run postcss",
+    "postcss": "postcss -c postcss.config.js -o web/kalastatic/styles/main.css web/kalastatic/styles/main.css",
     "deploy": "npm run deploy:gitprep && git add -A && npm run deploy:push",
     "deploy:gitprep": "rm -f .gitignore && find web -type d -name .git -print0|xargs -0 rm -rf",
     "deploy:push": "grunt buildcontrol:deploy"
@@ -25,18 +25,24 @@
     "grunt": "^1.0.1",
     "grunt-build-control": "^0.7.1",
     "grunt-cli": "^1.2.0",
-    "kalastatic": "^3.1.0",
+    "kalastatic": "^4.0.0--alpha1",
     "sass-lint": "^1.12.0"
   },
   "dependencies": {
-    "bootstrap-sass": "^3.3.7",
-    "font-awesome": "^4.7.0",
+    "autoprefixer": "^8.0.0",
+    "bootstrap": "^4.0.0-beta.3",
+    "fontawesome-svg-twig": "^1.0.0",
     "jquery": "^3.2.1",
     "jquery-match-height": "^0.7.2",
     "jquery-once": "^2.2.0",
     "kalastatic-twig-filters": "^0.2.0",
-    "kstat-kss-builder": "^0.13.4",
     "kss-bootstrap": "^4.0.0",
+    "kstat-kss-builder": "^0.13.4",
+    "postcss": "^6.0.19",
+    "postcss-cli": "^5.0.0",
     "twig-drupal-filters": "^1.1.0"
+  },
+  "disabledDependenciesToConsider": {
+    "popper.js": "^1.12.9"
   }
 }

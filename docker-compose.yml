@@ -1,107 +1,174 @@
+# Usage: Replace <MYPROJECT> with your project short code.
 version: "2"
 
 services:
   mariadb:
-    image: wodby/drupal-mariadb
+    image: wodby/mariadb:10.1-2.3.5
     environment:
-      MYSQL_RANDOM_ROOT_PASSWORD: 1
+      MYSQL_ROOT_PASSWORD: password
       MYSQL_DATABASE: drupal
       MYSQL_USER: drupal
       MYSQL_PASSWORD: drupal
-#    command: --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci # The simple way to override the mariadb config.
     volumes:
-      - ./docker-runtime/mariadb:/var/lib/mysql
-#      - ./docker-runtime/mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
+      - ./mariadb-init:/docker-entrypoint-initdb.d # Place init .sql file(s) here.
 
   php:
-    image: wodby/drupal-php:7.0-1.0.0 # Allowed: 7.0, 5.6.
+    image: wodby/drupal-php:7.1-3.0.0
     environment:
-      PHP_SITE_NAME: dev
-      PHP_HOST_NAME: localhost:8000
-      PHP_DOCROOT: web # Relative path inside the /var/www/html/ directory.
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
-      # PHP_XDEBUG_ENABLED: 1
-      # PHP_XDEBUG_AUTOSTART: 1
-      # PHP_XDEBUG_REMOTE_CONNECT_BACK: 0         # This is needed to respect remote.host setting bellow
-      # PHP_XDEBUG_REMOTE_HOST: "10.254.254.254"  # You will also need to 'sudo ifconfig lo0 alias 10.254.254.254'
+      PHP_FPM_CLEAR_ENV: "no"
+      DB_HOST: <MYPROJECT>_mariadb_1
+      DB_USER: drupal
+      DB_PASSWORD: drupal
+      DB_NAME: drupal
+      DB_DRIVER: mysql
+      PHP_XDEBUG: 1
+      PHP_XDEBUG_DEFAULT_ENABLE: 1
+      PHP_XDEBUG_REMOTE_CONNECT_BACK: 0
+      PHP_XDEBUG_REMOTE_HOST: "10.254.254.254"
+      #PHP_XDEBUG_PROFILER_OUTPUT_DIR: /mnt/files/xdebug/profiler
+      #PHP_XDEBUG_TRACE_OUTPUT_DIR: /mnt/files/xdebug/traces
     volumes:
-      - ./:/var/www/html
+      - ./:/var/www/html:cached
 
   nginx:
-    image: wodby/drupal-nginx:1.10
-    environment:
-      NGINX_SERVER_NAME: localhost
-      NGINX_UPSTREAM_NAME: php
-      NGINX_DOCROOT: web # Relative path inside the /var/www/html/ directory.
-      DRUPAL_VERSION: 8 # Allowed: 7, 8.
-    volumes_from:
+    image: wodby/drupal-nginx:8-1.13-3.0.1
+    depends_on:
       - php
-    ports:
-      - "8000:80"
-
-  pma:
-    image: phpmyadmin/phpmyadmin
     environment:
-      PMA_HOST: mariadb
-      PMA_USER: drupal
-      PMA_PASSWORD: drupal
-      PHP_UPLOAD_MAX_FILESIZE: 1G
-      PHP_MAX_INPUT_VARS: 1G
-    ports:
-     - "8001:80"
-
-#  mailhog:
-#    image: mailhog/mailhog
-#    ports:
-#      - "8002:8025"
-
-#  node:
-#    image: node:6
-#    volumes_from:
-#      - php
-#    working_dir: /var/www/html
-
-#  redis:
-#    image: redis:3.2-alpine
-
-#  memcached:
-#    image: memcached:1.4-alpine
-
-#  memcached-admin:
-#    image: phynias/phpmemcachedadmin
-#    ports:
-#      - "8006:80"
-
-#  solr:
-#    image: solr:5.5-alpine
-#    volumes:
-#      - ./docker-runtime/solr:/opt/solr/server/solr/mycores
-#    entrypoint:
-#      - docker-entrypoint.sh
-#      - solr-precreate
-#      - main
-#    ports:
-#      - "8003:8983"
+      NGINX_STATIC_CONTENT_OPEN_FILE_CACHE: "off"
+      NGINX_ERROR_LOG_LEVEL: debug
+      NGINX_BACKEND_HOST: php
+      NGINX_SERVER_ROOT: /var/www/html/web
+    volumes:
+      - ./:/var/www/html:cached
+    labels:
+      - 'traefik.backend=<MYPROJECT>_nginx_1'
+      - 'traefik.port=80'
+      - 'traefik.frontend.rule=Host:<MYPROJECT>.docker.localhost'
 
 #  varnish:
-#    image: wodby/drupal-varnish
+#    image: wodby/drupal-varnish:4.1-2.2.0
 #    depends_on:
 #      - nginx
 #    environment:
 #      VARNISH_SECRET: secret
 #      VARNISH_BACKEND_HOST: nginx
 #      VARNISH_BACKEND_PORT: 80
-#      VARNISH_MEMORY_SIZE: 256M
-#      VARNISH_STORAGE_SIZE: 1024M
-#    ports:
-#      - "8004:6081" # HTTP Proxy
-#      - "8005:6082" # Control terminal
+#    labels:
+#      - 'traefik.backend=<MYPROJECT>_varnish_1'
+#      - 'traefik.port=6081'
+#      - 'traefik.frontend.rule=Host:varnish.<MYPROJECT>.docker.localhost'
 
-#  sshd:
-#    image: wodby/drupal-sshd
+#  redis:
+#    image: wodby/redis:4.0-2.1.3
+
+#  adminer:
+#    image: wodby/adminer:4.3-1.1.0
 #    environment:
-#      SSH_PUB_KEY: "ssh-rsa ..."
-#    volumes_from:
-#      - php
-#    ports:
-#      - "8006:22"
+#      ADMINER_SALT: adminer-salt
+#    labels:
+#      - 'traefik.backend=<MYPROJECT>_adminer_1'
+#      - 'traefik.port=9000'
+#      - 'traefik.frontend.rule=Host:adminer.<MYPROJECT>.docker.localhost'
+
+  pma:
+    image: phpmyadmin/phpmyadmin
+    environment:
+      PMA_HOST: <MYPROJECT>_mariadb_1
+      PMA_USER: drupal
+      PMA_PASSWORD: drupal
+      PHP_UPLOAD_MAX_FILESIZE: 1G
+      PHP_MAX_INPUT_VARS: 1G
+    labels:
+      - 'traefik.backend=<MYPROJECT>_pma_1'
+      - 'traefik.port=80'
+      - 'traefik.frontend.rule=Host:pma.<MYPROJECT>.docker.localhost'
+
+#  solr:
+#    image: wodby/drupal-solr:8-6.6-2.2.0
+#    environment:
+#      SOLR_HEAP: 1024m
+#    labels:
+#      - 'traefik.backend=<MYPROJECT>_solr_1'
+#      - 'traefik.port=8983'
+#      - 'traefik.frontend.rule=Host:solr.<MYPROJECT>.docker.localhost'
+
+  mailhog:
+    image: mailhog/mailhog
+    labels:
+      - 'traefik.backend=<MYPROJECT>_mailhog_1'
+      - 'traefik.port=8025'
+      - 'traefik.frontend.rule=Host:mailhog.<MYPROJECT>.docker.localhost'
+
+#  nodejs:
+#    image: wodby/drupal-node:1.0-1.0.0
+#    environment:
+#       NODE_SERVICE_KEY: node-service-key
+#    labels:
+#      - 'traefik.backend=<MYPROJECT>_nodejs_1'
+#      - 'traefik.port=8080'
+#      - 'traefik.frontend.rule=Host:nodejs.<MYPROJECT>.docker.localhost'
+#    volumes:
+#      - ./path/to/your/single-page-app:/app
+#    command: sh -c 'npm install && npm run start'
+
+#  node:
+#    image: node:alpine
+#    working_dir: /app
+#    labels:
+#      - 'traefik.backend=<MYPROJECT>_node_1'
+#      - 'traefik.port=3000'
+#      - 'traefik.frontend.rule=Host:front.<MYPROJECT>.docker.localhost'
+#    expose:
+#      - "3000"
+#    volumes:
+#      - ./path/to/your/single-page-app:/app
+#    command: sh -c 'npm install && npm run start'
+
+#  memcached:
+#    image: wodby/memcached:1.4-2.0.0
+
+#  rsyslog:
+#    image: wodby/rsyslog
+
+#  athenapdf:
+#    image: arachnysdocker/athenapdf-service:2.10.0
+#    environment:
+#      WEAVER_AUTH_KEY: weaver-auth-key
+#      WEAVER_ATHENA_CMD: "athenapdf -S"
+#      WEAVER_MAX_WORKERS: 10
+#      WEAVER_MAX_CONVERSION_QUEUE: 50
+#      WEAVER_WORKER_TIMEOUT: 90
+#      WEAVER_CONVERSION_FALLBACK: false
+
+#  blackfire:
+#    image: blackfire/blackfire
+#    environment:
+#      BLACKFIRE_SERVER_ID: XXXXX
+#      BLACKFIRE_SERVER_TOKEN: YYYYY
+
+#  webgrind:
+#    image: wodby/webgrind:1.5-1.0.0
+#    environment:
+#      WEBGRIND_PROFILER_DIR: /mnt/files/xdebug/profiler
+#    labels:
+#      - 'traefik.backend=<MYPROJECT>_webgrind_1'
+#      - 'traefik.port=8080'
+#      - 'traefik.frontend.rule=Host:webgrind.<MYPROJECT>.docker.localhost'
+#    volumes:
+#      - files:/mnt/files
+
+  portainer:
+    image: portainer/portainer
+    command: --no-auth -H unix:///var/run/docker.sock
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - 'traefik.backend=<MYPROJECT>_portainer_1'
+      - 'traefik.port=9000'
+      - 'traefik.frontend.rule=Host:portainer.<MYPROJECT>.docker.localhost'
+
+#volumes:
+#  codebase:
+#  files:

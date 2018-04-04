@@ -1,0 +1,9 @@
+# The routes of the project.
+#
+# Each route describes how an incoming URL is going
+# to be processed by Platform.sh.
+
+# Without specifically adding a non-SSL route, Platform forces HTTPS.
+"https://{default}/":
+    type: upstream
+    upstream: "<MYPROJECT>:http"

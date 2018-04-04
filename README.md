@@ -61,7 +61,7 @@ new release of Drupal core.
 
 Follow the steps below to update your core files.
 
-1. Run `composer update drupal/core --with-dependencies` to update Drupal Core and its dependencies.
+1. Run `composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-dependencies` to update Drupal Core and its dependencies.
 1. Run `git diff` to determine if any of the scaffolding files have changed. 
    Review the files for any changes and restore any customizations to 
   `.htaccess` or `robots.txt`.
@@ -121,7 +121,7 @@ section of composer.json:
 "extra": {
     "patches": {
         "drupal/foobar": {
-            "Patch description": "URL to patch"
+            "Patch description": "URL or local path to patch"
         }
     }
 }
@@ -129,3 +129,15 @@ section of composer.json:
 ### How do I switch from packagist.drupal-composer.org to packages.drupal.org?
 
 Follow the instructions in the [documentation on drupal.org](https://www.drupal.org/docs/develop/using-composer/using-packagesdrupalorg).
+
+### How do I specify a PHP version ?
+
+Currently Drupal 8 supports PHP 5.5.9 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
+
+To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
+```json
+"config": {
+    "sort-packages": true,
+    "platform": {"php": "5.5.9"}
+},
+```

@@ -15,7 +15,7 @@ The tests include a few different components...
 
 ### PHPUnit
 
-[PHPUnit](https://phpunit.de/) runs a few functional and unit tests. 
+[PHPUnit](https://phpunit.de/) runs a few functional and unit tests.
 
 -   "Browser" tests run a headless web browser to test functionality on the site.
 -   "Kernel" tests have access to files and the database, but the environment is empty.

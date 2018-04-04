@@ -1,0 +1,33 @@
+# CHANGEME (replace "drupalproj" with project shortcode).
+name: drupalproj
+recipe: drupal8
+
+services:
+  appserver:
+    xdebug: true
+    # The following additional build step will install the Platform CLI in the
+    # application container.
+    #build:
+    #  - "curl -sS https://platform.sh/cli/installer | php"
+
+# The following entry creates a `lando platform` command that will run
+# any Platform CLI command from inside the container if desired.
+#tooling:
+#  platform:
+#    service: appserver
+#    description: Run Platform CLI commands
+#    cmd:
+#      - /var/www/.platformsh/bin/platform
+#    options:
+#      passthrough: true
+
+config:
+  # Lando defaults to Apache. Switch to nginx to match hosting provider.
+  via: nginx
+
+  # Set the webroot.
+  webroot: web
+
+  # Lando defaults to the latest MySQL release, but most hosting uses MariaDB.
+  # Specify the version to match what's in services.yaml.
+  database: mariadb:10.1

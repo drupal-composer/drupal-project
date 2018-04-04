@@ -9,14 +9,16 @@
  */
 
 // Redirect HTTP to HTTPS.
-// KalaUtil::enforceSSL();
+# require_once "$app_root/sites/KalaUtil.php";
+# \Drupal\kalamuna\KalaUtil::enforceSSL();
 
-$settings['trusted_host_patterns'] = array(
-  // '^test\.EXAMPLE\.COM$',
-);
+// For added security, restrict the domains from which Drupal will serve.
+# $settings['trusted_host_patterns'] = array(
+#   '^test\.MYPROJECT\.com$',
+# );
 
 // Set the Stage File Proxy source to fetch files from an upstream environment.
-$config['stage_file_proxy.settings']['origin'] = 'https://EXAMPLE.com';
+# $config['stage_file_proxy.settings']['origin'] = 'https://MYPROJECT.com';
 
 // Enable test environment-specific settings via a config split. Usually, the
 // only differences between TEST & LIVE are API keys and the Stage File Proxy
