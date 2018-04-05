@@ -22,12 +22,12 @@
         "drupal/console": "^1.0.2",
         "drupal/core": "~8.5.1",
         "drush/drush": "^9.0.0",
-        "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
-        "webflo/drupal-core-require-dev": "~8.5.1"
+        "webflo/drupal-core-require-dev": "~8.5.1",
+        "vlucas/phpdotenv": "^2.4"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -40,7 +40,9 @@
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
-        ],
+        ]
+    },
+    "autoload-dev": {
         "files": ["load.environment.php"]
     },
     "scripts": {
