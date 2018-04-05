@@ -50,6 +50,7 @@
         "drupal/admin_toolbar": "^1.18",
         "drupal/cache_control_override": "^1.0",
         "drupal/chosen": "^2.0",
+        "drupal/clean_maintenance": "^1.2",
         "drupal/components": "^1.0",
         "drupal/config_split": "^1.1",
         "drupal/config_tools": "^1.0",
