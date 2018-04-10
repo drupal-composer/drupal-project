@@ -99,7 +99,7 @@
         "cs": "phpcs --colors",
         "cbf": "phpcbf",
         "check-security": "security-checker security:check",
-        "test": "behat -p vagrant --colors"
+        "test": "./tests/behat/run.sh --colors"
     },
     "extra": {
         "drupal-scaffold": {

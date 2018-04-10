@@ -15,7 +15,7 @@ echo "Project name $project taken from directory name\n";
 $file_patterns = [
   '*.md',
   'phapp.yml',
-  'behat.yml',
+  'tests/behat/behat.yml',
   'devsetup/*\.yml',
   'web/sites/default/*\.php',
   'drush/*\.php',

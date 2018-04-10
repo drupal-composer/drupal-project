@@ -24,7 +24,7 @@ default:
       blackbox: ~
       api_driver: 'drupal'
       drupal:
-        drupal_root: %paths.base%/web
+        drupal_root: %paths.base%/../../web
       drush:
         alias: 'self'
       selectors:
