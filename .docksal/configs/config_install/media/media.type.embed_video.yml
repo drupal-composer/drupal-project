@@ -1,0 +1,14 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - video_embed_media
+id: embed_video
+label: 'Embed Video'
+description: 'Use external videos for reusable media.'
+source: video_embed_field
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_video_embed_field
+field_map: {  }
