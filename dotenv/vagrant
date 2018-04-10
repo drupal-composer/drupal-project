@@ -1,3 +1,2 @@
 PHAPP_ENV_MODE=development
 PHAPP_ENV=vagrant
-PHAPP_DOTENV_FILES=
