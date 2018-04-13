@@ -39,12 +39,14 @@
     },
     "autoload": {
         "classmap": [
-            "scripts/composer/ScriptHandler.php"
+            "scripts/composer/ScriptHandler.php",
+            "scripts/composer/Setup.php"
         ],
         "files": ["load.environment.php"]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "setup": "DrupalProject\\composer\\Setup::setup",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -56,6 +58,9 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "post-root-package-install": [
+            "@setup"
         ]
     },
     "extra": {
