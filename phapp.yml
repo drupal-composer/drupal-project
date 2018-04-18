@@ -30,7 +30,7 @@ commands:
   install: |
     chmod +w web/sites/default/settings.php &&
     drush sql-create -y &&
-    drush site-install -y --config-dir=../config/sync minimal
+    drush site-install -y --config-dir=../config/sync ${INSTALL_PROFLE:-minimal}
   update: |
     drush updatedb -y &&
     # Skip config-import when there is no config.
