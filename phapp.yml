@@ -10,6 +10,7 @@ commands:
     PHAPP_ENV=$([ -f web/sites/default/settings.$PHAPP_ENV.php ] && echo $PHAPP_ENV || echo 'dev');
     ln -sf settings.$PHAPP_ENV.php web/sites/default/settings.php
     ln -sf dotenv/$PHAPP_ENV .env
+  environment: source .env
   build: |
     # For now always build with dev-dependencies so they are usable on CI.
     composer install --no-interaction
