@@ -63,16 +63,14 @@
             "drunomics\\Composer\\PharInstaller::installPharTools"
         ],
         "init-setup": [
-            "@install-phar-tools",
-            "./scripts/init-devsetup.sh || echo Adding drunomics devsetup failed, skipping..."
+            "@install-phar-tools"
         ],
         "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
-            "@process-replacements"
+            "@process-replacements",
+            "./scripts/init-devsetup.sh || echo Adding drunomics devsetup failed, skipping..."
         ],
-        "post-create-project-cmd": [
-            "@init-setup"
-        ],
+        "post-create-project-cmd": "@init-setup",
         "post-install-cmd": "@init-setup",
         "post-update-cmd": "@init-setup",
         "clean": [
