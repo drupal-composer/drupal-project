@@ -52,9 +52,9 @@
     "autoload": {
         "classmap": [
             "scripts/composer/CleanCommand.php",
-            "scripts/composer/PharInstaller.php",
-            "scripts/composer/ScriptHandler.php"
-        ]
+            "scripts/composer/PharInstaller.php"
+        ],
+        "files": ["dotenv/loader.php"]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
