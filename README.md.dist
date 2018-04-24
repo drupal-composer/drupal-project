@@ -20,8 +20,7 @@ This project is maintained using composer. Please refer to the documentation pro
 ## drunomics setup notes
 
 - The vagrant setup is added in the project, thus no special setup is required.
-- The drunomics drush extension is *not* added to the project. It does *not*
-  work with drush 9.
+- The drunomics drush extension is *not* added to the project. It's deprecated.
 - For managing the project use the respective phapp comands, see
   http://github.com/drunomics/phapp-cli and or run `./vendor/bin/phapp list` for
   an overview.
@@ -29,7 +28,7 @@ This project is maintained using composer. Please refer to the documentation pro
 ## Command line tools
 
 ### Phapp
-Version 0.5.0 or later is required. Either install it globally and run `phapp`
+Version 0.6.2 or later is required. Either install it globally and run `phapp`
 or execute the embedded phapp version from the root repository directory:
 
 ```./vendor/bin/phapp ```
@@ -102,15 +101,15 @@ Tests are implemented using behat. To run all tests, a recent chrome browser
 
 To run the tests in the vagrant environment the following commands can be used:
 
-    ./scripts/run-tests.sh
+    ./tests/behat/run.sh
 
 Any further arguments are forwarded to behat:
 
-    ./scripts/run-tests.sh --tags=javascript
+    ./tests/behat/run.sh --tags=javascript
 
 By default chrome is shown. To run it in headless mode use:
 
-    HEADLESS=1 ./scripts/run-tests.sh
+    HEADLESS=1 ./tests/behat/run.sh
 
 ## Coding style
 
