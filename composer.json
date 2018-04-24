@@ -68,7 +68,6 @@
         ],
         "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
-            "@fetch-devsetup",
             "@process-replacements"
         ],
         "post-create-project-cmd": [
