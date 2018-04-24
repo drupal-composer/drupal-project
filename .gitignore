@@ -26,6 +26,7 @@
 .idea
 
 # Ignore setup files.
-.env
+/.*env
 .vagrant
 dumps/sync
+node_modules
