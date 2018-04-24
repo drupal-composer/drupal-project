@@ -11,7 +11,7 @@
 # Ignore Drupal per-site environment setup.
 /web/files
 /web/sites/*/files
-/web/sites/*/settings.php
+/web/sites/*/files-private
 
 # Ignore local overrides and modules.
 /web/sites/local.*
@@ -26,6 +26,7 @@
 .idea
 
 # Ignore setup files.
+/web/sites/default
 /.*env
 .vagrant
 dumps/sync
