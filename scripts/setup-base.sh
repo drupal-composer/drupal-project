@@ -18,7 +18,7 @@ fi
 # Default to first sub-site during development.
 if [ ! -L web/sites/default ]; then
    rm -rf web/sites/default
-   DIR=$(ls -d */ | head -n 1)
+   DIR=$(cd web/sites/ && ls -d */ | grep -v all/ | head -n 1)
    ln -s $DIR web/sites/default
 fi
 
