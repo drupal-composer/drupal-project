@@ -59,26 +59,12 @@
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "scripts/composer/process-replacements.php",
-        "fetch-devsetup" : [
-            "mkdir devsetup-tmp",
-            "git clone git@bitbucket.org:drunomics/project-devsetup.git devsetup-tmp",
-            "rm -rf devsetup-tmp/.git",
-            "rm devsetup-tmp/README.md",
-            "cp -rf devsetup-tmp/* .",
-            "rm -rf devsetup-tmp"
-        ],
         "install-phar-tools": [
             "drunomics\\Composer\\PharInstaller::installPharTools"
         ],
         "init-setup": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles",
-            "@install-phar-tools"
-        ],
-        "pre-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
-        ],
-        "pre-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
+            "@install-phar-tools",
+            "./scripts/init-devsetup.sh || echo Adding drunomics devsetup failed, skipping..."
         ],
         "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
@@ -86,7 +72,6 @@
             "@process-replacements"
         ],
         "post-create-project-cmd": [
-
             "@init-setup"
         ],
         "post-install-cmd": "@init-setup",
