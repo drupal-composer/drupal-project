@@ -17,6 +17,7 @@
         "drupal/core": "~8.5",
         "drush/drush": "9.*",
         "oomphinc/composer-installers-extender": "1.*",
+        "symfony/dotenv": "^3.4",
         "wikimedia/composer-merge-plugin": "1.*"
     },
     "require-dev": {
@@ -85,10 +86,7 @@
             "@process-replacements"
         ],
         "post-create-project-cmd": [
-            "cp web/sites/example.local.services.yml web/sites/local.services.yml",
-            "cp web/sites/example.local.settings.php web/sites/local.settings.php",
-            "cp web/sites/default/default.services.yml web/sites/default/services.yml",
-            "ln -sr web/sites/default/settings.vagrant.php web/sites/default/settings.php",
+
             "@init-setup"
         ],
         "post-install-cmd": "@init-setup",
@@ -136,8 +134,8 @@
         },
         "tools": {
             "phapp": {
-                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.5.0/phapp.phar",
-                "version": "0.5.0"
+                "url": "https://github.com/drunomics/phapp-cli/releases/download/0.6.2/phapp.phar",
+                "version": "0.6.2"
             }
         },
         "scripts-description": {

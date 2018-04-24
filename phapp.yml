@@ -6,14 +6,13 @@ git:
 
 commands:
   setup: |
-    # Fallback to the dev environment for now.
-    PHAPP_ENV=$([ -f web/sites/default/settings.$PHAPP_ENV.php ] && echo $PHAPP_ENV || echo 'dev');
-    ln -sf settings.$PHAPP_ENV.php web/sites/default/settings.php
-    ln -sf dotenv/$PHAPP_ENV .env
-  environment: source .env
+    echo "PHAPP_ENV=$PHAPP_ENV" > .env-id.env
+    ./scripts/setup-base.sh
+  environment: |
+    source dotenv/loader.sh
   build: |
-    # For now always build with dev-dependencies so they are usable on CI.
-    composer install --no-interaction
+    EXTRA_ARGS=$([ $PHAPP_ENV_MODE = 'production' ] && echo '--no-dev' || echo '');
+    composer install --no-interaction $EXTRA_ARGS
   clean: |
     # Clean composer vendor via the provided script.
     composer clean

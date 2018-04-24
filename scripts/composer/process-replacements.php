@@ -14,10 +14,11 @@ echo "Project name $project taken from directory name\n";
 // Specify files for which replacement will be applied.
 $file_patterns = [
   '*.md',
+  'dotenv/*.env',
   'phapp.yml',
   'tests/behat/behat.yml',
   'devsetup/*\.yml',
-  'web/sites/default/*\.php',
+  'web/sites/all/*\.php',
   'drush/*\.php',
   'drush/*\.yml',
 ];

@@ -8,11 +8,8 @@ assert_options(ASSERT_ACTIVE, TRUE);
  */
 $settings['container_yamls'][] = DRUPAL_ROOT . '/sites/development.services.yml';
 
-// Show errors on local environments.
+// Show errors on dev environments.
 $config['system.logging']['error_level'] = 'verbose';
-
-$config['system.performance']['css']['preprocess'] = FALSE;
-$config['system.performance']['js']['preprocess'] = FALSE;
 
 $settings['cache']['bins']['discovery_migration'] = 'cache.backend.memory';
 #$settings['cache']['bins']['render'] = 'cache.backend.null';

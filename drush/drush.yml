@@ -37,3 +37,6 @@ command:
         # Set a predetermined username and password when using site-install.
         account-name: dru_admin
         # account-pass: 'secret'
+
+options:
+  uri: '${env.PHAPP_BASE_URL}'

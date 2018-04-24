@@ -1,8 +1,16 @@
 <?php
 
-$config_directories = array(
+// Ensure site-specific dotenv is loaded.
+$dotenv = new Symfony\Component\Dotenv\Dotenv();
+$dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment($site)));
+
+$default_config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../config/sync',
 );
+
+// The directories are set here initially (for ci),
+// but again in acquia.settings.php because they get overridden by acquia.
+$config_directories = $default_config_directories;
 
 $settings['hash_salt'] = '{{ hash_salt }}';
 # $settings['deployment_identifier'] = \Drupal::VERSION;
@@ -43,4 +51,24 @@ $settings['file_scan_ignore_directories'] = [
 # $config['system.performance']['fast_404']['paths'] = '/\.(?:txt|png|gif|jpe?g|css|js|ico|swf|flv|cgi|bat|pl|dll|exe|asp)$/i';
 # $config['system.performance']['fast_404']['html'] = '<!DOCTYPE html><html><head><title>404 Not Found</title></head><body><h1>Not Found</h1><p>The requested URL "@path" was not found on this server.</p></body></html>';
 
+// Customize setting directories.
+$settings['file_public_path'] = "sites/$site/files";
+$settings['file_private_path'] = "sites/$site/files-private";
+#$config['system.file']['path']['temporary'] = "sites/$site/files-tmp";
+#Ensure all sites use the same translations directory.
+$config['locale.settings']['translation']['path'] = 'sites/default/files/translations';
+
 $settings['container_yamls'][] = __DIR__ . '/services.yml';
+
+###
+### More project-specific settings are configured below:
+###
+
+// Set name and background color for current environment.
+$config['environment_indicator.indicator']['name'] = $env;
+$config['environment_indicator.indicator']['bg_color'] = getenv('PHAPP_ENV_COLOR');
+
+# Make sure drush has proper host when generating sitemap xml.
+if (php_sapi_name() == 'cli') {
+  $config['simple_sitemap.settings']['base_url'] = getenv('PHAPP_BASE_URL');
+}
