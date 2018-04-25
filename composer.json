@@ -67,8 +67,8 @@
         ],
         "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
-            "@process-replacements",
-            "./scripts/init-devsetup.sh || echo Adding drunomics devsetup failed, skipping..."
+            "./scripts/init-devsetup.sh || echo Adding drunomics devsetup failed, skipping...",
+            "@process-replacements"
         ],
         "post-create-project-cmd": "@init-setup",
         "post-install-cmd": "@init-setup",
