@@ -5,10 +5,10 @@
  * Some settings.php defaults that get included depending on the active environment.
  */
 
-$settings['trusted_host_patterns'][] = '^(.+_)?{{ project }}(--.+)?\.ci\.drunomics\.com$';
+$settings['trusted_host_patterns'][] = '^(.+_)?drupal-project(--.+)?\.ci\.drunomics\.com$';
 
 $databases['default']['default'] = array(
-  'database' => '{{ project }}_' . $site_prefix,
+  'database' => 'drupal-project_' . $site_prefix,
   'username' => 'root',
   'password' => '',
   'prefix' => '',

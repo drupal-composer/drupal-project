@@ -1,15 +1,15 @@
 develop:
-  uri: '{{ project }}.ci.drunomics.com'
+  uri: 'drupal-project.ci.drunomics.com'
   root: /srv/default/web
-  remote-host: '{{ project }}.ci.drunomics.com'
+  remote-host: 'drupal-project.ci.drunomics.com'
   target-command-specific:
     sql-sync:
       enable:
         - stage_file_proxy
 master:
-  uri: '{{ project }}--master.ci.drunomics.com'
+  uri: 'drupal-project--master.ci.drunomics.com'
   root: /srv/default/web
-  remote-host: '{{ project }}--master.ci.drunomics.com'
+  remote-host: 'drupal-project--master.ci.drunomics.com'
   target-command-specific:
     sql-sync:
       enable:

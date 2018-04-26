@@ -1,8 +1,8 @@
-name: {{ project }}
+name: drupal-project
 description: 'Describe your application.'
 
 git:
-  url: 'git@bitbucket.org:drunomics/{{ project }}.git'
+  url: 'git@bitbucket.org:drunomics/drupal-project.git'
 
 commands:
   setup: |

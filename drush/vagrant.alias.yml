@@ -1,5 +1,5 @@
 default:
   root: /srv/default/web
-  remote-host: '{{ project }}.local'
+  remote-host: 'drupal-project.local'
   remote-user: vagrant
-  uri: '{{ project }}.local'
+  uri: 'drupal-project.local'

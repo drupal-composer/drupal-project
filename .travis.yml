@@ -56,7 +56,8 @@ before_install:
 install: []
 
 script:
-  -
+  # Ensure the project is creatable with the latest commit.
+  - composer create-project drunomics/drupal-project --repository=tests/drupal-project/package.json --stability dev project
 
 after_success:
   - echo "SUCCESS!"

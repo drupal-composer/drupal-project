@@ -6,11 +6,11 @@
  */
 
 $settings['trusted_host_patterns'][] = '^localhost$';
-$settings['trusted_host_patterns'][] = '^(.+\.)?{{ project }}.local(:([0-9])*)?$';
+$settings['trusted_host_patterns'][] = '^(.+\.)?drupal-project.local(:([0-9])*)?$';
 
 // We only ran a single site for testing on travis.
 $databases['default']['default'] = array(
-  'database' => '{{ project }}_' . $site_prefix,
+  'database' => 'drupal-project_' . $site_prefix,
   'username' => 'root',
   'password' => '',
   'prefix' => '',

@@ -12,7 +12,7 @@ $default_config_directories = array(
 // but again in acquia.settings.php because they get overridden by acquia.
 $config_directories = $default_config_directories;
 
-$settings['hash_salt'] = '{{ hash_salt }}';
+$settings['hash_salt'] = 'afed4ce57cf92ab7c3b4212b5f5b8ce75cc0b6529b93690dd47ec0d51e0e698e';
 # $settings['deployment_identifier'] = \Drupal::VERSION;
 # $settings['install_profile'] = 'standard';
 
