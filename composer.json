@@ -58,7 +58,7 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
-        "process-replacements": "scripts/composer/process-replacements.php",
+        "process-replacements": "php scripts/composer/process-replacements.php",
         "install-phar-tools": [
             "drunomics\\Composer\\PharInstaller::installPharTools"
         ],
