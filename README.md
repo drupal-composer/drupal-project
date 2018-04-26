@@ -1,5 +1,7 @@
 # Composer template for drunomics Drupal projects
 
+[![Build Status](https://www.travis-ci.org/drunomics/drupal-project.svg?branch=3.x)](https://www.travis-ci.org/drunomics/drupal-project)
+
 Builds upon https://github.com/drupal-composer/drupal-project.
 
 ## Usage
