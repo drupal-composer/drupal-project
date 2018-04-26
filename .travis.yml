@@ -1,5 +1,5 @@
 language: php
-sudo: false
+sudo: required
 
 php:
   - 7.1
@@ -9,8 +9,11 @@ git:
 
 env:
   global:
-    # Set site environment
-    - AH_SITE_ENVIRONMENT=travis PHAPP_ENV=travis
+    - DOCKER_COMPOSE_VERSION=1.19.0
+addons:
+  apt:
+    packages:
+      - docker-ce
 
 # travis will test and deploy only the branches and tags as show below
 # right now travis does not make a difference between branches and tags
@@ -32,56 +35,28 @@ mysql:
   username: root
   encoding: utf8
 
-# Cache Composer & Drush directories.
+# Cache Composer, NPM & Drush directories.
 cache:
   directories:
-    - $HOME/.composer/cache
+    - $HOME/.cache/composer
+    - $HOME/.npm
     - $HOME/.drush/cache
-    # - docroot/themes/custom/haus_theme/node_modules
 
 # Setup the environment.
 before_install:
-  # Install phapp
-  - |
-      mkdir $TRAVIS_BUILD_DIR/bin
-      php -r "
-        ini_set('user_agent','Mozilla/4.0 (compatible; MSIE 6.0)');
-        readfile(json_decode(file_get_contents('https://api.github.com/repos/drunomics/phapp-cli/releases/latest'))->assets[0]->browser_download_url);
-      " > $TRAVIS_BUILD_DIR/bin/phapp
-      chmod +x $TRAVIS_BUILD_DIR/bin/phapp
-  # Adjust path
-  - export PATH="$TRAVIS_BUILD_DIR/bin:$TRAVIS_BUILD_DIR/vendor/bin:$PATH"
-  # Disable debugging
-  - phpenv config-rm xdebug.ini
-  # Disable sendmail
+  # Be sure no mails are going out by disabling sendmail.
   - echo sendmail_path=`which true` >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  # set php timeouts
-  - echo "mysql.connect_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  - echo "default_socket_timeout=3000" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
-  # Increase the MySQL server timetout and packet size.
-  - mysql -e "SET GLOBAL wait_timeout = 36000;"
-  - mysql -e "SET GLOBAL max_allowed_packet = 33554432;"
 
-install:
-  - phapp setup
-  # Run build separate from install so we see how long it takes in travis.
-  - phapp build
-  - phapp init --no-build
+  # Upgrade docker compose.
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
-before_script:
-  # Start web server
-  - cd $TRAVIS_BUILD_DIR/web
-  - drush runserver 8888 > /dev/null 2>&1 &
-  # Test if server started
-  - nc -zvv localhost 8888; out=$?; while [[ $out -ne 0 ]]; do echo "Retry hit port 8888..."; nc -zvv localhost 8888; out=$?; sleep 1; done
-  - cd $TRAVIS_BUILD_DIR
+install: []
 
 script:
-  # TODO: Test via ci-run-tests.sh
-  - curl -N http://localhost:8888 | grep  "Drupal 8" -q
+  -
 
 after_success:
-  # TODO: Configure as needed.
-
-notifications:
-  # TODO: Configure as needed.
+  - echo "SUCCESS!"
