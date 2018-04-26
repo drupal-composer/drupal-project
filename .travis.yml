@@ -15,25 +15,6 @@ addons:
     packages:
       - docker-ce
 
-# travis will test and deploy only the branches and tags as show below
-# right now travis does not make a difference between branches and tags
-# tags starting with hotfix and tags in the form of "v1.0.0" will be tested
-branches:
-  only:
-    - master
-    - develop
-    - testing
-    - 8.x-1.x
-    - 8.x-2.x
-    - /^hotfix/
-    - /^v[0-9]+\.[0-9]+\.[0-9]+/
-    - /^release/
-    - /^version/
-
-mysql:
-  database: drupal
-  username: root
-  encoding: utf8
 
 # Cache Composer, NPM & Drush directories.
 cache:
