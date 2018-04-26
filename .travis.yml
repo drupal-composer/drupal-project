@@ -31,7 +31,9 @@ before_install:
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
 
-install: []
+install:
+  # Composer does not like shallow clones.
+  - git fetch --unshallow --tags
 
 script:
   # Ensure the project is creatable with the latest commit.
