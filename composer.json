@@ -68,7 +68,8 @@
         "post-root-package-install": [
             "rm README.md && mv README.md.dist README.md",
             "./scripts/init-devsetup.sh",
-            "@process-replacements"
+            "@process-replacements",
+            "rm -rf tests/drupal-project .travis.yml"
         ],
         "post-create-project-cmd": "@init-setup",
         "post-install-cmd": "@init-setup",
