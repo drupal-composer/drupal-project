@@ -4,9 +4,6 @@ sudo: required
 php:
   - 7.1
 
-git:
-  depth: 5
-
 env:
   global:
     - DOCKER_COMPOSE_VERSION=1.19.0
