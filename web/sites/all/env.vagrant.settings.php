@@ -5,15 +5,15 @@
  * Some settings.php defaults that get included depending on the active environment.
  */
 
-$settings['trusted_host_patterns'][] = '^(.+\.)?drupal-project.local$';
+$settings['trusted_host_patterns'][] = '^(.+\.)?{{ project }}.local$';
 
 // Default database connection.
 $databases['default']['default'] = array(
-  'database' => 'drupal-project_' . $site_prefix,
+  'database' => '{{ project }}_' . $site_prefix,
   'username' => 'root',
   'password' => '',
   'prefix' => '',
-  'host' => 'drupal-project.local',
+  'host' => '{{ project }}.local',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',

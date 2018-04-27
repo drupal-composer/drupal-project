@@ -39,7 +39,7 @@ default:
 vagrant:
   extensions:
     Behat\MinkExtension:
-      base_url: http://drupal-project.local
+      base_url: http://{{ project }}.local
       chrome:
         api_url: "http://localhost:9222"
       javascript_session: chrome

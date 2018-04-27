@@ -2,7 +2,7 @@ name: {{ project }}
 description: 'Describe your application.'
 
 git:
-  url: 'git@bitbucket.org:drunomics/drupal-project.git'
+  url: 'git@bitbucket.org:drunomics/{{ project }}.git'
 
 commands:
   setup: |
