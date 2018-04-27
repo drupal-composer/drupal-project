@@ -1,4 +1,4 @@
-name: drupal-project
+name: {{ project }}
 description: 'Describe your application.'
 
 git:

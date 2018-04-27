@@ -28,6 +28,7 @@
 # Ignore setup files.
 /web/sites/default
 /.*env
+!/.defaults.env
 .vagrant
 dumps/sync
 node_modules
