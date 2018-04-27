@@ -33,7 +33,7 @@ command:
   site:
     install:
       options:
-        locale: de
+        locale: '${env.DEFAULT_LANGUAGE}'
         # Set a predetermined username and password when using site-install.
         account-name: dru_admin
         # account-pass: 'secret'
