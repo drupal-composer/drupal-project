@@ -52,3 +52,10 @@ The following variables are supported:
 Variable | Description | Example value |
 --- | --- | --- |
 | PROJECT_ADD_DRUNOMICS_DEVSETUP       | Whether the drunomics devsetup should be added. | "1" or "" |
+
+## Default variables
+
+Environment variables that can be configured project-wide are managed in 
+`.defaults.env`. Refer to the prepared variables in the file for environment
+variables tha are already supported in the template.
+
