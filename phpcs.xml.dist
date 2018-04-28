@@ -4,7 +4,7 @@
 
   <description>Default drunomics Coding Style for Drupal 8.</description>
 
-  <file>./behat-features/src</file>
+  <file>./tests/behat/behat-features/src</file>
   <file>./devsetup</file>
   <file>./scripts</file>
   <file>./web/modules/custom</file>

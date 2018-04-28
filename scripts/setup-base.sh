@@ -13,6 +13,7 @@ cp web/sites/example.local.settings.php web/sites/local.settings.php
 # dotenv file.
 if [[ $PHAPP_ENV = "drunomics-ci" ]]; then
   echo "CONTAINER_HOST=$(hostname -f)" > .container.env
+  echo "CONTAINER_NAME=$(hostname -s)" >> .container.env
 fi
 
 # Default to first sub-site during development.
