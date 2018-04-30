@@ -36,7 +36,7 @@ for SITE in `ls -d web/sites/*/`; do
     # We enable the setgid bit to ensure the right group is propagated down.
     chmod 2775 web/sites/$SITE/files
     if [ -n $ENV_UNIX_GROUP_WEBSERVER ]; then
-      chown :$ENV_UNIX_GROUP_WEBSERVER web/sites/$SITE/files
+      sudo chown :$ENV_UNIX_GROUP_WEBSERVER web/sites/$SITE/files
     fi
   fi
   if [[ ! -d web/sites/$SITE/files-private ]]; then
@@ -45,7 +45,7 @@ for SITE in `ls -d web/sites/*/`; do
     # We enable the setgid bit to ensure the right group is propagated down.
     chmod 2775 web/sites/$SITE/files-private
     if [ -n $ENV_UNIX_GROUP_WEBSERVER ]; then
-      chown :$ENV_UNIX_GROUP_WEBSERVER web/sites/$SITE/files-private
+      sudo chown :$ENV_UNIX_GROUP_WEBSERVER web/sites/$SITE/files-private
     fi
   fi
 done
