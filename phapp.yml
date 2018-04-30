@@ -11,7 +11,7 @@ commands:
   environment: |
     source dotenv/loader.sh
   build: |
-    EXTRA_ARGS=$([ $PHAPP_ENV_MODE = 'production' ] && echo '--no-dev' || echo '');
+    EXTRA_ARGS=$([[ $PHAPP_ENV_MODE = 'production' ]] && echo '--no-dev' || echo '');
     composer install --no-interaction $EXTRA_ARGS
   clean: |
     # Clean composer vendor via the provided script.
