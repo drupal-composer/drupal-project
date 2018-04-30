@@ -25,6 +25,7 @@
         "behat/mink-goutte-driver": "~1.2",
         "devinci/devinci-behat-extension": "^0.1.0",
         "dmore/behat-chrome-extension": "^1.1",
+        "drunomics/behat-drupal-utils": "^1.0",
         "drupal/coder": "^8.2",
         "drupal/drupal-extension": "^3.2",
         "phpunit/phpunit": ">=4.8.28 <5",

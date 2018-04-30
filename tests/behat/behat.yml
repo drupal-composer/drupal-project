@@ -6,6 +6,7 @@ default:
         - %paths.base%/behat-features
       contexts:
         - FeatureContext
+        - drunomics\BehatDrupalUtils\Context\DrupalSmokeContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
@@ -30,19 +31,12 @@ default:
       selectors:
         # Selectors used by the drupal-extension. Uncomment to use.
         # error_message_selector: '.form-item--error-message'
+        login_form_selector: 'form#user-login-form'
       text:
         # Login text customizations used by drupal-extension. Uncomment to use.
         # username_field: 'Benutzername'
         # password_field: 'Passwort'
         # log_in: 'Anmelden'
-
-vagrant:
-  extensions:
-    Behat\MinkExtension:
-      base_url: http://{{ project }}.local
-      chrome:
-        api_url: "http://localhost:9222"
-      javascript_session: chrome
 
 selenium:
   extensions:
