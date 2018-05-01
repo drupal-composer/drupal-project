@@ -162,5 +162,12 @@ version control. In that case, add specific directories to the .gitignore file.
 # Specific libraries (which we manage with composer)
 docroot/libraries/colorbox
 ```
+The path where the library ends up being installed can be controlled too. For example the chose module expects the library at `/libraries/chosen` but with a `composer require npm-asset/chosen-js` the library will have the path `/libraries/chosen-js`.
+
+A library specific override can be added to the installer-paths configuration, otherwise library gets installed with an incorrect name.
+
+Required line: "docroot/libraries/chosen": ["npm-asset/chosen-js"],
+This line must be above the other one to be picked up first.
+
 
 For more details, see https://asset-packagist.org/site/about
