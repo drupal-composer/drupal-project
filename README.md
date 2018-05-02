@@ -166,7 +166,7 @@ The installation path of a specific library can be controlled by adding it to th
 chosen module expects the library at `/libraries/chosen`, but `composer require
 npm-asset/chosen-js` installs the library into `/libraries/chosen-js`; the
 following override installs it into the expected folder:
-````json
+```json
 {
     "extra": {
         "installer-paths": {
