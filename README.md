@@ -143,31 +143,42 @@ To prevent this you can add this code to specify the PHP version you want to use
     }
 },
 ```
+
 ### How can I add libraries using composer.json?
 
-It is possible to use libraries with composer thanks to the
-asset-packagist repository (https://asset-packagist.org/).
-
-For example, to use colorbox:
+You can manage front-end asset libraries with Composer thanks to the
+[asset-packagist repository](https://asset-packagist.org/). Composer will detect
+and install new versions of a library that meet the stated constraints. In the
+example below, it will download anything from the `0.4.*` series of colorbox:
 ```
-composer require npm-asset/colorbox:"^0.4"
-
+composer require npm-asset/colorbox:^0.4
 ```
-Composer will detect new versions of the library that meet your constraints.
-In the above example it will download anything from `0.4.*` series of colorbox.
 
-When managing libraries with composer this way, you may not want to add it to
-version control. In that case, add specific directories to the .gitignore file.
+When managing libraries with Composer, it is recommended to add the corresponding
+directories to your `.gitignore` file:
 ```
-# Specific libraries (which we manage with composer)
-docroot/libraries/colorbox
+# Libraries (managed with Composer)
+/docroot/libraries/
 ```
-The path where the library ends up being installed can be controlled too. For example the chose module expects the library at `/libraries/chosen` but with a `composer require npm-asset/chosen-js` the library will have the path `/libraries/chosen-js`.
 
-A library specific override can be added to the installer-paths configuration, otherwise library gets installed with an incorrect name.
-
-Required line: "docroot/libraries/chosen": ["npm-asset/chosen-js"],
-This line must be above the other one to be picked up first.
-
+The installation path of a specific library can be controlled by adding it to the
+`installer-paths` configuration above the general configuration. For example, the
+chosen module expects the library at `/libraries/chosen`, but `composer require
+npm-asset/chosen-js` installs the library into `/libraries/chosen-js`; the
+following override installs it into the expected folder:
+````json
+{
+    "extra": {
+        "installer-paths": {
+            "docroot/libraries/chosen": ["npm-asset/chosen-js"],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ]
+        }
+    }
+}
+```
 
 For more details, see https://asset-packagist.org/site/about
