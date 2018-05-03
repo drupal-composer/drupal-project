@@ -45,6 +45,7 @@
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
+        "create-project-symlinks": "DrupalProject\\composer\\ScriptHandler::createProjectSymlinks",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],

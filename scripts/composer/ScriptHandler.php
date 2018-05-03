@@ -72,7 +72,7 @@ class ScriptHandler {
    * installation after going through the lengthy process of compiling and
    * downloading the Composer dependencies.
    *
-   * @see https://github.com/composer/composer/pull/5035
+   * @link https://github.com/composer/composer/pull/5035
    */
   public static function checkComposerVersion(Event $event) {
     $composer = $event->getComposer();
@@ -94,6 +94,39 @@ class ScriptHandler {
     elseif (Comparator::lessThan($version, '1.0.0')) {
       $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing</error>.');
       exit(1);
+    }
+  }
+
+  /**
+   * If the repostory contains 'modules', 'themes', or 'profiles' directories, 
+   * then link them into the correct place in the web directory.
+   */
+  public static function createProjectSymlinks(Event $event) {
+    $fs = new Filesystem();
+    $drupalFinder = new DrupalFinder();
+    $drupalFinder->locateRoot(getcwd());
+    $drupalRoot = $drupalFinder->getDrupalRoot();
+
+    $dirs = [
+      'modules',
+      'profiles',
+      'themes',
+    ];
+
+    foreach ($dirs as $dir) {
+      if ($fs->exists($dir)) {
+        $contents = scandir($dir);
+        foreach ($contents as $content) {
+          if ($content != '.' && $content != '..') {
+            $link = $drupalRoot . '/' . $dir . '/' . $content;
+            $target = '../../' . $dir . '/' . $content;
+            if (!$fs->exists($link)) {
+              $fs->symlink($target, $link, true);
+              $event->getIO()->write("Create a symlink from $link to $target");
+            }
+          }
+        }
+      }
     }
   }
 
