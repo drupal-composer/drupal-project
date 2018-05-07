@@ -14,7 +14,7 @@ eval "$(php $DIR/loader.php determineEnvironment)"
 
 if [ -z "$PHAPP_ENV" ]; then
   echo "Missing .env file or PHAPP_ENV environment variable. Did you run phapp setup?"
-  exit 1
+  return 1
 fi
 
 eval "$(php $DIR/loader.php prepareDeterminedEnvironment)"
