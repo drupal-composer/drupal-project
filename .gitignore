@@ -46,3 +46,6 @@ config/local.config.yml
 
 # Ignore NPM Modules
 node_modules
+
+# Ignore .env files as they are personal
+/.env

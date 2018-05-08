@@ -15,20 +15,12 @@
             "url": "https://packages.drupal.org/8"
         },
         {
-            "type": "package",
-            "package": {
-                "name": "enyo/dropzone",
-                "version": "5.2.0",
-                "type": "drupal-library",
-                "source": {
-                    "url": "https://github.com/enyo/dropzone",
-                    "type": "git",
-                    "reference": "origin/master"
-                }
-            }
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
+        "bower-asset/dropzone": "^5.1",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "drupal-composer/drupal-scaffold": "^2.2",
@@ -64,7 +56,8 @@
         "drupal/video_embed_field": "^2.0@alpha",
         "drupal/webform": "^5.0@RC",
         "drush/drush": "^9.0.0",
-        "enyo/dropzone": "^5.2",
+        "oomphinc/composer-installers-extender": "^1.1",
+        "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
@@ -83,7 +76,8 @@
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
-        ]
+        ],
+        "files": ["load.environment.php"]
     },
     "scripts": {
         "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
@@ -105,9 +99,17 @@
         "enable-patching": true,
         "patches": {
         },
+        "installer-types" : [
+          "bower-asset",
+          "npm-asset"
+        ],
         "installer-paths": {
             "docroot/core": ["type:drupal-core"],
-            "docroot/libraries/{$name}": ["type:drupal-library"],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
             "docroot/modules/contrib/{$name}": ["type:drupal-module"],
             "docroot/profiles/contrib/{$name}": ["type:drupal-profile"],
             "docroot/themes/contrib/{$name}": ["type:drupal-theme"],
