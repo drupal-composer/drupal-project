@@ -9,10 +9,22 @@ services:
     # application container.
     #build:
     #  - "curl -sS https://platform.sh/cli/installer | php"
+  node:
+    # Optionally specify the version to match that of the hosting provider.
+    type: node
+    build:
+      - "cd $LANDO_MOUNT && npm it"
+  pma:
+    # Use the latest version of phpmyadmin
+    type: phpmyadmin
 
-# The following entry creates a `lando platform` command that will run
-# any Platform CLI command from inside the container if desired.
-#tooling:
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+  # The following entry creates a `lando platform` command that will run
+  # any Platform CLI command from inside the container if desired.
 #  platform:
 #    service: appserver
 #    description: Run Platform CLI commands
