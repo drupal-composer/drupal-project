@@ -10,7 +10,7 @@
 
 // Force using the canonical domain for the production environment.
 # $url = '<MYPROJECT>.com';
-# if ($_SERVER['HTTP_HOST'] !== $url) {
+# if (isset($_SERVER['HTTP_HOST']) && $_SERVER['HTTP_HOST'] !== $url) {
 #   require_once "$app_root/sites/KalaUtil.php";
 #   \Drupal\kalamuna\KalaUtil::redirect('https', $url);
 # }
