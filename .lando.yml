@@ -41,5 +41,5 @@ config:
   webroot: web
 
   # Lando defaults to the latest MySQL release, but most hosting uses MariaDB.
-  # Specify the version to match what's in services.yaml.
-  database: mariadb:10.1
+  # Optionally specify the version to match that of the hosting provider.
+  database: mariadb
