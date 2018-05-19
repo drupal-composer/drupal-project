@@ -91,7 +91,7 @@ command:
     dump:
       options:
         # Uncomment to omit cache and similar tables (including during a sql:sync).
-         structure-tables-key: common
+        structure-tables-key: common
   php:
     script:
       options:
@@ -101,7 +101,7 @@ command:
     rsync:
       options:
         # Ensure all rsync commands use verbose output.
-       verbose: true
+        verbose: true
 
   site:
     install:
