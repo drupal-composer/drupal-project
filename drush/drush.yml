@@ -152,7 +152,7 @@ ssh:
 
 notify:
   # Notify when command takes more than 30 seconds.
-  duration: 30
+# duration: 30
   # Specify a command to run. Defaults to Notification Center (OSX) or libnotify (Linux)
 # cmd: /path/to/program
   # See src/Commands/core/NotifyCommands.php for more configuration settings.
