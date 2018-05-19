@@ -76,11 +76,11 @@ drush:
 options:
   # Specify the base_url that should be used when generating links.
   # Not recommended if you have more than one Drupal site on your system.
-  uri: 'http://drupalproj.lndo.site:8000'
+# uri: 'https://example.com/subdir'
 
   # Specify your Drupal core base directory (useful if you use symlinks).
   # Not recommended if you have more than one Drupal root on your system.
-  root: '/app/web'
+# root: '/home/USER/workspace/drupal-6'
 
   # Enable verbose mode.
   verbose: true
