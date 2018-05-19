@@ -7,8 +7,9 @@
 /web/profiles/contrib/
 /web/libraries/
 
-# Ignore sensitive information
+# Ignore local settings (can include sensitive info like database credentials).
 /web/sites/*/settings.local.php
+/web/sites/*/local.drush.yml
 
 # Ignore Drupal's file directory
 /web/sites/*/files/

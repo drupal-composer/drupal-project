@@ -1,0 +1,13 @@
+options:
+  # Specify the base_url that should be used when generating links.
+  # Not recommended if you have more than one Drupal site on your system.
+  #
+  # HTTP version:
+# uri: 'http://drupalproj.lndo.site:8000'
+  #
+  # HTTPS version:
+  uri: 'https://drupalproj.lndo.site'
+
+  # Specify your Drupal core base directory (useful if you use symlinks).
+  # Not recommended if you have more than one Drupal root on your system.
+  root: '/app/web'
