@@ -48,6 +48,7 @@
         "webmozart/path-util": "^2.3",
         "components/chosen": "^1.8.2",
         "drupal/admin_toolbar": "^1.18",
+        "drupal/big_pipe_sessionless": "^1.2",
         "drupal/cache_control_override": "^1.0",
         "drupal/chosen": "^2.0",
         "drupal/clean_maintenance": "^1.2",
