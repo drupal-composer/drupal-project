@@ -13,4 +13,4 @@ web_docroot: true
 drush_version: 8
 
 # @see https://pantheon.io/docs/pantheon-yml/#php-version
-php_version: 7.0
+php_version: 7.2
