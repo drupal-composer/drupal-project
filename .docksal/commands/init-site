@@ -47,7 +47,7 @@ set_admin ()
 install_base_modules()
 {
     cd $DOCROOT_PATH
-    drush en admin_toolbar admin_toolbar_tools adminimal_admin_toolbar module_filter config ckeditor tour block_content comment contact shortcut taxonomy menu_link_content path field_ui -y
+    drush en admin_toolbar admin_toolbar_tools adminimal_admin_toolbar module_filter config ckeditor tour block_content comment contact shortcut taxonomy menu_link_content path field_ui views_ui -y
     drush then adminimal_theme -y
     drush cset system.theme admin adminimal_theme -y
     drush cset node.settings use_admin_theme TRUE -y
