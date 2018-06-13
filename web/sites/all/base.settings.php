@@ -64,6 +64,10 @@ $settings['container_yamls'][] = __DIR__ . '/services.yml';
 ### More project-specific settings are configured below:
 ###
 
+// Allow access from localhost and the default URL.
+$settings['trusted_host_patterns'][] = '^localhost$';
+$settings['trusted_host_patterns'][] = '^' . getenv('SITES_OVERRIDE_DOMAIN') . '$';
+
 // Set name and background color for current environment.
 $config['environment_indicator.indicator']['name'] = $env;
 $config['environment_indicator.indicator']['bg_color'] = getenv('PHAPP_ENV_COLOR');
