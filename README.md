@@ -95,17 +95,16 @@ The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin
 index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
 to not check them into your version control system (e.g. git). If that is the case for your project it might be
 convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
-achieve that by registering `@drupal-scaffold` as post-install and post-update command in your composer.json:
+achieve that by registering `@composer drupal:scaffold` as post-install and post-update command in your composer.json:
 
 ```json
 "scripts": {
-    "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
     "post-install-cmd": [
-        "@drupal-scaffold",
+        "@composer drupal:scaffold",
         "..."
     ],
     "post-update-cmd": [
-        "@drupal-scaffold",
+        "@composer drupal:scaffoldd",
         "..."
     ]
 },
