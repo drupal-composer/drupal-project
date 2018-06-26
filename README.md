@@ -104,7 +104,7 @@ achieve that by registering `@composer drupal:scaffold` as post-install and post
         "..."
     ],
     "post-update-cmd": [
-        "@composer drupal:scaffoldd",
+        "@composer drupal:scaffold",
         "..."
     ]
 },
