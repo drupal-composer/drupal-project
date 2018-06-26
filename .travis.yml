@@ -10,19 +10,13 @@ php:
 
 env:
   global:
+    - COMPOSER_MEMORY_LIMIT=-1
     - SIMPLETEST_DB=sqlite://tmp/site.sqlite
     - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
   matrix:
     - RELEASE=stable COMPOSER_CHANNEL=stable
     - RELEASE=dev COMPOSER_CHANNEL=stable
     - RELEASE=stable COMPOSER_CHANNEL=snapshot
-
-matrix:
-  exclude:
-    - php: 7.2
-      env: RELEASE=stable COMPOSER_CHANNEL=stable
-    - php: 7.2
-      env: RELEASE=stable COMPOSER_CHANNEL=snapshot
 
 before_install:
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
