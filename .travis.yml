@@ -10,7 +10,6 @@ php:
 
 env:
   global:
-    - COMPOSER_MEMORY_LIMIT=-1
     - SIMPLETEST_DB=sqlite://tmp/site.sqlite
     - SIMPLETEST_BASE_URL="http://127.0.0.1:8080"
   matrix:
@@ -18,7 +17,15 @@ env:
     - RELEASE=dev COMPOSER_CHANNEL=stable
     - RELEASE=stable COMPOSER_CHANNEL=snapshot
 
+matrix:
+  exclude:
+    - php: 5.6
+      env: RELEASE=dev COMPOSER_CHANNEL=stable
+    - php: 5.6
+      env: RELEASE=stable COMPOSER_CHANNEL=snapshot
+
 before_install:
+  - if [[ $TRAVIS_PHP_VERSION = 5.6 ]]; then export COMPOSER_MEMORY_LIMIT=-1; fi;
   - echo $TRAVIS_PHP_VERSION
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
@@ -30,6 +37,7 @@ install:
   - composer --verbose install
 
 script:
+  - echo $TRAVIS_PHP_VERSION
   - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.6.x-dev webflo/drupal-core-require-dev:8.6.x-dev; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
