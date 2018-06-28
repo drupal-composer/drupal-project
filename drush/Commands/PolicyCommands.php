@@ -3,7 +3,6 @@
 namespace Drush\Commands;
 
 use Consolidation\AnnotatedCommand\CommandData;
-use Drush\Commands\DrushCommands;
 
 /**
  * Edit this file to reflect your organization's needs.
