@@ -5,7 +5,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/7.2-node-browsers
+      - image: circleci/php:7.2-node-browsers
     working_directory: ~/drupal
     steps:
       - checkout
