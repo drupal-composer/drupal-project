@@ -1,7 +1,6 @@
-module.exports = function(grunt) {
-
+var pkg = require('./package.json');
+module.exports = function doGrunt(grunt) {
   // Project configuration.
-  var pkg = require('./package.json');
   var config = {
     buildcontrol: {
       options: {

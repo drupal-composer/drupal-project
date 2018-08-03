@@ -5,8 +5,18 @@
 #
 # https://github.com/kalamuna/kalastatic
 
+# Define some variables for use in the rest of the configuration.
+_variables:
+  - &source web/themes/contrib/kalabase/kalastarter/kalastatic
+  - &styles web/themes/contrib/kalabase/kalastarter/kalastatic/styles
+  - &components web/themes/contrib/kalabase/kalastarter/kalastatic/components
+  - &atoms web/themes/contrib/kalabase/kalastarter/kalastatic/components/atoms
+  - &molecules web/themes/contrib/kalabase/kalastarter/kalastatic/components/molecules
+  - &organisms web/themes/contrib/kalabase/kalastarter/kalastatic/components/organisms
+  - &layouts web/themes/contrib/kalabase/kalastarter/kalastatic/components/layouts
+
 # The source directory.
-source: web/themes/custom/THEME_NAME/kalastatic
+source: *source
 
 # Where to build kalastatic out to, relative to base.
 destination: web/kalastatic
@@ -15,8 +25,8 @@ destination: web/kalastatic
 bsIndex: index.html
 
 # What BrowserSync will consider the web root.
-bsWebroot: web
-bsStartPath: kalastatic
+bsWebroot: web/kalastatic
+bsStartPath: /
 
 # Allows changing some of the plugin options.
 pluginOpts:
@@ -37,19 +47,19 @@ pluginOpts:
         includePaths:
           - node_modules/bootstrap/scss
           - node_modules/font-awesome/scss
-          - web/themes/custom/THEME_NAME/kalastatic/styles
-          - web/themes/custom/THEME_NAME/kalastatic/components
+          - *styles
+          - *components
 
       # Twig settings.
       twig:
         # Introduce the "kstat" Twig namespace.
         namespaces:
-          kstat: web/themes/custom/THEME_NAME/kalastatic
-          kalastatic: web/themes/custom/THEME_NAME/kalastatic
-          atoms: web/themes/custom/THEME_NAME/kalastatic/components/atoms
-          molecules: web/themes/custom/THEME_NAME/kalastatic/components/molecules
-          organisms: web/themes/custom/THEME_NAME/kalastatic/components/organisms
-          layouts: web/themes/custom/THEME_NAME/kalastatic/components/layouts
+          kstat: *source
+          kalastatic: *source
+          atoms: *atoms
+          molecules: *molecules
+          organisms: *organisms
+          layouts: *layouts
           icons: node_modules/fontawesome-svg-twig
 
         # Mimic some of the Drupal 8 Twig filters.
@@ -99,4 +109,4 @@ kss:
     # - node_modules/kss-bootstrap/styleguide/javascript/scrollspy
     # - node_modules/kss-bootstrap/styleguide/javascript/tooltip
     - node_modules/kss-bootstrap/styleguide/sections
-    - web/themes/custom/THEME_NAME/kalastatic
+    - *source
