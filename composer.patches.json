@@ -1,5 +1,11 @@
 {
     "patches": {
+        "components/rubaxa-sortable": {
+          "Fix: nested elements are sometimes allowed where they should not be · #1154": "https://patch-diff.githubusercontent.com/raw/RubaXa/Sortable/pull/1154.patch"
+        },
+        "drupal/conditional_fields": {
+            "2834358: 'Uninitialized string offset: 0 in conditional_fields_evaluate_dependency()' when saving node form with conditional fields applied": "https://www.drupal.org/files/issues/conditional_fields-uninitialized_string_offset_in_conditional_fields_evaluate_dependency-2834358-11.patch"
+        },
         "drupal/core": {
             "http://dgo.to/1797438/12417144 HTML5 validation is preventing form submit and not fully accessible": "https://www.drupal.org/files/issues/1797438-130.patch"
         }

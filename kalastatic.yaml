@@ -23,6 +23,7 @@ destination: web/kalastatic
 
 # What BrowserSync will consider the start page.
 bsIndex: index.html
+bsBrowser: false
 
 # What BrowserSync will consider the web root.
 bsWebroot: web/kalastatic

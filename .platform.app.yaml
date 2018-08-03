@@ -106,6 +106,9 @@ mounts:
     'private':
         source: local
         source_path: private
+    'config/autocommit':
+        source: local
+        source_path: autocommit
 
 # The hooks executed at various points in the lifecycle of the application.
 hooks:
@@ -125,19 +128,39 @@ hooks:
         composer install $COMPOSER_INSTALL_FLAGS
         composer test
 
-    # The deploy hook runs after your application has been deployed and started.
+    # All requests get held in a buffer while deploy tasks execute, so minimize
+    # the time spent here as much as possible.
     deploy: |
-        unset NPM_CONFIG_PREFIX
-        nvm use stable
-        cd web
-        drush -y cache-rebuild
+        # Uncomment the following two lines after adding any post_deploy
+        # commands that use node or npm.
+        #unset NPM_CONFIG_PREFIX
+        #nvm use stable
+
+        # Execute any pending database update hooks from upgraded modules.
         drush -y updatedb
+
+        # Uncomment this line before deployment if Drupal's "Status report"
+        # page shows any pending entity updates in your dev environments.
+        # Don't forget to comment it back out for subsequent deployments.
+        #drush -y entity-updates
+
+        # Configuration synchronization warrants execution here in the "deploy"
+        # hook since site errors can result when configuration is out of sync.
         drush -y config-import
+
+    # The tasks in post_deploy happen asynchronously; i.e., requests are not
+    # buffered while the calls execute, so spend as long here as you like.
+    post_deploy: |
+        # Uncomment the following two lines after adding any post_deploy
+        # commands that use node or npm.
+        #unset NPM_CONFIG_PREFIX
+        #nvm use stable
+
+        # Clear caches to make newly-imported configurations take effect.
         drush -y cache-rebuild
-        drush -y entity-updates
 
 # The configuration of scheduled execution.
 crons:
     drupal:
         spec: '*/20 * * * *'
-        cmd: 'cd web ; drush core-cron'
+        cmd: 'drush core-cron'

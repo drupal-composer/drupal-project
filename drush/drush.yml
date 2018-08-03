@@ -47,7 +47,7 @@ drush:
     config:
       # Load any personal config files. Is silently skipped if not found. Filename must be drush.yml
       - ${env.home}/.drush/config/drush.yml
-      - ../web/sites/default/local.drush.yml
+      - drush/local/drush.yml
 
 
     # Specify folders to search for Drush command files.  These locations

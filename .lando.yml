@@ -15,7 +15,7 @@ services:
     build:
       - "cd $LANDO_MOUNT && npm it"
   pma:
-    # Use the latest version of phpmyadmin
+    # Use the latest version of phpmyadmin.
     type: phpmyadmin
 
 tooling:
@@ -34,7 +34,7 @@ tooling:
 #      passthrough: true
 
 config:
-  # Lando defaults to Apache. Switch to nginx to match hosting provider.
+  # Lando's d8 recipe defaults to Apache, but most hosting providers use nginx.
   via: nginx
 
   # Set the webroot.
