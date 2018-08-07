@@ -23,6 +23,7 @@
     "require-dev": {
         "behat/mink": "~1.7",
         "behat/mink-goutte-driver": "~1.2",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
         "devinci/devinci-behat-extension": "^0.1.0",
         "dmore/behat-chrome-extension": "^1.1",
         "drunomics/behat-drupal-utils": "^1.0",
