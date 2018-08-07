@@ -5,7 +5,6 @@
   <description>Default drunomics Coding Style for Drupal 8.</description>
 
   <file>./tests/behat/behat-features/src</file>
-  <file>./devsetup</file>
   <file>./scripts</file>
   <file>./web/modules/custom</file>
 
@@ -42,7 +41,7 @@
 
   <rule ref="Drupal.Commenting.DocComment.MissingShort">
     <!-- Behat step definitions have different comments. -->
-    <exclude-pattern>./behat-features</exclude-pattern>
+    <exclude-pattern>./tests/behat/behat-features</exclude-pattern>
   </rule>
 
   <!-- Some exception for drush config. -->
