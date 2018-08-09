@@ -2,7 +2,7 @@
     "name": "drupal-composer/drupal-project",
     "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
-    "license": "GPL-2.0+",
+    "license": "GPL-2.0-or-later",
     "authors": [
         {
             "name": "",
@@ -31,23 +31,18 @@
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
         "digipolisgent/robo-digipolis-drupal8": "^0.1",
-        "drupal-composer/drupal-scaffold": "^2.2",
+        "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/console": "^1.0.2",
-        "drupal/core": "~8.4",
-        "drush/drush": "~8.0|^9.0.0-beta8",
+        "drupal/core": "~8.5.3",
+        "drush/drush": "^9.0.0",
+        "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
         "gent-drupal/digipolis": "~8.1",
         "oomphinc/composer-installers-extender": "^1.1",
         "webmozart/path-util": "^2.3"
     },
     "require-dev": {
-        "behat/mink": "~1.7",
-        "behat/mink-goutte-driver": "~1.2",
-        "jcalderonzumba/gastonjs": "~1.0.2",
-        "jcalderonzumba/mink-phantomjs-driver": "~0.3.1",
-        "mikey179/vfsstream": "~1.2",
-        "phpunit/phpunit": ">=4.8.28 <5",
-        "symfony/css-selector": "~2.8|~3.0"
+        "webflo/drupal-core-require-dev": "~8.5.3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -63,10 +58,10 @@
     "autoload": {
         "classmap": [
             "scripts/composer/ScriptHandler.php"
-        ]
+        ],
+        "files": ["load.environment.php"]
     },
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
@@ -97,7 +92,13 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/contrib/{$name}": ["type:drupal-drush"]
+            "drush/Commands/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-scaffold": {
+            "initial": {
+                ".editorconfig": "../.editorconfig",
+                ".gitattributes": "../.gitattributes"
+            }
         }
     }
 }
