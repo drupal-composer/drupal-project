@@ -71,9 +71,6 @@
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
             }
-        },
-        "patchLevel": {
-            "drupal/core": "-p2"
         }
     }
 }
