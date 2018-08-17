@@ -6,7 +6,7 @@ php:
 
 env:
   global:
-    - DOCKER_COMPOSE_VERSION=1.19.0
+    - DOCKER_COMPOSE_VERSION=1.22.0
 addons:
   apt:
     packages:
@@ -39,7 +39,8 @@ install:
 
 script:
   # Ensure the project is creatable with the latest commit.
-  - composer create-project drunomics/drupal-project --repository=tests/drupal-project/package.json --stability dev project
+  - export GIT_COMMIT=$(git rev-parse HEAD)
+  - composer create-project drunomics/drupal-project:"3.x-dev#$GIT_COMMIT" --repository=tests/drupal-project/package.json --stability dev project
 
 after_success:
   - echo "SUCCESS!"
