@@ -39,8 +39,8 @@ install:
 
 script:
   # Ensure the project is creatable with the latest commit.
-  - export GIT_COMMIT=$(git rev-parse HEAD) GIT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
-  - composer create-project drunomics/drupal-project:"dev-$GIT_BRANCH#$GIT_COMMIT" --repository=tests/drupal-project/package.json --stability dev project
+  - export GIT_COMMIT=$(git rev-parse HEAD)
+  - composer create-project drunomics/drupal-project:"3.x-dev#$GIT_COMMIT" --repository=tests/drupal-project/package.json --stability dev project
 
 after_success:
   - echo "SUCCESS!"
