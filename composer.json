@@ -76,7 +76,8 @@
         "kalamuna/autogrow_textarea": "^1.0",
         "kalamuna/kalabase": "dev-8.x-1.x",
         "kalamuna/kalastatic": "dev-8.x-2.x",
-        "oomphinc/composer-installers-extender": "^1.1"
+        "oomphinc/composer-installers-extender": "^1.1",
+        "vlucas/phpdotenv": "^2.5"
     },
     "require-dev": {
         "drupal/browsersync": "^1.0@beta",
