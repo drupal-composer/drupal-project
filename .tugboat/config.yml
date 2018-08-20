@@ -8,5 +8,5 @@ services:
     init:
       - a2enmod headers rewrite
   
-mysql:
-  image: tugboatqa/mysql:5
+#mysql:
+#  image: tugboatqa/mysql:5
