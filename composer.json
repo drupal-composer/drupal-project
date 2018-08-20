@@ -63,6 +63,7 @@
         "drupal/field_group": "^3.0",
         "drupal/linkit": "5.x-dev",
         "drupal/menu_block": "1.x-dev",
+        "drupal/menu_breadcrumb": "^1.6",
         "drupal/menu_link_weight": "^1.0@beta",
         "drupal/paragraphs": "^1.2",
         "drupal/pathauto": "^1.0",
