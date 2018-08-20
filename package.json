@@ -7,7 +7,7 @@
     "install": "run-s nvm",
     "test": "run-s nvm lint kstat:build postcss",
     "start": "run-s nvm lint kstat:start",
-    "nvm": "unset npm_config_prefix npm_lifecycle_script npm_package_scripts_nvm && source \"$NVM_DIR/nvm.sh\" && nvm use",
+    "nvm": "sh scripts/nvm-use.sh",
     "lint": "node ./node_modules/eslint/bin/eslint.js --ignore-path .gitignore --fix .",
     "kstat:build": "kalastatic build",
     "kstat:start": "kalastatic start",
