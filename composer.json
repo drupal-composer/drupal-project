@@ -55,6 +55,9 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "drupal:upgrade": [
+            "@composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-dependencies"
         ]
     },
     "extra": {
