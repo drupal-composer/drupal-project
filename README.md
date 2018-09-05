@@ -83,6 +83,8 @@ If you use the default version constraint for `drupal/core` used in this project
 
 If you want the `composer update` command to automatically update minor versions, like from `8.5` to `8.6` automatically, set the version of `drupal/core` and `webflo/drupal-core-require-dev` to `~8.5`.
 
+Visit the [Composer Versions and Constraints documentation](https://getcomposer.org/doc/articles/versions.md) for more information.
+
 ## Generate composer.json from existing project
 
 With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
