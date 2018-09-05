@@ -79,7 +79,7 @@ Follow the steps below to update your core files.
 
 The `composer update` will only upgrade your packages within the "version constraints" specified in your `composer.json` file.
 
-If you use the default version constraint for `drupal/core` used in this project (`~8.5.3`), the `composer upgrade` command will only upgrade `drupal/core` within the `8.5.x` branch (for example to `8.5.4`)
+If you use the default version constraint for `drupal/core` used in this project (`~8.5.3`), the `composer upgrade` command will only upgrade `drupal/core` within the `8.5.x` branch (for example to `8.5.4`). It will _not_ upgrade drupal/core to `8.6.0` when it comes out, unless you change the version constraint.
 
 If you want the `composer update` command to automatically update minor versions, like from `8.5` to `8.6` automatically, set the version of `drupal/core` and `webflo/drupal-core-require-dev` to `~8.5`.
 
