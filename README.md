@@ -1,6 +1,6 @@
 # Composer template for Drupal projects
 
-[![Build Status](https://travis-ci.org/bixal/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+[![Build Status](https://travis-ci.org/Bixal/drupal-project.svg?branch=8.x)](https://travis-ci.org/Bixal/drupal-project)
 
 This project template provides a starter kit for managing your site and environment
 dependencies with [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/).
