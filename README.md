@@ -1,13 +1,21 @@
 # Composer template for Drupal projects
 
-[![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
+[![Build Status](https://travis-ci.org/bixal/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
-This project template provides a starter kit for managing your site
-dependencies with [Composer](https://getcomposer.org/).
+This project template provides a starter kit for managing your site and environment
+dependencies with [Composer](https://getcomposer.org/) and [Docker](https://www.docker.com/).
 
-If you want to know how to use it as replacement for
-[Drush Make](https://github.com/drush-ops/drush/blob/8.x/docs/make.md) visit
-the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
+It is an opinionated fork of [Drupal Project](https://github.com/drupal-composer/drupal-project) with elements of
+[docker4drupal](https://github.com/wodby/docker4drupal).
+
+This is a non-production package meant to be a quick start best practices in Drupal, while a proper CI/CD and docker
+images are being developed. Using this package *as is* may lead to build issues later on. Always prioritize building
+your own docker application images (perhaps using the excellent docker4drupal package this starter is built on) to
+practice a proper CI/CD.
+
+It assumes you are developing on OS X however you can review the .env and docker-compose volume keys to work with
+a linux distribution of choice.
+[docker4drupal docs for OSX](https://wodby.com/stacks/drupal/docs/local/docker-for-mac/)
 
 ## Usage
 
@@ -20,15 +28,45 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+composer create-project bixal/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 ```
 
-With `composer require ...` you can download new dependencies to your 
+After that you can run make composer. The provided [Makefile](Makefile) has 2 commands you may run for
+installing composer dependencies:
+```
+make install # To run a normal composer install.
+```
+or
+```
+make install-source # To install composer dependencies with source to work on contributed projects.
+
+```
+Installing from source can take several minutes or more depending on your network connection.
+
+Then copy .env.example to .env:
+```
+cp .env.example .env
+```
+
+Edit your /etc/hosts file:
+```
+sudo sh -c "echo '127.0.0.1 mysitename' >> /etc/hosts"
+```
+Replace mysitename with PROJECT_BASE_URL in .env
+
+Finally make up:
+```
+make up
+```
+
+You should 
+
+With `docker-compose run php composer require ...` you can download new dependencies to your 
 installation.
 
 ```
 cd some-dir
-composer require drupal/devel:~1.0
+docker-compose run composer require drupal/devel:~1.0
 ```
 
 The `composer create-project` command passes ownership of all files to the 
@@ -49,7 +87,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates `web/sites/default/files`-directory.
 * Latest version of drush is installed locally for use at `vendor/bin/drush`.
 * Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
-* Creates environment variables based on your .env file. See [.env.example](.env.example).
+* Provides [.env.example](.env.example) which can be copied to .env for environment variables.
 
 ## Updating Drupal Core
 

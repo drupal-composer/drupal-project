@@ -49,9 +49,13 @@ gm:
 	@echo "Displaying Generate Module UI"
 	docker-compose run php drupal generate:module
 
-composer:
+install-source:
 	@echo "Installing dependencies"
 	docker-compose run php composer install --prefer-source
+
+install:
+	@echo "Installing dependencies"
+	docker-compose run php composer install
 
 cr:
 	@echo "Clearing Drupal Caches"
