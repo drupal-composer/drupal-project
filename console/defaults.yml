@@ -1,0 +1,14 @@
+#defaults:
+#  cache:
+#    rebuild:
+#      arguments:
+#        cache: all
+#  config:
+#    export:
+#      options:
+#        remove-uuid: true
+#        remove-config-hash: true
+#  generate:
+#    controller:
+#      options:
+#        module: example
