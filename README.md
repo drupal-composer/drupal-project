@@ -59,14 +59,14 @@ Finally make up:
 make up
 ```
 
-You should 
+You should be able to navigate to mysitename.localhost:8000
 
 With `docker-compose run php composer require ...` you can download new dependencies to your 
 installation.
 
 ```
 cd some-dir
-docker-compose run composer require drupal/devel:~1.0
+docker-compose run php composer require drupal/devel:~1.0
 ```
 
 The `composer create-project` command passes ownership of all files to the 
@@ -100,7 +100,7 @@ new release of Drupal core.
 
 Follow the steps below to update your core files.
 
-1. Run `composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-dependencies` to update Drupal Core and its dependencies.
+1. Run `docker-compose run php composer update drupal/core webflo/drupal-core-require-dev symfony/* --with-dependencies` to update Drupal Core and its dependencies.
 1. Run `git diff` to determine if any of the scaffolding files have changed. 
    Review the files for any changes and restore any customizations to 
   `.htaccess` or `robots.txt`.
