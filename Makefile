@@ -6,10 +6,12 @@ default: up
 
 up:
 	@echo "Starting up containers for for $(PROJECT_NAME)..."
-	docker-compose pull --parallel
+	docker-compose pull
 	docker-compose up -d --remove-orphans
 
-down: stop
+down:
+	@echo "Removing containers."
+	docker-compose down
 
 stop:
 	@echo "Stopping containers for $(PROJECT_NAME)..."
@@ -72,3 +74,7 @@ logsf:
 dbclient:
 	@echo "Opening DB client"
 	docker-compose run php drupal database:client
+
+behat:
+	@echo "Running behat tests"
+	docker-compose run php vendor/bin/behat
