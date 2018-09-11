@@ -1,11 +1,11 @@
 <?php
 
 use Drupal\DrupalExtension\Context\RawDrupalContext;
-use Behat\Behat\Context\SnippetAcceptingContext;
+use Behat\Mink\Exception\ExpectationException;
+use Behat\Mink\Exception\ResponseTextException;
 /**
  * Defines general application features used by other feature files.
  *
  * @codingStandardsIgnoreStart
  */
-class FeatureContext extends RawDrupalContext implements SnippetAcceptingContext {
-}
+class FeatureContext extends RawDrupalContext {}
