@@ -39,6 +39,7 @@ script:
   - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.7.x-dev webflo/drupal-core-require-dev:8.7.x-dev; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
+  - cp .env.example .env
   - cd $TRAVIS_BUILD_DIR/web
   - ./../vendor/bin/drupal site:install --force --no-interaction
   - ./../vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
