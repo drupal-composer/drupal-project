@@ -5,8 +5,8 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "Rich Allen",
+            "role": "Developer"
         }
     ],
     "repositories": [
@@ -40,7 +40,8 @@
     },
     "autoload": {
         "classmap": [
-            "scripts/composer/ScriptHandler.php"
+            "scripts/composer/ScriptHandler.php",
+            "scripts/composer/SettingsHandler.php"
         ],
         "files": ["load.environment.php"]
     },
@@ -52,10 +53,10 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "Bixal\\DrupalProject\\composer\\SettingsHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "Bixal\\DrupalProject\\composer\\SettingsHandler::createRequiredFiles"
         ]
     },
     "extra": {

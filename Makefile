@@ -78,3 +78,11 @@ dbclient:
 behat:
 	@echo "Running behat tests"
 	docker-compose run php vendor/bin/behat
+
+phpcs:
+	@echo "Running coding standards on custom code"
+	docker-compose run php vendor/bin/phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom --ignore=*.min.js --ignore=*.min.css
+
+phpcbf:
+	@echo "Beautifying custom code"
+	docker-compose run php vendor/bin/phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom --ignore=*.min.js --ignore=*.min.css

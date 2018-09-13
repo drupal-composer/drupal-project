@@ -1,0 +1,41 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/python
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+          version: 18.05.0-ce
+      - run:
+          name: Install Docker Compose
+          command: |
+            curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+            chmod +x ~/docker-compose
+            sudo mv ~/docker-compose /usr/local/bin/docker-compose
+      - run:
+          name: Start containers
+          command: |
+              make up
+      - run:
+          name: troubleshoot
+          command: |
+            docker-compose ps
+      - run:
+          name: Copy Environment
+          command: |
+              cp .env.example .env
+      - run:
+          name: Composer install
+          command: |
+              make install
+      - run:
+          name: Install Drupal
+          command: |
+              docker-compose run php drupal site:install --no-interaction --force
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build

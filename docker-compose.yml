@@ -24,7 +24,8 @@ services:
       DB_PASSWORD: $DB_PASSWORD
       DB_NAME: $DB_NAME
       DB_DRIVER: $DB_DRIVER
-      COLUMNS: 80 # Set 80 columns for docker exec -it.
+      TRUSTED_HOST_PATTERNS: "${PROJECT_BASE_URL}"
+      HASH_SALT: "${HASH_SALT}"
 ## Read instructions at https://wodby.com/stacks/drupal/docs/local/xdebug/
       PHP_XDEBUG: 1
       PHP_XDEBUG_DEFAULT_ENABLE: 1
