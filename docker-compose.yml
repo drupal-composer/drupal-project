@@ -15,7 +15,7 @@ services:
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
-    image: wodby/drupal-php:$PHP_TAG
+    build: ./
     container_name: "${PROJECT_NAME}_php"
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
