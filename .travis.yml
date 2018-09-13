@@ -26,6 +26,7 @@ script:
   - cat web/sites/default/settings.php
   - cat .env
   - docker-compose run php drush status
+  - docker-compose run php drupal database:drop
   - docker-compose run php drupal site:install --force --no-interaction
   - until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
   - curl $SIMPLETEST_BASE_URL
