@@ -25,6 +25,7 @@ jobs:
       - run:
           name: Composer install
           command: |
+              chmod 777 composer.json
               ls -la
               make install
       - run:
