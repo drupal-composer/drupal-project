@@ -10,6 +10,7 @@ php:
 env:
   global:
     - SIMPLETEST_BASE_URL="http://drupal.docker.localhost:8000"
+    - DOCKER_COMPOSE_VERSION=1.22.0
   matrix:
     - RELEASE=stable COMPOSER_CHANNEL=stable
     - RELEASE=dev COMPOSER_CHANNEL=stable
