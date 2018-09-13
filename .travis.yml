@@ -1,4 +1,3 @@
-language: php
 dist: trusty
 sudo: false
 
@@ -24,6 +23,6 @@ install:
 
 script:
   - make up
-  - docker-compose run php drupal site:install --force --no-interaction
-  - until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
+  - docker-compose run php drupal site:install -vvv --force --no-interaction
+  # - until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
   - make behat
