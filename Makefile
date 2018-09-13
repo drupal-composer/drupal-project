@@ -6,10 +6,12 @@ default: up
 
 up:
 	@echo "Starting up containers for for $(PROJECT_NAME)..."
-	docker-compose pull --parallel
+	docker-compose pull
 	docker-compose up -d --remove-orphans
 
-down: stop
+down:
+	@echo "Removing containers."
+	docker-compose down
 
 stop:
 	@echo "Stopping containers for $(PROJECT_NAME)..."
@@ -84,4 +86,3 @@ phpcs:
 phpcbf:
 	@echo "Beautifying custom code"
 	docker-compose run php vendor/bin/phpcbf --standard=vendor/drupal/coder/coder_sniffer/Drupal web/modules/custom --ignore=*.min.js --ignore=*.min.css
-
