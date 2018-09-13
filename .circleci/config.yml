@@ -26,8 +26,7 @@ jobs:
       - run:
           name: Start containers
           command: |
-              docker-compose build
-              make up
+              docker-compose up --build
       - run:
           name: Composer install
           command: |
