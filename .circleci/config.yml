@@ -22,7 +22,7 @@ jobs:
           name: Build Image
           command: |
               # create a container which can mount our code
-              docker build -t drupal-project
+              docker build -t drupal-project .
       - run:
           name: Start containers
           command: |
