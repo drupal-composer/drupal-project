@@ -15,17 +15,13 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
-          name: Start containers
-          command: |
-              make up
-      - run:
-          name: troubleshoot
-          command: |
-            docker-compose ps
-      - run:
           name: Copy Environment
           command: |
               cp .env.example .env
+      - run:
+          name: Start containers
+          command: |
+              make up
       - run:
           name: Composer install
           command: |
