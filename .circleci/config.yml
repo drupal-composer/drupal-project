@@ -26,7 +26,7 @@ jobs:
           name: Composer install
           command: |
               chmod 777 composer.json
-              ls -la
+              docker-compose run php ls
               docker-compose run php composer install
       - run:
           name: Install Drupal
