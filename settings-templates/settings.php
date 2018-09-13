@@ -767,7 +767,7 @@ try {
     'password' => getenv('DB_PASSWORD'),
     'prefix' => '',
     'host' => getenv('DB_HOST'),
-    'port' => getenv('DB_PORT'),
+    'port' => '3306',
     'namespace' => 'Drupal\\Core\\Database\\Driver\\' . $db_driver,
     'driver' => $db_driver,
   );
