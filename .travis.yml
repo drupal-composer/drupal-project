@@ -22,10 +22,10 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
+  - cp .env.example .env
   - make install
 
 script:
-  - cp .env.example .env
   - make up
   - docker-compose run php drupal site:install --force --no-interaction
   - ./../vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
