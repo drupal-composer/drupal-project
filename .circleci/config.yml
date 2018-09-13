@@ -26,12 +26,10 @@ jobs:
       - run:
           name: Start containers
           command: |
-              docker-compose up --build
+              docker-compose up -d --build
       - run:
           name: Composer install
           command: |
-              chmod 777 composer.json
-              docker-compose run php ls
               docker-compose run php composer install
       - run:
           name: Install Drupal
