@@ -19,6 +19,11 @@ jobs:
           command: |
               cp .env.example .env
       - run:
+          name: Build Image
+          command: |
+              # create a container which can mount our code
+              docker build -t drupal-project
+      - run:
           name: Start containers
           command: |
               make up
