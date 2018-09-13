@@ -25,6 +25,7 @@ jobs:
       - run:
           name: Composer install
           command: |
+              ls -la
               make install
       - run:
           name: Install Drupal
