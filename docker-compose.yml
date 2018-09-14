@@ -32,11 +32,7 @@ services:
       PHP_XDEBUG_REMOTE_CONNECT_BACK: 0
       PHP_IDE_CONFIG: serverName=my-ide
 #      PHP_XDEBUG_REMOTE_HOST: host.docker.internal # Docker 18.03+ & Linux/Mac/Win
-#      PHP_XDEBUG_REMOTE_HOST: 172.17.0.1 # Linux, Docker < 18.03
-    volumes:
-      - ./:/var/www/html:cached # User-guided caching
-## For Xdebug profiler files
-      - files:/mnt/files
+#      PHP_XDEBUG_REMOTE_HOST: 172.17.0.1 # Linux, Docker < 18.0 
 
   nginx:
     image: wodby/nginx:$NGINX_TAG
