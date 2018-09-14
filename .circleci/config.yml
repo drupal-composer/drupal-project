@@ -21,7 +21,7 @@ jobs:
       - run:
           name: Start containers
           command: |
-              docker-compose up -d --build
+              docker-compose up -d -f docker-compose.yml -f docker-compose.override.yml --build
       - run:
           name: Composer install
           command: |
