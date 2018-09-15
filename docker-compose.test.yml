@@ -15,7 +15,9 @@ services:
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
-    build: .
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     container_name: "${PROJECT_NAME}_php"
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
@@ -36,7 +38,9 @@ services:
 
 
   nginx:
-    image: wodby/nginx:$NGINX_TAG
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     container_name: "${PROJECT_NAME}_nginx"
     depends_on:
       - php
