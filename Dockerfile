@@ -3,7 +3,6 @@ FROM wodby/drupal-php:latest
 WORKDIR /var/www/html
 
 COPY composer.json ./
-COPY composer.lock ./
 RUN composer install --no-scripts --no-autoloader
 COPY --chown=wodby:wodby . ./
 RUN ls -la
