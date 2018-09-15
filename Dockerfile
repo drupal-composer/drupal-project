@@ -1,3 +1,11 @@
 FROM wodby/drupal-php:latest
 
-COPY ./ /var/www/html
+WORKDIR /var/www/html
+
+COPY composer.json ./
+COPY composer.lock ./
+RUN composer install --no-scripts --no-autoloader
+COPY --chown=wodby:wodby . ./
+RUN ls -la
+RUN composer dump-autoload --optimize && \
+	composer run-script post-install-cmd

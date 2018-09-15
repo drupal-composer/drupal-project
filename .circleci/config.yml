@@ -23,13 +23,9 @@ jobs:
           command: |
               docker-compose -f docker-compose.test.yml up -d --build
       - run:
-          name: Composer install
-          command: |
-              docker-compose run php composer install
-      - run:
           name: Install Drupal
           command: |
-              docker-compose run php drupal site:install --no-interaction --force
+              docker-compose -f docker-compose.test.yml run php drupal site:install --no-interaction --force
 workflows:
   version: 2
   build_and_test:
