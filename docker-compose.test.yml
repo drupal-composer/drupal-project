@@ -52,9 +52,6 @@ services:
       NGINX_SERVER_ROOT: /var/www/html/web
       NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
 #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
-    volumes:
-# For macOS users (https://wodby.com/stacks/drupal/docs/local/docker-for-mac/)
-      - ./:/var/www/html:cached # User-guided caching
     labels:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
