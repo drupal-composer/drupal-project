@@ -771,7 +771,7 @@ try {
     'namespace' => 'Drupal\\Core\\Database\\Driver\\' . $db_driver,
     'driver' => $db_driver,
   );
-
+  print_r($databases);
   $settings['trusted_host_patterns'] = [getenv('TRUSTED_HOST_PATTERNS')];
   $settings['hash_salt'] = getenv('HASH_SALT');
 } catch(Exception $e) {
