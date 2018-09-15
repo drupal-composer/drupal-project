@@ -29,7 +29,11 @@ jobs:
       - run:
           name: Install Drupal
           command: |
-              docker-compose -f docker-compose.test.yml run php drush si -y
+              docker-compose -f docker-compose.test.yml run php drush site:install --force --no-interaction
+      - run:
+          name: Run Behat
+          command: |
+              docker-compose -f docker-compose.test.yml run php vendor/bin/behat
 workflows:
   version: 2
   build_and_test:
