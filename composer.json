@@ -5,8 +5,8 @@
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
-            "role": ""
+            "name": "Rich Allen",
+            "role": "Developer"
         }
     ],
     "repositories": [
@@ -21,6 +21,7 @@
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/console": "^1.0.2",
         "drupal/core": "^8.6.0",
+        "drupal/drupal-extension": "^3.4",
         "drush/drush": "^9.0.0",
         "vlucas/phpdotenv": "^2.4",
         "webflo/drupal-finder": "^1.0.0",
@@ -39,7 +40,8 @@
     },
     "autoload": {
         "classmap": [
-            "scripts/composer/ScriptHandler.php"
+            "scripts/composer/ScriptHandler.php",
+            "scripts/composer/SettingsHandler.php"
         ],
         "files": ["load.environment.php"]
     },
@@ -51,10 +53,10 @@
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
         "post-install-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "Bixal\\DrupalProject\\composer\\SettingsHandler::createRequiredFiles"
         ],
         "post-update-cmd": [
-            "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+            "Bixal\\DrupalProject\\composer\\SettingsHandler::createRequiredFiles"
         ]
     },
     "extra": {

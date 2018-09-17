@@ -15,7 +15,9 @@ services:
 #      - /path/to/mariadb/data/on/host:/var/lib/mysql # Use bind mount
 
   php:
-    image: wodby/drupal-php:$PHP_TAG
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
     container_name: "${PROJECT_NAME}_php"
     environment:
       PHP_SENDMAIL_PATH: /usr/sbin/sendmail -t -i -S mailhog:1025
@@ -33,13 +35,12 @@ services:
       PHP_IDE_CONFIG: serverName=my-ide
 #      PHP_XDEBUG_REMOTE_HOST: host.docker.internal # Docker 18.03+ & Linux/Mac/Win
 #      PHP_XDEBUG_REMOTE_HOST: 172.17.0.1 # Linux, Docker < 18.03
-    volumes:
-      - ./:/var/www/html:cached # User-guided caching
-## For Xdebug profiler files
-      - files:/mnt/files
+
 
   nginx:
-    image: wodby/nginx:$NGINX_TAG
+    build:
+      context: .
+      dockerfile: ./docker/nginx/Dockerfile
     container_name: "${PROJECT_NAME}_nginx"
     depends_on:
       - php
@@ -51,9 +52,6 @@ services:
       NGINX_SERVER_ROOT: /var/www/html/web
       NGINX_VHOST_PRESET: $NGINX_VHOST_PRESET
 #      NGINX_DRUPAL_FILE_PROXY_URL: http://example.com
-    volumes:
-# For macOS users (https://wodby.com/stacks/drupal/docs/local/docker-for-mac/)
-      - ./:/var/www/html:cached # User-guided caching
     labels:
       - 'traefik.backend=nginx'
       - 'traefik.port=80'
