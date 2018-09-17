@@ -15,25 +15,21 @@ jobs:
             chmod +x ~/docker-compose
             sudo mv ~/docker-compose /usr/local/bin/docker-compose
       - run:
-          name: Start containers
-          command: |
-              make up
-      - run:
-          name: troubleshoot
-          command: |
-            docker-compose ps
-      - run:
           name: Copy Environment
           command: |
               cp .env.example .env
       - run:
-          name: Composer install
+          name: Start and build containers
           command: |
-              make install
+              docker-compose -f docker-compose.test.yml up -d --build
+      - run:
+          name: Wait for database
+          command: |
+              sleep 30s
       - run:
           name: Install Drupal
           command: |
-              docker-compose run php drupal site:install --no-interaction --force
+              docker-compose -f docker-compose.test.yml run php drupal site:install --force --no-interaction
 workflows:
   version: 2
   build_and_test:
