@@ -5,7 +5,7 @@ jobs:
   build:
     docker:
       # specify the version you desire here
-      - image: circleci/php:7.2-node-browsers
+      - image: circleci/php:7.1-node-browsers-legacy
     working_directory: ~/drupal
     steps:
       - checkout
@@ -19,6 +19,14 @@ jobs:
           keys:
             - drupal-composer-{{ checksum "composer.lock" }}
             - drupal-composer-
+      # Install apt dependencies
+      - run:
+          name: apt-get dependencies
+          command: sudo apt-get update -y && sudo apt-get install -y libpng-dev
+      # Install PHP Extensions
+      - run:
+          name: PHP Extensions
+          command: sudo docker-php-ext-install gd
       # Install node modules and build
       - run: npm it
       # Install composer dependencies
