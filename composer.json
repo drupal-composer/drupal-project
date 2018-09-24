@@ -20,7 +20,6 @@
         "wikimedia/composer-merge-plugin": "1.*"
     },
     "require-dev": {
-        "behat/mink": "~1.7 || 1.7.x-dev",
         "behat/mink-goutte-driver": "~1.2",
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
         "devinci/devinci-behat-extension": "^0.1.0",
