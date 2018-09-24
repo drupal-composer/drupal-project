@@ -16,8 +16,7 @@
         "webflo/drupal-core-strict": "^8.5.6",
         "drush/drush": "9.*",
         "oomphinc/composer-installers-extender": "1.*",
-        "symfony/dotenv": "^3.4",
-        "wikimedia/composer-merge-plugin": "1.*"
+        "symfony/dotenv": "^3.4"
     },
     "require-dev": {
         "behat/mink-goutte-driver": "~1.2",
