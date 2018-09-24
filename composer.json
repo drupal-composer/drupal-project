@@ -29,7 +29,7 @@
         "drunomics/behat-drupal-utils": "^1.0",
         "drupal/coder": "^8.2",
         "drupal/drupal-extension": "^3.2",
-        "phpunit/phpunit": ">=4.8.28 <5",
+        "webflo/drupal-core-require-dev": "^8.5.6",
         "sensiolabs/security-checker": "^4.0"
     },
     "conflict": {
