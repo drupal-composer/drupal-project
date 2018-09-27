@@ -19,32 +19,33 @@ class PharInstaller {
    * @param \Composer\Script\Event $event
    */
   public static function installPharTools(Event $event) {
+    $fs = new Filesystem();
+    $composer = $event->getComposer();
+    $bin_dir = $composer->getConfig()->get('bin-dir');
+    $extras = $composer->getPackage()->getExtra();
 
-    if ($event->isDevMode()) {
-      $fs = new Filesystem();
-      $composer = $event->getComposer();
-      $bin_dir = $composer->getConfig()->get('bin-dir');
-      $extras = $composer->getPackage()->getExtra();
+    if (array_key_exists('tools', $extras)) {
+      foreach ($extras['tools'] as $tool => $data) {
+        if (empty($data['url'])) {
+          throw new \LogicException("Missing tool url.");
+        }
+        if (!empty($data['dev']) && !$event->isDevMode()) {
+          continue;
+        }
+        $filename = basename($data['url']) . '-' . $data['version'];
 
-      if (array_key_exists('tools', $extras)) {
-        foreach ($extras['tools'] as $tool => $data) {
-          if (empty($data['url'])) {
-            throw new \LogicException("Missing tool url.");
+        if (!$fs->exists("$bin_dir/$filename")) {
+          if (!$fs->exists($bin_dir)) {
+            $fs->mkdir($bin_dir);
           }
-          $filename = basename($data['url']) . '-' . $data['version'];
-          if (!$fs->exists("$bin_dir/$filename")) {
-            if (!$fs->exists($bin_dir)) {
-              $fs->mkdir($bin_dir);
-            }
-            $event->getIO()->write("<info>Downloading $filename...</info>");
-            $content = static::download($data['url']);
-            $fs->dumpFile("$bin_dir/$filename", $content, 0755);
+          $event->getIO()->write("<info>Downloading $filename...</info>");
+          $content = static::download($data['url']);
+          $fs->dumpFile("$bin_dir/$filename", $content, 0755);
 
-            if ($fs->exists("$bin_dir/$tool")) {
-              $fs->remove("$bin_dir/$tool");
-            }
-            $fs->symlink("$bin_dir/$filename", "$bin_dir/$tool");
+          if ($fs->exists("$bin_dir/$tool")) {
+            $fs->remove("$bin_dir/$tool");
           }
+          $fs->symlink($filename, "$bin_dir/$tool");
         }
       }
     }
