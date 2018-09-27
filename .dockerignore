@@ -1,5 +1,5 @@
 vendor/*
 .circleci/*
 .github/*
-mariadb-init/*
+db/*
 .env

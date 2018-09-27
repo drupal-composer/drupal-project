@@ -29,11 +29,11 @@ shell:
 
 dbdump:
 	@echo "Creating Database Dump for $(PROJECT_NAME)..."
-	docker-compose run php drupal database:dump --file=../mariadb-init/restore.sql --gz
+	docker-compose run php drupal database:dump --file=../db/restore.sql --gz
 
 dbrestore:
 	@echo "Restoring database..."
-	docker-compose run php drupal database:connect < mariadb-init/restore.sql.gz
+	docker-compose run php drupal database:connect < db/restore.sql.gz
 
 uli:
 	@echo "Getting admin login"
