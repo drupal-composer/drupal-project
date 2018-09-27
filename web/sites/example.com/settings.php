@@ -1,7 +1,7 @@
 <?php
 
 $env = getenv('PHAPP_ENV');
-$env_type = getenv('PHAPP_TYPE');
+$env_type = getenv('PHAPP_ENV_TYPE');
 $env_mode = getenv('PHAPP_ENV_MODE');
 
 // A site-specific prefix variable that can be used during configuration.
