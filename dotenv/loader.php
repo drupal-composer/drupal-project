@@ -61,7 +61,20 @@ class PhappEnvironmentLoader {
    */
   public static function prepareDeterminedEnvironment() {
     $phapp_env = getenv('PHAPP_ENV');
-    return file_get_contents(__DIR__ . '/' . $phapp_env . '.env');
+    $result = '';
+    // Support dots in the environment name and load files by prefix.
+    // This allows grouping environments by host having shared settings.
+    if (strpos($phapp_env, '.') !== FALSE) {
+      $parts = explode('.', $phapp_env, 2);
+      $file = __DIR__ . '/' . $parts[0] . '.env';
+      if (file_exists($file)) {
+        $result .= file_get_contents($file) . "\n";
+      }
+    }
+    if (file_exists(__DIR__ . '/' . $phapp_env . '.env')) {
+      $result .= file_get_contents(__DIR__ . '/' . $phapp_env . '.env');
+    }
+    return $result;
   }
 
   /**
