@@ -31,6 +31,11 @@ After that you can create the project:
 composer create-project bixal/drupal-project:8.x-dev some-dir --stability dev --no-interaction
 ```
 
+Copy .env.example to .env:
+```
+cp .env.example .env
+```
+
 After that you can run make composer. The provided [Makefile](Makefile) has 2 commands you may run for
 installing composer dependencies:
 ```
@@ -43,10 +48,6 @@ make install-source # To install composer dependencies with source to work on co
 ```
 Installing from source can take several minutes or more depending on your network connection.
 
-Then copy .env.example to .env:
-```
-cp .env.example .env
-```
 
 Edit your /etc/hosts file:
 ```
