@@ -30,28 +30,31 @@ source dotenv/loader.sh
 for SITE in `ls -d web/sites/*/`; do
   SITE=`basename $SITE`
 
-  if [[ ! -d web/sites/$SITE/files ]]; then
-    mkdir web/sites/$SITE/files
-    # Ensure sub-directory and files are always webserver writable.
-    # We enable the setgid bit to ensure the right group is propagated down.
-    chmod 2775 web/sites/$SITE/files
-    if [ -n $ENV_UNIX_GROUP_WEBSERVER ]; then
-      sudo chown :$ENV_UNIX_GROUP_WEBSERVER web/sites/$SITE/files
-    fi
+  if [[ $SITE == 'all' ]] || [[ $SITE == 'default' ]]; then
+    continue;
   fi
-  if [[ ! -d web/sites/$SITE/files-private ]]; then
-    mkdir web/sites/$SITE/files-private
-    # Ensure sub-directory and files are always webserver writable.
-    # We enable the setgid bit to ensure the right group is propagated down.
-    chmod 2775 web/sites/$SITE/files-private
-    if [ -n $ENV_UNIX_GROUP_WEBSERVER ]; then
-      sudo chown :$ENV_UNIX_GROUP_WEBSERVER web/sites/$SITE/files-private
-    fi
+  
+  mkdir -p $PERSISTENT_FILES_DIR/$SITE/public/translations
+  mkdir -p $PERSISTENT_FILES_DIR/$SITE/private
+
+  if [ -n $ENV_UNIX_GROUP_WEBSERVER ]; then
+    chown -R :$ENV_UNIX_GROUP_WEBSERVER $PERSISTENT_FILES_DIR/$SITE/
+    # When a custom group is set, ensure sub-directory and files are always
+    # webserver writable via the setgid bit. This makes the right group to be
+    # propagated down.
+    chmod 2775 $PERSISTENT_FILES_DIR/$SITE/public
+    chmod 2775 $PERSISTENT_FILES_DIR/$SITE/public/translations
+    chmod 2775 $PERSISTENT_FILES_DIR/$SITE/private
   fi
+
+  # Move files for existing dev-installations.
+  if [[ -d web/sites/$SITE/files ]] && [[ ! -L web/sites/$SITE/files ]]; then
+    # Ignore errors moving something.
+    mv web/sites/$SITE/files/* $PERSISTENT_FILES_DIR/$SITE/public || true
+    rm -rf web/sites/$SITE/files
+  fi
+
+  # Link public files directory to persistent files.
+  ln -sfT ../../../$PERSISTENT_FILES_DIR/$SITE/public web/sites/$SITE/files
 done
 
-# Be sure - the shared - translations directory is setup.
-if [[ ! -d web/sites/default/files/translations ]]; then
-  mkdir web/sites/default/files/translations
-  chmod 775 web/sites/default/files/translations
-fi

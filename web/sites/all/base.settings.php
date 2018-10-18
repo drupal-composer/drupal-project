@@ -53,7 +53,7 @@ $settings['file_scan_ignore_directories'] = [
 
 // Customize setting directories.
 $settings['file_public_path'] = "sites/$site/files";
-$settings['file_private_path'] = "sites/$site/files-private";
+$settings['file_private_path'] = '../' . getenv('PERSISTENT_FILES_DIR') . "/$site/private";
 #$config['system.file']['path']['temporary'] = "sites/$site/files-tmp";
 #Ensure all sites use the same translations directory.
 $config['locale.settings']['translation']['path'] = 'sites/default/files/translations';

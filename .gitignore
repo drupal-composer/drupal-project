@@ -9,6 +9,7 @@
 /web/libraries/
 
 # Ignore Drupal per-site environment setup.
+/files
 /web/files
 /web/sites/*/files
 /web/sites/*/files-private
