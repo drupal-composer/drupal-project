@@ -6,7 +6,7 @@ $env_mode = getenv('PHAPP_ENV_MODE');
 
 // A site-specific prefix variable that can be used during configuration.
 $site_prefix = 'def';
-$site = 'default';
+$site = basename(realpath(__DIR__));
 
 // Add in shared based settings and optionally environment specific settings.
 require __DIR__ . '/../all/base.settings.php';

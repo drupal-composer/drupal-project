@@ -51,6 +51,11 @@ class PhappEnvironmentLoader {
       $phapp_env = $siteEnvironment == 'prod' ? 'live' : ($siteEnvironment == 'stg' ? 'test' : $siteEnvironment);
       return "PHAPP_ENV=$phapp_env";
     }
+
+    // Support amazee.io lagoon.
+    if ($lagoon_safe_branch = getenv('LAGOON_GIT_SAFE_BRANCH')) {
+      return "PHAPP_ENV=amazeeio.$lagoon_safe_branch";
+    }
   }
 
   /**
