@@ -776,7 +776,6 @@ try {
 } catch(Exception $e) {
   echo $e->getMessage();
 }
-$settings['install_profile'] = 'standard';
 
 /**
  * Load local development override configuration, if available.
