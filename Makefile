@@ -33,7 +33,7 @@ dbdump:
 
 dbrestore:
 	@echo "Restoring database..."
-	docker-compose run php drupal database:connect < db/restore.sql.gz
+	docker-compose run php drupal database:restore --file='/var/www/html/db/restore.sql.gz'
 
 uli:
 	@echo "Getting admin login"
