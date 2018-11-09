@@ -7,9 +7,8 @@ services:
     commands:
       init:
         - a2enmod headers rewrite
-        - composer self-update
-        - composer -vvv create-project drupal-composer/drupal-project:8.x drupal --stability dev --no-interaction
-        - ln -snf "${TUGBOAT_ROOT}/drupal/web" "${DOCROOT}"
+        - composer install
+        - ln -snf "${TUGBOAT_ROOT}/web" "${DOCROOT}"
   
   mysql:
-    image: tugboatqa/mysql:5
+    image: tugboatqa/percona:5.6
