@@ -20,8 +20,8 @@ if [ ! -s .nvmrc ]; then
   NEW_STASH=$(git rev-parse -q --verify refs/stash)
   nvm install node | grep -ohe 'v[0-9]*\.[0-9]*\.[0-9]*' | head -1 > .nvmrc
   git add :/.nvmrc
-  git commit -m 'Add .nvmrc file with latest node'
-  git push
+  #git commit -m 'Add .nvmrc file with latest node'
+  #git push
   if [ $OLD_STASH != $NEW_STASH ]; then
     git stash pop
   fi
