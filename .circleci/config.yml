@@ -29,7 +29,7 @@ jobs:
       - run:
           name: Install Drupal
           command: |
-              docker-compose -f docker-compose.test.yml run php drupal site:install --force --no-interaction
+              docker-compose -f docker-compose.test.yml run php sh -c "./install_drupal.sh"
 workflows:
   version: 2
   build_and_test:
