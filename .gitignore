@@ -27,8 +27,13 @@
 .idea
 
 # Ignore setup files.
+/.*.env
+/.env
+!.defaults.env
 /web/sites/default
-/.env-id.env
 .vagrant
 dumps/sync
 node_modules
+
+# Ignore .DS_Store files (OSX)
+.DS_Store
