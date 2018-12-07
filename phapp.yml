@@ -6,7 +6,8 @@ git:
 
 commands:
   setup: |
-    echo "PHAPP_ENV=$PHAPP_ENV" > .env-id.env
+    [[ ! -f .env-$PHAPP_ENV.dist ]] || ln -sf .env-$PHAPP_ENV.dist .env
+    echo "PHAPP_ENV=$PHAPP_ENV" > .current.env
     ./scripts/setup-base.sh
   environment: |
     source dotenv/loader.sh
