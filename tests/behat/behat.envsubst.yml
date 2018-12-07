@@ -17,10 +17,14 @@ default:
   extensions:
     DMore\ChromeExtension\Behat\ServiceContainer\ChromeExtension: ~
     Behat\MinkExtension:
+      base_url: ${BASE_URL}
       browser_name: chrome
-      goutte: ~
-      default_session: 'goutte'
       show_cmd: xdg-open %s
+      default_session: 'goutte'
+      javascript_session: 'chrome'
+      goutte: ~
+      chrome:
+        api_url: ${CHROME_URL}
     Drupal\DrupalExtension:
       blackbox: ~
       api_driver: 'drupal'

@@ -1,11 +1,53 @@
 #!/usr/bin/env bash
 
-cd `dirname $0`/../..
-source dotenv/loader.sh
-CONFIG_FILE=tests/behat/behat.yml
+# Usage:
+# ./tests/behat/run.sh --tags=example
+
+# Supported environment variables:
+# - BASE_URL (Defaults to $PHAPP_BASE_URL)
+# - HTTP_AUTH_USER
+# - HTTP_AUTH_PASSWORD
+# - CHROME_HOST (Defaults to localhost)
+# - CHROME_PORT (Defaults to 9222)
+# - BEHAT_PARAMETERS (can override default as suiting for an environment). Any
+#   additional arguments are appended also.
+# - HEADLESS: For local environments, set to 1 to make chrome run headless.
+
+cd `dirname $0`
+VCS_DIR=../..
+BEHAT_DIR=tests/behat
+
+source $VCS_DIR/dotenv/loader.sh
+
+BEHAT_PARAMETERS=${BEHAT_PARAMETERS:-"--colors"}
+# Build up variables that can be used for replacing behat.yml config.
+export CHROME_URL=http://${CHROME_HOST:-localhost}:${CHROME_PORT:-9222}
+export BASE_URL=${BASE_URL:-$PHAPP_BASE_URL}
+
+# Prepare config
+$VCS_DIR/scripts/util/replace-vars.sh < behat.envsubst.yml > behat.yml
+
+# Output some debug information.
+echo "Running behat tests with chrome URL $CHROME_URL and base URL $BASE_URL."
+
+# We use curl to warm up caches via a regular HTTP request.
+echo "Warming up $BASE_URL..."
+
+if [[ $HTTP_AUTH_USER ]]; then
+  ARG_HTTP_AUTH="--user $HTTP_AUTH_USER:$HTTP_AUTH_PASSWORD"
+  echo "Using HTTP authentication for user $HTTP_AUTH_USER"
+fi
+
+curl -sL $BASE_URL ${ARG_HTTP_AUTH:-} | grep 'Drupal 8' -q
+
+if [[ $? -ne 0 ]]; then
+  echo Unable to access site.
+  echo BEHAT FAILED.
+  exit 1
+fi
 
 # Ease running behat from the vagrant environment by launching chrome.
-if [[ $PHAPP_ENV = vagrant ]]; then
+if [[ $PHAPP_ENV = vagrant ]] || [[ $PHAPP_ENV = localdev ]]; then
   ARGS=""
   if [[ $HEADLESS = "1" ]]; then
     ARGS="--disable-gpu --headless"
@@ -13,28 +55,12 @@ if [[ $PHAPP_ENV = vagrant ]]; then
   (google-chrome-stable $ARGS --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 )&
 fi
 
-# Build up BEHAT_PARAMS for running behat.
-# Note that everything set via BEHAT_PARAMS must be excluded in behat.yml as
-# BEHAT_PARAMS serves as default fallback only.
-CHROME_URL=http://${BEHAT_CHROME_HOST:-localhost}:${BEHAT_CHROME_PORT:-9222}
-BASE_URL=${BEHAT_BASE_URL:-$PHAPP_BASE_URL}
-
-BEHAT_PARAMS='{"extensions" : {"Behat\\MinkExtension" : {'
-BEHAT_PARAMS+="\"base_url\" : \"$BASE_URL\","
-BEHAT_PARAMS+="\"javascript_session\" : \"chrome\","
-BEHAT_PARAMS+="\"chrome\" : {\"api_url\" : \"$CHROME_URL\"}"
-BEHAT_PARAMS+='}}}'
-
-export BEHAT_PARAMS
-
-# Output some debug information.
-echo "Running behat tests with chrome URL $CHROME_URL and base URL $BASE_URL..."
-
-# Finally, run...
-vendor/bin/behat -c $CONFIG_FILE --colors $@
+set -x
+$VCS_DIR/scripts/util/exec.sh ./vendor/bin/behat -c $BEHAT_DIR/behat.yml $BEHAT_PARAMETERS $BEHAT_EXTRA_ARGUMENTS $@
 EXIT_CODE=$?
+set +x
 
-if [[ $PHAPP_ENV = vagrant ]]; then
+if [[ $PHAPP_ENV = vagrant ]] || [[ $PHAPP_ENV = localdev ]]; then
   # End with stopping all sub-process; i.e. chrome.
   [[ -z "$(jobs -p)" ]] || kill $(jobs -p)
 fi

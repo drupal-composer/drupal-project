@@ -12,4 +12,17 @@ use Drupal\DrupalExtension\Context\DrupalContext;
  */
 class FeatureContext extends DrupalContext {
 
+  /**
+   * Apply basic auth.
+   *
+   * @BeforeScenario
+   */
+  public function beforeScenario() {
+    $user = getenv('HTTP_AUTH_USER');
+    $password = getenv('HTTP_AUTH_PASSWORD');
+    if ($user && $password) {
+      $this->getSession()->setBasicAuth($user, $password);
+    }
+  }
+
 }
