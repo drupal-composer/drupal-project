@@ -141,3 +141,5 @@ To prevent this you can add this code to specify the PHP version you want to use
     "platform": {"php": "5.5.9"}
 },
 ```
+
+Note: This project requires at least PHP 5.6 due to composer dependencies.
