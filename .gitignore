@@ -32,7 +32,6 @@
 !.defaults.env
 /web/sites/default
 .vagrant
-dumps/sync
 node_modules
 
 # Ignore .DS_Store files (OSX)
