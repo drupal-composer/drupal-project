@@ -23,7 +23,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
         "devinci/devinci-behat-extension": "^0.1.0",
         "dmore/behat-chrome-extension": "^1.1",
-        "drunomics/behat-drupal-utils": "^1.0",
+        "drunomics/behat-drupal-utils": "^2.1",
         "drupal/coder": "^8.2",
         "drupal/drupal-extension": "^3.2",
         "webflo/drupal-core-require-dev": "^8.5.6",
