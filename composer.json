@@ -108,7 +108,8 @@
         },
         "merge-plugin": {
             "include": [
-                "web/modules/custom/*/composer.json"
+                "web/modules/custom/*/composer.json",
+                "web/modules/drunomics/*/composer.json"
             ],
             "recurse": false,
             "replace": false,
