@@ -6,7 +6,9 @@ default:
         - %paths.base%/behat-features
       contexts:
         - FeatureContext
-        - drunomics\BehatDrupalUtils\Context\DrupalSmokeContext
+        - drunomics\BehatDrupalUtils\Context\DrupalUtilsApiContext
+        - drunomics\BehatDrupalUtils\Context\DrupalCleanTestContentApiContext
+        - drunomics\BehatDrupalUtils\Context\DrupalErrorCheckApiContext
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
