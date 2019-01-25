@@ -108,8 +108,7 @@
         },
         "merge-plugin": {
             "include": [
-                "web/modules/custom/*/composer.json",
-                "web/modules/drunomics/*/composer.json"
+                "web/modules/custom/*/composer.json"
             ],
             "recurse": false,
             "replace": false,
@@ -134,7 +133,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.0.8"
+            "php": "7.1"
         },
         "sort-packages": true,
         "preferred-install": {
