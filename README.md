@@ -132,12 +132,14 @@ Follow the instructions in the [documentation on drupal.org](https://www.drupal.
 
 ### How do I specify a PHP version ?
 
-Currently Drupal 8 supports PHP 5.5.9 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
+This project supports PHP 5.6 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
 
 To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
 ```json
 "config": {
     "sort-packages": true,
-    "platform": {"php": "5.5.9"}
+    "platform": {
+        "php": "5.6.40"
+    }
 },
 ```
