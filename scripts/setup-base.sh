@@ -37,7 +37,7 @@ for SITE in `ls -d web/sites/*/`; do
   mkdir -p $PERSISTENT_FILES_DIR/$SITE/public/translations
   mkdir -p $PERSISTENT_FILES_DIR/$SITE/private
 
-  if [ -n $ENV_UNIX_GROUP_WEBSERVER ]; then
+  if [ -n "$ENV_UNIX_GROUP_WEBSERVER" ]; then
     sudo chown -R :$ENV_UNIX_GROUP_WEBSERVER $PERSISTENT_FILES_DIR/$SITE/
     # When a custom group is set, ensure sub-directory and files are always
     # webserver writable via the setgid bit. This makes the right group to be
