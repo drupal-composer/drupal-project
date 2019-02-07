@@ -5,4 +5,7 @@
 
 # Usage: VAR=1 $0 < path/to/file > path/to/output
 
-echo -e "$(eval "echo -e \"`cat -`\"")"
+eval "cat <<EOF
+$(< /dev/stdin)
+EOF
+"
