@@ -8,11 +8,11 @@ $default_config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../config/sync',
 );
 
-// The directories are set here initially (for ci),
-// but again in acquia.settings.php because they get overridden by acquia.
+// The directories are set here initially (for ci) but a copy is left in case
+// they are overridden by some hoster provided settings.php as done by Acquia.
 $config_directories = $default_config_directories;
 
-$settings['hash_salt'] = '{{ hash_salt }}';
+$settings['hash_salt'] = getenv('APP_SECRET_LONG');
 # $settings['deployment_identifier'] = \Drupal::VERSION;
 # $settings['install_profile'] = 'standard';
 

@@ -11,9 +11,14 @@ if ($project == 'vcs') {
 
 echo "Project name $project taken from directory name\n";
 
+function random_string($length) {
+  return substr(base64_encode(openssl_random_pseudo_bytes($length)), 0, $length);
+}
+
 // Specify files for which replacement will be applied.
 $file_patterns = [
   '*.md',
+  '.*.env',
   'dotenv/*.env',
   'phapp.yml',
   'tests/behat/behat.yml',
@@ -27,7 +32,9 @@ $replacements = [
   "{{ project }}" => $project,
   // Provide a version with underscore delimiters.
   "{{ project_underscore }}" => str_replace('-', '_', $project),
-  "{{ hash_salt }}" => bin2hex(openssl_random_pseudo_bytes(32)),
+  "{{ hash_salt }}" => random_string(32),
+  "{{ secret_long }}" => random_string(32),
+  "{{ secret }}" => random_string(12),
 ];
 
 // Process replacements.
