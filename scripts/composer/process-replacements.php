@@ -11,6 +11,14 @@ if ($project == 'vcs') {
 
 echo "Project name $project taken from directory name\n";
 
+/**
+ * Creates random string of given length.
+ *
+ * @param int $length
+ *   Length of random string.
+ *
+ * @return bool|string
+ */
 function random_string($length) {
   return substr(base64_encode(openssl_random_pseudo_bytes($length)), 0, $length);
 }
