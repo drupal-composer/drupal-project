@@ -16,7 +16,7 @@
   <!-- We always want short array syntax only. -->
   <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
 
-  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal">
+  <rule ref="Drupal.Commenting.FunctionComment">
     <!--Blacklist of coding standard rules we don't care about. -->
     <exclude name="Drupal.Commenting.FunctionComment.MissingReturnComment"/>
   </rule>
