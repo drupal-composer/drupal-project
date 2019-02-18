@@ -36,7 +36,7 @@ command:
         locale: '${env.DEFAULT_LANGUAGE}'
         # Set a predetermined username and password when using site-install.
         account-name: dru_admin
-        # account-pass: 'secret'
+        account-pass: '${env.APP_SECRET}'
 
 options:
   uri: '${env.PHAPP_BASE_URL}'

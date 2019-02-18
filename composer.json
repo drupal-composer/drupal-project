@@ -22,14 +22,14 @@
     },
     "require-dev": {
         "behat/mink-goutte-driver": "~1.2",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.4.4",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
         "devinci/devinci-behat-extension": "^0.1.0",
         "dmore/behat-chrome-extension": "^1.1",
         "drunomics/behat-drupal-utils": "^2.1",
-        "drupal/coder": "^8.2",
+        "drupal/coder": "^8.3",
         "drupal/drupal-extension": "^3.2",
-        "webflo/drupal-core-require-dev": "^8.5.6",
-        "sensiolabs/security-checker": "^4.0"
+        "sensiolabs/security-checker": "^4.0",
+        "webflo/drupal-core-require-dev": "^8.5.6"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -78,8 +78,8 @@
         "clean": [
             "drunomics\\Composer\\CleanCommand::runCommand"
         ],
-        "cs": "phpcs --colors",
-        "cbf": "phpcbf",
+        "cs": "vendor/bin/phpcs --colors",
+        "cbf": "vendor/bin/phpcbf",
         "check-security": "security-checker security:check",
         "test": "./tests/behat/run.sh --colors"
     },
