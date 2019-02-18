@@ -11,6 +11,8 @@
     ],
     "require": {
         "cweagans/composer-patches": "^1.6",
+	"drunomics/dsk-config-split": "^1.0",
+	"drunomics/phapp_env_mode": "^1.1",
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/admin_toolbar": "^1.0",
         "webflo/drupal-core-strict": "^8.5.6",
@@ -94,7 +96,7 @@
         },
         "installer-types": ["library", "npm-asset", "bower-asset"],
         "installer-paths": {
-            "drush/contrib/{$name}": ["type:drupal-drush"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/core": ["type:drupal-core"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],

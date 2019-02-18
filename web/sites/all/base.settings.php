@@ -12,6 +12,10 @@ $default_config_directories = array(
 // they are overridden by some hoster provided settings.php as done by Acquia.
 $config_directories = $default_config_directories;
 
+// Set active split configuration.
+$split = getenv('PHAPP_ENV_MODE');
+$config['config_split.config_split.' . $split]['status'] = TRUE;
+
 $settings['hash_salt'] = getenv('APP_SECRET_LONG');
 # $settings['deployment_identifier'] = \Drupal::VERSION;
 # $settings['install_profile'] = 'standard';

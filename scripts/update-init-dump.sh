@@ -17,12 +17,12 @@ if [[ $VERBOSE = "1" ]]; then
 fi
 
 # A file used to temporarily force production mode.
-MODE_SWITCH_FILE=dotenv/$PHAPP_ENV.env
+ENV_FILE=dotenv/$PHAPP_ENV.env
 
 if [[ ! $1 = '--skip-preparation' ]]; then
   echo "Forcing environment to production mode..."
-  echo "PHAPP_ENV_MODE=production" >> $MODE_SWITCH_FILE
- 
+  sed -i 's/PHAPP_ENV_MODE=.*$/PHAPP_ENV_MODE=production/g' $ENV_FILE
+
   echo "Initializing app in production mode..."
   git checkout origin/develop -- dumps/init.sql.gz
   ([ ! -f web/sites/default/phapp.yml ] || cd web/sites/default && phapp init)
@@ -39,7 +39,7 @@ echo "Creating new init dump..."
 drush sql-dump --result-file=../dumps/init.sql --gzip
 
 echo "Stopping to force the site into production mode..."
-git checkout $MODE_SWITCH_FILE
+git checkout origin/develop -- $ENV_FILE
 
 echo "Done."
 echo "Note: Run 'phapp update' to apply current config again."

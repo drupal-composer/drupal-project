@@ -23,6 +23,7 @@ commands:
     drush sql-create -y &&
     zcat dumps/init.sql.gz | drush sql:cli &&
     drush updatedb -y &&
+    drush phapp:apply-env-mode &&
     # Skip config-import when there is no config.
     if [ -f config/sync/core.extension.yml ]; then
       drush cim -y && drush cr
@@ -33,8 +34,10 @@ commands:
     drush sql-create -y &&
     SITE=${SITE:-default} &&
     drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal}
+    drush en admin_toolbar_tools dsk_config_split -y
   update: |
     drush updatedb -y &&
+    drush phapp:apply-env-mode &&
     # Skip config-import when there is no config.
     if [ -f config/sync/core.extension.yml ]; then
       drush cim -y && drush cr
