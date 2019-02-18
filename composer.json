@@ -94,7 +94,7 @@
         },
         "installer-types": ["library", "npm-asset", "bower-asset"],
         "installer-paths": {
-            "drush/contrib/{$name}": ["type:drupal-drush"],
+            "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/core": ["type:drupal-core"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
