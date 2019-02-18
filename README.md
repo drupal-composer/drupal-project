@@ -16,9 +16,9 @@ After that you can create the project:
 
 ```
 // Last stable version:
-composer create-project drunomics/drupal-project:3.* PROJECT
+composer create-project drunomics/drupal-project:4.* PROJECT
 // Last development version:
-composer create-project drunomics/drupal-project:3.*@dev --stability dev PROJECT
+composer create-project drunomics/drupal-project:4.*@dev --stability dev PROJECT
 ```
 
 With `composer require ...` you can download new dependencies to your 
