@@ -20,7 +20,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project merlin-tribukait/drupal-project:8.x-dev DIR-NAME --stability dev --no-interaction
+composer create-project merlin-tribukait/drupal-project:8.x-dev DIR-NAME --no-interaction
 ```
 
 Install the project with:
