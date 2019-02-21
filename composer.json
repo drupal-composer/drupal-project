@@ -63,7 +63,7 @@
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "webflo/drupal-core-require-dev": "~8.5"
+        "b-connect/grumphp-config": "dev-master"
     },
     "conflict": {
         "drupal/drupal": "*"
