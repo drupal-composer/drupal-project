@@ -22,7 +22,6 @@
         "ext-json": "*",
         "ext-openssl": "*",
         "ext-pdo": "*",
-        "ext-pdo_mysql": "*",
         "ext-xml": "*",
         "composer/installers": "^1.2",
         "composer/semver": "^1.4",
