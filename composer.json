@@ -63,7 +63,8 @@
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "b-connect/grumphp-config": "dev-master"
+        "b-connect/grumphp-config": "dev-master",
+        "b-connect/stylelint-composer": "dev-master"
     },
     "conflict": {
         "drupal/drupal": "*"

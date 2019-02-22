@@ -9,6 +9,8 @@ docroot/profiles/contrib
 docroot/libraries
 docroot/profiles/*/modules/contrib
 docroot/profiles/*/themes/contrib
+.stylelintignore
+.stylelintrc.yml
 
 # Ignore Drupal's file directory
 docroot/sites/default/files
