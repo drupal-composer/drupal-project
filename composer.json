@@ -94,6 +94,9 @@
         ],
         "post-update-cmd": [
             "DrupalProject\\composer\\ScriptHandler::createRequiredFiles"
+        ],
+        "grump": [
+            "vendor/bin/grumphp run"
         ]
     },
     "extra": {
