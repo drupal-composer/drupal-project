@@ -13,10 +13,7 @@
   <arg name="extensions" value="inc,install,module,php,profile,test,theme"/>
   <arg value="s"/>
 
-  <!-- We always want short array syntax only. -->
-  <rule ref="Generic.Arrays.DisallowLongArraySyntax" />
-
-  <rule ref="Drupal.Commenting.FunctionComment">
+  <rule ref="./vendor/drupal/coder/coder_sniffer/Drupal">
     <!--Blacklist of coding standard rules we don't care about. -->
     <exclude name="Drupal.Commenting.FunctionComment.MissingReturnComment"/>
   </rule>
