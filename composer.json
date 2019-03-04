@@ -79,7 +79,7 @@
             }
         },
         "preserve-paths": [
-            "web/sites/all"
+            "web/sites"
         ]
     }
 }
