@@ -64,7 +64,6 @@
         ]
     },
     "extra": {
-        "composer-exit-on-patch-failure": true,
         "installer-paths": {
             "web/": ["type:drupal-core"],
             "web/profiles/{$name}/": ["type:drupal-profile"],
