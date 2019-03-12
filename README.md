@@ -124,12 +124,14 @@ Follow the instructions in the [documentation on drupal.org](https://www.drupal.
 
 ### How do I specify a PHP version ?
 
-Currently Drupal 7 supports PHP 5.2.5 as minimum version (see [Drupal 7 PHP requirements](https://www.drupal.org/docs/7/system-requirements/drupal-7-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
+This project supports PHP 5.3 as minimum version (see [Drupal 7 PHP requirements](https://www.drupal.org/docs/7/system-requirements/php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
 
 To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
 ```json
 "config": {
     "sort-packages": true,
-    "platform": {"php": "5.2.5"}
+    "platform": {
+        "php": "5.3.3"
+    }
 },
 ```
