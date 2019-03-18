@@ -35,28 +35,32 @@ class ScriptHandler {
       }
     }
 
-    // Prepare the settings file for installation
-    if (!$fs->exists($drupalRoot . '/sites/default/settings.php') and $fs->exists($drupalRoot . '/sites/default/default.settings.php')) {
-      $fs->copy($drupalRoot . '/sites/default/default.settings.php', $drupalRoot . '/sites/default/settings.php');
-      require_once $drupalRoot . '/core/includes/bootstrap.inc';
-      require_once $drupalRoot . '/core/includes/install.inc';
-      $settings['config_directories'] = [
-        CONFIG_SYNC_DIRECTORY => (object) [
-          'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
-          'required' => TRUE,
-        ],
-      ];
-      drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
-      $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
-      $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
-    }
+    require_once $drupalRoot . '/core/includes/bootstrap.inc';
+    require_once $drupalRoot . '/core/includes/install.inc';
+    $all_sites = array_filter(glob($drupalRoot . '/sites/*'), 'is_dir');
+    foreach ($all_sites as $site_path) {
+      $site_name = basename($site_path);
+      // Prepare the settings file for installation
+      if (!$fs->exists($drupalRoot . '/sites/' . $site_name . '/settings.php') and $fs->exists($drupalRoot . '/sites/' . $site_name . '/default.settings.php')) {
+        $fs->copy($drupalRoot . '/sites/' . $site_name . '/default.settings.php', $drupalRoot . '/sites/' . $site_name . '/settings.php');
+        $settings['config_directories'] = [
+          CONFIG_SYNC_DIRECTORY => (object) [
+            'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sites/' . $site_name . '/sync', $drupalRoot),
+            'required' => TRUE,
+          ],
+        ];
+        drupal_rewrite_settings($settings, $drupalRoot . '/sites/' . $site_name . '/settings.php');
+        $fs->chmod($drupalRoot . '/sites/' . $site_name . '/settings.php', 0666);
+        $event->getIO()->write("Create a sites/' . $site_name . '/settings.php file with chmod 0666");
+      }
 
-    // Create the files directory with chmod 0777
-    if (!$fs->exists($drupalRoot . '/sites/default/files')) {
-      $oldmask = umask(0);
-      $fs->mkdir($drupalRoot . '/sites/default/files', 0777);
-      umask($oldmask);
-      $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
+      // Create the files directory with chmod 0777
+      if (!$fs->exists($drupalRoot . '/sites/' . $site_name . '/files')) {
+        $oldmask = umask(0);
+        $fs->mkdir($drupalRoot . '/sites/' . $site_name . '/files', 0777);
+        umask($oldmask);
+        $event->getIO()->write("Create a sites/' . $site_name . '/files directory with chmod 0777");
+      }
     }
   }
 
