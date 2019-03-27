@@ -17,8 +17,8 @@
         "drupal-composer/drupal-scaffold": "^2.2",
         "drupal/admin_toolbar": "^1.0",
 	"drupal/services_env_parameter": "^1.0",
-        "webflo/drupal-core-strict": "^8.5.6",
-        "drush/drush": "9.*",
+        "webflo/drupal-core-strict": "^8.6.13",
+        "drush/drush": "^9.5.2",
         "oomphinc/composer-installers-extender": "1.*",
         "symfony/dotenv": "^3.4"
     },
@@ -30,8 +30,8 @@
         "drunomics/behat-drupal-utils": "^2.1",
         "drupal/coder": "^8.3",
         "drupal/drupal-extension": "^3.2",
-        "sensiolabs/security-checker": "^4.0",
-        "webflo/drupal-core-require-dev": "^8.5.6"
+        "sensiolabs/security-checker": "^5.0",
+        "webflo/drupal-core-require-dev": "^8.6.13"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -137,7 +137,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.1"
+            "php": "7.2"
         },
         "sort-packages": true,
         "preferred-install": {
