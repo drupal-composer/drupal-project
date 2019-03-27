@@ -41,7 +41,7 @@ install:
 script:
   # Ensure the project is creatable with the latest commit.
   - export GIT_COMMIT=$(git rev-parse HEAD)
-  - composer create-project drunomics/drupal-project:"4.x-dev#$GIT_COMMIT" --repository=tests/drupal-project/package.json project
+  - composer create-project drunomics/drupal-project:"4.x-dev#$GIT_COMMIT" --repository=tests/drupal-project/package.json project && cd project
   - vendor/bin/phapp setup localdev
   - docker-compose up -d
   - docker-compose exec cli phapp install
