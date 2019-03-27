@@ -49,9 +49,10 @@ invoking composer; e.g.:
 
 The following variables are supported:
 
-Variable | Description | Example value |
---- | --- | --- |
-| PROJECT_ADD_DRUNOMICS_DEVSETUP       | Whether the drunomics devsetup should be added. | "1" or "" |
+| Variable | Description | Default | Possible values |
+| -------- | ----------- | ------- | --------------- |
+| PROJECT_ADD_DEVSETUP_DOCKER          | Whether the docker-devsetup should be added. | 1 | "1" or "0" |
+| PROJECT_ADD_DEVSETUP_DRUNOMICS       | Whether the drunomics devsetup extensions should be added. | unset | "1" or unset |
 
 ## Default variables
 
