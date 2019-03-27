@@ -45,7 +45,7 @@ Some optional features can be enabled by setting some environment variables
 when creating the project. To set a variable, you can set the variable when
 invoking composer; e.g.:
 
-    VARIABLE=1 composer create-project drunomics/drupal-project:3.* PROJECT
+    VARIABLE=1 composer create-project drunomics/drupal-project PROJECT
 
 The following variables are supported:
 
