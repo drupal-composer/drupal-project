@@ -1,9 +1,5 @@
 <?php
 
-// Ensure site-specific dotenv is loaded.
-$dotenv = new Symfony\Component\Dotenv\Dotenv();
-$dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment($site)));
-
 $default_config_directories = array(
   CONFIG_SYNC_DIRECTORY => '../config/sync',
 );
@@ -13,8 +9,7 @@ $default_config_directories = array(
 $config_directories = $default_config_directories;
 
 // Set active split configuration.
-$split = getenv('PHAPP_ENV_MODE');
-$config['config_split.config_split.' . $split]['status'] = TRUE;
+$config['config_split.config_split.' . $env_mode]['status'] = TRUE;
 
 $settings['hash_salt'] = getenv('APP_SECRET_LONG');
 # $settings['deployment_identifier'] = \Drupal::VERSION;
@@ -62,15 +57,11 @@ $settings['file_private_path'] = '../' . getenv('PERSISTENT_FILES_DIR') . "/$sit
 #Ensure all sites use the same translations directory.
 $config['locale.settings']['translation']['path'] = 'sites/default/files/translations';
 
-$settings['container_yamls'][] = __DIR__ . '/services.yml';
+$settings['container_yamls'] = [ __DIR__ . '/services.yml' ];
 
 ###
 ### More project-specific settings are configured below:
 ###
-
-// Allow access from localhost and the default URL.
-$settings['trusted_host_patterns'][] = '^localhost$';
-$settings['trusted_host_patterns'][] = '^' . getenv('SITES_OVERRIDE_DOMAIN') . '$';
 
 // Set name and background color for current environment.
 $config['environment_indicator.indicator']['name'] = $env;

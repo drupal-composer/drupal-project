@@ -85,26 +85,77 @@ class PhappEnvironmentLoader {
   /**
    * Prepare app environment with project-specific dotenv files.
    *
-   * @param string $site
-   *   The site to load. If none is given the SITE env variable is respected.
-   *   Otherwise it defaults to the 'default' site.
+   * Respects the SITE variable as set.
    *
    * @return string
    *   The content of all files. Can be sourced by bash or a dotenv parser.
    */
-  public static function prepareAppEnvironment($site = NULL) {
+  public static function prepareAppEnvironment() {
+    $site = static::determineActiveSite();
+    $vars = '';
     $phapp_env = getenv('PHAPP_ENV');
-    if (!$site) {
-      $site = getenv('SITE') ?: 'default';
+    // Make sure CLI invocations get the variables from the request matcher
+    // assigned also. In addition, always add site variables for shell scripts
+    // to ease debugging.
+    if (!getenv('SITE_MAIN_HOST') || !empty($GLOBALS['argv'][0])) {
+      foreach (static::getSiteVariables() as $variable => $value) {
+        $vars .= "$variable=$value\n";
+      }
     }
 
     // Parse the site-specific dotenv files.
-    if (!file_exists(__DIR__ . '/../web/sites/' . $site . '/dotenv/' . $phapp_env . '.env')) {
-      return file_get_contents(__DIR__ . '/../web/sites/' . $site . '/dotenv/default.env');
+    if (file_exists(__DIR__ . '/sites/all.env')) {
+      $vars .= file_get_contents(__DIR__ . '/sites/all.env') . "\n";
+    }
+    // Support per-environment all.env files.
+    if (file_exists(__DIR__ . '/sites/all.env-' . $phapp_env . '.env')) {
+      $vars .= file_get_contents(__DIR__ . '/sites/all.env-' . $phapp_env . '.env') . "\n";
+    }
+    if (file_exists(__DIR__ . '/sites/' . $site . '.env')) {
+      $vars .= file_get_contents(__DIR__ . '/sites/' . $site . '.env') . "\n";
+    }
+    return $vars;
+  }
+
+  /**
+   * Determines the currently active site.
+   *
+   * Copy of
+   * \drunomics\MultisiteRequestMatcher\RequestMatcher::determineActiveSite()
+   *
+   * @return string
+   *   The active site's name.
+   */
+  public static function determineActiveSite() {
+    $site = getenv('SITE') ?: getenv('APP_DEFAULT_SITE');
+    if (!$site) {
+      $sites = explode(' ', getenv('APP_SITES'));
+      $site = reset($sites);
+    }
+    return $site;
+  }
+
+  /**
+   * Gets the same site variables as set during request matching.
+   *
+   * Copy of
+   * \drunomics\MultisiteRequestMatcher\RequestMatcher::getSiteVariables()
+   * to ensure it's available before vendors are installed.
+   */
+  public static function getSiteVariables($site = NULL) {
+    $site = $site ?: static::determineActiveSite();
+    $vars = [];
+    $vars['SITE'] = $site;
+    $vars['SITE_VARIANT'] = '';
+    if ($domain = getenv('APP_MULTISITE_DOMAIN')) {
+      $host = $site . getenv('APP_MULTISITE_DOMAIN_PREFIX_SEPARATOR') . $domain;
     }
     else {
-      return file_get_contents( __DIR__ . '/../web/sites/' . $site . '/dotenv/' . $phapp_env . '.env');
+      $host = getenv('APP_SITE_DOMAIN--' . $site);
     }
+    $vars['SITE_HOST'] = $host;
+    $vars['SITE_MAIN_HOST'] = $host;
+    return $vars;
   }
 
 }
@@ -130,10 +181,8 @@ else {
   }
   $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareDeterminedEnvironment()));
 
-  // For CLI invocations like drush always prepare the app environment also.
-  // For regular requests this gets invoked via the app, e.g. via Drupal's
-  // settings.php files.
-  if (php_sapi_name() == "cli") {
-    $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment()));
-  }
+  // Match the request and prepare site-specific dotenv vars.
+  $site = drunomics\MultisiteRequestMatcher\RequestMatcher::getInstance()
+    ->match();
+  $dotenv->populate($dotenv->parse(PhappEnvironmentLoader::prepareAppEnvironment()));
 }

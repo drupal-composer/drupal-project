@@ -11,13 +11,17 @@
 # - CHROME_PORT (Defaults to 9222)
 # - BEHAT_PARAMETERS (can override default as suiting for an environment). Any
 #   additional arguments are appended also.
-# - HEADLESS: For local environments, set to 1 to make chrome run headless.
 
 cd `dirname $0`
 VCS_DIR=../..
 BEHAT_DIR=tests/behat
 
 source $VCS_DIR/dotenv/loader.sh
+
+# Get IP address of docker host.
+if [ $PHAPP_ENV = localdev ]; then
+  CHROME_HOST=`$VCS_DIR/scripts/util/exec.sh /sbin/ip route|awk '/default/ { print $3 }'`
+fi
 
 BEHAT_PARAMETERS=${BEHAT_PARAMETERS:-"--colors"}
 # Build up variables that can be used for replacing behat.yml config.
@@ -38,7 +42,7 @@ if [[ $HTTP_AUTH_USER ]]; then
   echo "Using HTTP authentication for user $HTTP_AUTH_USER"
 fi
 
-curl -sL $BASE_URL ${ARG_HTTP_AUTH:-} | grep 'Drupal 8' -q
+curl -sL $BASE_URL ${ARG_HTTP_AUTH:-} | grep "${BEHAT_WARMUP_REQUIRED_CONTENT:-Drupal 8}" -q
 
 if [[ $? -ne 0 ]]; then
   echo Unable to access site.
@@ -48,11 +52,11 @@ fi
 
 # Ease running behat from the vagrant environment by launching chrome.
 if [[ $PHAPP_ENV = vagrant ]] || [[ $PHAPP_ENV = localdev ]]; then
-  ARGS=""
-  if [[ $HEADLESS = "1" ]]; then
-    ARGS="--disable-gpu --headless"
-  fi
-  (google-chrome-stable $ARGS --remote-debugging-address=127.0.0.1 --remote-debugging-port=9222 )&
+  (google-chrome-stable --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 ) &
+
+  echo "++++++++++++++++++++++++"
+  echo "For debugging open your Chrome browser on http://127.0.0.1:9222"
+  echo "++++++++++++++++++++++++"
 fi
 
 set -x

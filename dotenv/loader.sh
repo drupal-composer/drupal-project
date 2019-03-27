@@ -1,7 +1,7 @@
 ## A bash file that can be sourced for loading the environment.
 #
 # Optional:
-# SITE=example.com - Use the respective site instead of the default site while
+# SITE=example - Use the respective site instead of the default site while
 #   preparing the app environment.
 
 # Determine current dir and load .env file so PHAPP_ENV can be initialized.
