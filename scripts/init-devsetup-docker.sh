@@ -5,7 +5,7 @@ set -e
 
 PROJECT_ADD_DEVSETUP_DOCKER=${PROJECT_ADD_DEVSETUP_DOCKER:-1}
 
-if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1]]; then
+if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   echo "Adding devsetup-docker from https://github.com/drunomics/devsetup-docker..."
   echo "Set PROJECT_ADD_DEVSETUP_DOCKER=0 to disable."
 
