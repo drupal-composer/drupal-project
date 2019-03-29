@@ -32,7 +32,7 @@ commands:
     chmod +w web/sites/default/settings.php &&
     drush sql-create -y &&
     SITE=${SITE:-default} &&
-    drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal}
+    drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal} &&
     drush en admin_toolbar_tools dsk_config_split services_env_parameter -y
   update: |
     drush updatedb -y &&

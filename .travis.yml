@@ -2,7 +2,9 @@ language: php
 sudo: required
 
 php:
-  - 7.1
+  - 7.2
+git:
+  depth: false
 
 env:
   global:
@@ -12,7 +14,6 @@ addons:
   apt:
     packages:
       - docker-ce
-
 
 # Cache Composer, NPM & Drush directories.
 cache:
@@ -33,18 +34,23 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 
 install:
-  # Composer does not like shallow clones, so clone again.
-  - git clone https://github.com/$TRAVIS_REPO_SLUG.git $TRAVIS_REPO_SLUG
-  - cd $TRAVIS_REPO_SLUG
-  - git checkout -qf $TRAVIS_COMMIT
+  # Update the git branch by composer and create a project.
+  - |
+    source scripts/util/get-branch.sh
+    set -x
+    export GIT_BRANCH=$GIT_BRANCH
+    export GIT_COMMIT=$(git rev-parse HEAD)
+    ./scripts/util/replace-vars.sh < tests/drupal-project/package.envsubst.json > tests/drupal-project/package.json
+    composer create-project drunomics/drupal-project:"dev-$GIT_BRANCH#$GIT_COMMIT" --repository=tests/drupal-project/package.json project
 
 script:
-  # Ensure the project is creatable with the latest commit.
-  - export GIT_COMMIT=$(git rev-parse HEAD)
-  - composer create-project drunomics/drupal-project:"4.x-dev#$GIT_COMMIT" --repository=tests/drupal-project/package.json project
-  - vendor/bin/phapp setup localdev
+  - cd project && vendor/bin/phapp setup localdev
+  # Fix permissions in docker container by setting the right users.
+  - |
+    export COMPOSE_DEFAULT_USER=$(id -u $USER)
+    export COMPOSE_CLI_USER=$(id -u $USER)
   - docker-compose up -d
-  - docker-compose exec cli phapp install
+  - docker-compose exec cli phapp install --no-build
   - curl -v http://example.project.localdev.space | grep "Drupal 8"
 
 after_success:
