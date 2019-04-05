@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 cd `dirname $0`/..
-set -e
+set -ex
 
 PROJECT_ADD_DEVSETUP_DOCKER=${PROJECT_ADD_DEVSETUP_DOCKER:-1}
 
@@ -16,4 +16,8 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   # Apply replacements and cleanup.
   php process-replacements.php
   rm -rf devsetup-tmp process-replacements.php
+  echo \
+'COMPOSE_AMAZEEIO_VERSION=v0.22.1
+COMPOSE_AMAZEEIO_PHP_VERSION=7.2
+' >> .env-defaults
 fi
