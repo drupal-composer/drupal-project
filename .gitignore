@@ -29,6 +29,7 @@
 # Ignore setup files.
 /.*.env
 /.env
+/.env.local
 !.defaults.env
 /web/sites/default
 .vagrant

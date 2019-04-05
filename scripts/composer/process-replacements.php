@@ -27,6 +27,7 @@ function random_string($length) {
 $file_patterns = [
   '*.md',
   '.*.env',
+  '.env-*',
   'dotenv/*.env',
   'phapp.yml',
   'tests/behat/behat.yml',
