@@ -1,0 +1,7 @@
+name: d8
+recipe: drupal8
+config:
+  webroot: ./web
+  drush: path:/app/vendor/bin/drush
+  conf:
+    php: ./.lando/php.ini
