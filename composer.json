@@ -34,7 +34,7 @@
         "webflo/drupal-finder": "^1.0.0"
     },
     "conflict": {
-        "drupal/core": "8.*"
+        "drupal/core": "7.*"
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
