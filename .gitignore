@@ -22,3 +22,6 @@
 
 # Ignore .env files as they are personal
 /.env
+
+# Ignore macOS "DS_Store" invisible files
+.DS_Store
