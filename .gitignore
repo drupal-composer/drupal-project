@@ -27,6 +27,7 @@
 .idea
 
 # Ignore setup files.
+/docker-compose.overrides.aliases.yml
 /.*.env
 /.env
 /.env.local

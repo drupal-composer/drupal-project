@@ -1,0 +1,35 @@
+#!/bin/bash -e
+
+TEMPLATE_FILE=`readlink -f $(dirname $0)`/generate-network-aliases.template.yml
+cd `dirname $0`/..
+source dotenv/loader.sh
+
+# Only generate this for lagoon environments.
+if [[ ! $PHAPP_ENV_TYPE = "lagoon" ]]; then
+  rm -f docker-compose.overrides.aliases.yml
+  exit 0
+fi
+
+PROJECT=$(basename $PWD)
+HOSTS=''
+for SITE in $APP_SITES; do
+  # Re-run dotenv loader to determine SITE_HOST.
+  source dotenv/loader.sh
+  HOSTS+="$SITE_HOST "
+  for SITE_VARIANT in $APP_SITE_VARIANTS; do
+    # Re-run dotenv loader to determine SITE_HOST.
+    source dotenv/loader.sh
+    HOSTS+="$SITE_HOST "
+  done
+done
+
+## Generate the new file.
+cat $TEMPLATE_FILE > docker-compose.overrides.aliases.yml
+
+for HOST in $HOSTS; do
+  echo "          - $HOST" >> docker-compose.overrides.aliases.yml
+done
+
+## Register the compose file.
+sed -i '/^COMPOSE_FILE/ s/ *$/:docker-compose.overrides.aliases.yml/' .env
+echo "docker-compose.overrides.aliases.yml generated."

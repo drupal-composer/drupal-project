@@ -13,6 +13,7 @@ commands:
     [[ ! -f .env.local ]] || (cat .env.local >> .env)
     echo "PHAPP_ENV=$PHAPP_ENV" > .current.env
     ./scripts/setup-base.sh
+    ./scripts/generate-network-aliases.sh
   environment: |
     source dotenv/loader.sh
   build: |

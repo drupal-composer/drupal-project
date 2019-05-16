@@ -1,0 +1,12 @@
+# Extends the main docker-compose file with network aliases for localdev inner-container hostname resolution.
+# This allows containers in the 'traefik' network to connect to this app under the given hostnames.
+#
+## NOTE: Do not modify. This file is generated via scripts/util/generate-network-aliases.sh.
+#
+version: '2.3'
+services:
+  varnish:
+    networks:
+      traefik:
+        aliases:
+          - ${COMPOSE_HOSTNAME}
