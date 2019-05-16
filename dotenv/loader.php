@@ -136,22 +136,39 @@ class PhappEnvironmentLoader {
   }
 
   /**
+   * Determines the currently active site variant.
+   *
+   * Copy of
+   * \drunomics\MultisiteRequestMatcher\RequestMatcher::determineActiveSiteVariant()
+   *
+   * @return string
+   *   The active site variant, '' for the default variant.
+   */
+  public static function determineActiveSiteVariant() {
+    return getenv('SITE_VARIANT') ?: '';
+  }
+
+  /**
    * Gets the same site variables as set during request matching.
    *
    * Copy of
    * \drunomics\MultisiteRequestMatcher\RequestMatcher::getSiteVariables()
    * to ensure it's available before vendors are installed.
    */
-  public static function getSiteVariables($site = NULL) {
+  public static function getSiteVariables($site = NULL, $site_variant = '') {
     $site = $site ?: static::determineActiveSite();
     $vars = [];
     $vars['SITE'] = $site;
-    $vars['SITE_VARIANT'] = '';
+    $vars['SITE_VARIANT'] = $site_variant ?: static::determineActiveSiteVariant();
     if ($domain = getenv('APP_MULTISITE_DOMAIN')) {
       $host = $site . getenv('APP_MULTISITE_DOMAIN_PREFIX_SEPARATOR') . $domain;
     }
     else {
-      $host = getenv('APP_SITE_DOMAIN--' . $site);
+      $host = getenv('APP_SITE_DOMAIN__' . $site);
+    }
+    if ($vars['SITE_VARIANT']) {
+      $separator = getenv('APP_SITE_VARIANT_SEPARATOR') ?: '--';
+      $host = $vars['SITE_VARIANT'] . $separator . $host;
     }
     $vars['SITE_HOST'] = $host;
     $vars['SITE_MAIN_HOST'] = $host;
