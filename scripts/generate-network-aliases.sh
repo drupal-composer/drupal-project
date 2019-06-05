@@ -13,7 +13,8 @@ fi
 PROJECT=$(basename $PWD)
 HOSTS=''
 for SITE in $APP_SITES; do
-  # Re-run dotenv loader to determine SITE_HOST.
+  # Re-run dotenv loader to determine SITE_HOST, without variant.
+  SITE_VARIANT=''
   source dotenv/loader.sh
   HOSTS+="$SITE_HOST "
   for SITE_VARIANT in $APP_SITE_VARIANTS; do
