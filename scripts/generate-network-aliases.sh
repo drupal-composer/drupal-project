@@ -1,11 +1,16 @@
 #!/bin/bash -e
 
+######
+# Extends the main docker-compose file with network aliases for localdev inner-container hostname resolution.
+# This allows containers in the 'traefik' network to connect to this app under the given hostnames.
+######
+
 TEMPLATE_FILE=`readlink -f $(dirname $0)`/generate-network-aliases.template.yml
 cd `dirname $0`/..
 source dotenv/loader.sh
 
-# Only generate this for lagoon environments.
-if [[ ! $PHAPP_ENV_TYPE = "lagoon" ]]; then
+# Only generate this for the localdev environment.
+if [[ ! $PHAPP_ENV = "localdev" ]]; then
   rm -f docker-compose.overrides.aliases.yml
   exit 0
 fi
