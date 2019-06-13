@@ -6,7 +6,7 @@
 /web/sites/all/libraries/
 
 # Ignore Drupal 7 core files.
-/web/*
+/web/
 !/web/*/
 /web/includes/
 /web/misc/
