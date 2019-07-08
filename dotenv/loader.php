@@ -164,7 +164,7 @@ class PhappEnvironmentLoader {
       $host = $site . getenv('APP_MULTISITE_DOMAIN_PREFIX_SEPARATOR') . $domain;
     }
     else {
-      $host = getenv('APP_SITE_DOMAIN__' . $site);
+      $host = getenv('APP_SITE_DOMAIN__' . str_replace('-', '_', $site));
     }
     if ($vars['SITE_VARIANT']) {
       $separator = getenv('APP_SITE_VARIANT_SEPARATOR') ?: '--';
