@@ -31,4 +31,5 @@ content:
     third_party_settings: {  }
     region: content
 hidden:
+  layout_builder__layout: true
   webform: true

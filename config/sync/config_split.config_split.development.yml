@@ -10,7 +10,6 @@ module:
   devel: 0
   devel_php: 0
   field_tools: 0
-  field_ui: 0
   kint: 0
   menu_ui: 0
   restui: 0

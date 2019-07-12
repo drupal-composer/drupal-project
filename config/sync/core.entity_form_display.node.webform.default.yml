@@ -87,4 +87,5 @@ content:
     third_party_settings: {  }
     type: webform_entity_reference_select
     region: content
-hidden: {  }
+hidden:
+  layout_builder__layout: true
