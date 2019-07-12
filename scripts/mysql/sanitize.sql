@@ -1,0 +1,1 @@
+UPDATE users_field_data SET name=concat("user", uid), mail=concat("user", uid, '@frmwrk.local'), init=concat("user", uid, '@frmwrk.local'), pass=NULL WHERE uid NOT IN (0,1)

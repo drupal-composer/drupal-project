@@ -1,0 +1,72 @@
+# grumphp.yml
+parameters:
+    tasks:
+        securitychecker:
+            lockfile: ./composer.lock
+            format: ~
+            end_point: ~
+            timeout: ~
+            run_always: false
+        git_commit_message:
+            matchers:
+              - /[A-Z0-9]+-[0-9]/
+            case_insensitive: true
+            multiline: true
+            additional_modifiers: ''
+        phpcs:
+            standard: ./vendor/drupal/coder/coder_sniffer/Drupal
+
+            ignore_patterns:
+              - web/libraries/
+              - web/sites/default/
+            triggered_by:
+              - php
+              - module
+              - inc
+              - theme
+        phpcpd:
+            directory: 'web/modules/custom/'
+            fuzzy: false
+            min_lines: 15
+            min_tokens: 70
+            exclude:
+              - web/modules/contrib/
+              - web/themes/contrib/
+              - web/libraries/
+            triggered_by:
+              - php
+              - module
+              - inc
+              - theme
+        phplint:
+            jobs: ~
+            exclude:
+              - web/modules/contrib/
+              - web/themes/contrib/
+              - web/libraries/
+            triggered_by:
+              - php
+              - module
+              - inc
+              - theme
+        phpmd:
+            whitelist_patterns: []
+            ruleset: ['codesize']
+            exclude:
+              - web/modules/contrib/
+              - web/themes/contrib/
+              - web/libraries/
+            triggered_by:
+              - php
+              - module
+              - inc
+              - theme
+        git_blacklist:
+          keywords:
+            - "die("
+            - "var_dump("
+            - "exit;"
+            - "console."
+          whitelist_patterns: []
+          triggered_by: ['php', 'install', 'inc', 'js']
+          regexp_type: G

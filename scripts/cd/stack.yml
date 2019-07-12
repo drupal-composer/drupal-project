@@ -1,0 +1,41 @@
+version: '3.3'
+
+services:
+  drupal:
+    image: ${DOCKER_REGISTRY}/drupal:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHORT_SHA}
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+      labels:
+        - "traefik.port=80"
+        - "traefik.frontend.rule=Host:${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}.test.frmwrk.nl"
+        - "traefik.docker.network=traefik_public"
+        # - "traefik.frontend.auth.basic=${BASIC_AUTH}"
+      restart_policy:
+        condition: on-failure
+    command: ["/var/scripts/wait-for-it.sh","mysql:3306", "--timeout=0", "--","apache2-foreground"]
+    networks:
+      - traefik_public
+  mysql:
+    image: ${DOCKER_REGISTRY}/mysql:${CI_COMMIT_REF_SLUG}-${CI_COMMIT_SHORT_SHA}
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+      restart_policy:
+        condition: on-failure
+    networks:
+      - traefik_public
+  mailhog:
+    image: mailhog/mailhog
+    deploy:
+      placement:
+        constraints: [node.role == worker]
+      labels:
+        - "traefik.port=8025"
+        - "traefik.frontend.rule=Host:${CI_PROJECT_NAME}-${CI_COMMIT_REF_SLUG}-mail.test.frmwrk.nl"
+        - "traefik.docker.network=traefik_public"
+    networks:
+      - traefik_public
+networks:
+  traefik_public:
+    external: true

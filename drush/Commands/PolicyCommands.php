@@ -10,8 +10,7 @@ use Consolidation\AnnotatedCommand\CommandData;
 class PolicyCommands extends DrushCommands {
 
   /**
-   * Prevent catastrophic braino. Note that this file has to be local to the
-   * machine that initiates the sql:sync command.
+   * Prevent catastrophic braino.
    *
    * @hook validate sql:sync
    *
@@ -35,4 +34,5 @@ class PolicyCommands extends DrushCommands {
       throw new \Exception(dt('Per !file, you may never rsync to the production site.', ['!file' => __FILE__]));
     }
   }
+
 }

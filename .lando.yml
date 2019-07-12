@@ -1,0 +1,23 @@
+name: wrkdrupal
+recipe: drupal8
+config:
+  webroot: web
+  php: '7.2'
+  xdebug: true
+  drush: path:/app/vendor/bin/drush --root=/app/web
+services:
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver
+  phpcli:
+    type: php:7.2
+    via: cli
+    xdebug: false
+  phpmyadmin:
+    type: phpmyadmin
+    hosts:
+      - database
+tooling:
+  drush:
+    service: phpcli

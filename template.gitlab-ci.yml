@@ -1,0 +1,319 @@
+before_script:
+- . /var/scripts/before-script.sh
+stages:
+- packages
+- quality
+- build
+- preparation
+- test
+- deploy
+
+Composer packages:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  stage: packages
+  dependencies: []
+  cache:
+    paths:
+      - .composer-cache
+    key:  "composer-cache"
+  script: dep packages:composer_packages $STAGE -vv # composer install --verbose --prefer-dist --no-progress --no-interaction --no-dev --optimize-autoloader
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - vendor
+      - web/core
+      - web/modules/contrib
+      - web/libraries
+      - web/themes/contrib
+      - web/profiles/contrib
+      - drush/contrib
+
+NPM packages:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  stage: packages
+  dependencies: []
+  script: dep packages:npm_packages $STAGE -vv # npm install
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+      - node_modules
+      - aankoop-app/node_modules
+      - web/themes/custom/wrkdrupal/node_modules
+      - ~/.cache/Cypress
+  cache:
+    paths:
+      - node_modules
+      - aankoop-app/node_modules
+      - web/themes/custom/wrkdrupal/node_modules
+      - ~/.cache/Cypress
+    key:  "$CI_JOB_NAME-$CI_COMMIT_REF_SLUG"
+
+
+Lighthouse:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupaltestci:chrome-tools
+  stage: quality
+  variables:
+    LIGHTHOUSE_TEST_URL: "https://www.wrkdrupal.nl/"
+  script:
+    # Run Lighthouse test
+    - dep drupalci:lighthouse $STAGE -vv
+  artifacts:
+    paths:
+      - ./report.html
+    expire_in: 1 week
+
+Code quality:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  stage: quality
+  dependencies:
+    - Composer packages
+  script: dep quality:code_quality $STAGE -vvv # grumphp run
+  allow_failure: true # set false when tests are run well
+
+Validate packages:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  stage: quality
+  dependencies: []
+  script:
+  - dep quality:validate_packages $STAGE -vvv # composer validate / --strict trows zero exit code
+
+Config:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  dependencies: []
+  stage: build
+  script:
+  - dep drupal:htaccess $STAGE
+  - dep drupal:settings $STAGE
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+    - web/.htaccess
+    - .htpasswd
+    - web/sites/default/settings.php
+
+Grunt:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  dependencies:
+  - NPM packages
+  stage: build
+  script: dep build:grunt $STAGE # grunt css
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+    - web/themes/custom/wrkdrupal/css
+
+.job_template: &angular_template
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  dependencies:
+  - NPM packages
+  stage: build
+  artifacts:
+    name: "$CI_JOB_NAME"
+    paths:
+    - bestellen
+
+Angular:
+  <<: *angular_template
+  script: dep build:angular $STAGE -vv #ng build
+
+Mysql:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:docker
+  stage: preparation
+  dependencies: []
+  services:
+    - docker:dind
+  variables:
+    DOCKER_REGISTRY: gitlab.frmwrk.nl:5005/$CI_PROJECT_PATH
+    DOCKER_IMAGE: mysql:5.7-default
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+  script:
+    - . /var/scripts/mysql-script.sh
+  artifacts:
+    name: "Sanitized sql dump"
+    paths:
+      - default-sanitized.sql.gz
+    expire_in: 1 days
+  tags:
+    - privileged
+  only:
+    variables:
+      - $BUILD
+
+Feature build:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:docker
+  stage: preparation
+  dependencies:
+    - Composer packages
+    - NPM packages
+    - Grunt
+    - Angular
+  services:
+    - docker:dind
+  variables:
+    DOCKER_REGISTRY: gitlab.frmwrk.nl:5005/$CI_PROJECT_PATH
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+  script:
+    - dep drupal:settings development --test=true
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN gitlab.frmwrk.nl:5005
+    - dep drupal:build_stack development -vvv
+  tags:
+    - privileged
+  only:
+    variables:
+      - $BUILD
+
+#PHPunit:
+#  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+#  dependencies:
+#  - Composer packages
+#  stage: test
+#  script: dep test:phpunit $STAGE -vvv #vendor/bin/phpunit -c web/core/ --testsuite=unit
+#  allow_failure: true # set false when tests are run well
+
+Cypress:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupaltestci:chrome-tools
+  dependencies:
+    - Composer packages
+    - NPM packages
+    - Config
+    - Grunt
+    - Angular
+  services:
+    - name: gitlab.frmwrk.nl:5005/$CI_PROJECT_PATH/mysql:default-fixtures
+      alias: mysql
+  variables:
+    MYSQL_DATABASE: drupal
+    MYSQL_ROOT_PASSWORD: frmwrk
+  stage: test
+  script:
+    - dep test:cypress $STAGE -vv
+  artifacts:
+    expire_in: 1 week
+    when: on_failure
+    paths:
+    - cypress/screenshots
+    - cypress/videos
+  except:
+    variables:
+      - $DISABLETESTS
+
+# Deployment tasks
+.job_template: &deploy_template
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:buildtools-d8
+  stage: deploy
+  when: manual
+  dependencies:
+  - Composer packages
+  - Config
+  - Grunt
+  - Angular
+  allow_failure: false
+
+Deploy development:
+  <<: *deploy_template
+  when: always
+  environment:
+    name: Development
+    url: https://dev.wrkdrupal.nl
+  only:
+    refs:
+    - development
+  script:
+  - dep deploy development
+  - dep drupalci:slack $STAGE --message="Deploy naar $CI_ENVIRONMENT_NAME is afgerond"
+
+Deploy demo:
+  <<: *deploy_template
+  environment:
+    name: Demo
+    url: https://acc.wrkdrupal.nl
+  only:
+    refs:
+    - demo
+  script:
+  - dep deploy demo
+  - dep drupalci:slack $STAGE --message="Deploy naar $CI_ENVIRONMENT_NAME is afgerond"
+
+Deploy production:
+  <<: *deploy_template
+  environment:
+    name: Live
+    url: https://www.wrkdrupal.nl
+  only:
+    refs:
+    - master
+    - production
+  script:
+  - dep deploy production
+  - dep drupalci:slack $STAGE --message="Deploy naar $CI_ENVIRONMENT_NAME is afgerond"
+
+Deploy feature:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:docker
+  when: manual
+  services:
+    - docker:dind
+  variables:
+    DOCKER_REGISTRY: gitlab.frmwrk.nl:5005/$CI_PROJECT_PATH
+    DOCKER_HOST: tcp://docker:2375
+    DOCKER_DRIVER: overlay2
+  environment:
+    name: $CI_COMMIT_REF_SLUG deployment
+    url: https://$CI_COMMIT_REF_SLUG.test.frmwrk.nl
+    on_stop: Remove deployed feature
+  dependencies:
+    - Composer packages
+    - NPM packages
+    - Config
+    - Grunt
+    - Angular
+    - Feature build
+  stage: deploy
+  script:
+    - git checkout web/.htaccess
+    - dep drupal:htaccess development --test=true
+    - dep drupal:settings development --test=true
+    - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN gitlab.frmwrk.nl:5005
+    - dep packages:composer_packages_nodev development -vv
+    - dep drupal:update_stack development -vv
+    - dep drupalci:prepare swarm
+    - dep deploy:upload_stack swarm -vvv
+    - dep deploy:deploy_stack swarm -vvv
+    # - dep drupalci:slack development --message="Deploy naar https://$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG.test.frmwrk.nl is afgerond"
+  except:
+    refs:
+      - demo
+      - development
+      - master
+      - production
+  tags:
+    - privileged
+
+Remove deployed feature:
+  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupalci:docker
+  stage: deploy
+  environment:
+    name: $CI_COMMIT_REF_SLUG deployment
+    action: stop
+  script:
+    - dep drupalci:prepare swarm
+    - dep deploy:destroy_stack swarm
+  when: manual
+  dependencies: []
+  tags:
+    - privileged
+
+Prepare environment:
+  <<: *deploy_template
+  only:
+    refs:
+    - master
+    - production
+    - acceptation
+    - demo
+    - development
+    variables:
+    - $NEW
+  script:
+  - dep deploy:prepare $STAGE -vvv
