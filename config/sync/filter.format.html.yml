@@ -1,0 +1,28 @@
+uuid: ce577969-246e-4421-95b0-d433c8c181ab
+langcode: en
+status: true
+dependencies:
+  module:
+    - editor
+name: Html
+format: html
+weight: 0
+filters:
+  editor_file_reference:
+    id: editor_file_reference
+    provider: editor
+    status: true
+    weight: 0
+    settings: {  }
+  filter_html_image_secure:
+    id: filter_html_image_secure
+    provider: filter
+    status: true
+    weight: 9
+    settings: {  }
+  filter_htmlcorrector:
+    id: filter_htmlcorrector
+    provider: filter
+    status: true
+    weight: 10
+    settings: {  }

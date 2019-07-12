@@ -1,0 +1,55 @@
+seckit_xss:
+  csp:
+    checkbox: false
+    vendor-prefix:
+      x: false
+      webkit: false
+    report-only: false
+    default-src: ''
+    script-src: ''
+    object-src: ''
+    img-src: ''
+    media-src: ''
+    frame-src: ''
+    frame-ancestors: ''
+    child-src: ''
+    font-src: ''
+    connect-src: ''
+    report-uri: /report-csp-violation
+    upgrade-req: false
+    policy-uri: ''
+  x_xss:
+    seckit_x_xss_option_disable: Disabled
+    seckit_x_xss_option_0: '0'
+    seckit_x_xss_option_1: 1;
+    seckit_x_xss_option_1_block: '1; mode=block'
+    select: 0
+seckit_csrf:
+  origin: false
+  origin_whitelist: ''
+seckit_clickjacking:
+  js_css_noscript: false
+  noscript_message: 'Sorry, you need to enable JavaScript to visit this website.'
+  x_frame: '1'
+  x_frame_allow_from: ''
+seckit_ssl:
+  hsts: false
+  hsts_subdomains: false
+  hsts_max_age: 1000
+  hsts_preload: false
+seckit_ct:
+  expect_ct: false
+  max_age: 86400
+  report_uri: ''
+  enforce: false
+seckit_fp:
+  feature_policy: false
+  feature_policy_policy: ''
+seckit_various:
+  from_origin: false
+  from_origin_destination: same
+  referrer_policy: false
+  referrer_policy_policy: no-referrer-when-downgrade
+  disable_autocomplete: false
+_core:
+  default_config_hash: x6bhN6WZwfVUI_LLMvRJIUW_2c26VTaBozbfXmJWmro

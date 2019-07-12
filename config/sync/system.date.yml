@@ -1,0 +1,11 @@
+country:
+  default: NL
+first_day: 1
+timezone:
+  default: Europe/Amsterdam
+  user:
+    configurable: false
+    warn: false
+    default: 0
+_core:
+  default_config_hash: V9UurX2GPT05NWKG9f2GWQqFG2TRG8vczidwjpy7Woo

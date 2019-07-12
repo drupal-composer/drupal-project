@@ -1,0 +1,21 @@
+track_time: 1
+user_wrong_count: 0
+host_wrong_count: 0
+host_wrong_count_hard: 0
+activity_threshold: 0
+disable_core_login_error: 0
+notice_attempts_available: 0
+last_login_timestamp: 0
+last_access_timestamp: 0
+user_blocked_notification_emails: ''
+login_activity_notification_emails: ''
+notice_attempts_message: 'You have used @user_current_count out of @user_block_attempts login attempts. After all @user_block_attempts have been used, you will be unable to login.'
+host_soft_banned: 'This host is not allowed to log in to @site. Please contact your site administrator.'
+host_hard_banned: 'The IP address @ip is banned at @site, and will not be able to access any of its content from now on. Please contact the site administrator.'
+user_blocked: 'The user @username has been blocked due to failed login attempts.'
+user_blocked_email_subject: 'Security action: The user @username has been blocked.'
+user_blocked_email_body: 'The user @username (@edit_uri) has been blocked at @site due to the amount of failed login attempts. Please check the logs for more information.'
+login_activity_email_subject: 'Security information: Unexpected login activity has been detected at @site.'
+login_activity_email_body: 'The configured threshold of @activity_threshold logins has been reached with a total of @tracking_current_count invalid login attempts. You should review your log information about login attempts at @site.'
+_core:
+  default_config_hash: DftMffb4je4TYBtv6tAjHrXDtW3HBZ85hU9mCFJpCgM

@@ -1,0 +1,26 @@
+css:
+  brotli: true
+  combine_media: false
+  fix_type: true
+  preserve_external: false
+dns_prefetch: false
+path:
+  convert:
+    absolute_to_protocol_relative: true
+    absolute: false
+    force_https: false
+cache_level: 2
+cron_frequency: 86400
+enabled: true
+global_counter: 0
+immutable: true
+js:
+  brotli: true
+  fix_type: true
+  preserve_external: false
+skip_enabled_preprocess_check: false
+show_bypass_cookie_message: true
+symlinks: false
+symlinksifownermatch: false
+_core:
+  default_config_hash: Vi3b7DLLNw5X1UX9XG8mnU-ysvyNgdyvAasxV9yck3I

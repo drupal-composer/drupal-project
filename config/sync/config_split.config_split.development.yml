@@ -1,0 +1,24 @@
+uuid: 6a2babc6-58f9-4486-9169-168a8b310c32
+langcode: en
+status: true
+dependencies: {  }
+id: development
+label: Development
+description: ''
+folder: ../config/dev
+module:
+  devel: 0
+  devel_php: 0
+  field_tools: 0
+  field_ui: 0
+  kint: 0
+  menu_ui: 0
+  restui: 0
+  update: 0
+  views_ui: 0
+theme: {  }
+blacklist: {  }
+graylist: {  }
+graylist_dependents: true
+graylist_skip_equal: true
+weight: 0
