@@ -6,6 +6,7 @@
 /web/themes/contrib/
 /web/profiles/contrib/
 /web/libraries/
+/console/language/
 
 # Ignore sensitive information
 /web/sites/*/settings.php
