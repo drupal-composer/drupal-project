@@ -1,0 +1,6 @@
+access_token_expiration: 300
+refresh_token_expiration: 1209600
+remember_clients: true
+token_cron_batch_size: 0
+_core:
+  default_config_hash: iyQ3vimEIAGk_tbNATkrngrUKL81DVBPm2ScMKENWlU

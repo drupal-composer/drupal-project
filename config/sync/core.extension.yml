@@ -14,6 +14,8 @@ module:
   config_filter: 0
   config_ignore: 0
   config_split: 0
+  consumer_image_styles: 0
+  consumers: 0
   contextual: 0
   ctools: 0
   datetime: 0
@@ -23,6 +25,7 @@ module:
   editor: 0
   entity_reference_revisions: 0
   field: 0
+  field_defaults: 0
   field_ui: 0
   file: 0
   filter: 0
@@ -31,6 +34,8 @@ module:
   hook_event_dispatcher: 0
   image: 0
   inline_entity_form: 0
+  jsonapi: 0
+  jsonapi_extras: 0
   layout_builder: 0
   layout_builder_restrictions: 0
   layout_discovery: 0
@@ -38,6 +43,7 @@ module:
   link: 0
   linkit: 0
   login_security: 0
+  mail_login: 0
   mailsystem: 0
   media: 0
   media_library: 0
@@ -57,10 +63,12 @@ module:
   seckit: 0
   serialization: 0
   session_limit: 0
+  simple_oauth: 0
   stage_file_proxy: 0
   swiftmailer: 0
   system: 0
   taxonomy: 0
+  taxonomy_access_fix: 0
   text: 0
   token: 0
   toolbar: 0

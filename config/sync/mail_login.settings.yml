@@ -1,0 +1,6 @@
+mail_login_enabled: 1
+mail_login_override_login_labels: 1
+mail_login_username_title: 'Login by username/email address'
+mail_login_username_description: 'You can use your username or email address to login.'
+_core:
+  default_config_hash: SMMHLGfy4YoZHXabFVqh8vjsvM_MzWgohArG_gXaIXQ

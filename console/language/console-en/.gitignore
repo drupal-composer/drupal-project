@@ -1,0 +1,35 @@
+# deprecation-detector
+/.rules
+
+# Composer
+/vendor
+/bin/phpunit
+/bin/jsonlint
+/bin/phpcbf
+/bin/phpcs
+/bin/validate-json
+/bin/pdepend
+/bin/php-cs-fixer
+/bin/phpmd
+PATCHES.txt
+
+# Develop
+autoload.local.php
+
+# Binaries
+/box.phar
+/console.phar
+/drupal.phar
+/drupal.phar.version
+
+# Test
+/phpunit.xml
+
+# Drupal
+/core
+/nbproject/
+
+# Splitsh
+/config/
+/PATCHES.txt
+
