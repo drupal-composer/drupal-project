@@ -1,0 +1,59 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_layout
+    - node.type.landingpage
+    - paragraphs.paragraphs_type.link
+    - paragraphs.paragraphs_type.media
+    - paragraphs.paragraphs_type.section
+    - paragraphs.paragraphs_type.text
+  module:
+    - entity_reference_layout
+id: node.landingpage.field_layout
+field_name: field_layout
+entity_type: node
+bundle: landingpage
+label: Layout
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: '0'
+    target_bundles:
+      section: section
+      link: link
+      media: media
+      text: text
+    target_bundles_drag_drop:
+      section:
+        enabled: '1'
+        weight: '6'
+      link:
+        enabled: '1'
+        weight: '7'
+      media:
+        enabled: '1'
+        weight: '8'
+      text:
+        enabled: '1'
+        weight: '9'
+      text_with_media:
+        enabled: '1'
+        weight: '10'
+    layout_bundles:
+      - section
+    allowed_layouts:
+      'Columns: 1':
+        layout_onecol: 'One column'
+      'Columns: 2':
+        layout_twocol: 'Two column'
+        layout_twocol_bricks: 'Two column bricks'
+      'Columns: 3':
+        layout_threecol_25_50_25: 'Three column 25/50/25'
+        layout_threecol_33_34_33: 'Three column 33/34/33'
+field_type: entity_reference_layout_revisioned

@@ -1,0 +1,20 @@
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_teaser_text
+    - node.type.landingpage
+  module:
+    - text
+id: node.landingpage.field_teaser_text
+field_name: field_teaser_text
+entity_type: node
+bundle: landingpage
+label: 'Teaser Text'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

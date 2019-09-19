@@ -36,7 +36,11 @@ fin init
 ```
 Install the Drupal Site:
 ```
-fin init-site
+fin init-lp
+```
+Install the Drupal Site with paragraphs layout:
+```
+fin init-lp-with-erl
 ```
 > Note: The Drupal Administator account will be set automaticly to admin:admin, remember to change it before the site goes into production.
 The Site will be installed with the minimal profile. 

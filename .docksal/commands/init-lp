@@ -1,0 +1,101 @@
+#!/usr/bin/env bash
+
+#: exec_target = cli
+
+## Initialize/reinstall site
+##
+## Usage: fin init-lp
+
+# Abort if anything fails
+set -e
+
+#-------------------------- Settings --------------------------------
+
+# PROJECT_ROOT and DOCROOT are set as env variables in cli
+SITE_DIRECTORY="default"
+DOCROOT_PATH="${PROJECT_ROOT}/${DOCROOT}"
+SITEDIR_PATH="${DOCROOT_PATH}/sites/${SITE_DIRECTORY}"
+
+#-------------------------- END: Settings --------------------------------
+
+#-------------------------- Helper functions --------------------------------
+
+
+# Fix file/folder permissions
+fix_permissions ()
+{
+	echo "Making site directory writable..."
+	chmod 755 "${SITEDIR_PATH}"
+}
+
+# Install site
+site_install ()
+{
+	cd $DOCROOT_PATH
+	# We disable email sending here so site-install does not return an error
+	PHP_OPTIONS="-d sendmail_path=`which true`" drush site-install  minimal -y --site-name='Drupal Project'
+}
+
+# Set the account to admin:admin
+set_admin ()
+{
+    cd $DOCROOT_PATH
+	drush upwd admin admin
+}
+
+# Install some base modules.
+install_base_modules()
+{
+    cd $DOCROOT_PATH
+    drush en admin_toolbar admin_toolbar_tools adminimal_admin_toolbar module_filter config ckeditor tour block_content comment contact shortcut taxonomy menu_link_content path field_ui views_ui -y
+    drush then adminimal_theme -y
+    drush cset system.theme admin adminimal_theme -y
+    drush cset node.settings use_admin_theme TRUE -y
+    drush php-eval 'node_access_rebuild();'
+}
+
+# Install Core configurations
+install_core_configs()
+{
+        cd $DOCROOT_PATH
+        drush en paragraphs -y
+        drush cim --partial --source=../.docksal/configs/config_install/core -y
+}
+
+# Install Site configurations
+install_site_configs()
+{
+        cd $DOCROOT_PATH
+        drush cim --partial --source=../.docksal/configs/config_install/site -y
+}
+
+# Install Media configurations
+install_media_configs()
+{
+        cd $DOCROOT_PATH
+        drush en ctools media entity_browser video_embed_field video_embed_media video_embed_field dropzonejs_eb_widget entity_browser_entity_form media_entity_video media_entity_browser -y
+        drush cim --partial --source=../.docksal/configs/config_install/media -y
+}
+
+# Install Landingpage configurations
+install_lp_configs()
+{
+        cd $DOCROOT_PATH
+        drush cim --partial --source=../.docksal/configs/config_install/landingpage -y
+        drush cr
+}
+
+#-------------------------- END: Functions --------------------------------
+
+#-------------------------- Execution --------------------------------
+
+# Project initialization steps
+fix_permissions
+time site_install
+time set_admin
+time install_base_modules
+time install_core_configs
+time install_site_configs
+time install_media_configs
+time install_lp_configs
+#-------------------------- END: Execution --------------------------------
