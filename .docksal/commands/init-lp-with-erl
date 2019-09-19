@@ -86,6 +86,14 @@ install_lp_erl_configs()
         drush cr
 }
 
+# Install Landingpage configurations
+install_dashboard_install()
+{
+        cd $DOCROOT_PATH
+        drush en menu_ui bc_total_control -y
+        drush cr
+}
+
 #-------------------------- END: Functions --------------------------------
 
 #-------------------------- Execution --------------------------------
@@ -99,4 +107,5 @@ time install_core_configs
 time install_site_configs
 time install_media_configs
 time install_lp_erl_configs
+time install_dashboard_install
 #-------------------------- END: Execution --------------------------------

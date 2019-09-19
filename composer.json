@@ -20,6 +20,7 @@
         }
     ],
     "require": {
+        "b-connect/bc_total_control": "dev-master",
         "bower-asset/dropzone": "^5.1",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6",
