@@ -30,6 +30,13 @@ command:
         skip-tables-key: common
         # Dump to standard dump location by default.
         result-file: ../dumps/sync/dump.sql
+        gzip: true
+    sql-sync:
+      options:
+        create-db: true
+        # Use common tables by default.
+        structure-tables-key: common
+        skip-tables-key: common
   site:
     install:
       options:
