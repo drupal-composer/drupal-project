@@ -52,6 +52,7 @@
         "drupal/paragraphs": "^1.2",
         "drupal/pathauto": "^1.1",
         "drupal/redirect": "^1.1",
+        "drupal/redirect_after_login": "^2.5",
         "drupal/shield": "^1.2",
         "drupal/stage_file_proxy": "^1.0@alpha",
         "drupal/twig_extender": "^2.1",

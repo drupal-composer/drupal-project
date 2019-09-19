@@ -11,7 +11,7 @@ field_name: field_teaser_text
 entity_type: node
 bundle: landingpage
 label: 'Teaser Text'
-description: ''
+description: 'The Text that is displayed if some content references on this page.'
 required: false
 translatable: false
 default_value: {  }

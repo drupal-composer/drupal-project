@@ -10,7 +10,7 @@ field_name: field_teaser_image
 entity_type: node
 bundle: landingpage
 label: 'Teaser Image'
-description: ''
+description: 'The Image that is displayed if some content references on this page.'
 required: false
 translatable: false
 default_value: {  }

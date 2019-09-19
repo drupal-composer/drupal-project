@@ -1,0 +1,5 @@
+login_redirection:
+  anonymous: null
+  authenticated: /admin/dashboard
+  administrator: /admin/dashboard
+exclude_urls: ''

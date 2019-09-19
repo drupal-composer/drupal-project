@@ -15,7 +15,7 @@ field_name: field_components
 entity_type: node
 bundle: landingpage
 label: Components
-description: ''
+description: "Add paragraphs to the layout of the page.<br>\r\nEvery paragraph is a section that is rendered independently.<br>\r\nYou can rearrange the paragraphs by drag them on the cross in the top left corner and drop them on the desired position."
 required: false
 translatable: false
 default_value: {  }

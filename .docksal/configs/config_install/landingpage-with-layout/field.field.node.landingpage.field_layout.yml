@@ -15,7 +15,7 @@ field_name: field_layout
 entity_type: node
 bundle: landingpage
 label: Layout
-description: ''
+description: "First you have to add a section. The section defines the layout and position of the paragraphs in it.<br>\r\nThen you have to add the paragraphs with the plus-icon. Paragraphs include the content which is shown.<br><br>\r\nSections can be rearranged, edited or deleted by hover over the line at the top of the section.<br>\r\nTo rearrange, edit or delete a paragraph you have to hover over the paragraph itself.<br>\r\nFor rearranging you have the options in the top left corner to drag and drop with the hamburger menu or move it one position up/down with the arrows.<br>\r\nTo edit or delete you have to click on the icons in the top left corner."
 required: false
 translatable: false
 default_value: {  }

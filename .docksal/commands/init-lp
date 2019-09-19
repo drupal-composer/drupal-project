@@ -89,7 +89,8 @@ install_lp_configs()
 install_dashboard_install()
 {
         cd $DOCROOT_PATH
-        drush en menu_ui bc_total_control -y
+        drush en menu_ui bc_total_control redirect_after_login -y
+        drush cim --partial --source=../.docksal/configs/config_install/dashboard -y
         drush cr
 }
 
