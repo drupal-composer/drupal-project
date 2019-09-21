@@ -14,7 +14,7 @@ the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
 First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
 
 > Note: The instructions below refer to the [global composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar) 
+You might need to replace `composer` with `php composer.phar` (or similar)
 for your setup.
 
 After that you can create the project:
@@ -23,7 +23,7 @@ After that you can create the project:
 composer create-project drupal-composer/drupal-project:7.x-dev some-dir --no-interaction
 ```
 
-With `composer require ...` you can download new dependencies to your 
+With `composer require ...` you can download new dependencies to your
 installation.
 
 ```
@@ -31,8 +31,8 @@ cd some-dir
 composer require drupal/devel:~1.0
 ```
 
-The `composer create-project` command passes ownership of all files to the 
-project that is created. You should create a new git repository, and commit 
+The `composer create-project` command passes ownership of all files to the
+project that is created. You should create a new git repository, and commit
 all files not excluded by the .gitignore file.
 
 ## What does the template do?
@@ -98,16 +98,16 @@ _(You may run `composer require "kenwheeler/slick:~1.6.0"` as well if you add ju
 
 ### Should I commit the contrib modules I download?
 
-Composer recommends **no**. They provide [argumentation against but also 
+Composer recommends **no**. They provide [argumentation against but also
 workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faqs/should-i-commit-the-dependencies-in-my-vendor-directory.md).
 
 ### How can I apply patches to downloaded modules?
 
-If you need to apply patches (depending on the project being modified, a pull 
-request is often a better solution), you can do so with the 
+If you need to apply patches (depending on the project being modified, a pull
+request is often a better solution), you can do so with the
 [composer-patches](https://github.com/cweagans/composer-patches) plugin.
 
-To add a patch to drupal module foobar insert the patches section in the extra 
+To add a patch to drupal module foobar insert the patches section in the extra
 section of composer.json:
 ```json
 "extra": {
