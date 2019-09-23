@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-BIN_DIR=vendor/bin
+BIN_DIR=../vendor/bin
 TEST_VAR=install_drupal_backup_test
 TEST_VAR_VALUE=TestValue
 BACKUP_FILE=$(pwd -P)'/db/restore.sql'
