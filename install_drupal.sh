@@ -44,7 +44,7 @@ function test_var {
 
 }
 echo "testing install"
-drupal site:install standard --force --no-interaction --debug
+drupal site:install standard --force --no-interaction --verbose
 assert 'On new install, our test variable should not exist.'
 test_var ${TEST_VAR_VALUE} && error_exit 'Failure' || success 'Success'
 
