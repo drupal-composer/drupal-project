@@ -26,9 +26,14 @@ You might need to replace `composer` with `php composer.phar` (or similar)
 for your setup.
 
 After that you can create the project:
-
 ```
 composer create-project bixal/drupal-project:8.x-dev some-dir --stability dev --no-interaction
+```
+Where ```some-dir``` is the name you want to give to your project directory.
+
+Before proceeding, make sure you change directories by going into your new project directory:
+```
+cd some-dir
 ```
 
 Copy .env.example to .env:
@@ -53,9 +58,9 @@ Edit your /etc/hosts file:
 ```
 sudo sh -c "echo '127.0.0.1 mysitename' >> /etc/hosts"
 ```
-Replace mysitename with PROJECT_BASE_URL in .env
+Replace mysitename with PROJECT_BASE_URL found in .env
 
-Finally make up:
+Finally, run the command 'make up' to start the container for the project:
 ```
 make up
 ```
