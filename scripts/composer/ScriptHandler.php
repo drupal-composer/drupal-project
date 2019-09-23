@@ -48,7 +48,7 @@ class ScriptHandler {
       ];
       drupal_rewrite_settings($settings, $drupalRoot . '/sites/default/settings.php');
       $fs->chmod($drupalRoot . '/sites/default/settings.php', 0666);
-      $event->getIO()->write("Create a sites/default/settings.php file with chmod 0666");
+      $event->getIO()->write("Created a sites/default/settings.php file with chmod 0666");
     }
 
     // Create the files directory with chmod 0777
@@ -56,7 +56,7 @@ class ScriptHandler {
       $oldmask = umask(0);
       $fs->mkdir($drupalRoot . '/sites/default/files', 0777);
       umask($oldmask);
-      $event->getIO()->write("Create a sites/default/files directory with chmod 0777");
+      $event->getIO()->write("Created a sites/default/files directory with chmod 0777");
     }
   }
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-BIN_DIR=vendor/bin
+BIN_DIR=../vendor/bin
 TEST_VAR=install_drupal_backup_test
 TEST_VAR_VALUE=TestValue
 BACKUP_FILE=$(pwd -P)'/db/restore.sql'
@@ -43,8 +43,9 @@ function test_var {
     fi
 
 }
-
-drupal site:install --force --no-interaction
+cd web && echo $PWD
+echo "testing install"
+drupal site:install standard --force --no-interaction --verbose
 assert 'On new install, our test variable should not exist.'
 test_var ${TEST_VAR_VALUE} && error_exit 'Failure' || success 'Success'
 
@@ -60,7 +61,7 @@ else
 fi
 
 echo 'Reinstalling site to clear out our variable.'
-drupal site:install --force --no-interaction
+drupal site:install standard --force --no-interaction
 assert "After reinstall, we should not get '${TEST_VAR_VALUE}' as the value."
 test_var ${TEST_VAR_VALUE} && error_exit 'Failure' || success 'Success'
 
