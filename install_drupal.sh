@@ -43,6 +43,7 @@ function test_var {
     fi
 
 }
+cd web && echo $PWD
 echo "testing install"
 drupal site:install standard --force --no-interaction --verbose
 assert 'On new install, our test variable should not exist.'
