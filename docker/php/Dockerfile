@@ -1,4 +1,4 @@
-FROM wodby/drupal-php:7.1-dev-4.6.3
+FROM wodby/drupal-php:7.2
 
 WORKDIR /var/www/html
 
