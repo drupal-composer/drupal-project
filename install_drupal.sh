@@ -44,7 +44,7 @@ function test_var {
 
 }
 
-drupal site:install --force --no-interaction
+drupal site:install standard --force --no-interaction
 assert 'On new install, our test variable should not exist.'
 test_var ${TEST_VAR_VALUE} && error_exit 'Failure' || success 'Success'
 
@@ -60,7 +60,7 @@ else
 fi
 
 echo 'Reinstalling site to clear out our variable.'
-drupal site:install --force --no-interaction
+drupal site:install standard --force --no-interaction
 assert "After reinstall, we should not get '${TEST_VAR_VALUE}' as the value."
 test_var ${TEST_VAR_VALUE} && error_exit 'Failure' || success 'Success'
 
