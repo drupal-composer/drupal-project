@@ -1,5 +1,5 @@
 language: php
-dist: bionic
+dist: trusty
 sudo: false
 
 php:
