@@ -64,7 +64,7 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "composer-scaffold": {
+        "drupal-scaffold": {
             "locations": {
                 "web-root": "web/"
             }

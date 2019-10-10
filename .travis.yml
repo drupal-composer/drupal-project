@@ -38,6 +38,6 @@ script:
   # Skip core/tests/Drupal/Tests/ComposerIntegrationTest.php because web/ has no composer.json
   # Ignore PageCache group temporarily, @see https://www.drupal.org/node/2770673
   # Ignore Setup group temporarily, @see https://www.drupal.org/node/2962157
-  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,DependencyInjection,PageCache,Setup
+  - ./../vendor/bin/phpunit -c core --testsuite unit --exclude-group Composer,Scaffold,DependencyInjection,PageCache,Setup
   - ./../vendor/bin/drush
   - if [[ $RELEASE = stable ]]; then ./../vendor/bin/drupal; fi;
