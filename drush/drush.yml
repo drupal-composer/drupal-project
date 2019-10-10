@@ -9,7 +9,8 @@ sql:
       - cache
       - 'cache_*'
       - history
-      - 'search_*'
+      - 'search_index'
+      - 'search_total'
       - 'sessions'
       - 'watchdog'
   # List of tables to be omitted entirely from SQL dumps made by the 'sql-dump'
