@@ -1,6 +1,10 @@
 settings:
   default_status: open
   default_page_base_path: form
+  default_ajax: false
+  default_ajax_effect: fade
+  default_ajax_speed: 500
+  default_ajax_progress_type: throbber
   default_form_open_message: 'This form has not yet been opened to submissions.'
   default_form_close_message: 'Sorry…This form is closed to new submissions.'
   default_form_exception_message: 'Unable to display this webform. Please contact the site administrator.'
@@ -32,6 +36,8 @@ settings:
   default_draft_button_label: 'Save Draft'
   default_draft_saved_message: 'Submission saved. You may return to this form later and it will restore the current values.'
   default_draft_loaded_message: 'A partially-completed form was found. Please complete the remaining portions.'
+  default_draft_pending_single_message: 'You have a pending draft for this webform. <a href="#">Load your pending draft</a>.'
+  default_draft_pending_multiple_message: 'You have pending drafts for this webform. <a href="#">View your pending drafts</a>.'
   default_confirmation_message: 'New submission added to [webform:title].'
   default_confirmation_back_label: 'Back to form'
   default_submission_label: '[webform_submission:submitted-to]: Submission #[webform_submission:serial]'
@@ -106,6 +112,7 @@ batch:
 purge:
   cron_size: 100
 element:
+  machine_name_pattern: a-z0-9_
   empty_message: '{Empty}'
   allowed_tags: admin
   wrapper_classes: "container-inline clearfix\nform--inline clearfix\nmessages messages--error\nmessages messages--warning\nmessages messages--status\n"
@@ -165,9 +172,9 @@ ui:
   help_disabled: false
   dialog_disabled: false
   offcanvas_disabled: false
-  contribute_disabled: false
   promotions_disabled: false
   description_help: true
+  contribute_disabled: false
 libraries:
   excluded_libraries:
     - jquery.chosen
@@ -177,12 +184,12 @@ requirements:
   cdn: true
   bootstrap: true
   spam: true
-contribute:
-  account_type: user
-  account_id: null
 langcode: en
 third_party_settings:
   captcha:
     replace_administration_mode: true
+contribute:
+  account_type: user
+  account_id: null
 _core:
   default_config_hash: zGi6Kl2hhwJ2BVvbvVGykC2-NPShwQolX--wfmRTOfA
