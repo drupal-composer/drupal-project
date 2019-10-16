@@ -56,6 +56,10 @@ class PhappEnvironmentLoader {
     if ($lagoon_safe_branch = getenv('LAGOON_GIT_SAFE_BRANCH')) {
       return "PHAPP_ENV=amazeeio.$lagoon_safe_branch";
     }
+    // Support platform.sh per branch env.
+    if ($platform_branch = getenv('PLATFORM_BRANCH')) {
+      return "PHAPP_ENV=platformsh.$platform_branch";
+    }
   }
 
   /**
