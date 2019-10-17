@@ -54,6 +54,7 @@
         "drupal/metatag": "^1.8",
         "drupal/paragraphs": "^1.8",
         "drupal/pathauto": "^1.4",
+        "drupal/rabbit_hole": "^1.0@beta",
         "drupal/real_aes": "^2.2",
         "drupal/redirect": "^1.4",
         "drupal/restui": "^1.17",
@@ -135,6 +136,11 @@
             "initial": {
                 ".editorconfig": "../.editorconfig",
                 ".gitattributes": "../.gitattributes"
+            }
+        },
+        "patches": {
+            "drupal/rabbit_hole": {
+                "2900548 - Add commerce products" : "https://www.drupal.org/files/issues/commerce_support-2900548-3.patch"
             }
         }
     }
