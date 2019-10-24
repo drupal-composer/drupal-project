@@ -71,7 +71,7 @@
         "drupal/twig_tweak": "^2.3",
         "drupal/username_enumeration_prevention": "^1.0@beta",
         "drupal/video_embed_field": "^2.1",
-        "drupal/webform": "^5.2",
+        "drupal/webform": "^5.4",
         "drush/drush": "^9.0.0",
         "frmwrk/frmwrk_decoupled": "dev-master",
         "vlucas/phpdotenv": "^2.0",
