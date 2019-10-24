@@ -3815,6 +3815,69 @@
             }
         },
         {
+            "name": "drupal/field_group",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/field_group.git",
+                "reference": "8.x-1.0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/field_group-8.x-1.0.zip",
+                "reference": "8.x-1.0",
+                "shasum": "e8aa3fae5c3c5dec84644bb577996938d638a611"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0",
+                    "datestamp": "1510352885",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0+"
+            ],
+            "authors": [
+                {
+                    "name": "Hydra",
+                    "homepage": "https://www.drupal.org/user/647364"
+                },
+                {
+                    "name": "Stalski",
+                    "homepage": "https://www.drupal.org/user/322618"
+                },
+                {
+                    "name": "jyve",
+                    "homepage": "https://www.drupal.org/user/591438"
+                },
+                {
+                    "name": "swentel",
+                    "homepage": "https://www.drupal.org/user/107403"
+                },
+                {
+                    "name": "zuuperman",
+                    "homepage": "https://www.drupal.org/user/361625"
+                }
+            ],
+            "description": "Provides the field_group module.",
+            "homepage": "https://www.drupal.org/project/field_group",
+            "support": {
+                "source": "https://git.drupalcode.org/project/field_group"
+            }
+        },
+        {
             "name": "drupal/field_tools",
             "version": "1.0.0-alpha4",
             "source": {
@@ -4590,6 +4653,61 @@
             }
         },
         {
+            "name": "drupal/length_indicator",
+            "version": "1.0.0-rc3",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/length_indicator.git",
+                "reference": "8.x-1.0-rc3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/length_indicator-8.x-1.0-rc3.zip",
+                "reference": "8.x-1.0-rc3",
+                "shasum": "5b538a4e4a3bc8bd533b0da6c5a163482e6aa8a0"
+            },
+            "require": {
+                "drupal/core": "*"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.0-rc3",
+                    "datestamp": "1512396489",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "daniel.bosen",
+                    "homepage": "https://www.drupal.org/user/404865"
+                },
+                {
+                    "name": "thunderbot",
+                    "homepage": "https://www.drupal.org/user/3511180"
+                },
+                {
+                    "name": "tjwelde",
+                    "homepage": "https://www.drupal.org/user/3411453"
+                }
+            ],
+            "description": "Adds an optional length indicator to fields",
+            "homepage": "https://www.drupal.org/project/length_indicator",
+            "support": {
+                "source": "https://git.drupalcode.org/project/length_indicator"
+            }
+        },
+        {
             "name": "drupal/linkit",
             "version": "4.3.0",
             "source": {
@@ -4977,6 +5095,139 @@
             }
         },
         {
+            "name": "drupal/paragraphs_features",
+            "version": "1.6.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/paragraphs_features.git",
+                "reference": "8.x-1.6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/paragraphs_features-8.x-1.6.zip",
+                "reference": "8.x-1.6",
+                "shasum": "282ba99b7e4c0a3e2678590373c508ff309cd7c7"
+            },
+            "require": {
+                "drupal/core": "^8.5",
+                "drupal/paragraphs": "^1.3"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.6",
+                    "datestamp": "1565188386",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Mladen Todorovic",
+                    "homepage": "https://www.drupal.org/user/2103716",
+                    "email": "mladen.todorovic@burda.com"
+                },
+                {
+                    "name": "Daniel Bosen",
+                    "homepage": "https://www.drupal.org/user/404865",
+                    "email": "daniel.bosen@burda.com"
+                },
+                {
+                    "name": "Christian Fritsch",
+                    "homepage": "https://www.drupal.org/user/3453049",
+                    "email": "christian.fritsch@burda.com"
+                },
+                {
+                    "name": "Volker Killesreiter",
+                    "homepage": "https://www.drupal.org/user/3511180",
+                    "email": "volker.killesreiter@burda.com"
+                },
+                {
+                    "name": "Alex Pott",
+                    "homepage": "https://www.drupal.org/user/57527",
+                    "email": "alex.a.pott@gmail.com"
+                }
+            ],
+            "description": "Paragraphs features for extending paragraphs widget functionality.",
+            "homepage": "https://www.drupal.org/project/paragraphs_features",
+            "support": {
+                "source": "https://git.drupalcode.org/project/paragraphs_features"
+            }
+        },
+        {
+            "name": "drupal/password_policy",
+            "version": "3.0.0-alpha5",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/password_policy.git",
+                "reference": "8.x-3.0-alpha5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/password_policy-8.x-3.0-alpha5.zip",
+                "reference": "8.x-3.0-alpha5",
+                "shasum": "74f170caa739e886d2de0df27a479f94014e273f"
+            },
+            "require": {
+                "drupal/core": "^8.5.0",
+                "drupal/ctools": "^3.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-3.x": "3.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-3.0-alpha5",
+                    "datestamp": "1559916365",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Alpha releases are not covered by Drupal security advisories."
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "AohRveTPV",
+                    "homepage": "https://www.drupal.org/user/2760115"
+                },
+                {
+                    "name": "deekayen",
+                    "homepage": "https://www.drupal.org/user/972"
+                },
+                {
+                    "name": "miglius",
+                    "homepage": "https://www.drupal.org/user/18741"
+                },
+                {
+                    "name": "nerdstein",
+                    "homepage": "https://www.drupal.org/user/1557710"
+                },
+                {
+                    "name": "shrop",
+                    "homepage": "https://www.drupal.org/user/14767"
+                }
+            ],
+            "description": "Sets up constraints and expiration of passwords.",
+            "homepage": "https://www.drupal.org/project/password_policy",
+            "support": {
+                "source": "https://git.drupalcode.org/project/password_policy"
+            }
+        },
+        {
             "name": "drupal/pathauto",
             "version": "1.5.0",
             "source": {
@@ -5354,6 +5605,62 @@
             }
         },
         {
+            "name": "drupal/scheduler_content_moderation_integration",
+            "version": "1.1.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/scheduler_content_moderation_integration.git",
+                "reference": "8.x-1.1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/scheduler_content_moderation_integration-8.x-1.1.zip",
+                "reference": "8.x-1.1",
+                "shasum": "861317d35ee3484f74c718e0b1c0400c46226715"
+            },
+            "require": {
+                "drupal/core": "*",
+                "drupal/scheduler": "^1.1"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.1",
+                    "datestamp": "1569575585",
+                    "security-coverage": {
+                        "status": "not-covered",
+                        "message": "Project has not opted into security advisory coverage!"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "daniel.bosen",
+                    "homepage": "https://www.drupal.org/user/404865"
+                },
+                {
+                    "name": "thunderbot",
+                    "homepage": "https://www.drupal.org/user/3511180"
+                },
+                {
+                    "name": "volkerk",
+                    "homepage": "https://www.drupal.org/user/57527"
+                }
+            ],
+            "description": "Scheduler Content Moderation Integration",
+            "homepage": "https://www.drupal.org/project/scheduler_content_moderation_integration",
+            "support": {
+                "source": "https://git.drupalcode.org/project/scheduler_content_moderation_integration"
+            }
+        },
+        {
             "name": "drupal/seckit",
             "version": "1.2.0",
             "source": {
@@ -5415,6 +5722,71 @@
             "support": {
                 "source": "http://cgit.drupalcode.org/seckit",
                 "issues": "http://drupal.org/project/issues/seckit"
+            }
+        },
+        {
+            "name": "drupal/select2",
+            "version": "1.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://git.drupalcode.org/project/select2.git",
+                "reference": "8.x-1.4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://ftp.drupal.org/files/projects/select2-8.x-1.4.zip",
+                "reference": "8.x-1.4",
+                "shasum": "43f64ee8394cf219753404de778a976908b5828d"
+            },
+            "require": {
+                "drupal/core": "~8.0"
+            },
+            "require-dev": {
+                "drupal/facets": "^1.4",
+                "drupal/form_options_attributes": "^1.0",
+                "drupal/search_api": "^1.10"
+            },
+            "type": "drupal-module",
+            "extra": {
+                "branch-alias": {
+                    "dev-1.x": "1.x-dev"
+                },
+                "drupal": {
+                    "version": "8.x-1.4",
+                    "datestamp": "1565263985",
+                    "security-coverage": {
+                        "status": "covered",
+                        "message": "Covered by Drupal's security advisory policy"
+                    }
+                }
+            },
+            "notification-url": "https://packages.drupal.org/8/downloads",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Fritsch",
+                    "homepage": "https://www.drupal.org/user/1133806",
+                    "email": "christian.fritsch@burda.com"
+                },
+                {
+                    "name": "chr.fritsch",
+                    "homepage": "https://www.drupal.org/user/2103716"
+                },
+                {
+                    "name": "oushen",
+                    "homepage": "https://www.drupal.org/user/1200780"
+                },
+                {
+                    "name": "thunderbot",
+                    "homepage": "https://www.drupal.org/user/3511180"
+                }
+            ],
+            "description": "Integration with the select2 JavaScript library.",
+            "homepage": "https://www.drupal.org/project/select2",
+            "support": {
+                "source": "https://git.drupalcode.org/project/select2"
             }
         },
         {
@@ -7439,6 +7811,62 @@
                 "php"
             ],
             "time": "2019-09-01T07:51:21+00:00"
+        },
+        {
+            "name": "npm-asset/select2",
+            "version": "4.0.11",
+            "dist": {
+                "type": "tar",
+                "url": "https://registry.npmjs.org/select2/-/select2-4.0.11.tgz",
+                "reference": null,
+                "shasum": null
+            },
+            "type": "npm-asset",
+            "license": [
+                "MIT"
+            ]
+        },
+        {
+            "name": "oomphinc/composer-installers-extender",
+            "version": "v1.1.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/oomphinc/composer-installers-extender.git",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/oomphinc/composer-installers-extender/zipball/ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "reference": "ca1c4b16b0905c81d1e77e608f36a2eff1a56f56",
+                "shasum": ""
+            },
+            "require": {
+                "composer-plugin-api": "^1.0",
+                "composer/installers": "^1.0"
+            },
+            "type": "composer-plugin",
+            "extra": {
+                "class": "OomphInc\\ComposerInstallersExtender\\Plugin"
+            },
+            "autoload": {
+                "psr-4": {
+                    "OomphInc\\ComposerInstallersExtender\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Stephen Beemsterboer",
+                    "email": "stephen@oomphinc.com",
+                    "homepage": "https://github.com/balbuf"
+                }
+            ],
+            "description": "Extend the composer/installers plugin to accept any arbitrary package type.",
+            "homepage": "http://www.oomphinc.com/",
+            "time": "2017-03-31T16:57:39+00:00"
         },
         {
             "name": "paragonie/random_compat",
@@ -13494,6 +13922,8 @@
         "drupal/graphql": 20,
         "drupal/inline_entity_form": 5,
         "drupal/layout_library": 10,
+        "drupal/length_indicator": 5,
+        "drupal/password_policy": 15,
         "drupal/rabbit_hole": 10,
         "drupal/session_limit": 10,
         "drupal/stage_file_proxy": 10,

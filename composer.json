@@ -17,6 +17,10 @@
         {
             "type": "composer",
             "url": "https://packages.frmwrk.nl"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "require": {
@@ -38,6 +42,7 @@
         "drupal/devel_php": "^1.1",
         "drupal/easy_breadcrumb": "^1.12",
         "drupal/field_defaults": "^1.1",
+        "drupal/field_group": "^1.0",
         "drupal/field_tools": "^1.0@alpha",
         "drupal/flood_unblock": "^1.5",
         "drupal/focal_point": "^1.2",
@@ -49,18 +54,23 @@
         "drupal/jsonapi_extras": "^3.8",
         "drupal/layout_builder_restrictions": "^2.1",
         "drupal/layout_library": "^1.0@beta",
+        "drupal/length_indicator": "^1.0@RC",
         "drupal/linkit": "^4.3",
         "drupal/login_security": "^1.5",
         "drupal/mail_login": "^1.0",
         "drupal/metatag": "^1.8",
         "drupal/paragraphs": "^1.8",
+        "drupal/paragraphs_features": "^1.6",
+        "drupal/password_policy": "^3.0@alpha",
         "drupal/pathauto": "^1.4",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/real_aes": "^2.2",
         "drupal/redirect": "^1.4",
         "drupal/restui": "^1.17",
         "drupal/scheduler": "^1.0",
+        "drupal/scheduler_content_moderation_integration": "^1.1",
         "drupal/seckit": "^1.2",
+        "drupal/select2": "^1.4",
         "drupal/session_limit": "^1.0@beta",
         "drupal/simple_oauth": "^3.16",
         "drupal/simple_sitemap": "^3.2",
@@ -74,6 +84,8 @@
         "drupal/webform": "^5.4",
         "drush/drush": "^9.0.0",
         "frmwrk/frmwrk_decoupled": "dev-master",
+        "npm-asset/select2": "^4.0",
+        "oomphinc/composer-installers-extender": "^1.1",
         "vlucas/phpdotenv": "^2.0",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3",
@@ -124,12 +136,17 @@
         },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
+            ],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
         },
+        "installer-types": ["bower-asset", "npm-asset"],
         "drupal-scaffold": {
             "initial": {
                 ".editorconfig": "../.editorconfig",
