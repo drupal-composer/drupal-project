@@ -31,12 +31,16 @@
         "drupal/adminimal_admin_toolbar": "^1.9",
         "drupal/adminimal_theme": "^1.5",
         "drupal/advagg": "^4.0",
+        "drupal/autosave_form": "^1.0",
+        "drupal/berf": "1.x-dev",
+        "drupal/better_exposed_filters": "^3.0@alpha",
         "drupal/block_blacklist": "^1.0",
         "drupal/config_filter": "^1.4",
         "drupal/config_ignore": "^2.1",
         "drupal/config_split": "^1.4",
         "drupal/console": "^1.0.2",
         "drupal/consumer_image_styles": "^3.0@RC",
+        "drupal/content_lock": "^1.0@alpha",
         "drupal/core": "^8.7.0",
         "drupal/devel": "^2.1",
         "drupal/devel_php": "^1.1",
@@ -58,10 +62,12 @@
         "drupal/linkit": "^4.3",
         "drupal/login_security": "^1.5",
         "drupal/mail_login": "^1.0",
+        "drupal/menu_admin_per_menu": "^1.0",
         "drupal/metatag": "^1.8",
         "drupal/paragraphs": "^1.8",
         "drupal/paragraphs_features": "^1.6",
         "drupal/password_policy": "^3.0@alpha",
+        "drupal/path_redirect_import": "^1.0@beta",
         "drupal/pathauto": "^1.4",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/real_aes": "^2.2",
@@ -78,6 +84,8 @@
         "drupal/subrequests": "^2.2",
         "drupal/swiftmailer": "^1.0@beta",
         "drupal/taxonomy_access_fix": "^2.6",
+        "drupal/taxonomy_menu": "^3.4",
+        "drupal/taxonomy_term_depth": "^2.3",
         "drupal/twig_tweak": "^2.3",
         "drupal/username_enumeration_prevention": "^1.0@beta",
         "drupal/video_embed_field": "^2.1",
@@ -154,9 +162,30 @@
             }
         },
         "patches": {
+            "drupal/code" : {
+                "3055443 - Switch to a memory backend for running the database updates" : "https://www.drupal.org/files/issues/2019-07-22/3055443-2-37.patch"
+            },
             "drupal/rabbit_hole": {
                 "2900548 - Add commerce products" : "https://www.drupal.org/files/issues/commerce_support-2900548-3.patch"
+            },
+            "drupal/inline_entity_form" : {
+                "2927884 - Remove revision log" : "https://www.drupal.org/files/issues/2019-07-16/inline_entity_form-remove_log_message-2927884-6.patch"
+            },
+            "drupal/entity_browser" : {
+                "2858438 - Provide inline entity form FieldWidgetDisplay" : "https://www.drupal.org/files/issues/2858438_6.patch",
+                "2997747 - The View widget should filter based on field settings" : "https://www.drupal.org/files/issues/2018-09-06/2997747-2.patch"
             }
         }
+    },
+    "replace": {
+        "bower-asset/jquery": "*",
+        "bower-asset/jqueryui": "*",
+        "bower-asset/backbone": "*",
+        "bower-asset/underscore": "*",
+        "npm-asset/jquery": "*",
+        "npm-asset/jqueryui": "*",
+        "npm-asset/backbone": "*",
+        "npm-asset/underscore": "*",
+        "npm-asset/fortawesome--fontawesome-free": "*"
     }
 }

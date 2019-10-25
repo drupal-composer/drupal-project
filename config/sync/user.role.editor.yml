@@ -1,0 +1,26 @@
+uuid: e4ec7527-a050-4620-b68f-548c6b8c13fc
+langcode: en
+status: true
+dependencies: {  }
+id: editor
+label: Editor
+weight: -8
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'access taxonomy overview'
+  - 'access webform submission user'
+  - 'administer menu'
+  - 'break content lock'
+  - 'create media'
+  - 'create url aliases'
+  - 'delete any media'
+  - 'delete media'
+  - 'update any media'
+  - 'update media'
+  - 'view all media revisions'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view own webform submission'

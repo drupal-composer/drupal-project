@@ -1,0 +1,38 @@
+uuid: 6a1fe71b-ede3-4d99-8523-f8acb9e088ff
+langcode: en
+status: true
+dependencies: {  }
+id: webmaster
+label: Webmaster
+weight: -7
+is_admin: null
+permissions:
+  - 'access content overview'
+  - 'access files overview'
+  - 'access media overview'
+  - 'access taxonomy overview'
+  - 'access user profiles'
+  - 'access webform overview'
+  - 'access webform submission user'
+  - 'administer blocks'
+  - 'administer menu'
+  - 'administer nodes'
+  - 'administer url aliases'
+  - 'administer users'
+  - 'ban IP addresses'
+  - 'break content lock'
+  - 'create media'
+  - 'create url aliases'
+  - 'delete any media'
+  - 'delete media'
+  - 'delete orphan revisions'
+  - 'delete own webform submission'
+  - 'update any media'
+  - 'update media'
+  - 'view all media revisions'
+  - 'view any webform submission'
+  - 'view own consumer entities'
+  - 'view own simple_oauth entities'
+  - 'view own unpublished content'
+  - 'view own unpublished media'
+  - 'view own webform submission'

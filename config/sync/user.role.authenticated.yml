@@ -6,9 +6,10 @@ _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
 label: 'Authenticated user'
-weight: 1
+weight: -9
 is_admin: false
 permissions:
   - 'access content'
+  - 'access media overview'
   - 'use text format html'
   - 'view media'

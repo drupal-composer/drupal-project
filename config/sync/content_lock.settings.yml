@@ -1,0 +1,58 @@
+verbose: 1
+types:
+  block_content: {  }
+  consumer: {  }
+  file: {  }
+  media: {  }
+  node:
+    '*': '*'
+  redirect: {  }
+  oauth2_token: {  }
+  taxonomy_term:
+    '*': '*'
+  user: {  }
+  webform_submission: {  }
+  menu_link_content: {  }
+  paragraph:
+    '*': '*'
+types_translation_lock: {  }
+types_js_lock: {  }
+form_op_lock:
+  block_content:
+    mode: 0
+    values: {  }
+  consumer:
+    mode: 0
+    values: {  }
+  file:
+    mode: 0
+    values: {  }
+  media:
+    mode: 0
+    values: {  }
+  node:
+    mode: 0
+    values: {  }
+  redirect:
+    mode: 0
+    values: {  }
+  oauth2_token:
+    mode: 0
+    values: {  }
+  taxonomy_term:
+    mode: 0
+    values: {  }
+  user:
+    mode: 0
+    values: {  }
+  webform_submission:
+    mode: 0
+    values: {  }
+  menu_link_content:
+    mode: 0
+    values: {  }
+  paragraph:
+    mode: 0
+    values: {  }
+_core:
+  default_config_hash: 6Ka3T1c-CIjEUO1Q64NXKksLthkMhj53a6zy4RJBtkc

@@ -1,8 +1,10 @@
 module:
   admin_toolbar: 0
   admin_toolbar_links_access_filter: 0
+  admin_toolbar_tools: 0
   adminimal_admin_toolbar: 0
   advagg: 0
+  autosave_form: 0
   ban: 0
   basic_auth: 0
   big_pipe: 0
@@ -16,6 +18,7 @@ module:
   config_split: 0
   consumer_image_styles: 0
   consumers: 0
+  content_lock: 0
   contextual: 0
   ctools: 0
   datetime: 0
@@ -49,6 +52,7 @@ module:
   mailsystem: 0
   media: 0
   media_library: 0
+  menu_ui: 0
   metatag: 0
   metatag_dc: 0
   metatag_open_graph: 0

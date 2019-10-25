@@ -1,0 +1,11 @@
+uuid: a76dfb65-cde9-4127-b155-73b19eab068c
+langcode: en
+status: true
+dependencies:
+  module:
+    - content_lock
+id: paragraph_break_lock_action
+label: 'Break lock paragraph'
+type: paragraph
+plugin: 'entity:break_lock:paragraph'
+configuration: {  }

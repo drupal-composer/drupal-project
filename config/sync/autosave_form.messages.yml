@@ -1,0 +1,3 @@
+entity_saved_in_background_alert_message: 'The content has been modified elsewhere. As a result, autosaving has been disabled and autosaved states for the current page have been deleted. Autosave will be reactivated after reloading the page.'
+_core:
+  default_config_hash: In3MY-CuVp64RxCeU5X6rsEhR6jR4Si8OG6BX18DALg

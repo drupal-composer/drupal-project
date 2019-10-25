@@ -1,0 +1,17 @@
+interval: 60000
+active_on:
+  content_entity_forms: true
+  config_entity_forms: false
+notification:
+  active: true
+  message: 'Saving draft...'
+  delay: 1000
+allowed_content_entity_types:
+  node:
+    bundles: {  }
+  taxonomy_term:
+    bundles: {  }
+  paragraph:
+    bundles: {  }
+_core:
+  default_config_hash: QnLi3Y7e5T_v9EZqYxRb90E0bBDb2g1y7xREWLKJLC0
