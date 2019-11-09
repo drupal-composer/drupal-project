@@ -143,3 +143,42 @@ To prevent this you can add this code to specify the PHP version you want to use
     }
 },
 ```
+
+### How can I add libraries using composer.json?
+
+You can manage front-end asset libraries with Composer thanks to the
+[asset-packagist repository](https://asset-packagist.org/). Composer will detect
+and install new versions of a library that meet the stated constraints. In the
+example below, it will download anything from the `0.4.*` series of colorbox:
+```
+composer require npm-asset/colorbox:^0.4
+```
+
+When managing libraries with Composer, it is recommended to add the corresponding
+directories to your `.gitignore` file:
+```
+# Libraries (managed with Composer)
+/docroot/libraries/
+```
+
+The installation path of a specific library can be controlled by adding it to the
+`installer-paths` configuration above the general configuration. For example, the
+chosen module expects the library at `/libraries/chosen`, but `composer require
+npm-asset/chosen-js` installs the library into `/libraries/chosen-js`; the
+following override installs it into the expected folder:
+```json
+{
+    "extra": {
+        "installer-paths": {
+            "docroot/libraries/chosen": ["npm-asset/chosen-js"],
+            "docroot/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ]
+        }
+    }
+}
+```
+
+For more details, see https://asset-packagist.org/site/about
