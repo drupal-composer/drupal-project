@@ -19,6 +19,7 @@ parameters:
             ignore_patterns:
               - web/libraries/
               - web/sites/default/
+              - web/autoload.php
             triggered_by:
               - php
               - module

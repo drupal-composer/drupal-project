@@ -3,16 +3,18 @@
 assert_options(ASSERT_ACTIVE, TRUE);
 \Drupal\Component\Assertion\Handle::register();
 
+$config_directories['sync'] = '../config/sync';
 $databases['default']['default'] = array (
-  'prefix' => '',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
   'database' => 'drupal8',
   'username' => 'drupal8',
   'password' => 'drupal8',
+  'prefix' => '',
   'host' => 'database',
+  'port' => '3306',
+  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+  'driver' => 'mysql',
 );
+$settings['install_profile'] = 'minimal';
 
 //$class_loader->addPsr4('Drupal\\webprofiler\\', [ __DIR__ . '/../../modules/contrib/devel/webprofiler/src']);
 //$settings['container_base_class'] = '\Drupal\webprofiler\DependencyInjection\TraceableContainer';
@@ -42,7 +44,7 @@ $settings['trusted_host_patterns'] = array(
 //$config['system.performance']['js']['preprocess'] = true;
 
 // Disable AdvAgg.
-//$config['advagg.settings']['enabled'] = false;
+$config['advagg.settings']['enabled'] = false;
 
 /**
  * Show all error messages, with backtrace information.
@@ -69,9 +71,9 @@ $settings['config_ignore_deactivate'] = TRUE;
 /**
  * Enable access to rebuild.php.
  */
-//$settings['rebuild_access'] = TRUE;
+$settings['rebuild_access'] = TRUE;
 
 /**
  * Skip file system permissions hardening.
  */
-//$settings['skip_permissions_hardening'] = TRUE;
+$settings['skip_permissions_hardening'] = TRUE;
