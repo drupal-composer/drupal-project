@@ -54,7 +54,7 @@ When installing the given `composer.json` some tasks are taken care of:
 ## Updating Drupal Core
 
 This project will attempt to keep all of your Drupal Core files up-to-date; the
-project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold)
+project [drupal/core-composer-scaffold](https://github.com/drupal/core-composer-scaffold)
 is used to ensure that your scaffold files are updated every time drupal/core is
 updated. If you customize any of the "scaffolding" files (commonly .htaccess),
 you may need to merge conflicts if any of your modified files are updated in a
@@ -62,8 +62,8 @@ new release of Drupal core.
 
 Follow the steps below to update your core files.
 
-1. Run `composer update drupal/core webflo/drupal-core-require-dev "symfony/*" --with-dependencies` to update Drupal Core and its dependencies.
-1. Run `git diff` to determine if any of the scaffolding files have changed.
+1. Run `composer update drupal/core drupal/core-dev --with-dependencies` to update Drupal Core and its dependencies.
+2. Run `git diff` to determine if any of the scaffolding files have changed.
    Review the files for any changes and restore any customizations to
   `.htaccess` or `robots.txt`.
 1. Commit everything all together in a single commit, so `web` will remain in
@@ -91,7 +91,7 @@ workrounds if a project decides to do it anyway](https://getcomposer.org/doc/faq
 
 ### Should I commit the scaffolding files?
 
-The [drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold) plugin can download the scaffold files (like
+The [Drupal Composer Scaffold](https://github.com/drupal/core-composer-scaffold) plugin can download the scaffold files (like
 index.php, update.php, …) to the web/ directory of your project. If you have not customized those files you could choose
 to not check them into your version control system (e.g. git). If that is the case for your project it might be
 convenient to automatically run the drupal-scaffold plugin after every install or update of your project. You can
