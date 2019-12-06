@@ -16,7 +16,6 @@
         }
     ],
     "require": {
-        "php": ">=7.0.8",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
         "drupal/console": "^1.0.2",
