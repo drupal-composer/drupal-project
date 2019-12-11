@@ -10,11 +10,13 @@
 namespace Deployer;
 
 // Client repository machine name.
-set('application', "wrkdrupal");
+set('application', "drupal-project");
 
 // The recipe to use: frmwrk.drupal7.php,
 // frmwrk.drupal8.php or frmwrk.drupal8.dep.php.
 require 'recipe/frmwrk.drupal8.php';
 
 // Only for projects where locale needs to be update on every release.
-after('drupal:cim', 'drupal:locale_update');
+/*
+ * after('drupal:cim', 'drupal:locale_update');
+ */

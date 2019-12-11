@@ -4,16 +4,18 @@ assert_options(ASSERT_ACTIVE, TRUE);
 \Drupal\Component\Assertion\Handle::register();
 
 $config_directories['sync'] = '../config/sync';
-$databases['default']['default'] = array (
-  'database' => 'drupal8',
-  'username' => 'drupal8',
-  'password' => 'drupal8',
-  'prefix' => '',
-  'host' => 'database',
-  'port' => '3306',
-  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
-  'driver' => 'mysql',
-);
+
+//$databases['default']['default'] = array (
+//  'database' => 'drupal8',
+//  'username' => 'drupal8',
+//  'password' => 'drupal8',
+//  'prefix' => '',
+//  'host' => 'database',
+//  'port' => '3306',
+//  'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+//  'driver' => 'mysql',
+//);
+
 $settings['install_profile'] = 'minimal';
 
 //$class_loader->addPsr4('Drupal\\webprofiler\\', [ __DIR__ . '/../../modules/contrib/devel/webprofiler/src']);
@@ -22,10 +24,7 @@ $settings['install_profile'] = 'minimal';
 $settings['file_public_path'] = './files';
 $settings['file_private_path'] = '../private';
 
-$settings['trusted_host_patterns'] = array(
-  '^wrkdrupal\.lndo\.site$',
-  '^wrkdrupal\.test$',
-);
+$settings['trusted_host_patterns'] = ['.*'];
 
 /**
  * Disable Caching

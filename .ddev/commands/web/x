@@ -1,0 +1,14 @@
+#!/bin/bash
+
+## Description: Toggle xdebug
+## Usage: x
+## Example: "ddev x" or "ddev x 0"
+
+case $1 in
+     0)
+          disable_xdebug
+          ;;
+     *)
+          enable_xdebug
+          ;;
+esac

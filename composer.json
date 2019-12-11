@@ -39,12 +39,14 @@
         "drupal/config_ignore": "^2.1",
         "drupal/config_split": "^1.4",
         "drupal/console": "^1.0.2",
-        "drupal/consumer_image_styles": "^3.0@RC",
+        "drupal/consumer_image_styles": "^3.0",
         "drupal/content_lock": "^1.0@alpha",
-        "drupal/core": "^8.7.0",
+        "drupal/core": "^8.8",
         "drupal/devel": "^2.1",
         "drupal/devel_php": "^1.1",
         "drupal/easy_breadcrumb": "^1.12",
+        "drupal/entity_usage": "^2.0@beta",
+        "drupal/field_collection": "^1.0@alpha",
         "drupal/field_defaults": "^1.1",
         "drupal/field_group": "^1.0",
         "drupal/field_tools": "^1.0@alpha",
@@ -68,7 +70,8 @@
         "drupal/paragraphs_features": "^1.6",
         "drupal/password_policy": "^3.0@alpha",
         "drupal/path_redirect_import": "^1.0@beta",
-        "drupal/pathauto": "^1.4",
+        "drupal/pathauto": "^1.6@beta",
+        "drupal/r4032login": "^1.1",
         "drupal/rabbit_hole": "^1.0@beta",
         "drupal/real_aes": "^2.2",
         "drupal/redirect": "^1.4",
@@ -89,7 +92,7 @@
         "drupal/twig_tweak": "^2.3",
         "drupal/username_enumeration_prevention": "^1.0@beta",
         "drupal/video_embed_field": "^2.1",
-        "drupal/webform": "^5.4",
+        "drupal/webform": "5.4.0",
         "drush/drush": "^9.0.0",
         "frmwrk/frmwrk_decoupled": "dev-master",
         "npm-asset/select2": "^4.0",
@@ -105,9 +108,9 @@
         "phpmd/phpmd": "^2.6",
         "phpro/grumphp": "^0.15.2",
         "sebastian/phpcpd": "^3.0",
-        "sensiolabs/security-checker": "^5.0",
+        "sensiolabs/security-checker": "^6.0",
         "squizlabs/php_codesniffer": "^3.4",
-        "webflo/drupal-core-require-dev": "^8.7.0"
+        "webflo/drupal-core-require-dev": "^8.8"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -152,7 +155,7 @@
             "web/modules/contrib/{$name}": ["type:drupal-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+            "drush/Commands/{$name}": ["type:drupal-drush"]
         },
         "installer-types": ["bower-asset", "npm-asset"],
         "drupal-scaffold": {
@@ -162,30 +165,27 @@
             }
         },
         "patches": {
-            "drupal/code" : {
-                "3055443 - Switch to a memory backend for running the database updates" : "https://www.drupal.org/files/issues/2019-07-22/3055443-2-37.patch"
+            "drupal/core": {
+                "2718657 - updateConfiguration() is passed a NULL": "https://www.drupal.org/files/issues/2019-02-28/language-2718657-17.patch",
+                "2915792 - Menu access": "https://www.drupal.org/files/issues/2019-07-19/2915792-40.patch"
             },
-            "drupal/rabbit_hole": {
-                "2900548 - Add commerce products" : "https://www.drupal.org/files/issues/commerce_support-2900548-3.patch"
+            "drupal/graphql": {
+                "Notice: undefined index: schema": "patches/undefined-index-schema.patch"
             },
-            "drupal/inline_entity_form" : {
-                "2927884 - Remove revision log" : "https://www.drupal.org/files/issues/2019-07-16/inline_entity_form-remove_log_message-2927884-6.patch"
-            },
-            "drupal/entity_browser" : {
-                "2858438 - Provide inline entity form FieldWidgetDisplay" : "https://www.drupal.org/files/issues/2858438_6.patch",
-                "2997747 - The View widget should filter based on field settings" : "https://www.drupal.org/files/issues/2018-09-06/2997747-2.patch"
+            "drupal/jsonapi_extras": {
+                "Compatibility with Drupal 8.8.x - 3089444 ": "https://www.drupal.org/files/issues/2019-11-19/3089444-21.patch"
             }
         }
     },
-    "replace": {
-        "bower-asset/jquery": "*",
-        "bower-asset/jqueryui": "*",
-        "bower-asset/backbone": "*",
-        "bower-asset/underscore": "*",
-        "npm-asset/jquery": "*",
-        "npm-asset/jqueryui": "*",
-        "npm-asset/backbone": "*",
-        "npm-asset/underscore": "*",
-        "npm-asset/fortawesome--fontawesome-free": "*"
-    }
+        "replace": {
+            "bower-asset/jquery": "*",
+            "bower-asset/jqueryui": "*",
+            "bower-asset/backbone": "*",
+            "bower-asset/underscore": "*",
+            "npm-asset/jquery": "*",
+            "npm-asset/jqueryui": "*",
+            "npm-asset/backbone": "*",
+            "npm-asset/underscore": "*",
+            "npm-asset/fortawesome--fontawesome-free": "*"
+        }
 }

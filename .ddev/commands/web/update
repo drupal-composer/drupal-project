@@ -1,0 +1,12 @@
+#!/bin/bash
+
+## Description: Update drupal after checkout
+## Usage: update
+## Example: "ddev update"
+
+cd .. && composer install && cd web
+drush updb -y
+drush cim -y
+drush locale-check
+drush locale-update
+drush cr

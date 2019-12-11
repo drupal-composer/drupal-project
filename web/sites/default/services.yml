@@ -1,0 +1,64 @@
+parameters:
+  session.storage.options:
+    gc_probability: 1
+
+    gc_divisor: 100
+
+    gc_maxlifetime: 200000
+
+    cookie_lifetime: 2000000
+
+  twig.config:
+
+    debug: false
+
+    auto_reload: null
+
+    cache: true
+  renderer.config:
+    required_cache_contexts: ['languages:language_interface', 'theme', 'user.permissions']
+
+    auto_placeholder_conditions:
+
+      max-age: 0
+
+      contexts: ['session', 'user']
+
+      tags: []
+
+  http.response.debug_cacheability_headers: false
+  factory.keyvalue:
+    {}
+
+  factory.keyvalue.expirable:
+    {}
+
+  filter_protocols:
+    - http
+    - https
+    - ftp
+    - news
+    - nntp
+    - tel
+    - telnet
+    - mailto
+    - irc
+    - ssh
+    - sftp
+    - webcal
+    - rtsp
+  cors.config:
+    enabled: true
+    # Specify allowed headers, like 'x-allowed-header'.
+    allowedHeaders: ['x-csrf-token','authorization','content-type','accept','origin','x-requested-with', 'access-control-allow-origin','x-allowed-header','*']
+    # Specify allowed request methods, specify ['*'] to allow all possible ones.
+    allowedMethods: ['*']
+    # Configure requests allowed from specific origins.
+    allowedOrigins: ['*']
+    # allowedOrigins: ['*']
+    # Sets the Access-Control-Expose-Headers header.
+    exposedHeaders: false
+    # Sets the Access-Control-Max-Age header.
+    maxAge: false
+    # Sets the Access-Control-Allow-Credentials header.
+    supportsCredentials: true

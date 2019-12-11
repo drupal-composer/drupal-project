@@ -1,4 +1,4 @@
-name: wrkdrupal
+name: drupal-project
 recipe: drupal8
 config:
   webroot: web

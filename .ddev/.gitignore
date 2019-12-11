@@ -1,0 +1,21 @@
+#ddev-generated: Automatically generated ddev .gitignore.
+# You can remove the above line if you want to edit and maintain this file yourself.
+
+/commands/*/*.example
+/commands/*/README.txt
+/homeadditions/*.example
+/homeadditions/README.txt
+/import.yaml
+/docker-compose.yaml
+/db_snapshots
+/sequelpro.spf
+/import-db
+/.bgsync*
+/config.*.y*ml
+/.webimageBuild
+/.dbimageBuild
+/.bgsyncimageBuild
+/.sshimageBuild
+/.webimageExtra
+/.dbimageExtra
+/*-build/Dockerfile.example

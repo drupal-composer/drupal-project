@@ -1,3 +1,115 @@
+
+Over Rexel (https://over.rexel.nl en https://cms.over.rexel.nl)
+=====
+_Laatst bijgewerkt 10-12-2019 door Jelle._
+
+> Voor installatie zie onderste gedeelte van deze Readme
+
+> Over [project] is de Corporate website van [project].
+
+[README [project]; development](./README.md) | [Frontend](./frontend/README.md)
+
+## Afspraken bij ontwikkeling
+1. Code wordt in engelse taal geschreven incl comments en t() functies.
+1. Labels/page-paden mogen in het nederlands (Deze zijn later altijd evt. aan te passen)
+1. Gebruik van view modes / form modes ipv velden in views (Met uitzondering van tabellen en simpele lijsten)
+1. Let op naamgeving machine-names. Deze worden automatisch gegenereerd maar zijn daardoor soms nietszegggen. Controleer deze op format en leesbaarheid (Engelse taal heeft voorkeur)
+1. Drupal coding standarts [Coding standards Drupal.org](https://www.drupal.org/docs/develop/standards/coding-standards)
+1. Drupal 8 (Laatste stabiele versie)
+1. Composer require/update voor contrib module installatie & updates / composer install als je project binnentrekt
+1. Templates staan in ```/docs/templates/```
+
+********
+
+## Testen
+
+Er zijn nog geen tests geschreven voor dit project. Wel wordt Grumphp vereist bij development op [project].
+
+Zie `installeren` voor informatie over het gebruik hiervan.
+
+## Omgevingen
+* Live omgeving: [[project].nl](https://[project].nl)
+* Live CMS omgeving: [cms.[project].nl](https:cms.[project].nl)
+* Acc omgeving: [acc.[project].nl](https://acc.[project].nl)
+* Acc CMS omgeving:  [acccms.[project].nl](https://acccms.[project].nl)
+* Test omgeving [test.[project].nl](https://test.[project].nl)
+* Text CMS omgeving: [testcms.[project].nl](https://testcms.[project].nl)
+
+### Waar is het gehost?
+Over [project] wordt gehost bij Combell en Now (Frontend).
+Zie [servers.yml](https://gitlab.frmwrk.nl/drupal/clients/blob/master/[project]/servers.yml) voor details.
+
+## Installeren
+
+1. Je kunt zelf je dev stack gebuiken. voor DDEV zie de [algemene uitleg](https://gitlab.frmwrk.nl/drupal/docs/blob/master/Best%20practices/DDEV%20local%20development.md)
+   1. Verander de projectnaam in `.ddev/config.yml`
+
+1. Installeer de dependencies
+    ```
+    composer install
+    ```
+
+1. Installeer grumphp voor code quality checks
+    ```shell script
+    vendor/bin/grumphp git:init
+    ```
+
+1. Kopieer ```/web/sites/default/template.settings.local.php``` naar ```default/settings.local.php```  ;
+
+1. Voor de frontend volg de [Frontend](./frontend/README.md) in `/frontend`
+
+### Werken aan feature
+
+1. Checkout feature branch op basis van master.
+
+1. Update configuratie en packages
+    ```shell script
+    composer install
+    drush updb
+    drush cim
+    drush locale-check && drush locale-update
+    ```
+
+1. Als je lang aan een feature branch werkt. rabase dan op master
+
+1. Check je code met
+    ```shell script
+    vendor/bin/grumphp run
+    ```
+
+## Releasen
+Releases gaan via CI.
+
+## Custom modules in this project
+
+Custom modules staan in ```/modules/custom```
+
+* **[project]_decoupled** - Graphql extensies voor [project]. Gebaseerd op de frmwrk_decoupled module
+
+## Documentation
+
+* `Nog geen externe documentatie`
+
+## Drupal-structuur
+
+### Functionaliteit / Modules
+
+* `Bijzonderheden hier`
+
+## Back-end Ontwikkelflow Drupal
+
+1. Basis-configuratie Drupal
+    * Search index
+    * Content-types
+    * Pages
+    * url-alias patterns
+    * Site-instellingen
+1. permissions
+1. Security-checks
+1. redirects
+1. Optimalisatie performace
+1. Inregelen live - caching / Cron
+
 # Composer template for FRMWRK Drupal projects
 
 This project template provides a starter kit for managing your site
@@ -17,106 +129,22 @@ for your setup.
 
 After that you can create the project:
 
-  1. Create new base  
+  1. Create new base
     ```
     composer create-project frmwrk/drupal-project:base-dev some-dir --no-interaction
     ```
- 
-  1.  Spin up you development container with DrupalVM or Lando (.lanndo file included)
-      
-  1.  run `drush si --existing-config`
-      
-  1.  Commit the initial files.     
 
-  1. With `composer require ...` you can download new dependencies to your 
+  1.  Spin up you development container DDEV (See DDEV manual)
+
+  1.  run `drush si --existing-config`
+
+  1.  Commit the initial files.
+
+  1. With `composer require ...` you can download new dependencies to your
 installation.
 
-```
-cd some-dir
-composer require drupal/devel:~1.0
-```
-
-The `composer create-project` command passes ownership of all files to the
-project that is created. You should create a new git repository, and commit
-all files not excluded by the .gitignore file.
-
-## What does the template do?
-
-When installing the given `composer.json` some tasks are taken care of:
-
-* Drupal will be installed in the `web`-directory.
-* Autoloader is implemented to use the generated composer autoloader in `vendor/autoload.php`,
-  instead of the one provided by Drupal (`web/vendor/autoload.php`).
-* Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib/`
-* Theme (packages of type `drupal-theme`) will be placed in `web/themes/contrib/`
-* Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
-* Creates default writable versions of `settings.php` and `services.yml`.
-* Creates `web/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
-* Creates environment variables based on your .env file. See [.env.example](.env.example).
-
 ## Updating Drupal Core
-
-This project will attempt to keep all of your Drupal Core files up-to-date; the
-project [drupal-composer/drupal-scaffold](https://github.com/drupal-composer/drupal-scaffold)
-is used to ensure that your scaffold files are updated every time drupal/core is
-updated. If you customize any of the "scaffolding" files (commonly .htaccess),
-you may need to merge conflicts if any of your modified files are updated in a
-new release of Drupal core.
 
 Follow the steps below to update your core files.
 
 1. Run `composer update drupal/core webflo/drupal-core-require-dev "symfony/*" --with-dependencies` to update Drupal Core and its dependencies.
-1. Run `git diff` to determine if any of the scaffolding files have changed.
-   Review the files for any changes and restore any customizations to
-  `.htaccess` or `robots.txt`.
-1. Commit everything all together in a single commit, so `web` will remain in
-   sync with the `core` when checking out branches or running `git bisect`.
-1. In the event that there are non-trivial conflicts in step 2, you may wish
-   to perform these steps on a branch, and use `git merge` to combine the
-   updated core files with your customized files. This facilitates the use
-   of a [three-way merge tool such as kdiff3](http://www.gitshah.com/2010/12/how-to-setup-kdiff-as-diff-tool-for-git.html). This setup is not necessary if your changes are simple;
-   keeping all of your modifications at the beginning or end of the file is a
-   good strategy to keep merges easy.
-
-## Generate composer.json from existing project
-
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
-
-
-## FAQ
-
-### How can I apply patches to downloaded modules?
-
-If you need to apply patches (depending on the project being modified, a pull
-request is often a better solution), you can do so with the
-[composer-patches](https://github.com/cweagans/composer-patches) plugin.
-
-To add a patch to drupal module foobar insert the patches section in the extra
-section of composer.json:
-```json
-"extra": {
-    "patches": {
-        "drupal/foobar": {
-            "Patch description": "URL or local path to patch"
-        }
-    }
-}
-```
-
-### How do I specify a PHP version ?
-
-This project supports PHP 7.0 as minimum version (see [Drupal 8 PHP requirements](https://www.drupal.org/docs/8/system-requirements/drupal-8-php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7+.
-
-To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
-```json
-"config": {
-    "sort-packages": true,
-    "platform": {
-        "php": "7.0.33"
-    }
-},
-```

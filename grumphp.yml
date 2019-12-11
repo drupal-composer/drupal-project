@@ -20,6 +20,7 @@ parameters:
               - web/libraries/
               - web/sites/default/
               - web/autoload.php
+              - web/sites/
             triggered_by:
               - php
               - module
@@ -68,6 +69,7 @@ parameters:
             - "var_dump("
             - "exit;"
             - "console."
-          whitelist_patterns: []
-          triggered_by: ['php', 'install', 'inc', 'js']
+          whitelist_patterns:
+            - 'scripts/cd/'
+          triggered_by: ['php', 'install', 'inc', 'js', 'module']
           regexp_type: G
