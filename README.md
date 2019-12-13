@@ -121,27 +121,44 @@ the [Documentation on drupal.org](https://www.drupal.org/node/2471553).
 
 ## Usage
 
-First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+1. First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
+1. Install ddev for local dev server
 
-> Note: The instructions below refer to the [global composer installation](https://getcomposer.org/doc/00-intro.md#globally).
-You might need to replace `composer` with `php composer.phar` (or similar)
-for your setup.
-
-After that you can create the project:
+After that you can setup the project:
 
   1. Create new base
     ```
-    composer create-project frmwrk/drupal-project:base-dev some-dir --no-interaction
+    composer create-project frmwrk/drupal-project:base-dev [some-dir] --no-interaction
     ```
 
   1.  Spin up you development container DDEV (See DDEV manual)
 
-  1.  run `drush si --existing-config`
+      1. Change project name in `.ddev/config.yml`
+      1. Copy `sites/default/template.settings.local.php` to `settings.local.php`
+      1. (optional) When running mac create a file named `.ddev/config.local.yaml` with contents
+            ```yaml
+           nfs_mount_enabled: true
+            ```
+      1. Use `ddev start`
+
+  1.  run `ddev drush si --existing-config`
 
   1.  Commit the initial files.
 
   1. With `composer require ...` you can download new dependencies to your
 installation.
+
+  1. Do your thing as usual. Commit and create branches
+
+  1. For xdebug use `ddev x` (enable) and `ddev x 0` (disable) and don't forget to do this every time `ddev start` runs. Also turn off browser profiler for much better performance.
+
+  1. After checking out use `ddev update` for automatically `composer install + updb + cim + locale-check + locale-update`
+
+  1. Create your own usefull commands in `.ddev/commands` (See examples there)
+
+> Tip: Create your own locale bash aliases to make commands like `ddev drush` even shorter
+>
+>  - For example: `alias ddr='ddev drush'`
 
 ## Updating Drupal Core
 
