@@ -143,6 +143,8 @@ After that you can setup the project:
 
   1.  run `ddev drush si --existing-config`
 
+      1. (optional) Instead of the site installer you can import using `ddev import-db [db-dump-file]`
+
   1.  Commit the initial files.
 
   1. With `composer require ...` you can download new dependencies to your
