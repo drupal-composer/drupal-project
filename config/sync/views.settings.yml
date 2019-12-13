@@ -46,3 +46,4 @@ field_rewrite_elements:
   s: S
 _core:
   default_config_hash: RaRd9EIcwA4u3qCSRLL8EnCicbda1kV__ASmVbyehvQ
+langcode: nl

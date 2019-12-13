@@ -4,3 +4,4 @@ oembed_providers_url: 'https://oembed.com/providers.json'
 standalone_url: false
 _core:
   default_config_hash: PlWtVQXY5oKYZqCMPXh6SPamXagn5BoZqgAI8EY9WsY
+langcode: nl

@@ -1,0 +1,68 @@
+uuid: deabea0d-e4b1-4f44-b18f-2beb5a3fab5e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.news
+    - paragraphs.paragraphs_type.content
+    - paragraphs.paragraphs_type.documentation
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.tabs
+    - paragraphs.paragraphs_type.usp
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.news.field_content
+field_name: field_content
+entity_type: node
+bundle: news
+label: Inhoud
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content: content
+      documentation: documentation
+      from_library: from_library
+      tabs: tabs
+      usp: usp
+      video: video
+    target_bundles_drag_drop:
+      content:
+        enabled: true
+        weight: 4
+      documentation:
+        enabled: true
+        weight: 5
+      content_list:
+        weight: 11
+        enabled: false
+      list_filter_options:
+        weight: 13
+        enabled: false
+      from_library:
+        enabled: true
+        weight: 15
+      style_options:
+        weight: 16
+        enabled: false
+      tab:
+        weight: 17
+        enabled: false
+      tabs:
+        enabled: true
+        weight: 18
+      usp:
+        enabled: true
+        weight: 18
+      video:
+        enabled: true
+        weight: 20
+field_type: entity_reference_revisions

@@ -1,0 +1,70 @@
+uuid: 614ef529-36b4-4a94-a8a9-62b9a56674d9
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_content
+    - node.type.basic_page
+    - paragraphs.paragraphs_type.content
+    - paragraphs.paragraphs_type.content_list
+    - paragraphs.paragraphs_type.documentation
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.tabs
+    - paragraphs.paragraphs_type.usp
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: node.basic_page.field_content
+field_name: field_content
+entity_type: node
+bundle: basic_page
+label: Inhoud
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content: content
+      content_list: content_list
+      documentation: documentation
+      from_library: from_library
+      tabs: tabs
+      usp: usp
+      video: video
+    target_bundles_drag_drop:
+      content:
+        enabled: true
+        weight: 3
+      content_list:
+        enabled: true
+        weight: 7
+      documentation:
+        enabled: true
+        weight: 10
+      list_filter_options:
+        weight: 13
+        enabled: false
+      from_library:
+        enabled: true
+        weight: 15
+      style_options:
+        weight: 16
+        enabled: false
+      tab:
+        weight: 17
+        enabled: false
+      tabs:
+        enabled: true
+        weight: 18
+      usp:
+        enabled: true
+        weight: 18
+      video:
+        enabled: true
+        weight: 22
+field_type: entity_reference_revisions

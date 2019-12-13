@@ -1,0 +1,9 @@
+uuid: 086642e3-95be-4018-b5ff-d3f46d12d9f2
+langcode: en
+status: true
+dependencies: {  }
+id: content
+label: Inhoud
+icon_uuid: null
+description: 'Simpele inhoud, tekst met of zonder plaatje'
+behavior_plugins: {  }

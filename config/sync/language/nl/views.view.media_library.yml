@@ -1,0 +1,104 @@
+label: Media-bibliotheek
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: 'Filters toepassen'
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        media_bulk_form:
+          action_title: Actie
+      filters:
+        status:
+          expose:
+            label: Publicatiestatus
+          group_info:
+            label: Gepubliceerd
+            group_items:
+              1:
+                title: Gepubliceerd
+              2:
+                title: 'Niet gepubliceerd'
+        name:
+          expose:
+            label: Naam
+        bundle:
+          expose:
+            label: Mediatype
+          group_info:
+            label: Mediatype
+      sorts:
+        created:
+          expose:
+            label: 'Nieuwste eerst'
+        name:
+          expose:
+            label: 'Naam (A-Z)'
+        name_1:
+          expose:
+            label: 'Naam (Z-A)'
+      title: Media
+      empty:
+        area_text_custom:
+          content: 'Geen media beschikbaar.'
+  page:
+    display_title: Pagina
+    display_options:
+      menu:
+        title: Media
+        description: 'Gebruikers kunnen door media items bladeren en ze beheren'
+  widget:
+    display_title: Widget
+    display_options:
+      filters:
+        name:
+          expose:
+            label: Naam
+      arguments:
+        bundle:
+          exception:
+            title: Alle
+      header:
+        display_link_grid:
+          label: Raster
+        display_link_table:
+          label: Tabel
+  widget_table:
+    display_title: 'Widget (tabel)'
+    display_options:
+      fields:
+        thumbnail__target_id:
+          label: Miniatuur
+        name:
+          label: Naam
+        uid:
+          label: Auteur
+        changed:
+          label: Bijgewerkt
+      filters:
+        name:
+          expose:
+            label: Naam
+      arguments:
+        bundle:
+          exception:
+            title: Alle
+      header:
+        display_link_grid:
+          label: Raster
+        display_link_table:
+          label: Tabel

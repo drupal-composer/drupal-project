@@ -2,10 +2,12 @@ verbose: 1
 types:
   block_content: {  }
   consumer: {  }
+  crop: {  }
   file: {  }
   media: {  }
   node:
     '*': '*'
+  path_alias: {  }
   redirect: {  }
   oauth2_token: {  }
   taxonomy_term:
@@ -24,6 +26,9 @@ form_op_lock:
   consumer:
     mode: 0
     values: {  }
+  crop:
+    mode: 0
+    values: {  }
   file:
     mode: 0
     values: {  }
@@ -31,6 +36,9 @@ form_op_lock:
     mode: 0
     values: {  }
   node:
+    mode: 0
+    values: {  }
+  path_alias:
     mode: 0
     values: {  }
   redirect:
@@ -56,3 +64,4 @@ form_op_lock:
     values: {  }
 _core:
   default_config_hash: 6Ka3T1c-CIjEUO1Q64NXKksLthkMhj53a6zy4RJBtkc
+langcode: nl

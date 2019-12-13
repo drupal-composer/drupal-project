@@ -1,10 +1,10 @@
 uuid: d291df4d-01af-48b6-ad60-6fe6d1e0efed
-langcode: en
+langcode: nl
 status: true
 dependencies: {  }
 _core:
   default_config_hash: Q2Ra3jfoIVk0f3SjxJX61byRQFVBAbpzYDQOiY-kno8
 id: main
-label: 'Main navigation'
-description: 'Site section links'
+label: Hoofdnavigatie
+description: 'Links naar sitegedeelten'
 locked: true

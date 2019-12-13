@@ -5,3 +5,4 @@ convert_mode: false
 character_set: UTF-8
 _core:
   default_config_hash: cMBhfAJB7-sK5yjwcEvT-QkAPFfTj2jEPpjlB5qlXW8
+langcode: nl

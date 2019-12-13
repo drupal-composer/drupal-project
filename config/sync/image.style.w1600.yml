@@ -1,0 +1,15 @@
+uuid: 747082eb-b8f2-4ed3-b39b-b2b9d1747177
+langcode: nl
+status: true
+dependencies: {  }
+name: w1600
+label: w1600
+effects:
+  ff40f37b-372f-4b81-8d7b-0d1ee175d9cf:
+    uuid: ff40f37b-372f-4b81-8d7b-0d1ee175d9cf
+    id: image_scale
+    weight: 1
+    data:
+      width: 1600
+      height: null
+      upscale: false

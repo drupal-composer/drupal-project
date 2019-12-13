@@ -1,0 +1,27 @@
+uuid: f66c5fa2-0a17-4f8e-9aac-cb7f6c9b858f
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_sorting_direction
+field_name: field_sorting_direction
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: ASC
+      label: Oplopend
+    -
+      value: DESC
+      label: Aflopend
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

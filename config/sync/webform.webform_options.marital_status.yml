@@ -1,5 +1,5 @@
 uuid: 958bd4e7-4569-47cd-ab08-78de29b18298
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: cjVDbAE5BlopGrY-tfxsxMoyEibwBBNgdQwDdxOSkow
 id: marital_status
-label: 'Marital status'
-category: Demographic
+label: 'Huwelijkse staat'
+category: Demografisch
 likert: false
-options: "Single: Single\nMarried: Married\nDivorced: Divorced\nWidowed: Widowed\n"
+options: "Alleenstaand: Alleenstaand\r\nGetrouwd: Getrouwd\r\nGescheiden: Gescheiden\r\n'Weduwe of weduwnaar': 'Weduwe of weduwnaar'\n"

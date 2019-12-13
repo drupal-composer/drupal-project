@@ -1,0 +1,33 @@
+label: Voorpagina
+description: 'Alle inhoud die wordt aangeraden op de voorpagina.'
+display:
+  default:
+    display_options:
+      empty:
+        area_text_custom:
+          content: 'Er is nog geen inhoud gemaakt voor de voorpagina.<br />Volg de <a target="_blank" href="https://www.drupal.org/docs/user_guide/en/index.html">Gebruikershandleiding</a> om uw site te bouwen.'
+        title:
+          title: 'Welkom op [site:name]'
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+          tags:
+            previous: '‹ Vorige'
+            next: 'Volgende ›'
+            first: '« Eerste'
+            last: 'Laatste »'
+    display_title: Hoofd
+  feed_1:
+    display_title: Feed
+  page_1:
+    display_title: Pagina

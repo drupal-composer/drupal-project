@@ -1,0 +1,8 @@
+administer project_state_storage configuration:
+  title: 'Access project_state_storage menu item'
+  description: 'Access project_state_storage menu item'
+  restrict access: true
+administer project_state_storage contactinfo configuration:
+  title: 'Administer project_state_storage contact info configuration'
+  description: 'Allows user to administer contact info centrally'
+  restrict access: true

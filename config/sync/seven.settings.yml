@@ -1,0 +1,10 @@
+features:
+  node_user_picture: false
+  comment_user_picture: true
+  comment_user_verification: true
+  favicon: true
+logo:
+  use_default: false
+  path: 'public://brand.png'
+favicon:
+  use_default: true

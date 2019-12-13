@@ -1,0 +1,7 @@
+type USPParagraph implements ParagraphTypeInterface {
+  parent_field_name: String!
+  id: String!
+  field_usp_title: String
+  field_usp: [String]
+  field_usp_link: [Link]
+}

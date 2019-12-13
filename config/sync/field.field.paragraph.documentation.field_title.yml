@@ -1,0 +1,19 @@
+uuid: 30d34c5d-b1e0-4d9e-8430-1f571749cc83
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_title
+    - paragraphs.paragraphs_type.documentation
+id: paragraph.documentation.field_title
+field_name: field_title
+entity_type: paragraph
+bundle: documentation
+label: Titel
+description: 'Paragraaf titel.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

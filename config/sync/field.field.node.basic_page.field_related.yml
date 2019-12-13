@@ -1,0 +1,29 @@
+uuid: 42bbf87c-a2c9-4edd-89b2-6003bd8403b2
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_related
+    - node.type.basic_page
+    - node.type.news
+id: node.basic_page.field_related
+field_name: field_related
+entity_type: node
+bundle: basic_page
+label: 'Gerelateerd artikel'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:node'
+  handler_settings:
+    target_bundles:
+      basic_page: basic_page
+      news: news
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: basic_page
+field_type: entity_reference

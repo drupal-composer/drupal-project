@@ -1,10 +1,10 @@
 uuid: a0e64b6c-8d5d-424d-9956-67e676b49d41
-langcode: en
+langcode: nl
 status: true
 dependencies: {  }
 _core:
   default_config_hash: 7yrlW5z9zdg2eBucB2GPqXKSMQfH9lSRSO4DbWF7AFc
 id: footer
 label: Footer
-description: 'Site information links'
+description: 'Links naar site informatie'
 locked: true

@@ -1,0 +1,23 @@
+uuid: 7db7b216-450f-46e5-b7af-6e17949065ff
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_filter_column
+    - paragraphs.paragraphs_type.list_filter_options
+  module:
+    - options
+id: paragraph.list_filter_options.field_filter_column
+field_name: field_filter_column
+entity_type: paragraph
+bundle: list_filter_options
+label: 'Sorteer kolom'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: created
+default_value_callback: ''
+settings: {  }
+field_type: list_string

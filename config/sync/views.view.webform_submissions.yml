@@ -1,5 +1,5 @@
 uuid: 6df94f88-c39f-4d82-89af-ad258d9ff2bf
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -11,13 +11,12 @@ dependencies:
 _core:
   default_config_hash: _7B5YYODi_--G_tOWLcRmuuWsNsOFtDfntkEuwJWQq0
 id: webform_submissions
-label: 'Webform submissions'
+label: 'Webformulier inzendingen'
 module: views
 description: 'Default webform submissions views.'
 tag: ''
 base_table: webform_submission
 base_field: sid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -244,7 +243,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Draft
+          label: Concept
           exclude: false
           alter:
             alter_text: false
@@ -378,7 +377,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'IP address'
+          label: IP-adres
           exclude: false
           alter:
             alter_text: false
@@ -513,7 +512,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'No submissions available.'
+          content: 'Geen inzendingen beschikbaar.'
           plugin_id: text_custom
       relationships: {  }
       arguments:
@@ -586,7 +585,7 @@ display:
       filter_groups:
         operator: AND
         groups: {  }
-      title: 'Webform submissions'
+      title: 'Webformulier inzendingen'
     cache_metadata:
       max-age: -1
       contexts:
@@ -603,7 +602,7 @@ display:
     position: 2
     display_options:
       display_extenders: {  }
-      display_description: 'Administer submissions.'
+      display_description: 'Inzendingen beheren.'
       style:
         type: table
         options:
@@ -842,7 +841,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Draft
+          label: Concept
           exclude: false
           alter:
             alter_text: false
@@ -1110,7 +1109,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Completed
+          label: Voltooid
           exclude: false
           alter:
             alter_text: false
@@ -1177,7 +1176,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'IP address'
+          label: IP-adres
           exclude: false
           alter:
             alter_text: false
@@ -1301,7 +1300,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: 'Is draft'
+            label: Concept
             description: ''
             use_operator: false
             operator: in_draft_op
@@ -1313,6 +1312,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1353,6 +1354,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1394,6 +1397,8 @@ display:
               anonymous: '0'
               administrator: '0'
               demo_region: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -1430,7 +1435,7 @@ display:
     position: 1
     display_options:
       display_extenders: {  }
-      display_description: 'Display submissions.'
+      display_description: 'Inzendingen weergeven.'
       defaults:
         fields: true
         style: false
@@ -1515,7 +1520,7 @@ display:
     position: 3
     display_options:
       display_extenders: {  }
-      display_description: 'Manage submissions.'
+      display_description: 'Inzendingen beheren.'
       fields:
         webform_submission_bulk_form:
           id: webform_submission_bulk_form
@@ -1647,7 +1652,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Draft
+          label: Concept
           exclude: false
           alter:
             alter_text: false
@@ -1915,7 +1920,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Completed
+          label: Voltooid
           exclude: false
           alter:
             alter_text: false
@@ -1982,7 +1987,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'IP address'
+          label: IP-adres
           exclude: false
           alter:
             alter_text: false
@@ -2271,7 +2276,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: 'Is draft'
+            label: Concept
             description: ''
             use_operator: false
             operator: in_draft_op
@@ -2283,6 +2288,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2323,6 +2330,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2364,6 +2373,8 @@ display:
               anonymous: '0'
               administrator: '0'
               demo_region: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -2400,7 +2411,7 @@ display:
     position: 4
     display_options:
       display_extenders: {  }
-      display_description: 'Review submissions.'
+      display_description: 'Inzendingen nakijken.'
       fields:
         sid:
           id: sid
@@ -2475,7 +2486,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Draft
+          label: Concept
           exclude: false
           alter:
             alter_text: false
@@ -2743,7 +2754,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: Completed
+          label: Voltooid
           exclude: false
           alter:
             alter_text: false
@@ -2810,7 +2821,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'IP address'
+          label: IP-adres
           exclude: false
           alter:
             alter_text: false
@@ -3046,7 +3057,7 @@ display:
           exposed: true
           expose:
             operator_id: ''
-            label: 'Is draft'
+            label: Concept
             description: ''
             use_operator: false
             operator: in_draft_op
@@ -3058,6 +3069,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3098,6 +3111,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -3139,6 +3154,8 @@ display:
               anonymous: '0'
               administrator: '0'
               demo_region: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''

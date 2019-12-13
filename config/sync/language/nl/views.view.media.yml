@@ -1,0 +1,75 @@
+label: Media
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+          tags:
+            previous: '‹ Vorige'
+            next: 'Volgende ›'
+            first: '« Eerste'
+            last: 'Laatste »'
+      fields:
+        media_bulk_form:
+          action_title: Actie
+        thumbnail__target_id:
+          label: Miniatuur
+          separator: ', '
+        name:
+          label: Medianaam
+          separator: ', '
+        bundle:
+          label: Type
+          separator: ', '
+        uid:
+          label: Auteur
+          separator: ', '
+        status:
+          label: Status
+          settings:
+            format_custom_true: Gepubliceerd
+            format_custom_false: 'Niet gepubliceerd'
+          separator: ', '
+        changed:
+          label: Bijgewerkt
+          separator: ', '
+        operations:
+          label: Bewerkingen
+      filters:
+        name:
+          expose:
+            label: Medianaam
+        bundle:
+          expose:
+            label: Type
+        status:
+          expose:
+            label: Waar
+          group_info:
+            label: Publicatiestatus
+            group_items:
+              1:
+                title: Gepubliceerd
+              2:
+                title: 'Niet gepubliceerd'
+        langcode:
+          expose:
+            label: Taal
+      title: Media
+      empty:
+        area_text_custom:
+          content: 'Geen media beschikbaar.'
+  media_page_list:
+    display_title: Media

@@ -1,0 +1,24 @@
+uuid: e53daab0-be40-44f3-950e-5da61f682c1a
+langcode: en
+status: true
+dependencies:
+  config:
+    - core.entity_form_mode.paragraph.colors
+    - field.field.paragraph.style_options.field_background_color
+    - field.field.paragraph.style_options.field_paragraph_layout
+    - paragraphs.paragraphs_type.style_options
+id: paragraph.style_options.colors
+targetEntityType: paragraph
+bundle: style_options
+mode: colors
+content:
+  field_background_color:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  field_paragraph_layout: true
+  status: true

@@ -1,0 +1,6 @@
+type ContactInfo {
+  fullstreet: String!
+  city: String!
+  zipcode: String!
+  phone: String!
+}

@@ -93,6 +93,7 @@
         "drupal/username_enumeration_prevention": "^1.0@beta",
         "drupal/video_embed_field": "^2.1",
         "drupal/webform": "5.4.0",
+        "drupal/webform_jsonschema": "1.x-dev",
         "drush/drush": "^9.0.0",
         "frmwrk/frmwrk_decoupled": "dev-master",
         "npm-asset/select2": "^4.0",

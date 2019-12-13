@@ -1,0 +1,52 @@
+uuid: c610c48a-f3d2-4162-8d4c-f066a75dc28b
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.documentation.field_content
+    - field.field.paragraph.documentation.field_file
+    - field.field.paragraph.documentation.field_style_options
+    - field.field.paragraph.documentation.field_title
+    - paragraphs.paragraphs_type.documentation
+  module:
+    - entity_reference_revisions
+    - text
+id: paragraph.documentation.default
+targetEntityType: paragraph
+bundle: documentation
+mode: default
+content:
+  field_content:
+    weight: 5
+    label: inline
+    settings:
+      trim_length: 200
+    third_party_settings: {  }
+    type: text_trimmed
+    region: content
+  field_file:
+    weight: 8
+    label: inline
+    settings:
+      link: true
+    third_party_settings: {  }
+    type: entity_reference_label
+    region: content
+  field_style_options:
+    weight: 7
+    settings:
+      view_mode: default
+      link: ''
+    label: inline
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_title:
+    weight: 4
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

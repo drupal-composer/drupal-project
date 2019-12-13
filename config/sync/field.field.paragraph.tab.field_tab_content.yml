@@ -1,0 +1,66 @@
+uuid: 4cedfa93-a146-4dd9-b83b-e3e0773f2079
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab_content
+    - paragraphs.paragraphs_type.content
+    - paragraphs.paragraphs_type.content_list
+    - paragraphs.paragraphs_type.documentation
+    - paragraphs.paragraphs_type.from_library
+    - paragraphs.paragraphs_type.tab
+    - paragraphs.paragraphs_type.video
+  module:
+    - entity_reference_revisions
+id: paragraph.tab.field_tab_content
+field_name: field_tab_content
+entity_type: paragraph
+bundle: tab
+label: 'Tab inhoud'
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      content: content
+      content_list: content_list
+      documentation: documentation
+      from_library: from_library
+      video: video
+    target_bundles_drag_drop:
+      content:
+        enabled: true
+        weight: 12
+      content_list:
+        enabled: true
+        weight: 13
+      documentation:
+        enabled: true
+        weight: 14
+      from_library:
+        enabled: true
+        weight: 14
+      list_filter_options:
+        weight: 15
+        enabled: false
+      style_options:
+        weight: 17
+        enabled: false
+      tab:
+        weight: 18
+        enabled: false
+      tabs:
+        weight: 18
+        enabled: false
+      usp:
+        weight: 21
+        enabled: false
+      video:
+        enabled: true
+        weight: 22
+field_type: entity_reference_revisions

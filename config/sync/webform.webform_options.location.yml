@@ -1,0 +1,12 @@
+uuid: e2ea8dd6-3726-4164-9bb3-676ecd6be641
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+id: location
+label: Location
+category: Other
+likert: false
+options: "0: Capelle aan den ijssel\n1: Rijswijk\n2: Breda\n3: Eindhoven\n"

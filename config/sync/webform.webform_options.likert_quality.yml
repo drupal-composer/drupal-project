@@ -1,5 +1,5 @@
 uuid: d7f3b7b7-adfa-42a4-8e5a-5190995a159d
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: swmYtBVUbwq7aHJWWDN7ODByuvur9vMkexDC9h64NZ8
 id: likert_quality
-label: 'Likert: Quality'
-category: Likert
+label: 'Likertschaal: Kwaliteit'
+category: Likertschaal
 likert: true
-options: "1: Poor\n2: Fair\n3: Good\n4: Very good\n5: Excellent\n"
+options: "1: Slecht\r\n2: Voldoende\r\n3: Goed\r\n4: Zeer goed\r\n5: Uitstekend\n"

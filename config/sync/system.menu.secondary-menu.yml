@@ -1,0 +1,8 @@
+uuid: 7ff2741d-758a-4c94-969b-2a0667d2d7b4
+langcode: en
+status: true
+dependencies: {  }
+id: secondary-menu
+label: 'Secondary menu'
+description: 'Secondary menu in the header of the site'
+locked: false

@@ -3,3 +3,4 @@ override_selector: false
 terms_per_page_admin: 100
 _core:
   default_config_hash: zKpaWT6cJc1tVQQaTqatGELaCqU_oyRym6zTl27Yias
+langcode: nl

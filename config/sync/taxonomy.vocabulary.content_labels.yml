@@ -1,0 +1,8 @@
+uuid: 210abe4d-81df-4254-a7e9-5a390cbe09ea
+langcode: en
+status: true
+dependencies: {  }
+name: Inhoudslabels
+vid: content_labels
+description: ''
+weight: 0

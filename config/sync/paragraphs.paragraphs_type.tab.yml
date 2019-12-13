@@ -1,0 +1,9 @@
+uuid: 5ddab15d-e173-45ad-bd66-96acf909e6af
+langcode: en
+status: true
+dependencies: {  }
+id: tab
+label: Tab
+icon_uuid: null
+description: 'Enkele tab.'
+behavior_plugins: {  }

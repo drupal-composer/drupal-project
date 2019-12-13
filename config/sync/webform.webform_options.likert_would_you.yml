@@ -1,5 +1,5 @@
 uuid: 9f47e4a9-9c1e-4a8e-9f2d-52eb82b756d1
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -9,6 +9,6 @@ _core:
   default_config_hash: qBS2TmfAJB37Qn3TnrNM8x4AWimmDapcizzRllgo0fo
 id: likert_would_you
 label: 'Likert: Would You'
-category: Likert
+category: Likertschaal
 likert: true
-options: "1: Definitely Not\n2: Probably Not\n3: Not Sure\n4: Probably\n5: Definitely\n"
+options: "1: Absoluut niet\r\n2: Waarschijnlijk niet\r\n3: Niet zeker\r\n4: Waarschijnlijk\r\n5: Absoluut\n"

@@ -1,0 +1,18 @@
+uuid: 08f4f7a9-643f-4e54-95fd-ba1225cab6a1
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Basispagina
+type: basic_page
+description: 'Een basispagina. Bijvoorbeeld om een overzicht aan te maken.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: false

@@ -1,0 +1,10 @@
+uuid: 34925bde-2237-4f5f-8376-ac922fb64506
+langcode: nl
+status: true
+dependencies:
+  module:
+    - paragraphs
+id: paragraph.colors
+label: Kleuren
+targetEntityType: paragraph
+cache: true

@@ -1,0 +1,14 @@
+uuid: 6ad99a76-5a7b-4f74-bf93-383e720a3052
+langcode: en
+status: true
+dependencies:
+  module:
+    - paragraphs_library
+third_party_settings:
+  paragraphs_library:
+    allow_library_conversion: true
+id: usp
+label: USP
+icon_uuid: null
+description: 'Unique selling point paragraph'
+behavior_plugins: {  }

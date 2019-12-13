@@ -1,0 +1,24 @@
+uuid: 66dc0ca2-6380-4e75-9d51-6247b252ebcb
+langcode: nl
+status: true
+dependencies:
+  config:
+    - node.type.webform
+_core:
+  default_config_hash: FvXJkxryo6J_0TQRlb5Z77Ge-sim5GHzCI1Ft3kZu-4
+id: node.webform.promote
+field_name: promote
+entity_type: node
+bundle: webform
+label: 'Promoted to front page'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  on_label: 'On'
+  off_label: 'Off'
+field_type: boolean

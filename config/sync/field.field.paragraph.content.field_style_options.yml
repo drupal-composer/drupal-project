@@ -1,0 +1,58 @@
+uuid: db9911e3-5f5d-4d8f-9da5-8c8ed2593fdc
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_style_options
+    - paragraphs.paragraphs_type.content
+    - paragraphs.paragraphs_type.style_options
+  module:
+    - entity_reference_revisions
+id: paragraph.content.field_style_options
+field_name: field_style_options
+entity_type: paragraph
+bundle: content
+label: 'Opmaak opties'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      style_options: style_options
+    target_bundles_drag_drop:
+      content:
+        weight: 11
+        enabled: false
+      content_list:
+        weight: 12
+        enabled: false
+      documentation:
+        weight: 13
+        enabled: false
+      list_filter_options:
+        weight: 14
+        enabled: false
+      news:
+        weight: 15
+        enabled: false
+      related_files:
+        weight: 16
+        enabled: false
+      style_options:
+        enabled: true
+        weight: 17
+      tabbed_product_group:
+        weight: 18
+        enabled: false
+      tabbed_product_groups:
+        weight: 19
+        enabled: false
+      usp:
+        weight: 20
+        enabled: false
+field_type: entity_reference_revisions

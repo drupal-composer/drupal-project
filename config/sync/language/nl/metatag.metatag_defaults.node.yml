@@ -1,0 +1,4 @@
+label: Inhoud
+tags:
+  title: '[node:title] | [site:name]'
+  description: '[node:summary]'

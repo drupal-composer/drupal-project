@@ -1,0 +1,64 @@
+label: Doorverwijzen
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          tags:
+            previous: '‹ vorige'
+            next: 'volgende ›'
+            first: '« eerste'
+            last: 'laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        redirect_bulk_form:
+          action_title: 'Met selectie'
+        redirect_source__path:
+          label: Van
+          separator: ', '
+        created:
+          label: Aangemaakt
+      filters:
+        redirect_source__path:
+          expose:
+            label: Van
+        redirect_redirect__uri:
+          expose:
+            label: Naar
+        status_code:
+          expose:
+            label: Statuscode
+          group_info:
+            label: Statuscode
+            group_items:
+              1:
+                title: '300 meerdere keuzes'
+              2:
+                title: '301 Permanente omleiding'
+              3:
+                title: '302 Gevonden'
+              4:
+                title: '303 Zie andere'
+              5:
+                title: '304 Niet gewijzigd'
+              6:
+                title: '305 Gebruik proxy'
+              7:
+                title: '307 Tijdelijke omleiding'
+        language:
+          expose:
+            label: 'Oorspronkelijke taal'
+      title: Doorverwijzen
+  page_1:
+    display_title: Pagina

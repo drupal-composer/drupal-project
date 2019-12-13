@@ -1,0 +1,49 @@
+uuid: 9982c025-fb83-47ae-9365-7d0a31d10f58
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_filter_options
+    - paragraphs.paragraphs_type.content_list
+    - paragraphs.paragraphs_type.list_filter_options
+  module:
+    - entity_reference_revisions
+id: paragraph.content_list.field_filter_options
+field_name: field_filter_options
+entity_type: paragraph
+bundle: content_list
+label: 'Filter opties'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      list_filter_options: list_filter_options
+    target_bundles_drag_drop:
+      content:
+        weight: 8
+        enabled: false
+      content_list:
+        weight: 9
+        enabled: false
+      documentation:
+        weight: 10
+        enabled: false
+      list_filter_options:
+        enabled: true
+        weight: 11
+      news:
+        weight: 12
+        enabled: false
+      related_files:
+        weight: 13
+        enabled: false
+      usp:
+        weight: 14
+        enabled: false
+field_type: entity_reference_revisions

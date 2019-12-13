@@ -1,0 +1,50 @@
+label: 'Redirect 404'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        path:
+          label: Path
+        count:
+          label: Count
+        timestamp:
+          label: 'Last accessed'
+        langcode:
+          label: Language
+        redirect_404_operations:
+          label: Operations
+      filters:
+        path:
+          expose:
+            label: Path
+        langcode:
+          expose:
+            label: Language
+        resolved:
+          expose:
+            label: Resolved
+      title: 'Fix 404 pages'
+      empty:
+        area_text_custom:
+          content: 'There are no 404 errors to fix.'
+  page_1:
+    display_title: Page
+    display_options:
+      display_description: 'Lists 404 error paths with no redirect assigned yet.'

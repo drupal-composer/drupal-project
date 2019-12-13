@@ -1,4 +1,5 @@
 admin: adminimal_theme
-default: seven
+default: adminimal_theme
 _core:
   default_config_hash: 6lQ55NXM9ysybMQ6NzJj4dtiQ1dAkOYxdDompa-r_kk
+langcode: nl

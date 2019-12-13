@@ -1,5 +1,5 @@
 uuid: d63495dd-a761-408a-be02-ee2fd74f9fb2
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -9,6 +9,6 @@ _core:
   default_config_hash: 4J2RPG4JmsD4Fm1NlIQY0JHkrJ08UUl0qTF0_EjUxvw
 id: relationship
 label: Relationship
-category: Demographic
+category: Demografisch
 likert: false
-options: "Parent: Parent\n'Significant Other': 'Significant Other'\nSibling: Sibling\nChild: Child\nFriend: Friend\n"
+options: "Ouder: Ouder\r\nWederhelft: Wederhelft\r\n'Broer of zus': Broer of zus\r\nKind: Kind\r\nVriend: Vriend\n"

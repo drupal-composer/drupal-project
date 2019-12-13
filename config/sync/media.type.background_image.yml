@@ -1,0 +1,13 @@
+uuid: 18063373-6b5b-42fc-86fe-4c61a61a557f
+langcode: en
+status: true
+dependencies: {  }
+id: background_image
+label: 'Background image'
+description: ''
+source: image
+queue_thumbnail_downloads: false
+new_revision: false
+source_configuration:
+  source_field: field_media_image
+field_map: {  }

@@ -1,0 +1,15 @@
+uuid: d15a62dc-982e-49f1-ab3b-750dff4d14b5
+langcode: en
+status: true
+dependencies: {  }
+name: w400
+label: w400
+effects:
+  d52cbe8f-e0c7-48c8-9e5d-3c635fd60715:
+    uuid: d52cbe8f-e0c7-48c8-9e5d-3c635fd60715
+    id: image_scale
+    weight: 1
+    data:
+      width: 400
+      height: null
+      upscale: false

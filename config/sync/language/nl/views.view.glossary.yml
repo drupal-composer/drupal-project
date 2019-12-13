@@ -1,0 +1,36 @@
+label: Woordenlijst
+description: 'Alle inhoud, op letter.'
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        title:
+          label: Titel
+        name:
+          label: Auteur
+        changed:
+          label: 'Laatst bijgewerkt'
+  attachment_1:
+    display_title: Bijlage
+  page_1:
+    display_title: Pagina
+    display_options:
+      menu:
+        title: Woordenlijst

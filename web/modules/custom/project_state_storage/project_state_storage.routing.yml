@@ -1,0 +1,15 @@
+project_state_storage.state_storage_base:
+  path: '/admin/project-config'
+  defaults:
+    _title: 'Configuratie'
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+  requirements:
+    _permission: 'administer project_state_storage configuration'
+
+project_state_storage.contactinfo_form:
+  path: '/admin/project-config/contactinfo'
+  defaults:
+    _title: 'Contact informatie'
+    _form: 'Drupal\project_state_storage\Form\ContactinfoForm'
+  requirements:
+    _permission: 'administer project_state_storage contactinfo configuration'

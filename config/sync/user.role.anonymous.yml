@@ -1,14 +1,16 @@
 uuid: bbb366c5-7aac-4f07-861e-b37eca174870
-langcode: en
+langcode: nl
 status: true
 dependencies: {  }
 _core:
   default_config_hash: j5zLMOdJBqC0bMvSdth5UebkprJB8g_2FXHqhfpJzow
 id: anonymous
-label: 'Anonymous user'
-weight: -10
+label: 'Anonieme gebruiker'
+weight: 0
 is_admin: false
 permissions:
   - 'access content'
+  - 'execute frmwrk_decoupled arbitrary graphql requests'
+  - 'execute frmwrk_decoupled persisted graphql requests'
   - 'use text format html'
   - 'view media'

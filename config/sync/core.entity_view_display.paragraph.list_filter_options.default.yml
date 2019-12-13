@@ -1,0 +1,50 @@
+uuid: fc1b46b5-7111-4cde-9de8-695f9bd81526
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.list_filter_options.field_filter_column
+    - field.field.paragraph.list_filter_options.field_filter_limit
+    - field.field.paragraph.list_filter_options.field_filter_offset
+    - field.field.paragraph.list_filter_options.field_sorting_direction
+    - paragraphs.paragraphs_type.list_filter_options
+  module:
+    - options
+id: paragraph.list_filter_options.default
+targetEntityType: paragraph
+bundle: list_filter_options
+mode: default
+content:
+  field_filter_column:
+    weight: 2
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+  field_filter_limit:
+    weight: 1
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_filter_offset:
+    weight: 0
+    label: inline
+    settings:
+      thousand_separator: ''
+      prefix_suffix: true
+    third_party_settings: {  }
+    type: number_integer
+    region: content
+  field_sorting_direction:
+    weight: 3
+    label: inline
+    settings: {  }
+    third_party_settings: {  }
+    type: list_default
+    region: content
+hidden: {  }

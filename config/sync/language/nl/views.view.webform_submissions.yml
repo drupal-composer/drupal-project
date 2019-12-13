@@ -1,0 +1,164 @@
+label: 'Webformulier inzendingen'
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+            first: '« Eerste'
+            last: 'Laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        sid:
+          label: '#'
+          separator: ', '
+        in_draft:
+          label: Concept
+          separator: ', '
+        created:
+          label: Aangemaakt
+          separator: ', '
+        remote_addr:
+          label: IP-adres
+          separator: ', '
+        view_webform_submission:
+          label: Bewerkingen
+          text: weergeven
+      header:
+        result:
+          content: '@start - @end van @total'
+      arguments:
+        in_draft:
+          exception:
+            title: Alle
+      title: 'Webformulier inzendingen'
+  embed_administer:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Actie
+        sid:
+          label: '#'
+          separator: ', '
+        in_draft:
+          label: Concept
+          separator: ', '
+        sticky:
+          label: 'Vastgeplakt (sticky)'
+          separator: ', '
+        locked:
+          label: Gesloten
+          separator: ', '
+        created:
+          label: Aangemaakt
+          separator: ', '
+        completed:
+          label: Voltooid
+          separator: ', '
+        remote_addr:
+          label: IP-adres
+          separator: ', '
+        operations:
+          label: Bewerkingen
+      filters:
+        in_draft:
+          expose:
+            label: Concept
+        sticky:
+          expose:
+            label: 'Vastgeplakt (sticky)'
+        locked:
+          expose:
+            label: Gesloten
+  embed_manage:
+    display_options:
+      fields:
+        webform_submission_bulk_form:
+          action_title: Actie
+        sid:
+          label: '#'
+          separator: ', '
+        in_draft:
+          label: Concept
+          separator: ', '
+        sticky:
+          label: 'Vastgeplakt (sticky)'
+          separator: ', '
+        locked:
+          label: Gesloten
+          separator: ', '
+        created:
+          label: Aangemaakt
+          separator: ', '
+        completed:
+          label: Voltooid
+          separator: ', '
+        remote_addr:
+          label: IP-adres
+          separator: ', '
+        view_webform_submission:
+          label: Bewerkingen
+          text: weergeven
+        edit_webform_submission:
+          label: Bewerkingen
+          text: bewerken
+      filters:
+        in_draft:
+          expose:
+            label: Concept
+        sticky:
+          expose:
+            label: 'Vastgeplakt (sticky)'
+        locked:
+          expose:
+            label: Gesloten
+  embed_review:
+    display_options:
+      fields:
+        sid:
+          label: '#'
+          separator: ', '
+        in_draft:
+          label: Concept
+          separator: ', '
+        sticky:
+          label: 'Vastgeplakt (sticky)'
+          separator: ', '
+        locked:
+          label: Gesloten
+          separator: ', '
+        created:
+          label: Aangemaakt
+          separator: ', '
+        completed:
+          label: Voltooid
+          separator: ', '
+        remote_addr:
+          label: IP-adres
+          separator: ', '
+        view_webform_submission:
+          label: Bewerkingen
+          text: weergeven
+      filters:
+        in_draft:
+          expose:
+            label: Concept
+        sticky:
+          expose:
+            label: 'Vastgeplakt (sticky)'
+        locked:
+          expose:
+            label: Gesloten

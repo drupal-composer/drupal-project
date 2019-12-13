@@ -1,0 +1,15 @@
+uuid: 7e0d660a-4146-4500-aed8-c6341ac615a2
+langcode: en
+status: true
+dependencies: {  }
+name: letterbox_image
+label: 'Letterbox header-afbeelding (1350x450)'
+effects:
+  bc5f43be-666b-4cfa-94fd-2b80ce78033d:
+    uuid: bc5f43be-666b-4cfa-94fd-2b80ce78033d
+    id: image_scale_and_crop
+    weight: 1
+    data:
+      width: 1350
+      height: 450
+      anchor: center-center

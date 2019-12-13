@@ -1,0 +1,15 @@
+uuid: ad407488-f6f4-49f1-9415-dc7cc6475aff
+langcode: en
+status: true
+dependencies: {  }
+name: w1400
+label: w1400
+effects:
+  4fc0d90a-ff73-42d8-92b1-24e330c8c97e:
+    uuid: 4fc0d90a-ff73-42d8-92b1-24e330c8c97e
+    id: image_scale
+    weight: 1
+    data:
+      width: 1400
+      height: null
+      upscale: false

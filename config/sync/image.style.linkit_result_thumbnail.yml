@@ -1,11 +1,11 @@
 uuid: fba2a39d-559b-405d-91d0-ca78ca1b1e30
-langcode: en
+langcode: nl
 status: true
 dependencies: {  }
 _core:
   default_config_hash: CMuvuRCfGZ5k3XgsXmkEc54rI8etDY1Qz2JP7JzKL-g
 name: linkit_result_thumbnail
-label: 'Linkit result thumbnail'
+label: 'Linkit resultaat-miniatuurweergave'
 effects:
   2943df29-38ea-459c-ba1d-290489bb1807:
     uuid: 2943df29-38ea-459c-ba1d-290489bb1807

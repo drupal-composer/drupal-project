@@ -1,0 +1,9 @@
+uuid: d21dfb33-bad2-45ad-8356-93f63e48bdd9
+langcode: en
+status: true
+dependencies: {  }
+id: content_list
+label: 'Inhoud lijst'
+icon_uuid: null
+description: "List of content of various types, with filtering parameters\r\nLijst van verschillende typen inhoud, met filter parameters."
+behavior_plugins: {  }

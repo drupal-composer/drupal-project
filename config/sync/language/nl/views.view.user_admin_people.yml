@@ -1,0 +1,76 @@
+label: Personen
+description: 'Vind en beheer personen die gebruik maken van de website.'
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          tags:
+            previous: '‹ Vorige'
+            next: 'Volgende ›'
+            first: '« Eerste'
+            last: 'Laatste »'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        user_bulk_form:
+          label: Bulk-update
+        name:
+          label: Gebruikersnaam
+        status:
+          label: Status
+          settings:
+            format_custom_true: Actief
+            format_custom_false: Geblokkeerd
+        roles_target_id:
+          label: Rollen
+        created:
+          label: 'Geregistreerd sinds'
+        access:
+          label: 'Laatste toegang'
+        operations:
+          label: Bewerkingen
+        mail:
+          separator: ', '
+      filters:
+        combine:
+          expose:
+            label: 'Naam of e-mail bevat'
+        status:
+          group_info:
+            label: Status
+            group_items:
+              1:
+                title: Actief
+              2:
+                title: Geblokkeerd
+        roles_target_id:
+          expose:
+            label: Rol
+        permission:
+          expose:
+            label: Toegangsrechten
+      title: Personen
+      empty:
+        area_text_custom:
+          content: 'Geen personen beschikbaar.'
+      use_more_text: meer
+  page_1:
+    display_title: Pagina
+    display_options:
+      menu:
+        title: Lijst
+        description: 'Vind en beheer personen die gebruik maken van de website.'
+      tab_options:
+        title: Personen
+        description: 'Gebruikersaccounts, rollen en toegangsrechten beheren.'

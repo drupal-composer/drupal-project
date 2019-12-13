@@ -1,0 +1,12 @@
+uuid: 069656ba-3307-49ae-b8fb-c28d993a0490
+langcode: en
+status: true
+dependencies: {  }
+name: frmwrk_decoupled
+label: 'Frmwrk decoupled'
+schema: frmwrk
+schema_configuration: {  }
+endpoint: /graphql
+debug: true
+caching: false
+batching: true

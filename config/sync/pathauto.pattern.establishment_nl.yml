@@ -1,0 +1,33 @@
+uuid: 09b929b3-63e3-41ff-b65b-847dfae38977
+langcode: nl
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: establishment_nl
+label: 'Vestiging nl'
+type: 'canonical_entities:node'
+pattern: 'vestiging/[node:title]'
+selection_criteria:
+  20c82ac0-a05c-418c-9b81-c9a93c17c172:
+    id: node_type
+    bundles:
+      establishment: establishment
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 20c82ac0-a05c-418c-9b81-c9a93c17c172
+  c0d42e48-8cb1-42bb-a72c-1d56f2514270:
+    id: language
+    langcodes:
+      nl: nl
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: c0d42e48-8cb1-42bb-a72c-1d56f2514270
+selection_logic: and
+weight: -7
+relationships:
+  'node:langcode:language':
+    label: Language

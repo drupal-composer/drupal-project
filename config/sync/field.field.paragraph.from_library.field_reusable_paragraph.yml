@@ -1,0 +1,27 @@
+uuid: e79271b1-0be8-4639-82e8-e569c8959dad
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_reusable_paragraph
+    - paragraphs.paragraphs_type.from_library
+_core:
+  default_config_hash: z_H_kCDBkuITFi-RGZRiO8Ps2UxRDucMs7Dhan7d6yw
+id: paragraph.from_library.field_reusable_paragraph
+field_name: field_reusable_paragraph
+entity_type: paragraph
+bundle: from_library
+label: 'Herbruikbare paragraaf'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraphs_library_item'
+  handler_settings:
+    target_bundles: null
+    sort:
+      field: _none
+    auto_create: false
+field_type: entity_reference

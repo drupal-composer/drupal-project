@@ -1,0 +1,42 @@
+uuid: 21b9888c-dcf4-4d91-9e02-4b61c693454d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tabs.field_style_options
+    - field.field.paragraph.tabs.field_tab
+    - paragraphs.paragraphs_type.tabs
+  module:
+    - paragraphs
+id: paragraph.tabs.default
+targetEntityType: paragraph
+bundle: tabs
+mode: default
+content:
+  field_style_options:
+    weight: 1
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: colors
+      default_paragraph_type: style_options
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_tab:
+    type: entity_reference_paragraphs
+    weight: 0
+    settings:
+      title: Paragraph
+      title_plural: Paragraphs
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: default
+      default_paragraph_type: ''
+    third_party_settings: {  }
+    region: content
+hidden:
+  created: true
+  status: true

@@ -1,0 +1,31 @@
+label: 'Taxonomy term'
+description: 'Content belonging to a certain taxonomy term.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+          tags:
+            previous: ‹‹
+            next: ››
+      arguments:
+        tid:
+          exception:
+            title: All
+          title: '{{ arguments.tid }}'
+  feed_1:
+    display_title: Feed
+  page_1:
+    display_title: Page

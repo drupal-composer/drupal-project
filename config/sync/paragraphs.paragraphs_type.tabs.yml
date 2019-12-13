@@ -1,0 +1,9 @@
+uuid: 2d95b7d0-e09c-4ebf-8664-b5c4ddd9e66e
+langcode: en
+status: true
+dependencies: {  }
+id: tabs
+label: Tabs
+icon_uuid: null
+description: 'Content verdeeld onder tabs.'
+behavior_plugins: {  }

@@ -1,5 +1,5 @@
 uuid: 19f3824d-d472-4307-bd93-1c9e3650c99a
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: AKE2SNwCpl6Mu_cmbq9ZM2_cXxCikCVj1vcPE9oHWTs
 id: likert_satisfaction
-label: 'Likert: Satisfaction'
-category: Likert
+label: 'Likertschaal: Tevredenheid'
+category: Likertschaal
 likert: true
-options: "1: Very Unsatisfied\n2: Unsatisfied\n3: Neutral\n4: Satisfied\n5: Very Satisfied\n"
+options: "1: Zeer ontevreden\r\n2: Ontevreden\r\n3: Neutraal\r\n4: Tevreden\r\n5: Zeer tevreden\n"

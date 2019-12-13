@@ -1,0 +1,18 @@
+uuid: bd3b1a9f-ef2b-4653-a71d-ce121eacdcac
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: Nieuws
+type: news
+description: 'Content type voor nieuws.'
+help: ''
+new_revision: true
+preview_mode: 0
+display_submitted: true

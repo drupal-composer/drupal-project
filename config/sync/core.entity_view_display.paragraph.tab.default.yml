@@ -1,0 +1,33 @@
+uuid: 56a72135-9f46-4789-b576-22d74c9d46d2
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.tab.field_tab_content
+    - field.field.paragraph.tab.field_tab_title
+    - paragraphs.paragraphs_type.tab
+  module:
+    - entity_reference_revisions
+id: paragraph.tab.default
+targetEntityType: paragraph
+bundle: tab
+mode: default
+content:
+  field_tab_content:
+    weight: 1
+    label: inline
+    settings:
+      view_mode: default
+      link: ''
+    third_party_settings: {  }
+    type: entity_reference_revisions_entity_view
+    region: content
+  field_tab_title:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

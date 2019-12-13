@@ -1,0 +1,9 @@
+uuid: 262f9419-6edb-40e1-8172-59cce588b8fd
+langcode: en
+status: true
+dependencies: {  }
+id: documentation
+label: Documentatie
+icon_uuid: null
+description: 'Paragraph type Documentatie voor extra info over een dienst.'
+behavior_plugins: {  }

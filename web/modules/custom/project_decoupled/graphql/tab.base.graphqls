@@ -1,0 +1,9 @@
+# Paragraph type implementing the required interface.
+#
+# Note that these fields must match the drupal machine_name of the field.
+type TabParagraph implements ParagraphTypeInterface {
+  id: String!
+  parent_field_name: String!
+  field_tab_content: [ParagraphTypeInterface]
+  field_tab_title: String
+}

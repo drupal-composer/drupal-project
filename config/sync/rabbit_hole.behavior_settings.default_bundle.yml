@@ -1,0 +1,11 @@
+uuid: 53b832f3-995d-4b7d-9820-d179981b5907
+langcode: nl
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: 9tPXnSvxaFBxdiQkvZZpU3OIFpU-AyFgeQSIPj2frXg
+id: default_bundle
+action: display_page
+allow_override: 0
+redirect: ''
+redirect_code: 0

@@ -1,15 +1,14 @@
 uuid: 6e6642aa-b0f5-43b3-a2ae-d2c9d07e2cff
-langcode: en
+langcode: nl
 status: true
 dependencies: {  }
 _core:
   default_config_hash: dJ0L2DNSj5q6XVZAGsuVDpJTh5UeYkIPwKrUOOpr8YI
 id: authenticated
-label: 'Authenticated user'
-weight: -9
+label: 'Geverifieerde gebruiker'
+weight: 1
 is_admin: false
 permissions:
   - 'access content'
-  - 'access media overview'
   - 'use text format html'
   - 'view media'

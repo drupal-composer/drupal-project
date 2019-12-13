@@ -1,5 +1,5 @@
 uuid: 26729a54-e65c-4d9b-bc89-c2c5e2985503
-langcode: en
+langcode: nl
 status: open
 dependencies:
   enforced:
@@ -15,7 +15,7 @@ template: false
 archive: false
 id: contact
 title: Contact
-description: 'Basic email contact webform.'
+description: 'Eenvoudig e-mailcontactformulier'
 category: ''
 elements: "name:\n  '#title': 'Your Name'\n  '#type': textfield\n  '#required': true\n  '#default_value': '[current-user:display-name]'\nemail:\n  '#title': 'Your Email'\n  '#type': email\n  '#required': true\n  '#default_value': '[current-user:mail]'\nsubject:\n  '#title': Subject\n  '#type': textfield\n  '#required': true\n  '#test': 'Testing contact webform from [site:name]'\nmessage:\n  '#title': Message\n  '#type': textarea\n  '#required': true\n  '#test': 'Please ignore this email.'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': 'Send message'\n"
 css: ''
@@ -174,7 +174,7 @@ access:
 handlers:
   email_confirmation:
     id: email
-    label: 'Email confirmation'
+    label: E-mailbevestiging
     handler_id: email_confirmation
     status: true
     conditions: {  }
@@ -208,7 +208,7 @@ handlers:
       sender_name: ''
   email_notification:
     id: email
-    label: 'Email notification'
+    label: E-mailmelding
     handler_id: email_notification
     status: true
     conditions: {  }

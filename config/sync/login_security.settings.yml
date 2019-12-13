@@ -19,3 +19,4 @@ login_activity_email_subject: 'Security information: Unexpected login activity h
 login_activity_email_body: 'The configured threshold of @activity_threshold logins has been reached with a total of @tracking_current_count invalid login attempts. You should review your log information about login attempts at @site.'
 _core:
   default_config_hash: DftMffb4je4TYBtv6tAjHrXDtW3HBZ85hU9mCFJpCgM
+langcode: nl

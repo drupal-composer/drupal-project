@@ -1,0 +1,23 @@
+uuid: 4626f208-c939-4538-aecc-acb32b8e6c50
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_paragraph_layout
+    - paragraphs.paragraphs_type.style_options
+  module:
+    - options
+id: paragraph.style_options.field_paragraph_layout
+field_name: field_paragraph_layout
+entity_type: paragraph
+bundle: style_options
+label: 'Paragraaf opmaak'
+description: ''
+required: false
+translatable: true
+default_value:
+  -
+    value: imagenone
+default_value_callback: ''
+settings: {  }
+field_type: list_string

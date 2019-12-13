@@ -1,5 +1,5 @@
 uuid: d09685e7-7f37-4f05-a6e4-6ca78710b261
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -9,6 +9,6 @@ _core:
   default_config_hash: zEZX8JSVqznnFtqFfpuC593h3t1JDAZhF0Q3pvA229o
 id: likert_ten_scale
 label: 'Likert: Ten Scale'
-category: Likert
+category: Likertschaal
 likert: true
-options: "1: 1\n2: 2\n3: 3\n4: 4\n5: 5\n6: 6\n7: 7\n8: 8\n9: 9\n10: 10\n"
+options: "1: 1\r\n2: 2\r\n3: 3\r\n4: 4\r\n5: 5\r\n6: 6\r\n7: 7\r\n8: 8\r\n9: 9\r\n10: 10\n"

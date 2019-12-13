@@ -9,3 +9,4 @@ modules:
     none:
       formatter: swiftmailer
       sender: swiftmailer
+langcode: nl

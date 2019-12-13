@@ -1,0 +1,11 @@
+uuid: c578320a-e861-4bc3-888a-b614f1ad68ec
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.webform
+id: node_type_webform
+action: page_redirect
+allow_override: 0
+redirect: /
+redirect_code: 301

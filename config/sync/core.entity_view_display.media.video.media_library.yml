@@ -1,0 +1,35 @@
+uuid: e824f367-5622-4deb-8fbe-8f1827549166
+langcode: nl
+status: true
+dependencies:
+  config:
+    - core.entity_view_mode.media.media_library
+    - field.field.media.video.field_media_video_file
+    - media.type.video
+  module:
+    - file
+id: media.video.media_library
+targetEntityType: media
+bundle: video
+mode: media_library
+content:
+  field_media_video_file:
+    type: file_video
+    weight: 0
+    region: content
+    label: hidden
+    settings:
+      controls: true
+      multiple_file_display_type: tags
+      width: 220
+      height: 220
+      autoplay: false
+      loop: false
+      muted: false
+    third_party_settings: {  }
+hidden:
+  created: true
+  langcode: true
+  name: true
+  thumbnail: true
+  uid: true

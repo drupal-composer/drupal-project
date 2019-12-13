@@ -1,0 +1,30 @@
+label: '''Wie is online''-blok'
+description: 'Toont de gebruikersnamen van de meest recente actieve gebruikers, en het totale aantal actieve gebruikers.'
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      filters:
+        access:
+          expose:
+            label: 'Laatste toegang'
+            description: 'Een gebruiker wordt online verondersteld voor deze tijd nadat hij voor een laatste keer een pagina heeft bekeken.'
+      title: 'Wie is online'
+      header:
+        result:
+          content: 'Er zijn nu @total gebruikers online.'
+      empty:
+        area_text_custom:
+          content: 'Er zijn nu 0 gebruikers online.'
+  who_s_online_block:
+    display_title: 'Wie is online'
+    display_options:
+      block_description: 'Wie is online'
+      display_description: 'Een lijst van gebruikers die nu zijn ingelogd.'

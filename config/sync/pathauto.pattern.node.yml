@@ -8,7 +8,18 @@ id: node
 label: Node
 type: 'canonical_entities:node'
 pattern: '[node:title]'
-selection_criteria: {  }
+selection_criteria:
+  312638c7-5a00-4c9a-98f3-f8597f6f9d66:
+    id: node_type
+    bundles:
+      basic_page: basic_page
+      campaign: campaign
+      news: news
+      webform: webform
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 312638c7-5a00-4c9a-98f3-f8597f6f9d66
 selection_logic: and
-weight: 0
+weight: -5
 relationships: {  }

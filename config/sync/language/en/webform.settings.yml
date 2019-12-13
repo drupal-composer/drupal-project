@@ -1,0 +1,55 @@
+settings:
+  default_form_open_message: 'This form has not yet been opened to submissions.'
+  default_form_close_message: 'Sorry… This form is closed to new submissions.'
+  default_form_exception_message: 'Unable to display this webform. Please contact the site administrator.'
+  default_submit_button_label: Submit
+  default_reset_button_label: Reset
+  default_form_confidential_message: 'This form is confidential. You must <a href="[site:login-url]/logout?destination=[current-page:url:relative]">Log out</a> to submit it.'
+  default_form_access_denied_message: 'Please login to access this form.'
+  default_form_required_label: 'Indicates required field'
+  default_wizard_prev_button_label: '< Previous Page'
+  default_wizard_next_button_label: 'Next Page >'
+  default_wizard_start_label: Start
+  default_wizard_confirmation_label: Complete
+  default_preview_next_button_label: Preview
+  default_preview_prev_button_label: '< Previous'
+  default_preview_label: Preview
+  default_preview_title: '[webform:title]: Preview'
+  default_preview_message: 'Please review your submission. Your submission is not complete until you press the "Submit" button!'
+  default_draft_button_label: 'Save Draft'
+  default_draft_saved_message: 'Submission saved. You may return to this form later and it will restore the current values.'
+  default_draft_loaded_message: 'A partially-completed form was found. Please complete the remaining portions.'
+  default_draft_pending_single_message: 'You have a pending draft for this webform. <a href="#">Load your pending draft</a>.'
+  default_draft_pending_multiple_message: 'You have pending drafts for this webform. <a href="#">View your pending drafts</a>.'
+  default_confirmation_message: 'New submission added to [webform:title].'
+  default_confirmation_back_label: 'Back to form'
+  default_submission_label: '[webform_submission:submitted-to]: Submission #[webform_submission:serial]'
+  default_submission_access_denied_message: 'Please login to access this submission.'
+  default_submission_exception_message: 'Unable to process this submission. Please contact the site administrator.'
+  default_submission_locked_message: 'This submission has been locked.'
+  default_previous_submission_message: 'You have already submitted this webform. <a href="#">View your previous submission</a>.'
+  default_previous_submissions_message: 'You have already submitted this webform. <a href="#">View your previous submissions</a>.'
+  default_autofill_message: 'This submission has been autofilled with your previous submission.'
+  default_limit_total_message: 'No more submissions are permitted.'
+  default_limit_user_message: 'No more submissions are permitted.'
+  dialog_options:
+    narrow:
+      title: Narrow
+    normal:
+      title: Normal
+    wide:
+      title: Wide
+element:
+  empty_message: '{Empty}'
+  default_more_title: More
+  default_section_title_tag: h2
+file:
+  file_private_redirect_message: 'Please login to access the uploaded file.'
+mail:
+  default_from_name: '[site:name]'
+  default_subject: 'Webform submission from: [webform_submission:source-entity]'
+  default_body_text: "Submitted on [webform_submission:created]\nSubmitted by: [webform_submission:user]\n\nSubmitted values are:\n[webform_submission:values]\n"
+  default_body_html: "<p>Submitted on [webform_submission:created]</p>\n<p>Submitted by: [webform_submission:user]</p>\n<p>Submitted values are:</p>\n[webform_submission:values]\n"
+test:
+  types: "checkbox:\n  - true\ncolor:\n  - '#ffffcc'\n  - '#ffffcc'\n  - '#ccffff'\nemail:\n  - 'example@example.com'\n  - 'test@test.com'\n  - 'random@random.com'\nlanguage_select:\n  - en\nmachine_name:\n  - 'loremipsum'\n  - 'oratione'\n  - 'dixisset'\ntel:\n  - '123-456-7890'\n  - '098-765-4321'\ntextarea:\n  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.'\n  - 'Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;'\n  - 'Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.'\ntext_format:\n  - value: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.</p>'\n  - value: '<p>Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;</p>'\n  - value: '<p>Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.</p>'\nurl:\n  - 'http://example.com'\n  - 'http://test.com'\nwebform_email_confirm:\n  - 'example@example.com'\n  - 'test@test.com'\n  - 'random@random.com'\nwebform_email_multiple:\n  - 'example@example.com, test@test.com, random@random.com'\nwebform_time:\n  - '09:00'\n  - '17:00'\n"
+  names: "first_name:\n  - 'John'\n  - 'Paul'\n  - 'Ringo'\n  - 'George'\nlast_name:\n  - 'Lennon'\n  - 'McCartney'\n  - 'Starr'\n  - 'Harrison'\naddress:\n  - '10 Main Street'\n  - '11 Brook Alley Road. APT 1'\nzip:\n  - '11111'\n  - '12345'\n  - '12345-6789'\npostal_code:\n  - '11111'\n  - '12345'\n  - '12345-6789'\nphone:\n  - '123-456-7890'\n  - '098-765-4321'\nfax:\n  - '123-456-7890'\n  - '098-765-4321'\ncity:\n  - 'Springfield'\n  - 'Pleasantville'\n  - 'Hill Valley'\nurl:\n  - 'http://example.com'\n  - 'http://test.com'\ndefault:\n  - 'Loremipsum'\n  - 'Oratione'\n  - 'Dixisset'\n"

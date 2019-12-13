@@ -1,0 +1,45 @@
+uuid: 14db8cc2-044f-40f4-b46a-c62a8daf990a
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.usp.field_usp
+    - field.field.paragraph.usp.field_usp_link
+    - field.field.paragraph.usp.field_usp_title
+    - paragraphs.paragraphs_type.usp
+  module:
+    - link
+id: paragraph.usp.default
+targetEntityType: paragraph
+bundle: usp
+mode: default
+content:
+  field_usp:
+    weight: 3
+    label: above
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+  field_usp_link:
+    weight: 2
+    label: inline
+    settings:
+      trim_length: 80
+      url_only: false
+      url_plain: false
+      rel: ''
+      target: ''
+    third_party_settings: {  }
+    type: link
+    region: content
+  field_usp_title:
+    weight: 0
+    label: inline
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+    type: string
+    region: content
+hidden: {  }

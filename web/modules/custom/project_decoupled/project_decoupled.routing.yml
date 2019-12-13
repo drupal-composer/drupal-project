@@ -1,0 +1,14 @@
+project_decoupled.google_analytics:
+  path: '/admin/project-config/google-analytics'
+  defaults:
+    _title: 'Google Analytics settings'
+    _form: 'Drupal\project_decoupled\Form\GoogleAnalyticsForm'
+  requirements:
+    _permission: 'administer project_state_storage configuration'
+project_decoupled.global_site_configuration_form:
+  path: '/admin/project-config/global_configuration'
+  defaults:
+    _title: 'Global site configuration'
+    _form: 'Drupal\project_decoupled\Form\GlobalSiteConfigurationForm'
+  requirements:
+    _permission: 'administer global site configuration'

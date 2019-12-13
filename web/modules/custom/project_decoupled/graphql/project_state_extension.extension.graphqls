@@ -1,0 +1,4 @@
+extend type Config {
+  contactinfo: ContactInfo
+  usp: [String]
+}

@@ -1,0 +1,60 @@
+label: 'Paragraphs library'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: ‹‹
+            next: ››
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        label:
+          label: Label
+          separator: ', '
+        type:
+          label: Type
+          separator: ', '
+        paragraphs__target_id:
+          label: Paragraphs
+          separator: ', '
+        langcode:
+          label: Language
+          separator: ', '
+        id:
+          label: ID
+          separator: ', '
+        count:
+          label: Used
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
+        changed:
+          label: Changed
+          separator: ', '
+        operations:
+          label: Operations
+      filters:
+        label:
+          expose:
+            label: Label
+          group_info:
+            label: Label
+        type:
+          expose:
+            label: Type
+      title: 'Paragraphs library'
+      empty:
+        area_text_custom:
+          content: 'No library items available.'
+  page_1:
+    display_title: Page

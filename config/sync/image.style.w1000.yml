@@ -1,0 +1,15 @@
+uuid: 7b36306f-5406-43a7-82c0-40c3bfc966c5
+langcode: nl
+status: true
+dependencies: {  }
+name: w1000
+label: w1000
+effects:
+  5abc5214-301d-4417-aa53-4a0ae3bf5596:
+    uuid: 5abc5214-301d-4417-aa53-4a0ae3bf5596
+    id: image_scale
+    weight: 1
+    data:
+      width: 1000
+      height: null
+      upscale: false

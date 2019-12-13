@@ -1,5 +1,5 @@
 uuid: 7977946e-b1e6-4416-87fa-4b9276576fc4
-langcode: en
+langcode: nl
 status: true
 dependencies:
   module:
@@ -14,7 +14,6 @@ description: ''
 tag: ''
 base_table: redirect_404
 base_field: ''
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -216,7 +215,7 @@ display:
           relationship: none
           group_type: group
           admin_label: ''
-          label: 'Last accessed'
+          label: 'Laatste toegang'
           exclude: false
           alter:
             alter_text: false
@@ -385,6 +384,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -424,6 +425,8 @@ display:
               anonymous: '0'
               administrator: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -462,6 +465,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -476,7 +481,7 @@ display:
             group_items: {  }
           plugin_id: boolean
       sorts: {  }
-      title: 'Fix 404 pages'
+      title: '404-pagina''s oplossen'
       header: {  }
       footer: {  }
       empty:
@@ -489,7 +494,7 @@ display:
           admin_label: ''
           empty: true
           tokenize: false
-          content: 'There are no 404 errors to fix.'
+          content: 'Er zijn geen 404 fouten om op te lossen.'
           plugin_id: text_custom
       relationships: {  }
       arguments: {  }

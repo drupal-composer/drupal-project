@@ -1,0 +1,11 @@
+uuid: 745556f4-348e-4f2d-bda2-87bc60a0b68e
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.basic_page
+id: node_type_basic_page
+action: page_redirect
+allow_override: 0
+redirect: /
+redirect_code: 301

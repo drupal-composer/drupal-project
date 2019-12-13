@@ -1,5 +1,5 @@
 uuid: 68a13e6e-41b7-4067-a6e4-d5902904031a
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -9,6 +9,6 @@ _core:
   default_config_hash: osj7RxUDLyQlfj_sIQ-YoeJf-rDrAjMBWlxpoUaSvz0
 id: state_province_codes
 label: 'State/Province codes'
-category: Geographic
+category: Geografisch
 likert: false
 options: "AL: Alabama\nAK: Alaska\nAS: 'American Samoa'\nAZ: Arizona\nAR: Arkansas\nAE: 'Armed Forces (Canada, Europe, Africa, or Middle East)'\nAA: 'Armed Forces Americas'\nAP: 'Armed Forces Pacific'\nCA: California\nCO: Colorado\nCT: Connecticut\nDE: Delaware\nDC: 'District of Columbia'\nFM: 'Federated States of Micronesia'\nFL: Florida\nGA: Georgia\nGU: Guam\nHI: Hawaii\nID: Idaho\nIL: Illinois\nIN: Indiana\nIA: Iowa\nKS: Kansas\nKY: Kentucky\nLA: Louisiana\nME: Maine\nMH: 'Marshall Islands'\nMD: Maryland\nMA: Massachusetts\nMI: Michigan\nMN: Minnesota\nMS: Mississippi\nMO: Missouri\nMT: Montana\nNE: Nebraska\nNV: Nevada\nNH: 'New Hampshire'\nNJ: 'New Jersey'\nNM: 'New Mexico'\nNY: 'New York'\nNC: 'North Carolina'\nND: 'North Dakota'\nMP: 'Northern Mariana Islands'\nOH: Ohio\nOK: Oklahoma\nOR: Oregon\nPW: Palau\nPA: Pennsylvania\nPR: 'Puerto Rico'\nRI: 'Rhode Island'\nSC: 'South Carolina'\nSD: 'South Dakota'\nTN: Tennessee\nTX: Texas\nUT: Utah\nVT: Vermont\nVI: 'Virgin Islands'\nVA: Virginia\nWA: Washington\nWV: 'West Virginia'\nWI: Wisconsin\nWY: Wyoming\n"

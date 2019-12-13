@@ -1,0 +1,21 @@
+uuid: 56f804d5-18b8-4b2d-ab6f-bdfebd4de20e
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_summary
+    - node.type.news
+  module:
+    - text
+id: node.news.field_summary
+field_name: field_summary
+entity_type: node
+bundle: news
+label: Summary
+description: 'The summary can be used when the page is shown as a teaser in lists.'
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text_long

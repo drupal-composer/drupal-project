@@ -1,0 +1,36 @@
+uuid: ef4a6a38-2753-4fa9-9240-f122f49404b0
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_content_type
+field_name: field_content_type
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: campaign
+      label: Campagne
+    -
+      value: brand
+      label: Merk
+    -
+      value: news
+      label: Nieuws
+    -
+      value: training
+      label: Opleiding
+    -
+      value: product_group
+      label: Productgroep
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

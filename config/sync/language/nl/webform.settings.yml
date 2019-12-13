@@ -1,0 +1,39 @@
+settings:
+  default_form_open_message: 'This form has not yet been opened to submissions.'
+  default_form_close_message: 'Sorry…This form is closed to new submissions.'
+  default_form_exception_message: 'Het formulier kan niet getoond worden. Neem contact op met de beheerder.'
+  default_submit_button_label: Indienen
+  default_reset_button_label: Reset
+  default_form_confidential_message: 'Dit formulier is vertrouwelijk en kan pas na <a href="[site:login-url]/logout?destination=[current-page:url:relative]">uitloggen</a> worden gebruikt.'
+  default_wizard_prev_button_label: '< Vorige Pagina'
+  default_wizard_next_button_label: 'Volgende pagina >'
+  default_wizard_start_label: Begin
+  default_wizard_confirmation_label: Voltooid
+  default_preview_next_button_label: Voorbeeldweergave
+  default_preview_prev_button_label: '< Vorige'
+  default_preview_label: Voorbeeldweergave
+  default_preview_message: 'Please review your submission. Your submission is not complete until you press the &quot;Submit&quot; button!'
+  default_draft_button_label: 'Conceptversie opslaan'
+  default_draft_saved_message: 'Inzending opgeslagen. U kunt op een later tijdstip naar dit formulier terugkeren waarbij de huidige waardes zullen worden hersteld.'
+  default_draft_loaded_message: 'Er is een gedeeltelijk ingevuld formulier gevonden, voltooi de overgebleven delen.'
+  default_confirmation_message: 'Nieuwe inzending voor [webform:title] opgeslagen.'
+  default_confirmation_back_label: 'Terug naar formulier.'
+  default_limit_total_message: 'Geen nieuwe inzendingen toegestaan.'
+  default_limit_user_message: 'Geen nieuwe inzendingen toegestaan.'
+  dialog_options:
+    narrow:
+      title: Smal
+    normal:
+      title: Normal
+    wide:
+      title: Breed
+element:
+  default_more_title: Meer
+mail:
+  default_from_name: '[site:name]'
+  default_subject: 'Inzending webformulier: [webform_submission:source-entity]'
+  default_body_text: "Submitted on [webform_submission:created]\r\nSubmitted by: [webform_submission:user]\r\n\r\nSubmitted values are:\r\n[webform_submission:values]\r\n"
+  default_body_html: "<p>Submitted on [webform_submission:created]</p>\r\n<p>Submitted by: [webform_submission:user]</p>\r\n<p>Submitted values are:</p>\r\n[webform_submission:values]\r\n"
+test:
+  types: "checkbox:\n  - true\ncolor:\n  - '#ffffcc'\n  - '#ffffcc'\n  - '#ccffff'\nemail:\n  - example@example.com\n  - test@test.com\n  - random@random.com\nlanguage_select:\n  - en\nmachine_name:\n  - loremipsum\n  - oratione\n  - dixisset\ntel:\n  - 123-456-7890\n  - 098-765-4321\ntextarea:\n  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.'\n  - 'Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;'\n  - 'Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.'\ntext_format:\n  -\n    value: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.</p>'\n  -\n    value: '<p>Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;</p>'\n  -\n    value: '<p>Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.</p>'\nurl:\n  - 'http://example.com'\n  - 'http://test.com'\nwebform_creditcard_number:\n  - '4111111111111111'\nwebform_email_confirm:\n  - example@example.com\n  - test@test.com\n  - random@random.com\nwebform_email_multiple:\n  - 'example@example.com, test@test.com, random@random.com'\nwebform_location:\n  -\n    value: 'The White House, 1600 Pennsylvania Ave NW, Washington, DC 20500, USA'\n  -\n    value: 'London SW1A 1AA, United Kingdom'\n  -\n    value: 'Moscow, Russia, 10307'\nwebform_time:\n  - '09:00'\n  - '17:00'\n"
+  names: "first_name:\n  - John\n  - Paul\n  - Ringo\n  - George\nlast_name:\n  - Lennon\n  - McCartney\n  - Starr\n  - Harrison\naddress:\n  - '10 Main Street'\n  - '11 Brook Alley Road. APT 1'\nzip:\n  - '11111'\n  - '12345'\n  - 12345-6789\nphone:\n  - 123-456-7890\n  - 098-765-4321\ncity:\n  - Springfield\n  - Pleasantville\n  - 'Hill Valley'\nurl:\n  - 'http://example.com'\n  - 'http://test.com'\ndefault:\n  - Loremipsum\n  - Oratione\n  - Dixisset\npostal_code:\n  - '11111'\n  - '12345'\n  - 12345-6789"

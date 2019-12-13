@@ -1,0 +1,37 @@
+uuid: 40f66a29-32ae-4bc9-89b1-3592b0f14dd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.media.background_image.field_media_image
+    - image.style.thumbnail
+    - media.type.background_image
+  module:
+    - image
+id: media.background_image.default
+targetEntityType: media
+bundle: background_image
+mode: default
+content:
+  name:
+    type: string
+    weight: 1
+    region: content
+    label: hidden
+    settings:
+      link_to_entity: false
+    third_party_settings: {  }
+  thumbnail:
+    type: image
+    weight: 0
+    label: hidden
+    settings:
+      image_style: thumbnail
+      image_link: ''
+    region: content
+    third_party_settings: {  }
+hidden:
+  created: true
+  field_media_image: true
+  langcode: true
+  uid: true

@@ -1,0 +1,28 @@
+uuid: 497add64-65ab-44a4-8b67-c43b1749a4a0
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.taxonomy_term.field_image
+    - media.type.image
+    - taxonomy.vocabulary.assortment
+id: taxonomy_term.assortment.field_image
+field_name: field_image
+entity_type: taxonomy_term
+bundle: assortment
+label: Afbeelding
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      image: image
+    sort:
+      field: _none
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

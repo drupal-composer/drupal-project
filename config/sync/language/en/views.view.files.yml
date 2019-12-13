@@ -1,0 +1,91 @@
+label: Files
+description: 'Find and manage files.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        fid:
+          label: Fid
+        filename:
+          label: Name
+          separator: ', '
+        filemime:
+          label: 'MIME type'
+        filesize:
+          label: Size
+        status:
+          label: Status
+          settings:
+            format_custom_false: Temporary
+            format_custom_true: Permanent
+        created:
+          label: 'Upload date'
+        changed:
+          label: 'Changed date'
+        count:
+          label: 'Used in'
+          format_plural_string: !!binary MSBwbGFjZQNAY291bnQgcGxhY2Vz
+      filters:
+        filename:
+          expose:
+            label: Filename
+        filemime:
+          expose:
+            label: 'MIME type'
+        status:
+          expose:
+            label: Status
+      title: Files
+      empty:
+        area_text_custom:
+          content: 'No files available.'
+  page_1:
+    display_title: 'Files overview'
+    display_options:
+      menu:
+        title: Files
+  page_2:
+    display_title: 'File usage'
+    display_options:
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        entity_label:
+          label: Entity
+        type:
+          label: 'Entity type'
+        module:
+          label: 'Registering module'
+        count:
+          label: 'Use count'
+          format_plural_string: !!binary MQNAY291bnQ=
+      title: 'File usage'
+      arguments:
+        fid:
+          exception:
+            title: All
+          title: 'File usage information for {{ arguments.fid }}'

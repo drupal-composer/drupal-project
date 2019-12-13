@@ -1,5 +1,5 @@
 uuid: 21381b25-6937-4824-b8e4-592cfae048f4
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: s_SXZn2HbRGvTex-TLOCxz2oOnMYqtEZh8HD4_318QI
 id: industry
-label: Industry
-category: Demographic
+label: Industrie
+category: Demografisch
 likert: false
 options: "Accounting/Finance: Accounting/Finance\nAdvertising/Public Relations: Advertising/Public Relations\nAerospace/Aviation: Aerospace/Aviation\nArts/Entertainment/Publishing: Arts/Entertainment/Publishing\nAutomotive: Automotive\nBanking/Mortgage: Banking/Mortgage\nBusiness Development: Business Development\nBusiness Opportunity: Business Opportunity\nClerical/Administrative: Clerical/Administrative\nConstruction/Facilities: Construction/Facilities\nConsumer Goods: Consumer Goods\nCustomer Service: Customer Service\nEducation/Training: Education/Training\nEnergy/Utilities: Energy/Utilities\nEngineering: Engineering\nGovernment/Military: Government/Military\nHealthcare: Healthcare\nHospitality/Travel: Hospitality/Travel\nHuman Resources: Human Resources\nInstallation/Maintenance: Installation/Maintenance\nInsurance: Insurance\nInternet: Internet\nLaw Enforcement/Security: Law Enforcement/Security\nLegal: Legal\nManagement/Executive: Management/Executive\nManufacturing/Operations: Manufacturing/Operations\nMarketing: Marketing\nNon-Profit/Volunteer: Non-Profit/Volunteer\nPharmaceutical/Biotech: Pharmaceutical/Biotech\nProfessional Services: Professional Services\nReal Estate: Real Estate\nRestaurant/Food Service: Restaurant/Food Service\nRetail: Retail\nSales: Sales\nScience/Research: Science/Research\nSkilled Labor: Skilled Labor\nTechnology: Technology\nTelecommunications: Telecommunications\nTransportation/Logistics: Transportation/Logistics\n"

@@ -1,0 +1,9 @@
+uuid: add6be9d-c915-4bab-a5f5-3ec96ddf91b5
+langcode: en
+status: true
+dependencies: {  }
+id: style_options
+label: Stijl-opties
+icon_uuid: null
+description: 'Paragraaf met style opties.'
+behavior_plugins: {  }

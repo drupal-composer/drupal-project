@@ -1,0 +1,33 @@
+uuid: 1bab85fa-1eee-4e9a-a652-d7382379a0f2
+langcode: nl
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: brand_nl
+label: 'Merk nl'
+type: 'canonical_entities:node'
+pattern: 'merk/[node:title]'
+selection_criteria:
+  138291e5-30f3-49bf-b5e6-cf5f7c941ae6:
+    id: node_type
+    bundles:
+      brand: brand
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 138291e5-30f3-49bf-b5e6-cf5f7c941ae6
+  f24a28c6-c60a-4e61-a754-7aa69edad061:
+    id: language
+    langcodes:
+      nl: nl
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: f24a28c6-c60a-4e61-a754-7aa69edad061
+selection_logic: and
+weight: -10
+relationships:
+  'node:langcode:language':
+    label: Language

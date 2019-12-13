@@ -1,0 +1,32 @@
+uuid: 9eae1898-a79e-4ad9-8b59-a0ad47977dce
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.taxonomy_term.assortment.field_image
+    - taxonomy.vocabulary.assortment
+  module:
+    - text
+id: taxonomy_term.assortment.default
+targetEntityType: taxonomy_term
+bundle: assortment
+mode: default
+content:
+  description:
+    label: hidden
+    type: text_default
+    weight: 0
+    region: content
+    settings: {  }
+    third_party_settings: {  }
+  field_image:
+    type: entity_reference_entity_view
+    weight: 1
+    label: above
+    settings:
+      view_mode: default
+      link: false
+    third_party_settings: {  }
+    region: content
+hidden:
+  langcode: true

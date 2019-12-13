@@ -1,0 +1,49 @@
+label: 'Custom block library'
+description: 'Find and manage custom blocks.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Apply
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        info:
+          label: 'Block description'
+          separator: ', '
+        type:
+          label: 'Block type'
+          separator: ', '
+        changed:
+          label: Updated
+        operations:
+          label: Operations
+      filters:
+        info:
+          expose:
+            label: 'Block description'
+        type:
+          expose:
+            label: 'Block type'
+      title: 'Custom block library'
+      empty:
+        area_text_custom:
+          content: 'There are no custom blocks available.'
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: 'Custom block library'

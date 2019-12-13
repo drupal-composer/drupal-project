@@ -1,0 +1,44 @@
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+          tags:
+            previous: ‹‹
+            next: ››
+      fields:
+        path:
+          label: Pad
+        count:
+          label: Aantal
+        timestamp:
+          label: 'Laatste toegang'
+        langcode:
+          label: Taal
+        redirect_404_operations:
+          label: Bewerkingen
+      filters:
+        path:
+          expose:
+            label: Pad
+        langcode:
+          expose:
+            label: Taal
+      title: '404-pagina''s oplossen'
+      empty:
+        area_text_custom:
+          content: 'There are no 404 errors to fix.'
+  page_1:
+    display_title: Pagina

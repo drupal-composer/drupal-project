@@ -1,11 +1,11 @@
 uuid: 11fee387-ebea-47d1-949d-12f8254e5801
-langcode: en
+langcode: nl
 status: true
 dependencies: {  }
 _core:
   default_config_hash: Da5YWhJdKLxaJ9gDRI1u5oCbm5WBxiiDgA4M1QrOEPQ
 id: '403'
-label: '403 access denied'
+label: '403 geen toegang'
 tags:
   canonical_url: '[site:url]'
   shortlink: '[site:url]'

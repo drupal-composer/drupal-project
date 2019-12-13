@@ -1,0 +1,11 @@
+# Paragraph type implementing the required interface.
+#
+# Note that these fields must match the drupal machine_name of the field.
+type DocumentationParagraph implements ParagraphTypeInterface {
+  id: String!
+  parent_field_name: String!
+  field_file: [File]
+  field_content: String
+  field_style_options: StyleOptionsParagraph!
+  field_title: String
+}

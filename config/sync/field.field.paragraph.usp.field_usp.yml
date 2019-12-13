@@ -1,0 +1,19 @@
+uuid: 9f0599bb-3dea-410f-a8a9-56804c92be90
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_usp
+    - paragraphs.paragraphs_type.usp
+id: paragraph.usp.field_usp
+field_name: field_usp
+entity_type: paragraph
+bundle: usp
+label: USP
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

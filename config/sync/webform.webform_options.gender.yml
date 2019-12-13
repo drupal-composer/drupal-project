@@ -1,5 +1,5 @@
 uuid: 828ab0fc-43cb-4ce2-b385-e7b71463ff59
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: K8qTfK5-87DpwTQBkqhgTMR4P0Zz8Z9aNI7OnMlTb0Q
 id: gender
-label: Gender
-category: Demographic
+label: Geslacht
+category: Demografisch
 likert: false
-options: "Male: Male\nFemale: Female\n"
+options: "Mannelijk: Mannelijk\r\nVrouwelijk: Vrouwelijk\n"

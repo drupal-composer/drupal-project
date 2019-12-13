@@ -1,0 +1,8 @@
+uuid: 2f0b19bf-c63b-4ecc-87f7-d23a02afc51c
+langcode: en
+status: true
+dependencies: {  }
+name: Opleidingstypes
+vid: training_types
+description: ''
+weight: 0

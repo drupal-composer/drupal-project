@@ -1,5 +1,5 @@
 uuid: 340f5d52-196c-45ab-ad8c-e40b0446a922
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: Hbc8n5HtVZVs5fSBSpSbuY07CVvqkKP76csvRHN9pK8
 id: likert_importance
-label: 'Likert: Importance'
-category: Likert
+label: 'Likertschaal: Belangrijkheid'
+category: Likertschaal
 likert: true
-options: "1: Not at all Important\n2: Somewhat Important\n3: Neutral\n4: Important\n5: Very Important\n"
+options: "1: Totaal niet belangrijk\r\n2: Beetje belangrijk\r\n3: Neutraal\r\n4: Belangrijk\r\n5: Zeer belangrijk\n"

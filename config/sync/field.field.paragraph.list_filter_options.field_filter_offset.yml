@@ -1,0 +1,25 @@
+uuid: 2d131366-7214-4bfa-8653-5ead1b6b2891
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_filter_offset
+    - paragraphs.paragraphs_type.list_filter_options
+id: paragraph.list_filter_options.field_filter_offset
+field_name: field_filter_offset
+entity_type: paragraph
+bundle: list_filter_options
+label: 'Aantal vanaf begin overslaan'
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 0
+default_value_callback: ''
+settings:
+  min: 0
+  max: null
+  prefix: ''
+  suffix: ''
+field_type: integer

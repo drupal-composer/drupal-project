@@ -1,0 +1,9 @@
+project_decoupled.google_analytics:
+  title: 'Google analytics'
+  route_name: project_decoupled.google_analytics
+  base_route: project_state_storage.state_storage_base
+project_decoupled.global_site_configuration_form:
+  title: 'Global site configuration'
+  route_name: project_decoupled.global_site_configuration_form
+  base_route: project_state_storage.state_storage_base
+  weight: -1

@@ -1,0 +1,9 @@
+uuid: e71027fe-d50b-46b8-9632-81b40da655ea
+langcode: en
+status: true
+dependencies: {  }
+id: list_filter_options
+label: 'Lijst filter opties'
+icon_uuid: null
+description: ''
+behavior_plugins: {  }

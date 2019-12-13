@@ -1,0 +1,49 @@
+label: 'Aangepaste blokken-bibliotheek'
+description: 'Aangepaste blokken zoeken en beheren'
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      pager:
+        options:
+          tags:
+            previous: '‹ Vorige'
+            next: 'Volgende ›'
+          expose:
+            items_per_page_label: 'Items per pagina'
+            items_per_page_options_all_label: '- Alle -'
+            offset_label: Startpunt
+      fields:
+        info:
+          label: Blokbeschrijving
+          separator: ', '
+        type:
+          label: 'Blok type'
+          separator: ', '
+        changed:
+          label: Bijgewerkt
+        operations:
+          label: Bewerkingen
+      filters:
+        info:
+          expose:
+            label: Blokbeschrijving
+        type:
+          expose:
+            label: 'Blok type'
+      title: 'Aangepaste blokken-bibliotheek'
+      empty:
+        area_text_custom:
+          content: 'Er zijn geen aangepaste blokken beschikbaar.'
+  page_1:
+    display_title: Pagina
+    display_options:
+      menu:
+        title: 'Aangepaste blokken-bibliotheek'

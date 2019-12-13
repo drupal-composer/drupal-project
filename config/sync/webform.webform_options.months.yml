@@ -1,5 +1,5 @@
 uuid: e4b65657-bcd4-484b-bdfc-682a22352f54
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: pZJnuQkh9afNML5IcMuKTUC__vmHMFn66Qr5IWtedZ4
 id: months
-label: Months
+label: Maanden
 category: 'Date and time'
 likert: false
-options: "January: January\nFebruary: February\nMarch: March\nApril: April\nMay: May\nJune: June\nJuly: July\nAugust: August\nSeptember: September\nOctober: October\nNovember: November\nDecember: December\n"
+options: "Januari: Januari\r\nFebruari: Februari\r\nMaart: Maart\r\nApril: April\r\nMei: Mei\r\nJuni: Juni\r\nJuli: Juli\r\nAugustus: Augustus\r\nSeptember: September\r\nOktober: Oktober\r\nNovember: November\r\nDecember: December\n"

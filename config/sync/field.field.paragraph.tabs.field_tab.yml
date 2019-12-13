@@ -1,0 +1,61 @@
+uuid: 57af2391-b005-4d07-a160-11af94d74e56
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_tab
+    - paragraphs.paragraphs_type.tab
+    - paragraphs.paragraphs_type.tabs
+  module:
+    - entity_reference_revisions
+id: paragraph.tabs.field_tab
+field_name: field_tab
+entity_type: paragraph
+bundle: tabs
+label: tab
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:paragraph'
+  handler_settings:
+    negate: 0
+    target_bundles:
+      tab: tab
+    target_bundles_drag_drop:
+      content:
+        weight: 12
+        enabled: false
+      content_list:
+        weight: 13
+        enabled: false
+      documentation:
+        weight: 14
+        enabled: false
+      list_filter_options:
+        weight: 15
+        enabled: false
+      related_files:
+        weight: 16
+        enabled: false
+      style_options:
+        weight: 17
+        enabled: false
+      tab:
+        enabled: true
+        weight: 18
+      tabbed_product_groups:
+        weight: 19
+        enabled: false
+      tabs:
+        weight: 20
+        enabled: false
+      usp:
+        weight: 21
+        enabled: false
+      video:
+        weight: 22
+        enabled: false
+field_type: entity_reference_revisions

@@ -1,0 +1,10 @@
+name: project_decoupled
+type: module
+description: GraphQl extensions for the project site.
+package: Custom
+core: 8.x
+dependencies:
+  - frmwrk_decoupled
+  - frmwrk_decoupled_metatags
+  - frmwrk_decoupled_paragraphs
+  - frmwrk_decoupled_site

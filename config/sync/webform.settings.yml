@@ -5,45 +5,45 @@ settings:
   default_ajax_effect: fade
   default_ajax_speed: 500
   default_ajax_progress_type: throbber
-  default_form_open_message: 'This form has not yet been opened to submissions.'
+  default_form_open_message: 'Dit formulier is nog niet geopend voor inzendingen.'
   default_form_close_message: 'Sorry…This form is closed to new submissions.'
-  default_form_exception_message: 'Unable to display this webform. Please contact the site administrator.'
+  default_form_exception_message: 'Het formulier kan niet getoond worden. Neem contact op met de beheerder.'
   default_submit_button_label: Submit
   default_reset_button_label: Reset
   default_form_submit_once: false
-  default_form_confidential_message: 'This form is confidential. You must <a href="[site:login-url]/logout?destination=[current-page:url:relative]">Log out</a> to submit it.'
-  default_form_access_denied_message: 'Please login to access this form.'
+  default_form_confidential_message: 'Dit formulier is vertrouwelijk en kan pas na <a href="[site:login-url]/logout?destination=[current-page:url:relative]">uitloggen</a> worden gebruikt.'
+  default_form_access_denied_message: 'Login om toegang te krijgen tot dit formulier.'
   default_form_disable_back: false
   default_form_submit_back: false
   default_form_unsaved: false
   default_form_novalidate: false
   default_form_disable_inline_errors: false
   default_form_required: false
-  default_form_required_label: 'Indicates required field'
+  default_form_required_label: 'Aanduiding van verplicht veld'
   default_form_details_toggle: true
   default_form_file_limit: ''
   form_classes: "container-inline clearfix\nform--inline clearfix\nmessages messages--error\nmessages messages--warning\nmessages messages--status\n"
   button_classes: ''
-  default_wizard_prev_button_label: '< Previous Page'
-  default_wizard_next_button_label: 'Next Page >'
-  default_wizard_start_label: Start
-  default_wizard_confirmation_label: Complete
+  default_wizard_prev_button_label: '< Vorige pagina'
+  default_wizard_next_button_label: 'Volgende pagina >'
+  default_wizard_start_label: Begin
+  default_wizard_confirmation_label: Voltooid
   default_preview_next_button_label: Preview
-  default_preview_prev_button_label: '< Previous'
+  default_preview_prev_button_label: '< Vorige'
   default_preview_label: Preview
-  default_preview_title: '[webform:title]: Preview'
-  default_preview_message: 'Please review your submission. Your submission is not complete until you press the "Submit" button!'
-  default_draft_button_label: 'Save Draft'
-  default_draft_saved_message: 'Submission saved. You may return to this form later and it will restore the current values.'
-  default_draft_loaded_message: 'A partially-completed form was found. Please complete the remaining portions.'
+  default_preview_title: '[webform:title]: Voorbeeldweergave'
+  default_preview_message: 'Controleer uw inzending. Uw inzending is niet voltooid, totdat u klikt op de ''Indienen''-knop.'
+  default_draft_button_label: 'Conceptversie opslaan'
+  default_draft_saved_message: 'Inzending opgeslagen. U kunt op een later tijdstip naar dit formulier terugkeren waarbij de huidige waardes zullen worden hersteld.'
+  default_draft_loaded_message: 'Er is een gedeeltelijk ingevuld formulier gevonden, voltooi de overgebleven delen.'
   default_draft_pending_single_message: 'You have a pending draft for this webform. <a href="#">Load your pending draft</a>.'
   default_draft_pending_multiple_message: 'You have pending drafts for this webform. <a href="#">View your pending drafts</a>.'
-  default_confirmation_message: 'New submission added to [webform:title].'
-  default_confirmation_back_label: 'Back to form'
-  default_submission_label: '[webform_submission:submitted-to]: Submission #[webform_submission:serial]'
-  default_submission_access_denied_message: 'Please login to access this submission.'
-  default_submission_exception_message: 'Unable to process this submission. Please contact the site administrator.'
-  default_submission_locked_message: 'This submission has been locked.'
+  default_confirmation_message: 'Nieuwe inzending voor [webform:title] opgeslagen.'
+  default_confirmation_back_label: 'Terug naar formulier.'
+  default_submission_label: '[webform_submission:submitted-to]: Inzending #[webform_submission:serial]'
+  default_submission_access_denied_message: 'Login om toegang te krijgen tot deze inzending.'
+  default_submission_exception_message: 'De inzending kan niet verwerkt worden. Neem alstublieft contact op met de site administrator.'
+  default_submission_locked_message: 'Deze inzending is vergrendeld.'
   default_submission_log: false
   default_submission_views: {  }
   default_submission_views_replace:
@@ -58,21 +58,21 @@ settings:
       - entity.node.webform.results_submissions
       - entity.node.webform.user.drafts
       - entity.node.webform.user.submissions
-  default_previous_submission_message: 'You have already submitted this webform. <a href="#">View your previous submission</a>.'
-  default_previous_submissions_message: 'You have already submitted this webform. <a href="#">View your previous submissions</a>.'
+  default_previous_submission_message: 'U heeft dit formulier reeds ingezonden. <a href="#">Bekijk uw vorige inzending</a>.'
+  default_previous_submissions_message: 'U heeft dit formulier reeds ingezonden. <a href="#">Bekijk uw vorige inzendingen</a>.'
   default_autofill_message: 'This submission has been autofilled with your previous submission.'
   preview_classes: "messages messages--error\nmessages messages--warning\nmessages messages--status\n"
   confirmation_classes: "messages messages--error\nmessages messages--warning\nmessages messages--status\n"
   confirmation_back_classes: "button\n"
-  default_limit_total_message: 'No more submissions are permitted.'
-  default_limit_user_message: 'No more submissions are permitted.'
+  default_limit_total_message: 'Geen nieuwe inzendingen toegestaan.'
+  default_limit_user_message: 'Geen nieuwe inzendingen toegestaan.'
   dialog: false
   dialog_options:
     narrow:
       title: Narrow
       width: 600
     normal:
-      title: Normal
+      title: Normaal
       width: 800
     wide:
       title: Wide
@@ -113,7 +113,7 @@ purge:
   cron_size: 100
 element:
   machine_name_pattern: a-z0-9_
-  empty_message: '{Empty}'
+  empty_message: '{Leeg}'
   allowed_tags: admin
   wrapper_classes: "container-inline clearfix\nform--inline clearfix\nmessages messages--error\nmessages messages--warning\nmessages messages--status\n"
   classes: "container-inline clearfix\nform--inline clearfix\nmessages messages--error\nmessages messages--warning\nmessages messages--status\n"
@@ -141,7 +141,7 @@ html_editor:
 file:
   file_public: false
   file_private_redirect: true
-  file_private_redirect_message: 'Please login to access the uploaded file.'
+  file_private_redirect_message: 'Login om toegang te krijgen tot het bestand.'
   default_max_filesize: ''
   default_managed_file_extensions: 'gif jpg png bmp eps tif pict psd txt rtf html odf pdf doc docx ppt pptx xls xlsx xml avi mov mp3 ogg wav bz2 dmg gz jar rar sit svg tar zip'
   default_audio_file_extensions: 'mp3 ogg wav'
@@ -159,32 +159,31 @@ mail:
   default_return_path: ''
   default_sender_mail: ''
   default_sender_name: ''
-  default_subject: 'Webform submission from: [webform_submission:source-entity]'
-  default_body_text: "Submitted on [webform_submission:created]\nSubmitted by: [webform_submission:user]\n\nSubmitted values are:\n[webform_submission:values]\n"
-  default_body_html: "<p>Submitted on [webform_submission:created]</p>\n<p>Submitted by: [webform_submission:user]</p>\n<p>Submitted values are:</p>\n[webform_submission:values]\n"
+  default_subject: 'Inzending webformulier: [webform_submission:source-entity]'
+  default_body_text: "Ingezonden op [webform_submission:created]\r\nIngezonden door: [webform_submission:user]\r\n\r\nIngezonden waardes:\r\n[webform_submission:values]\n"
+  default_body_html: "<p>Ingezonden op [webform_submission:created]</p>\r\n<p>Ingezonden door: [webform_submission:user]</p>\r\n<p>Ingezonden waardes:</p>\r\n[webform_submission:values]\n"
   roles: {  }
 test:
-  types: "checkbox:\n  - true\ncolor:\n  - '#ffffcc'\n  - '#ffffcc'\n  - '#ccffff'\nemail:\n  - 'example@example.com'\n  - 'test@test.com'\n  - 'random@random.com'\nlanguage_select:\n  - en\nmachine_name:\n  - 'loremipsum'\n  - 'oratione'\n  - 'dixisset'\ntel:\n  - '123-456-7890'\n  - '098-765-4321'\ntextarea:\n  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.'\n  - 'Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;'\n  - 'Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.'\ntext_format:\n  - value: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.</p>'\n  - value: '<p>Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;</p>'\n  - value: '<p>Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.</p>'\nurl:\n  - 'http://example.com'\n  - 'http://test.com'\nwebform_email_confirm:\n  - 'example@example.com'\n  - 'test@test.com'\n  - 'random@random.com'\nwebform_email_multiple:\n  - 'example@example.com, test@test.com, random@random.com'\nwebform_time:\n  - '09:00'\n  - '17:00'\n"
-  names: "first_name:\n  - 'John'\n  - 'Paul'\n  - 'Ringo'\n  - 'George'\nlast_name:\n  - 'Lennon'\n  - 'McCartney'\n  - 'Starr'\n  - 'Harrison'\naddress:\n  - '10 Main Street'\n  - '11 Brook Alley Road. APT 1'\nzip:\n  - '11111'\n  - '12345'\n  - '12345-6789'\npostal_code:\n  - '11111'\n  - '12345'\n  - '12345-6789'\nphone:\n  - '123-456-7890'\n  - '098-765-4321'\nfax:\n  - '123-456-7890'\n  - '098-765-4321'\ncity:\n  - 'Springfield'\n  - 'Pleasantville'\n  - 'Hill Valley'\nurl:\n  - 'http://example.com'\n  - 'http://test.com'\ndefault:\n  - 'Loremipsum'\n  - 'Oratione'\n  - 'Dixisset'\n"
+  types: "checkbox:\r\n  - true\r\ncolor:\r\n  - '#ffffcc'\r\n  - '#ffffcc'\r\n  - '#ccffff'\r\nemail:\r\n  - 'example@example.com'\r\n  - 'test@test.com'\r\n  - 'random@random.com'\r\nlanguage_select:\r\n  - en\r\nmachine_name:\r\n  - 'loremipsum'\r\n  - 'oratione'\r\n  - 'dixisset'\r\ntel:\r\n  - '123-456-7890'\r\n  - '098-765-4321'\r\ntextarea:\r\n  - 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.'\r\n  - 'Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;'\r\n  - 'Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.'\r\ntext_format:\r\n  - value: '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Negat esse eam, inquit, propter se expetendam. Primum Theophrasti, Strato, physicum se voluit; Id mihi magnum videtur. Itaque mihi non satis videmini considerare quod iter sit naturae quaeque progressio. Quare hoc videndum est, possitne nobis hoc ratio philosophorum dare. Est enim tanti philosophi tamque nobilis audacter sua decreta defendere.</p>'\r\n  - value: '<p>Huius, Lyco, oratione locuples, rebus ipsis ielunior. Duo Reges: constructio interrete. Sed haec in pueris; Sed utrum hortandus es nobis, Luci, inquit, an etiam tua sponte propensus es? Sapiens autem semper beatus est et est aliquando in dolore; Immo videri fortasse. Paulum, cum regem Persem captum adduceret, eodem flumine invectio? Et ille ridens: Video, inquit, quid agas;</p>'\r\n  - value: '<p>Quae cum dixisset, finem ille. Quamquam non negatis nos intellegere quid sit voluptas, sed quid ille dicat. Progredientibus autem aetatibus sensim tardeve potius quasi nosmet ipsos cognoscimus. Gloriosa ostentatio in constituendo summo bono. Qui-vere falsone, quaerere mittimus-dicitur oculis se privasse; Duarum enim vitarum nobis erunt instituta capienda. Comprehensum, quod cognitum non habet? Qui enim existimabit posse se miserum esse beatus non erit. Causa autem fuit huc veniendi ut quosdam hinc libros promerem. Nunc omni virtuti vitium contrario nomine opponitur.</p>'\r\nurl:\r\n  - 'http://example.com'\r\n  - 'http://test.com'\r\nwebform_email_confirm:\r\n  - 'example@example.com'\r\n  - 'test@test.com'\r\n  - 'random@random.com'\r\nwebform_email_multiple:\r\n  - 'example@example.com, test@test.com, random@random.com'\r\nwebform_time:\r\n  - '09:00'\r\n  - '17:00'\r\n"
+  names: "first_name:\r\n  - 'John'\r\n  - 'Paul'\r\n  - 'Ringo'\r\n  - 'George'\r\nlast_name:\r\n  - 'Lennon'\r\n  - 'McCartney'\r\n  - 'Starr'\r\n  - 'Harrison'\r\naddress:\r\n  - '10 Main Street'\r\n  - '11 Brook Alley Road. APT 1'\r\nzip:\r\n  - '11111'\r\n  - '12345'\r\n  - '12345-6789'\r\npostal_code:\r\n  - '11111'\r\n  - '12345'\r\n  - '12345-6789'\r\nphone:\r\n  - '123-456-7890'\r\n  - '098-765-4321'\r\nfax:\r\n  - '123-456-7890'\r\n  - '098-765-4321'\r\ncity:\r\n  - 'Springfield'\r\n  - 'Pleasantville'\r\n  - 'Hill Valley'\r\nurl:\r\n  - 'http://example.com'\r\n  - 'http://test.com'\r\ndefault:\r\n  - 'Loremipsum'\r\n  - 'Oratione'\r\n  - 'Dixisset'\r\n"
 ui:
   video_display: dialog
+  description_help: true
   details_save: true
   help_disabled: false
   dialog_disabled: false
   offcanvas_disabled: false
   promotions_disabled: false
-  description_help: true
-  contribute_disabled: false
 libraries:
   excluded_libraries:
     - jquery.chosen
     - jquery.icheck
     - jquery.toggles
 requirements:
-  cdn: true
+  cdn: false
   bootstrap: true
   spam: true
-langcode: en
+langcode: nl
 third_party_settings:
   captcha:
     replace_administration_mode: true

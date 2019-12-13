@@ -1,0 +1,33 @@
+uuid: c6403d53-0492-4f12-9f90-c3e19b64da81
+langcode: nl
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: training_nl
+label: 'Opleiding nl'
+type: 'canonical_entities:node'
+pattern: 'opleiding/[node:title]'
+selection_criteria:
+  72062841-3deb-4612-ae08-cf01d864d830:
+    id: node_type
+    bundles:
+      training: training
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 72062841-3deb-4612-ae08-cf01d864d830
+  3a9eca18-6535-4e21-ae00-ca2a857591cf:
+    id: language
+    langcodes:
+      nl: nl
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 3a9eca18-6535-4e21-ae00-ca2a857591cf
+selection_logic: and
+weight: -9
+relationships:
+  'node:langcode:language':
+    label: Language

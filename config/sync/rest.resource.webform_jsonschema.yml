@@ -1,0 +1,20 @@
+uuid: 17a352ef-4f90-42fe-93bd-c7da3500af64
+langcode: nl
+status: true
+dependencies:
+  module:
+    - basic_auth
+    - serialization
+    - simple_oauth
+    - webform_jsonschema
+id: webform_jsonschema
+plugin_id: webform_jsonschema
+granularity: resource
+configuration:
+  methods:
+    - POST
+  formats:
+    - json
+  authentication:
+    - basic_auth
+    - oauth2

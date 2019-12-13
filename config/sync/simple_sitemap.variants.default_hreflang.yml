@@ -1,0 +1,7 @@
+variants:
+  default:
+    label: Default
+    weight: 0
+_core:
+  default_config_hash: nQAXscP-SDpsmqHlQ6u0iBvcuJPrAikb09c3cP2_n0k
+langcode: nl

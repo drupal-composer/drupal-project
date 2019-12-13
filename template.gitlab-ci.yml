@@ -48,7 +48,7 @@ Composer packages:
 #  image: gitlab.frmwrk.nl:5005/frmwrk-general/drupaltestci:chrome-tools
 #  stage: quality
 #  variables:
-#    LIGHTHOUSE_TEST_URL: "https://over.rexel.nl/"
+#    LIGHTHOUSE_TEST_URL: "https://[project].nl/"
 #  script:
 #    # Run Lighthouse test
 #    - dep drupalci:lighthouse $STAGE -vv
@@ -90,7 +90,7 @@ Config:
 #  artifacts:
 #    name: "$CI_JOB_NAME"
 #    paths:
-#      - web/themes/custom/rexel/css
+#      - web/themes/custom/[project]/css
 
 
 #Nextjs:
@@ -273,7 +273,7 @@ Deploy feature:
 #  stage: deploy
 #  environment:
 #    name: NOW $CI_COMMIT_REF_SLUG
-#    url: https://rexel.zeit.frmwrk.nl
+#    url: https://[project].zeit.frmwrk.nl
 #    on_stop: Remove NOW
 #  when: manual
 #  only:

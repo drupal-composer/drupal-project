@@ -1,0 +1,5 @@
+name: State Storage
+type: module
+description: Forms to save data into state storage for later use.
+package: Custom
+core: 8.x

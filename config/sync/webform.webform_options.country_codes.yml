@@ -1,5 +1,5 @@
 uuid: 51314cd1-3a6a-486d-9d0f-032fa5452b67
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: adQ16YGDPk7QfUKrfrC35o2sKdHEozdNtdpiH7CftQQ
 id: country_codes
-label: 'Country codes'
-category: Geographic
+label: Landcodes
+category: Geografisch
 likert: false
 options: ''

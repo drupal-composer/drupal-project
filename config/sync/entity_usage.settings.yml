@@ -1,0 +1,11 @@
+track_enabled_base_fields: false
+local_task_enabled_entity_types:
+  - paragraphs_library_item
+usage_controller_items_per_page: 25
+_core:
+  default_config_hash: AXUBMTvVtpcNp0jKjDaWjSHqMy6HjuUf7j4yVbXgazI
+edit_warning_message_entity_types:
+  - paragraphs_library_item
+delete_warning_message_entity_types:
+  - paragraphs_library_item
+langcode: nl

@@ -1,0 +1,33 @@
+uuid: a9e224ab-9bc9-4235-8abe-737861444bac
+langcode: nl
+status: true
+dependencies:
+  module:
+    - language
+    - node
+id: product_group_nl
+label: 'Productgroep nl'
+type: 'canonical_entities:node'
+pattern: 'productgroep/[node:title]'
+selection_criteria:
+  815481d1-10cb-40cb-bdff-0a7e21384cb3:
+    id: node_type
+    bundles:
+      product_group: product_group
+    negate: false
+    context_mapping:
+      node: node
+    uuid: 815481d1-10cb-40cb-bdff-0a7e21384cb3
+  749e6d26-a8e8-4897-b9e8-910feee91f42:
+    id: language
+    langcodes:
+      nl: nl
+    negate: false
+    context_mapping:
+      language: 'node:langcode:language'
+    uuid: 749e6d26-a8e8-4897-b9e8-910feee91f42
+selection_logic: and
+weight: -8
+relationships:
+  'node:langcode:language':
+    label: Language

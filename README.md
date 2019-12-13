@@ -1,5 +1,5 @@
 
-Over Rexel (https://over.rexel.nl en https://cms.over.rexel.nl)
+[project] (https://[project].nl en https://cms.[project].nl)
 =====
 _Laatst bijgewerkt 10-12-2019 door Jelle._
 

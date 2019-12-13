@@ -1,0 +1,21 @@
+uuid: df0c5613-205f-4517-88d7-3f6cb0faa423
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_content_type
+    - paragraphs.paragraphs_type.content_list
+  module:
+    - options
+id: paragraph.content_list.field_content_type
+field_name: field_content_type
+entity_type: paragraph
+bundle: content_list
+label: 'Pagina Type'
+description: ''
+required: true
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: list_string

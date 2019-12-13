@@ -1,0 +1,10 @@
+type News implements NodeInterface {
+  author: String
+  id: Int!
+  title: String!
+  related: [NodeInterface]
+  url: String
+  labels: [String]
+  metatags: [metatag]
+  paragraphs: [ParagraphTypeInterface]
+}

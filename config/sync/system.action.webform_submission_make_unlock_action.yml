@@ -1,5 +1,5 @@
 uuid: a4166e51-bd1b-4189-b735-560ec2f0ae18
-langcode: en
+langcode: nl
 status: true
 dependencies:
   module:
@@ -7,7 +7,7 @@ dependencies:
 _core:
   default_config_hash: begZ0-RmTzO_zDAwEKA2lKvtGYw1vbFOzbQOJzUbZX0
 id: webform_submission_make_unlock_action
-label: 'Unlock submission'
+label: 'Inzending ontgrendelen'
 type: webform_submission
 plugin: webform_submission_make_unlock_action
 configuration: {  }

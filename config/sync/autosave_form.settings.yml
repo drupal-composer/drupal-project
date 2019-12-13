@@ -15,3 +15,4 @@ allowed_content_entity_types:
     bundles: {  }
 _core:
   default_config_hash: QnLi3Y7e5T_v9EZqYxRb90E0bBDb2g1y7xREWLKJLC0
+langcode: nl

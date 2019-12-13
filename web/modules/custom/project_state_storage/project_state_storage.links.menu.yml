@@ -1,0 +1,13 @@
+project_state_storage.state_storage_base:
+  title: 'Site configuratie'
+  route_name: project_state_storage.state_storage_base
+  parent: system.admin
+  description: 'Configureer de project site hier.'
+  weight: 0
+
+project_state_storage.contactinfo:
+  title: Contact info
+  route_name: project_state_storage.contactinfo_form
+  parent: project_state_storage.state_storage_base
+  description: 'Configure site contactinfo settings.'
+  weight: 1

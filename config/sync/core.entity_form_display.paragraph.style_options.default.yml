@@ -1,0 +1,28 @@
+uuid: 82e66cf2-0565-426a-92f8-970071c0de8d
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.style_options.field_background_color
+    - field.field.paragraph.style_options.field_paragraph_layout
+    - paragraphs.paragraphs_type.style_options
+id: paragraph.style_options.default
+targetEntityType: paragraph
+bundle: style_options
+mode: default
+content:
+  field_background_color:
+    weight: 1
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+  field_paragraph_layout:
+    weight: 0
+    settings: {  }
+    third_party_settings: {  }
+    type: options_select
+    region: content
+hidden:
+  created: true
+  status: true

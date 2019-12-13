@@ -1,0 +1,25 @@
+uuid: efbbc20f-c638-4ed8-9700-1ba801744471
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_filter_limit
+    - paragraphs.paragraphs_type.list_filter_options
+id: paragraph.list_filter_options.field_filter_limit
+field_name: field_filter_limit
+entity_type: paragraph
+bundle: list_filter_options
+label: Aantal
+description: ''
+required: false
+translatable: false
+default_value:
+  -
+    value: 10
+default_value_callback: ''
+settings:
+  min: 1
+  max: 100
+  prefix: ''
+  suffix: ''
+field_type: integer

@@ -1,5 +1,5 @@
 uuid: 88e03312-b2b4-463b-8add-55fb53299f09
-langcode: en
+langcode: nl
 status: true
 dependencies:
   module:
@@ -9,13 +9,12 @@ dependencies:
 _core:
   default_config_hash: szL-A_Er9yaiA51EXGl3yYAj1T_LnNrYdxxY6UwRisU
 id: redirect
-label: Redirect
+label: Doorverwijzen
 module: views
 description: 'List of redirects'
 tag: ''
 base_table: redirect
 base_field: rid
-core: 8.x
 display:
   default:
     display_plugin: default
@@ -183,7 +182,7 @@ display:
           hide_empty: false
           empty_zero: false
           hide_alter_empty: true
-          action_title: 'With selection'
+          action_title: 'Met selectie'
           include_exclude: exclude
           selected_actions: {  }
           entity_type: redirect
@@ -359,6 +358,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -399,6 +400,8 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -430,7 +433,7 @@ display:
           exposed: true
           expose:
             operator_id: status_code_op
-            label: 'Status code'
+            label: Statuscode
             description: ''
             use_operator: false
             operator: status_code_op
@@ -442,9 +445,11 @@ display:
               authenticated: authenticated
               anonymous: '0'
               administrator: '0'
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: true
           group_info:
-            label: 'Status code'
+            label: Statuscode
             description: ''
             identifier: status_code
             optional: true
@@ -455,49 +460,49 @@ display:
             default_group_multiple: {  }
             group_items:
               1:
-                title: '300 Multiple Choices'
+                title: '300 meerdere keuzes'
                 operator: '='
                 value:
                   value: '300'
                   min: ''
                   max: ''
               2:
-                title: '301 Moved Permanently'
+                title: '301 Permanente omleiding'
                 operator: '='
                 value:
                   value: '301'
                   min: ''
                   max: ''
               3:
-                title: '302 Found'
+                title: '302 Gevonden'
                 operator: '='
                 value:
                   value: '302'
                   min: ''
                   max: ''
               4:
-                title: '303 See Other'
+                title: '303 Zie andere'
                 operator: '='
                 value:
                   value: '303'
                   min: ''
                   max: ''
               5:
-                title: '304 Not Modified'
+                title: '304 Niet gewijzigd'
                 operator: '='
                 value:
                   value: '304'
                   min: ''
                   max: ''
               6:
-                title: '305 Use Proxy'
+                title: '305 Gebruik proxy'
                 operator: '='
                 value:
                   value: '305'
                   min: ''
                   max: ''
               7:
-                title: '307 Temporary Redirect'
+                title: '307 Tijdelijke omleiding'
                 operator: '='
                 value:
                   value: '307'
@@ -532,6 +537,8 @@ display:
               anonymous: '0'
               administrator: '0'
             reduce: false
+            operator_limit_selection: false
+            operator_list: {  }
           is_grouped: false
           group_info:
             label: ''
@@ -548,7 +555,7 @@ display:
           entity_field: language
           plugin_id: language
       sorts: {  }
-      title: Redirect
+      title: Doorverwijzen
       header: {  }
       footer: {  }
       empty:

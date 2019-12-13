@@ -1,0 +1,29 @@
+extend type News {
+  field_summary: String
+  field_teaser_image: Image
+}
+
+extend type Campaign {
+  field_summary: String
+  field_teaser_image: Image
+}
+
+extend type Training {
+  field_summary: String
+  field_teaser_image: Image
+}
+
+extend type Establishment {
+  field_summary: String
+  field_teaser_image: Image
+}
+
+extend type Brand {
+  field_summary: String
+  field_teaser_image: Image
+}
+
+extend type ProductGroup {
+  field_summary: String
+  field_teaser_image: Image
+}

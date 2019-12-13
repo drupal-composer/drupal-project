@@ -1,0 +1,57 @@
+uuid: a9b7e9dc-7bf4-41b1-905a-5d0293993ac5
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.documentation.field_content
+    - field.field.paragraph.documentation.field_file
+    - field.field.paragraph.documentation.field_style_options
+    - field.field.paragraph.documentation.field_title
+    - paragraphs.paragraphs_type.documentation
+  module:
+    - media_library
+    - paragraphs
+    - text
+id: paragraph.documentation.default
+targetEntityType: paragraph
+bundle: documentation
+mode: default
+content:
+  field_content:
+    weight: 1
+    settings:
+      rows: 5
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textarea
+    region: content
+  field_file:
+    weight: 4
+    settings:
+      media_types: {  }
+    third_party_settings: {  }
+    type: media_library_widget
+    region: content
+  field_style_options:
+    weight: 3
+    settings:
+      title: Paragraaf
+      title_plural: Paragrafen
+      edit_mode: open
+      add_mode: dropdown
+      form_display_mode: colors
+      default_paragraph_type: style_options
+    third_party_settings: {  }
+    type: entity_reference_paragraphs
+    region: content
+  field_title:
+    weight: 0
+    settings:
+      size: 60
+      placeholder: ''
+    third_party_settings: {  }
+    type: string_textfield
+    region: content
+hidden:
+  created: true
+  status: true

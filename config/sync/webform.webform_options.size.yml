@@ -1,5 +1,5 @@
 uuid: d8adfd6c-da27-4751-9e56-5a6f20cc7229
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -11,4 +11,4 @@ id: size
 label: Size
 category: General
 likert: false
-options: "Extra Small: Extra Small\nSmall: Small\nMedium: Medium\nLarge: Large\nExtra Large: Extra Large\n"
+options: "Extra Small: Extra Small\r\nSmall: Small\r\nMedium: Medium\r\nLarge: Large\r\nExtra Large: Extra Large\n"

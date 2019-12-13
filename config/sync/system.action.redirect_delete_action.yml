@@ -1,5 +1,5 @@
 uuid: 21f82adf-01a7-4c55-bc03-ccde2aa08868
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -10,7 +10,7 @@ dependencies:
 _core:
   default_config_hash: vcnRZRvBqTbK3nZ2M4_lKPlEGc8GjPzgaqapYUfyX8M
 id: redirect_delete_action
-label: 'Delete redirect'
+label: 'Omleiding verwijderen'
 type: redirect
 plugin: redirect_delete_action
 configuration: {  }

@@ -1,0 +1,4 @@
+administer global site configuration:
+  title: 'Access global site configuration form'
+  description: 'Access global site configuration form'
+  restrict access: true

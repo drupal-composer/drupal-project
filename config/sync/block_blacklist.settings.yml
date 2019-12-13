@@ -6,3 +6,4 @@ layout_prefix: ''
 layout_regex: ''
 _core:
   default_config_hash: S6rQarWvkmKD23_sdFs_HQdHZbyd6KX58eINnvUL9n4
+langcode: nl

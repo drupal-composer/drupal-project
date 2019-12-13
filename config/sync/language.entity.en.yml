@@ -1,0 +1,11 @@
+uuid: 142214bb-ec5d-4f25-ac52-1adcdbc9144d
+langcode: nl
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: lBXDpdDPXQtrfTJQhr6MjRJJEEyYSoRJ0acdvHLsWeA
+id: en
+label: Engels
+direction: ltr
+weight: -9
+locked: false

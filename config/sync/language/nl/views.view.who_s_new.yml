@@ -1,0 +1,20 @@
+label: 'Wie is nieuw'
+description: 'Toont een lijst van de nieuwste gebruikersaccounts op de website.'
+display:
+  default:
+    display_title: Hoofd
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Toepassen
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sorteren op'
+          sort_asc_label: Oplopend
+          sort_desc_label: Aflopend
+      title: 'Wie is nieuw'
+  block_1:
+    display_title: 'Wie is nieuw'
+    display_options:
+      display_description: 'Een lijst van nieuwe gebruikers'
+      block_description: 'Wie is nieuw'
+      block_category: Gebruiker

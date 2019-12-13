@@ -1,0 +1,76 @@
+label: People
+description: 'Find and manage people interacting with your site.'
+display:
+  default:
+    display_title: Master
+    display_options:
+      exposed_form:
+        options:
+          submit_button: Filter
+          reset_button_label: Reset
+          exposed_sorts_label: 'Sort by'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          tags:
+            previous: '‹ Previous'
+            next: 'Next ›'
+            first: '« First'
+            last: 'Last »'
+          expose:
+            items_per_page_label: 'Items per page'
+            items_per_page_options_all_label: '- All -'
+            offset_label: Offset
+      fields:
+        user_bulk_form:
+          label: 'Bulk update'
+        name:
+          label: Username
+        status:
+          label: Status
+          settings:
+            format_custom_true: Active
+            format_custom_false: Blocked
+        roles_target_id:
+          label: Roles
+        created:
+          label: 'Member for'
+        access:
+          label: 'Last access'
+        operations:
+          label: Operations
+        mail:
+          separator: ', '
+      filters:
+        combine:
+          expose:
+            label: 'Name or email contains'
+        status:
+          group_info:
+            label: Status
+            group_items:
+              1:
+                title: Active
+              2:
+                title: Blocked
+        roles_target_id:
+          expose:
+            label: Role
+        permission:
+          expose:
+            label: Permission
+      title: People
+      empty:
+        area_text_custom:
+          content: 'No people available.'
+      use_more_text: more
+  page_1:
+    display_title: Page
+    display_options:
+      menu:
+        title: List
+        description: 'Find and manage people interacting with your site.'
+      tab_options:
+        title: People
+        description: 'Manage user accounts, roles, and permissions.'

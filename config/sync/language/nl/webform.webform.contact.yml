@@ -1,0 +1,15 @@
+title: Contact
+description: 'Eenvoudig e-mailcontactformulier'
+elements: "name:\n  '#title': 'Your Name'\n  '#type': textfield\n  '#required': true\n  '#default_value': '[current-user:display-name]'\nemail:\n  '#title': 'Your Email'\n  '#type': email\n  '#required': true\n  '#default_value': '[current-user:mail]'\nsubject:\n  '#title': Subject\n  '#type': textfield\n  '#required': true\n  '#test': 'Testing contact webform from [site:name]'\nmessage:\n  '#title': Message\n  '#type': textarea\n  '#required': true\n  '#test': 'Please ignore this email.'\nactions:\n  '#type': webform_actions\n  '#title': 'Submit button(s)'\n  '#submit__label': 'Send message'\n"
+settings:
+  confirmation_message: 'Uw bericht is verzonden.'
+handlers:
+  email_confirmation:
+    label: E-mailbevestiging
+    settings:
+      from_name: standaard
+      body: '[webform_submission:values:message:value]'
+  email_notification:
+    label: E-mailmelding
+    settings:
+      body: '[webform_submission:values:message:value]'

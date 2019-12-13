@@ -1,0 +1,23 @@
+uuid: bd37bfcd-1c87-4550-84fa-3415e8997b32
+langcode: nl
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform_node
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+_core:
+  default_config_hash: BuY_3PjmYtRTSuvyFORJZUe0-TQiNXEE6yYQ_dkjxW8
+name: Webformulier
+type: webform
+description: 'Een basispagina voorzien van een webformulier.'
+help: ''
+new_revision: false
+preview_mode: 1
+display_submitted: true

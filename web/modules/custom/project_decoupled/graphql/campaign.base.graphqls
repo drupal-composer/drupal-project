@@ -1,0 +1,10 @@
+type Campaign implements NodeInterface {
+  author: String
+  id: Int!
+  title: String!
+  related: [NodeInterface]
+  url: String
+  sign_up: String
+  metatags: [metatag]
+  paragraphs: [ParagraphTypeInterface]
+}

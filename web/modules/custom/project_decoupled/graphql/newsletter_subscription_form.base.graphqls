@@ -1,0 +1,16 @@
+type NewsletterSubscriptionForm {
+  email: String!
+}
+
+input NewsletterSubscriptionFormInput {
+  in_draft: Boolean
+  langcode: String!
+  token: String
+  uri: String
+  remote_addr: String
+  data: NewsletterSubscriptionFormData!
+}
+
+input NewsletterSubscriptionFormData {
+  email: String!
+}

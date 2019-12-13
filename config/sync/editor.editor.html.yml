@@ -33,12 +33,17 @@ settings:
             - Blockquote
             - DrupalImage
         -
+          name: Formatting
+          items:
+            - Format
+            - Styles
+        -
           name: Tools
           items:
             - Source
   plugins:
     stylescombo:
-      styles: ''
+      styles: "ul.usp|Checkmarked list\r\np.big|Highlighted paragraph"
     language:
       language_list: un
     linkit:

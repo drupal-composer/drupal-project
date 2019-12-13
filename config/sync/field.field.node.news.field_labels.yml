@@ -1,0 +1,29 @@
+uuid: b7862600-b2e2-4586-9744-dbd247db00f8
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_labels
+    - node.type.news
+    - taxonomy.vocabulary.content_labels
+id: node.news.field_labels
+field_name: field_labels
+entity_type: node
+bundle: news
+label: Labels
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_labels: content_labels
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

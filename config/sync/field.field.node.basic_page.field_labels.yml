@@ -1,0 +1,29 @@
+uuid: 4d6b17d8-d49a-4c4b-baf9-938ab9589d44
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.node.field_labels
+    - node.type.basic_page
+    - taxonomy.vocabulary.content_labels
+id: node.basic_page.field_labels
+field_name: field_labels
+entity_type: node
+bundle: basic_page
+label: Labels
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:taxonomy_term'
+  handler_settings:
+    target_bundles:
+      content_labels: content_labels
+    sort:
+      field: name
+      direction: asc
+    auto_create: true
+    auto_create_bundle: ''
+field_type: entity_reference

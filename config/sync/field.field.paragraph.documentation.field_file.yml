@@ -1,0 +1,34 @@
+uuid: 96ed1b1f-0210-4d8b-823d-3eec139347c6
+langcode: nl
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_file
+    - media.type.document
+    - media.type.file
+    - media.type.image
+    - media.type.video
+    - paragraphs.paragraphs_type.documentation
+id: paragraph.documentation.field_file
+field_name: field_file
+entity_type: paragraph
+bundle: documentation
+label: Bestand
+description: ''
+required: false
+translatable: true
+default_value: {  }
+default_value_callback: ''
+settings:
+  handler: 'default:media'
+  handler_settings:
+    target_bundles:
+      document: document
+      file: file
+      image: image
+      video: video
+    sort:
+      field: _none
+    auto_create: false
+    auto_create_bundle: document
+field_type: entity_reference

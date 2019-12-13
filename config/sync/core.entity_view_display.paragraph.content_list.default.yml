@@ -1,0 +1,26 @@
+uuid: 9d24cf3d-9832-4f0a-ad57-66d62ed73bd6
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.content_list.field_content_type
+    - field.field.paragraph.content_list.field_filter_options
+    - field.field.paragraph.content_list.field_title
+    - paragraphs.paragraphs_type.content_list
+  module:
+    - text
+id: paragraph.content_list.default
+targetEntityType: paragraph
+bundle: content_list
+mode: default
+content:
+  field_title:
+    weight: 0
+    label: hidden
+    settings: {  }
+    third_party_settings: {  }
+    type: text_default
+    region: content
+hidden:
+  field_content_type: true
+  field_filter_options: true

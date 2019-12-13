@@ -1,0 +1,23 @@
+uuid: 51466f22-1330-4837-a48c-e676f8710ef7
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_background_color
+    - paragraphs.paragraphs_type.style_options
+  module:
+    - options
+id: paragraph.style_options.field_background_color
+field_name: field_background_color
+entity_type: paragraph
+bundle: style_options
+label: 'Achtergrond kleur'
+description: 'Achtergrond kleur voor de paragraaf'
+required: false
+translatable: false
+default_value:
+  -
+    value: none
+default_value_callback: ''
+settings: {  }
+field_type: list_string

@@ -1,0 +1,15 @@
+uuid: 461f29fb-4427-4022-9e64-84e383c804e4
+langcode: en
+status: true
+dependencies: {  }
+name: w700
+label: w700
+effects:
+  f38cc479-d50a-498b-ad90-ac3572e821df:
+    uuid: f38cc479-d50a-498b-ad90-ac3572e821df
+    id: image_scale
+    weight: 1
+    data:
+      width: 700
+      height: null
+      upscale: false

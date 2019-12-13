@@ -1,0 +1,19 @@
+uuid: a8eff9cc-9e42-4fe8-9267-9600b66e2cd4
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.paragraph.field_usp_title
+    - paragraphs.paragraphs_type.usp
+id: paragraph.usp.field_usp_title
+field_name: field_usp_title
+entity_type: paragraph
+bundle: usp
+label: Titel
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: string

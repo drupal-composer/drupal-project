@@ -7,3 +7,4 @@ session_limit_roles:
   administrator: -1
 _core:
   default_config_hash: 6LIpKkpajaLVzp7vCiTE8WQxllcMEoQ3vrFIq4FRYSE
+langcode: nl

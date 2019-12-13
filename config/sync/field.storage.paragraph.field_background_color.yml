@@ -1,0 +1,36 @@
+uuid: 2e4f03ee-ad3a-4fed-a117-f604c8cd474d
+langcode: en
+status: true
+dependencies:
+  module:
+    - options
+    - paragraphs
+id: paragraph.field_background_color
+field_name: field_background_color
+entity_type: paragraph
+type: list_string
+settings:
+  allowed_values:
+    -
+      value: none
+      label: Geen
+    -
+      value: light_beige
+      label: 'Licht beige'
+    -
+      value: lightblue
+      label: 'Licht blauw'
+    -
+      value: blue
+      label: Blauw
+    -
+      value: darkblue
+      label: 'Donker blauw'
+  allowed_values_function: ''
+module: options
+locked: false
+cardinality: 1
+translatable: true
+indexes: {  }
+persist_with_no_fields: false
+custom_storage: false

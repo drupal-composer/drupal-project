@@ -1,5 +1,5 @@
 uuid: ba7789a8-457f-4b48-b975-469357f088b9
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: LkO63Zl2cP_l9YdjzWI8dWoD9uD0pytkPiUiUM2bo9A
 id: phone_types
-label: 'Phone type'
-category: Demographic
+label: Telefoontype
+category: Demografisch
 likert: false
-options: "Home: Home\nOffice: Office\nCell: Cell\n"
+options: "Thuis: Thuis\r\nKantoor: Kantoor\r\nMobiel: Mobiel\n"

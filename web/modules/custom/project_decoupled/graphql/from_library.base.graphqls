@@ -1,0 +1,5 @@
+type FromLibraryParagraph implements ParagraphTypeInterface {
+  id: String!
+  parent_field_name: String!
+  paragraph: ParagraphTypeInterface
+}

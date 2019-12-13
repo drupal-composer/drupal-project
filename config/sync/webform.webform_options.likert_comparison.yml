@@ -1,5 +1,5 @@
 uuid: 48bd7b0e-21e9-485c-9342-bbb8d4836ba1
-langcode: en
+langcode: nl
 status: true
 dependencies:
   enforced:
@@ -8,7 +8,7 @@ dependencies:
 _core:
   default_config_hash: gZCLESMdXmEZxHqnQFx7a0rUefrkVuFzHSMnWe0qioM
 id: likert_comparison
-label: 'Likert: Comparison'
-category: Likert
+label: 'Likertschaal: Vergelijking'
+category: Likertschaal
 likert: true
-options: "1: Strongly Disagree\n2: Disagree\n3: Neutral\n4: Agree\n5: Strongly Agree\n"
+options: "1: Helemaal oneens\r\n2: Oneens\r\n3: Neutraal\r\n4: Eens\r\n5: Helemaal eens\n"
