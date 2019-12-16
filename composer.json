@@ -21,7 +21,7 @@
         "drupal-composer/drupal-scaffold": "^2.5",
         "drupal/core": "^8.6.0",
         "drush/drush": "^9.0.0",
-        "vlucas/phpdotenv": "^2.4",
+        "vlucas/phpdotenv": "^4.1",
         "webflo/drupal-finder": "^1.0.0",
         "webmozart/path-util": "^2.3"
     },
