@@ -186,7 +186,6 @@
             "npm-asset/jquery": "*",
             "npm-asset/jqueryui": "*",
             "npm-asset/backbone": "*",
-            "npm-asset/underscore": "*",
-            "npm-asset/fortawesome--fontawesome-free": "*"
+            "npm-asset/underscore": "*"
         }
 }
