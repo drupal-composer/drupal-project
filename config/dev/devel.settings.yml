@@ -8,3 +8,4 @@ debug_mail_directory: 'temporary://devel-mails'
 devel_dumper: kint
 _core:
   default_config_hash: 8SYa5OOpQGdg4wnttb0LFNuG6GmivsS2qNv9sTH9gDI
+langcode: nl

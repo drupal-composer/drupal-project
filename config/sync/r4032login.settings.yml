@@ -1,0 +1,12 @@
+display_denied_message: true
+access_denied_message: 'Geen toegang. Login om deze pagina te bekijken.'
+access_denied_message_type: error
+redirect_authenticated_users_to: ''
+user_login_path: /user/login
+default_redirect_code: 302
+destination_parameter_override: ''
+match_noredirect_pages: ''
+redirect_to_destination: true
+langcode: nl
+_core:
+  default_config_hash: mxtw4e4xU9JhI4I-zBlL-b9NX0_QQ_ERLaKuPS2Am1A

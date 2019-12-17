@@ -80,6 +80,7 @@ module:
   path_redirect_import: 0
   project_decoupled: 0
   project_state_storage: 0
+  r4032login: 0
   rabbit_hole: 0
   rdf: 0
   redirect: 0

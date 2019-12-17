@@ -11,3 +11,4 @@ notification:
   threshold: all
 _core:
   default_config_hash: 2QzULf0zovJQx3J06Y9rufzzfi-CY2CTTlEfJJh2Qyw
+langcode: nl
