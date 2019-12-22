@@ -75,12 +75,9 @@ Follow the steps below to update your core files.
    keeping all of your modifications at the beginning or end of the file is a
    good strategy to keep merges easy.
 
-## Generate composer.json from existing project
+## How to update your Drupal 8 website to use the Composer Drupal project
 
-With using [the "Composer Generate" drush extension](https://www.drupal.org/project/composer_generate)
-you can now generate a basic `composer.json` file from an existing project. Note
-that the generated `composer.json` might differ from this project's file.
-
+Just install a new project as usual, and [follow these steps](https://drupedia.org/blog/development/how-update-your-drupal-8-website-use-composer-drupal-project) to copy necessary files from your site and add custrom, contrib modules and themes, etc. to your new composer.json previous a composer install.  
 
 ## FAQ
 
