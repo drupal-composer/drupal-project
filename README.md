@@ -143,3 +143,22 @@ To prevent this you can add this code to specify the PHP version you want to use
     }
 },
 ```
+
+### How do I specify a different name for the document root '/web' directory?
+
+To use a different web root directory, e.g. ```/docroot``` instead of ```/web```:
+
+1. Create the project without installing it using the --no-install option. e.g.:
+
+```
+composer create-project drupal-composer/drupal-project:8.x-dev my_site_name_dir --no-interaction --no-install
+```
+
+2. ```cd``` into the project directory and edit the ```"installer-paths"``` section in the ```composer.json``` file. Replace the ```web/``` paths with the web root you want, e.g. ```docroot/```
+
+3. Finish the install using the command in the project directory:
+
+```
+composer install
+```
+
