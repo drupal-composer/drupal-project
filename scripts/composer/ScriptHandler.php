@@ -60,6 +60,32 @@ class ScriptHandler {
     }
   }
 
+/**
+ * Remove text files that would possibly be used by a hacker.
+ */
+	public static function deleteTxtFiles(Event $event) {
+		$fs = new Filesystem();
+		$drupalFinder = new DrupalFinder();
+		$drupalFinder->locateRoot(getcwd());
+		$drupalRoot = $drupalFinder->getDrupalRoot();
+		$files = [
+			'CHANGELOG',
+			'COPYRIGHT',
+			'INSTALL.mysql',
+			'INSTALL.mysql',
+			'INSTALL.pgsql',
+			'INSTALL',
+			'LICENSE',
+			'MAINTAINERS',
+			'UPDATE'
+		];
+		foreach($files as $file) {
+			if ($fs->exists($drupalRoot . '/core/' . $file . '.txt')) {
+				unlink($drupalRoot . '/core/' . $file . '.txt');
+			}
+		}
+	}
+
   /**
    * Checks if the installed version of Composer is compatible.
    *
