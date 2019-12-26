@@ -34,3 +34,5 @@
 # Databases
 /*.sql
 /*.sql.gz
+.editorconfig
+.gitattributes
