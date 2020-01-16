@@ -1,4 +1,6 @@
-# Composer template for Drupal projects
+# Composer template for Drupal projects (deprecated)
+
+**Deprecated:** Using drupal-composer/drupal-project has been deprecated as of Drupal 8.8.0. Please use the [officially supported drupal/recommended-project](https://www.drupal.org/docs/develop/using-composer/using-composer-to-install-drupal-and-manage-dependencies) instead, according to the instructions above.
 
 [![Build Status](https://travis-ci.org/drupal-composer/drupal-project.svg?branch=8.x)](https://travis-ci.org/drupal-composer/drupal-project)
 
