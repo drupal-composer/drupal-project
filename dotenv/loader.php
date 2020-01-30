@@ -81,7 +81,7 @@ class PhappEnvironmentLoader {
       }
     }
     if (file_exists(__DIR__ . '/' . $phapp_env . '.env')) {
-      $result .= file_get_contents(__DIR__ . '/' . $phapp_env . '.env');
+      $result .= file_get_contents(__DIR__ . '/' . $phapp_env . '.env') . "\n";
     }
     return $result;
   }
