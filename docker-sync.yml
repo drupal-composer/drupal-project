@@ -1,0 +1,11 @@
+version: "2"
+
+syncs:
+  docker-sync:
+    src: './'
+    sync_userid: '501'
+    sync_excludes: ['.gitignore', '.git/', '.idea/']
+#  docker-sync-another-project:
+#    src: '/absolute/path/to/project/codebase'
+#    sync_userid: '501'
+#    sync_excludes: ['.gitignore', '.git/', '.idea/']
