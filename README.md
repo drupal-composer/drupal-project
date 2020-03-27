@@ -2,6 +2,12 @@
 
 This template is based on the [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) template, with additional tools and settings specific to the Kalamuna workflow.
 
+The goal of this repository is to provide a clean installation with just the tools and files that we need for 95% of our Drupal projects. Alternate configurations, with lesser-used packages or frameworks, should be added as separate branches which can be used when needed for particular projects.
+
+## Usage
+
+1. Press the "Use this template" button in Github to create a new repository for your project with a copy of the necessary files, or clone this repository manually and remove the unneeded git history.
+
 ## What does the drupal-composer/drupal-project template do?
 
 When installing the given `composer.json` some tasks are taken care of:
