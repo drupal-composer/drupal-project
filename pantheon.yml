@@ -1,0 +1,6 @@
+# Configuration for your pantheon environment.
+# For more information, see: https://pantheon.io/docs/pantheon-yml/
+api_version: 1
+php_version: 7.2
+drush_version: 10
+web_docroot: true

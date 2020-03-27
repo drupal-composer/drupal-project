@@ -7,6 +7,7 @@ The goal of this repository is to provide a clean installation with just the too
 ## Usage
 
 1. Press the "Use this template" button in Github to create a new repository for your project with a copy of the necessary files, or clone this repository manually and remove the unneeded git history.
+1. Create an environment for your project on Pantheon. Select the regular Drupal 8 upstream, so the hidden framework variable is properly set to Drupal, and then run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
 
 ## What does the drupal-composer/drupal-project template do?
 
