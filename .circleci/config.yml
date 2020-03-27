@@ -1,0 +1,89 @@
+# Kalamuna DrupalProject CircleCI 2.0 configuration file
+#
+# Setup: Add the url for your Panteon repo in the PANTHEON_REPO environment variable for your circle project.
+#
+version: 2
+jobs:
+  # Called by the build-and-deploy workflow.
+  build:
+    docker:
+      # Specify the docker image to use for this project.
+      - image: circleci/php:7.2-node-browsers
+    working_directory: ~/drupal
+    steps:
+      # Check out the codebase from github.
+      - checkout
+      # Restore node modules if they have been previously downloaded and cached.
+      - restore_cache:
+          name: Restore Node Cache
+          keys:
+            - drupal-node-{{ checksum "package-lock.json" }}
+            # Fallback to most recent build if this exact config hasn't been installed before.
+            - drupal-node-
+      # Restore composer packages if they have been previously downloaded and cached.
+      - restore_cache:
+          name: Restore Composer Cache
+          keys:
+            - drupal-composer-{{ checksum "composer.lock" }}
+            # Fallback to most recent build if this exact config hasn't been installed before.
+            - drupal-composer-
+      # Update system packages and add dependencies.
+      - run:
+          name: System Update and Dependencies
+          command: |
+              sudo apt-get update -y
+              sudo apt-get install -y libpng-dev
+              sudo docker-php-ext-install gd
+      # Install drupal codebase using composer.
+      - run:
+          name: Composer Install
+          command: composer install --prefer-dist --no-interaction --no-dev
+      # Install node modules and build theme.
+      - run:
+          name: Node Install
+          command: npm it
+      # Cache node_modules so the packages don't need to be redownloaded next time.
+      - save_cache:
+          name: Save Node Cache
+          key: drupal-node-{{ checksum "package-lock.json" }}
+          paths:
+            - node_modules
+      # Cache composer so the packages don't need to be redownloaded next time.
+      - save_cache:
+          name: Save Composer Cache
+          key: drupal-composer-{{ checksum "composer.lock" }}
+          paths:
+            - ~/.composer/cache
+      # Commit the assembled code to git in preparation for depoyment.
+      - run:
+          name: Commit to Git
+          command: |
+              git config --global user.name "Kala C. Bot"
+              git config --global user.email "kalacommitbot@kalamuna.com"
+              rm .gitignore
+              mv .gitignore-deploy .gitignore
+              find web -type d -name .git -print0|xargs -0 rm -rf
+              git add .
+              git commit -m "Built ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH} from: ${CIRCLE_SHA1}
+                  Please note that all changes to this site should be committed to: https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+                  Any commits made directly to this Pantheon repository will be overwritten."
+      # Push the assembled code to the Pantheon repo specified in the circle project environment variables.
+      - run:
+          name: Push to Pantheon
+          command: |
+              echo -e "Host *drush.in\n\tStrictHostKeyChecking no\n" >> ~/.ssh/config
+              git remote add pantheon ${PANTHEON_REPO}
+              git push --force pantheon ${CIRCLE_BRANCH}
+workflows:
+  version: 2
+  # Build the drupal site and deploy it to Pantheon.
+  build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            branches:
+              # Deploy only when:
+              #   1. The branch isn't a feature branch (no /).
+              #   2. The branch name is less then or equal to 11 characters long.
+              #   3. The branch name doesn't have any uppercase characters.
+              only: /^[^./A-Z]{0,11}$/

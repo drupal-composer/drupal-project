@@ -7,7 +7,14 @@ The goal of this repository is to provide a clean installation with just the too
 ## Usage
 
 1. Press the "Use this template" button in Github to create a new repository for your project with a copy of the necessary files, or clone this repository manually and remove the unneeded git history.
-1. Create an environment for your project on Pantheon. Select the regular Drupal 8 upstream, so the hidden framework variable is properly set to Drupal, and then run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
+1. Create an environment for your project on Pantheon.
+    1. Select the regular Drupal 8 upstream, so the hidden framework variable is properly set to Drupal.
+    1. Run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
+    1. Add the Kalamuna Commit Bot (or whatever account you want to be committing to the pantheon repo) under the Team tab for the project.
+1. Log into CircleCI and add your github repo as a project, and then:
+    1. Under the project settings, find the place to add an ssh key (varies between old and new interface), and add the public key associated with your pantheon user or the one added above, using `drush.in` as the domain.
+    1. Under the environment variables tab in the project settings, add the url for the destination repository in the `PANTHEON_REPO` variable.
+
 
 ## What does the drupal-composer/drupal-project template do?
 
