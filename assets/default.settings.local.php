@@ -153,3 +153,11 @@ if (empty($databases['default']['default'])) {
     'driver' => 'mysql',
   ];
 }
+
+/**
+ * Prevent Kint from loading too much debug output and crashing the request.
+ */
+if (file_exists("$app_root/modules/contrib/devel/kint/kint/Kint.class.php")) {
+  require_once "$app_root/modules/contrib/devel/kint/kint/Kint.class.php";
+  Kint::$maxLevels = 4;
+}

@@ -40,6 +40,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Required the pantheon-systems/drupal-integrations package which contains additional scaffolding for pantheon sites.
 * The robots.txt file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
 * Provide default development.services.yml and settings.local.php files which will be created in web/sites if they don't already exist.
+* Add local settings to keep kint from loading to many objects and crashing drupal.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml and phpunit.xml.dist files.
