@@ -14,7 +14,9 @@ The goal of this repository is to provide a clean installation with just the too
 1. Log into CircleCI and add your github repo as a project, and then:
     1. Under the project settings, find the place to add an ssh key (varies between old and new interface), and add the public key associated with your pantheon user or the one added above, using `drush.in` as the domain.
     1. Under the environment variables tab in the project settings, add the url for the destination repository in the `PANTHEON_REPO` variable.
-
+1. Install Drupal locally:
+    1. Clone the github repository and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
+    1. Commit the `composer.lock` file, and any other files in the project directory that have not been ignored.
 
 ## What does the drupal-composer/drupal-project template do?
 

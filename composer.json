@@ -1,6 +1,6 @@
 {
-    "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "name": "kalamuna/drupal-project",
+    "description": "Kalamuna template for Drupal 8 projects with composer, circle, and pantheon.",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
