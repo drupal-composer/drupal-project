@@ -35,5 +35,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Creates environment variables based on your .env file. See [.env.example](.env.example).
 
 ## What Kalamuna-specific features have been added?
+* Added standard configuration for circleci build process and deployment to pantheon.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
+* Removed unneeded .travis.yml file.
