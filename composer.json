@@ -65,6 +65,12 @@
             "locations": {
                 "web-root": "web/"
             },
+            "file-mapping": {
+              "[web-root]/sites/development.services.yml": {
+                "path": "assets/development.services.yml",
+                "overwrite": false
+              }
+            },
             "gitignore": false
         },
         "installer-paths": {
