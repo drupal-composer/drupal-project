@@ -39,5 +39,5 @@ When installing the given `composer.json` some tasks are taken care of:
 * Added a .gitignore-deploy file that replaces the .gitignore file when deploying from circle to pantheon.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
-* Removed unneeded .travis.yml file.
+* Removed unneeded .travis.yml and phpunit.xml.dist files.
 * Not using .gitignore files created by Drupal Scaffold.
