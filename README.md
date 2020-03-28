@@ -18,7 +18,7 @@ The goal of this repository is to provide a clean installation with just the too
     1. Clone the github repository and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
     1. Commit the `composer.lock` file, and any other files in the project directory that have not been ignored.
 
-## What does the drupal-composer/drupal-project template do?
+## What does the original drupal-composer/drupal-project template do?
 
 When installing the given `composer.json` some tasks are taken care of:
 
@@ -36,6 +36,8 @@ When installing the given `composer.json` some tasks are taken care of:
 
 ## What Kalamuna-specific features have been added?
 * Added standard configuration for circleci build process and deployment to pantheon.
+* Added a .gitignore-deploy file that replaces the .gitignore file when deploying from circle to pantheon.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml file.
+* Not using .gitignore files created by Drupal Scaffold.

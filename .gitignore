@@ -7,9 +7,34 @@
 /web/profiles/contrib/
 /web/libraries/
 
-# Ignore sensitive information
-/web/sites/*/settings.php
+# Ignore core files created by Drupal scaffold.
+/web/.csslintrc
+/web/.eslintignore
+/web/.eslintrc.json
+/web/.ht.router.php
+/web/.htaccess
+/web/INSTALL.txt
+/web/README.txt
+/web/autoload.php
+/web/example.gitignore
+/web/index.php
+/web/update.php
+/web/web.config
+/web/*/README.txt
+/web/sites/example.settings.local.php
+/web/sites/default/default.services.yml
+/web/sites/default/default.settings.php
+/web/sites/example.sites.php
+
+# Ignore compiled theme files.
+/web/themes/custom/*/dist
+
+# Ignore node modules.
+/node_modules
+
+# Ignore local development settings.
 /web/sites/*/settings.local.php
+/web/sites/development.services.yml
 
 # Ignore Drupal's file directory
 /web/sites/*/files/
@@ -24,3 +49,22 @@
 /.env
 /.editorconfig
 /.gitattributes
+
+# Prevent non-code files from being committed to the repository.
+*.sql
+*.tar
+*.gz
+*.sh
+*.txt
+*.csv
+*.pdf
+
+# Don't ignore robots.txt along with other text files.
+!/web/robots.txt
+
+# We do not need any .htaccess files that drupal may create.
+.htaccess
+
+# Ignore other files created by operating systems.
+.DS_Store
+Thumbs.db
