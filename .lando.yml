@@ -1,0 +1,32 @@
+# CHANGEME (replace "drupalproj" with project shortcode).
+name: drupalproj
+recipe: drupal8
+
+services:
+  appserver:
+    xdebug: true
+  node:
+    # Optionally specify the version to match that of the hosting provider.
+    type: node
+    build:
+      - "cd $LANDO_MOUNT && npm it"
+  pma:
+    # Use the latest version of phpmyadmin.
+    type: phpmyadmin
+
+tooling:
+  npm:
+    service: node
+  node:
+    service: node
+
+config:
+  # Lando's d8 recipe defaults to Apache, but most hosting providers use nginx.
+  via: nginx
+
+  # Set the webroot.
+  webroot: web
+
+  # Lando defaults to the latest MySQL release, but most hosting uses MariaDB.
+  # Optionally specify the version to match that of the hosting provider.
+  database: mariadb
