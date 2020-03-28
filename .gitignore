@@ -50,6 +50,9 @@
 /.editorconfig
 /.gitattributes
 
+# Ignore the drush-lock-update file created by the drupal-integrations scaffold.
+.drush-lock-update
+
 # Prevent non-code files from being committed to the repository.
 *.sql
 *.tar

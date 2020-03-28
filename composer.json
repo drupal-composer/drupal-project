@@ -21,6 +21,7 @@
         "cweagans/composer-patches": "^1.6.5",
         "drupal/core": "^8.8.0",
         "drupal/core-composer-scaffold": "^8.8.0",
+        "pantheon-systems/drupal-integrations": "^8.0",
         "vlucas/phpdotenv": "^4.0",
         "webflo/drupal-finder": "^1.0.0",
         "zaporylie/composer-drupal-optimizations": "^1.0"
@@ -62,6 +63,9 @@
             "drupal/core": "-p2"
         },
         "drupal-scaffold": {
+            "allowed-packages": [
+                "pantheon-systems/drupal-integrations"
+            ],
             "locations": {
                 "web-root": "web/"
             },

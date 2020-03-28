@@ -30,15 +30,15 @@ When installing the given `composer.json` some tasks are taken care of:
 * Profiles (packages of type `drupal-profile`) will be placed in `web/profiles/contrib/`
 * Creates default writable versions of `settings.php` and `services.yml`.
 * Creates `web/sites/default/files`-directory.
-* Latest version of drush is installed locally for use at `vendor/bin/drush`.
-* Latest version of DrupalConsole is installed locally for use at `vendor/bin/drupal`.
 * Creates environment variables based on your .env file. See [.env.example](.env.example).
 
 ## What Kalamuna-specific features have been added?
 * Added standard configuration for circleci build process and deployment to pantheon.
 * Added a .gitignore-deploy file that replaces the .gitignore file when deploying from circle to pantheon.
+* Required the pantheon-systems/drupal-integrations package which contains additional scaffolding for pantheon sites.
 * The robots.txt file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml and phpunit.xml.dist files.
 * Not using .gitignore files created by Drupal Scaffold.
+* Not installing drush or DrupalConsole, since they are installed globally in Lando and on Pantheon.
