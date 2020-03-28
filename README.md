@@ -16,7 +16,7 @@ The goal of this repository is to provide a clean installation with just the too
     1. Under the environment variables tab in the project settings, add the url for the destination repository in the `PANTHEON_REPO` variable.
 1. Install Drupal locally:
     1. Clone the github repository and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
-    1. Commit the `composer.lock` file, and any other files in the project directory that have not been ignored.
+    1. Commit the `composer.lock` file, and files that have been initialized for customization, like `robots.txt`.
 
 ## What does the original drupal-composer/drupal-project template do?
 
@@ -37,6 +37,7 @@ When installing the given `composer.json` some tasks are taken care of:
 ## What Kalamuna-specific features have been added?
 * Added standard configuration for circleci build process and deployment to pantheon.
 * Added a .gitignore-deploy file that replaces the .gitignore file when deploying from circle to pantheon.
+* The robots.txt file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml and phpunit.xml.dist files.

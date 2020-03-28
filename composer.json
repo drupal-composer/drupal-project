@@ -69,6 +69,10 @@
               "[web-root]/sites/development.services.yml": {
                 "path": "assets/development.services.yml",
                 "overwrite": false
+              },
+              "[web-root]/robots.txt": {
+                "path": "web/core/assets/scaffold/files/robots.txt",
+                "overwrite": false
               }
             },
             "gitignore": false
