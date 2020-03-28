@@ -14,9 +14,11 @@ The goal of this repository is to provide a clean installation with just the too
 1. Log into CircleCI and add your github repo as a project, and then:
     1. Under the project settings, find the place to add an ssh key (varies between old and new interface), and add the public key associated with your pantheon user or the one added above, using `drush.in` as the domain.
     1. Under the environment variables tab in the project settings, add the url for the destination repository in the `PANTHEON_REPO` variable.
-1. Install Drupal locally:
+1. Install the codebase with Composer:
     1. Clone the github repository and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
     1. Commit the `composer.lock` file, and files that have been initialized for customization, like `robots.txt`.
+
+Note: If you want to run the Drupal install process locally, instead of downloading a database dump from Pantheon, you may need to re-enable some layers of caching in `/web/sites/default/settings.local.php`.
 
 ## What does the original drupal-composer/drupal-project template do?
 
@@ -37,8 +39,9 @@ When installing the given `composer.json` some tasks are taken care of:
 * Added a .gitignore-deploy file that replaces the .gitignore file when deploying from circle to pantheon.
 * Required the pantheon-systems/drupal-integrations package which contains additional scaffolding for pantheon sites.
 * The robots.txt file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
+* Provide default development.services.yml and settings.local.php files which will be created in web/sites if they don't already exist.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml and phpunit.xml.dist files.
 * Not using .gitignore files created by Drupal Scaffold.
-* Not installing drush or DrupalConsole, since they are installed globally in Lando and on Pantheon.
+* Not requiring drush or DrupalConsole, since they are installed globally in Lando and on Pantheon.

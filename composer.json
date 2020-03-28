@@ -71,7 +71,11 @@
             },
             "file-mapping": {
               "[web-root]/sites/development.services.yml": {
-                "path": "assets/development.services.yml",
+                "path": "assets/default.development.services.yml",
+                "overwrite": false
+              },
+              "[web-root]/sites/default/settings.local.php": {
+                "path": "assets/default.settings.local.php",
                 "overwrite": false
               },
               "[web-root]/robots.txt": {
