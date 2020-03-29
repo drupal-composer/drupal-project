@@ -17,8 +17,10 @@ The goal of this repository is to provide a clean installation with just the too
 1. Install the codebase with Composer:
     1. Clone the github repository and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
     1. Commit the `composer.lock` file, and files that have been initialized for customization, like `robots.txt`.
-
-Note: If you want to run the Drupal install process locally, instead of downloading a database dump from Pantheon, you may need to re-enable some layers of caching in `/web/sites/default/settings.local.php`.
+    1. Push the changes to github, and check that the CircleCI workflow executes properly.
+1. Configure Drupal:
+    1. Install Drupal in the Pantheon dev environment. (Note: If you want to run the Drupal install locally, you may need to re-enable some layers of caching in `/web/sites/default/settings.local.php`.)
+    1. Enabled required modules such as `admin_toolbar`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 
 ## What does the original drupal-composer/drupal-project template do?
 
@@ -36,13 +38,17 @@ When installing the given `composer.json` some tasks are taken care of:
 
 ## What Kalamuna-specific features have been added?
 * Added standard configuration for circleci build process and deployment to pantheon.
-* Added a .gitignore-deploy file that replaces the .gitignore file when deploying from circle to pantheon.
-* Required the pantheon-systems/drupal-integrations package which contains additional scaffolding for pantheon sites.
-* The robots.txt file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
-* Provide default development.services.yml and settings.local.php files which will be created in web/sites if they don't already exist.
+* Added a `.gitignore-deploy` file that replaces the `.gitignore` file when deploying from circle to pantheon.
+* Required the `pantheon-systems/drupal-integrations` package which contains additional scaffolding for pantheon sites.
+* The `robots.txt` file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
+* Provide default `development.services.yml` and `settings.local.php` files which will be created in web/sites if they don't already exist.
 * Add local settings to keep kint from loading to many objects and crashing drupal.
+* Require modules used on all sites, including `admin_toolbar`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml and phpunit.xml.dist files.
 * Not using .gitignore files created by Drupal Scaffold.
 * Not requiring drush or DrupalConsole, since they are installed globally in Lando and on Pantheon.
+
+## Potential improvements
+* Require additional contrib modules we use on most sites, including `google_tag`, `extlink`, `linkit`, and `twig_tweak`.
