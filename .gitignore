@@ -25,6 +25,7 @@
 /web/sites/default/default.services.yml
 /web/sites/default/default.settings.php
 /web/sites/example.sites.php
+/web/sites/default/default.services.pantheon.preproduction.yml
 
 # Ignore compiled theme files.
 /web/themes/custom/*/dist
