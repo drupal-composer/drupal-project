@@ -1,3 +1,4 @@
 # Files and folders that should not be deployed to the production server.
 node_modules
 /web/sites/default/files
+settings.local.php
