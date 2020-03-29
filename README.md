@@ -1,4 +1,4 @@
-# Kalamuna composer template for Drupal projects
+# Kalamuna composer template for Drupal projects with CircleCI and Pantheon integration
 
 This template is based on the [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) template, with additional tools and settings specific to the Kalamuna workflow.
 
@@ -6,22 +6,33 @@ The goal of this repository is to provide a clean installation with just the too
 
 ## Usage
 
-1. Press the "Use this template" button in Github to create a new repository for your project with a copy of the necessary files, or clone this repository manually and remove the unneeded git history.
-1. Create an environment for your project on Pantheon.
-    1. Select the regular Drupal 8 upstream, so the hidden framework variable is properly set to Drupal.
-    1. Run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
-    1. Add the Kalamuna Commit Bot (or whatever account you want to be committing to the pantheon repo) under the Team tab for the project.
-1. Log into CircleCI and add your github repo as a project, and then:
-    1. Under the project settings, find the place to add an ssh key (varies between old and new interface), and add the public key associated with your pantheon user or the one added above, using `drush.in` as the domain.
-    1. Under the environment variables tab in the project settings, add the url for the destination repository in the `PANTHEON_REPO` variable.
-1. Install the codebase with Composer and NPM:
-    1. Clone the github repository and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
-    1. Commit the `composer.lock` file, and files that have been initialized for customization, like `robots.txt`.
-    1. Run `npm it` to install the node modules, and commit the `package.lock` file to the repository.
-    1. Push the changes to github, and check that the CircleCI workflow executes properly.
-1. Configure Drupal:
-    1. Install Drupal in the Pantheon dev environment. (Note: If you want to run the Drupal install locally, you may need to re-enable some layers of caching in `/web/sites/default/settings.local.php`.)
-    1. Enabled required modules such as `admin_toolbar`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
+### Create a new Github repo
+
+Press the `Use this template` button in Github to create a new repository for your project based on this template, or clone this repository manually and remove the unneeded git history.
+
+### Create Pantheon environment
+
+1. Select the regular Drupal 8 upstream, so the hidden framework variable on Pantheon is properly set to Drupal.
+1. Run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
+1. Add the Kalamuna Commit Bot `kalacommitbot@kalamuna.com` under the `Team` tab for the project (or an alternate account you'd like to use for pushing to pantheon).
+1. Copy the location of the pantheon git repo, which is under `Connection info` (but remove everything in the `git clone` command but the actual url).
+
+### Initialize CircleCI integration
+
+1. Log into CircleCI and add your github repo as an active project.
+1. Under the `environment variables` tab in the project settings, add the url for the destination repository to the `PANTHEON_REPO` variable.
+1. In the project settings, find the place to add an ssh key (varies between old and new interface), and add the public key associated with the pantheon user you added above, using `drush.in` as the domain.
+
+### Install the codebase and deploy
+
+1. Clone the github repository locally and run `composer install` to install Drupal. (You may need to increase your memory limit or execute `php -d memory_limit=3G /path/to/composer install`.)
+1. Commit the `composer.lock` file, and files that have been initialized for customization, like `robots.txt` and `settings.php`.
+1. Run `npm it` to install the node modules, and commit the `package.lock` file to the repository.
+1. Push the changes to github, and check that the CircleCI workflow executes properly and the code is pushed to pantheon.
+
+### Configure Drupal:
+1. Install Drupal in the Pantheon dev environment. (Note: If you want to run the Drupal installation process locally, you may need to re-enable some layers of caching in the `/web/sites/default/settings.local.php` file.)
+1. Enabled required modules such as `admin_toolbar_tools`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 
 ## What does the original drupal-composer/drupal-project template do?
 
@@ -53,5 +64,8 @@ When installing the given `composer.json` some tasks are taken care of:
 * Not requiring drush or DrupalConsole, since they are installed globally in Lando and on Pantheon.
 
 ## Potential improvements
-* Require additional contrib modules we use on most sites, including `google_tag`, `extlink`, `linkit`, and `twig_tweak`.
+* Build out the `package.json` file with the configuration for compiling themes with Gulp.
 * Have `composer install` call `npm install` automatically.
+* Require additional contrib modules we use on most sites, including `google_tag`, `extlink`, `linkit`, and `twig_tweak`.
+* Use an install profile to enable the needed modules automatically.
+* Don't hardcode the Kalamuna Commit Bot user in the cricleci config.
