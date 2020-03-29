@@ -85,6 +85,9 @@
               "[web-root]/robots.txt": {
                 "path": "web/core/assets/scaffold/files/robots.txt",
                 "overwrite": false
+              },
+              "[web-root]/sites/default/settings.php": {
+                "append": "assets/append.settings.php"
               }
             },
             "gitignore": false

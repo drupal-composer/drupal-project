@@ -33,6 +33,7 @@ Press the `Use this template` button in Github to create a new repository for yo
 ### Configure Drupal:
 1. Install Drupal in the Pantheon dev environment. (Note: If you want to run the Drupal installation process locally, you may need to re-enable some layers of caching in the `/web/sites/default/settings.local.php` file.)
 1. Enabled required modules such as `admin_toolbar_tools`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
+1. Copy the database to your local environment, and run `drush cex` to export the configuration to the `config/sync` directory, and commit to git.
 
 ## What does the original drupal-composer/drupal-project template do?
 
@@ -57,6 +58,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Add local settings to keep kint from loading to many objects and crashing drupal.
 * Require modules used on all sites, including `admin_toolbar`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 * Provide a package.json file to install npm module.
+* Add configuration for the sync directory to be located at `../config/sync`.
 
 ## What features have been removed or changed from the original drupal-composer/drupal-project repository?
 * Removed unneeded .travis.yml and phpunit.xml.dist files.
@@ -69,3 +71,4 @@ When installing the given `composer.json` some tasks are taken care of:
 * Require additional contrib modules we use on most sites, including `google_tag`, `extlink`, `linkit`, and `twig_tweak`.
 * Use an install profile to enable the needed modules automatically.
 * Don't hardcode the Kalamuna Commit Bot user in the cricleci config.
+* Determine standard process for using the `config_split` module.
