@@ -65,7 +65,7 @@ jobs:
               find web -type d -name .git -print0|xargs -0 rm -rf
               git add .
               git commit -m "Built ${CIRCLE_PROJECT_REPONAME}/${CIRCLE_BRANCH} from: ${CIRCLE_SHA1}
-                  Please note that all changes to this site should be committed to: https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
+                  All code changes should be committed to: https://github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}
                   Any commits made directly to this Pantheon repository will be overwritten."
       # Push the assembled code to the Pantheon repo specified in the circle project environment variables.
       - run:
