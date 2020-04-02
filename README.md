@@ -82,4 +82,3 @@ When installing the given `composer.json` some tasks are taken care of:
 * Use an install profile to enable the needed modules automatically.
 * Don't hardcode the Kalamuna Commit Bot user in the cricleci config.
 * Determine standard process for using the `config_split` module.
-* Configure the `.env` files for the Lando defaults, rather than putting it in `settings.local.php`.
