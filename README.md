@@ -38,9 +38,9 @@ Press the `Use this template` button in Github to create a new repository for yo
 1. Copy the database to your local environment, and run `drush cex` to export the configuration to the `config/sync` directory, and commit to git.
 
 ### Set up local development environment
-1. If using lando, edit the `.lando.yml` file to set the appropriate `PROJECTNAME`, `PANTHEON_SITE_ID`, and `PANTHEON_SITE_MACHINE_NAME`.
+1. If using lando, edit the `.lando.yml` file to set the appropriate `PROJECTNAME`, `PANTHEON_SITE_ID`, and `PANTHEON_SITE_MACHINE_NAME`. Database credentials are set automagically by the pantheon lando recipie.
 
-**or**
+    **or**
 
 1. Create an `.env` file from `.env.example`, and set the appropriate database credentials and drush site url.
 
