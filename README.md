@@ -32,10 +32,17 @@ Press the `Use this template` button in Github to create a new repository for yo
 1. Run `npm it` to install the node modules, and commit the `package.lock` file to the repository.
 1. Push the changes to github, and check that the CircleCI workflow executes properly and the code is pushed to pantheon.
 
-### Configure Drupal:
+### Configure Drupal
 1. Install Drupal in the Pantheon dev environment. (Note: If you want to run the Drupal installation process locally, you may need to re-enable some layers of caching in the `/web/sites/default/settings.local.php` file.)
 1. Enable the included contrib modules, including `admin_toolbar_tools`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 1. Copy the database to your local environment, and run `drush cex` to export the configuration to the `config/sync` directory, and commit to git.
+
+### Set up local development environment
+1. If using lando, edit the `.lando.yml` file to set the appropriate `PROJECTNAME`, `PANTHEON_SITE_ID`, and `PANTHEON_SITE_MACHINE_NAME`.
+
+**or**
+
+1. Create an `.env` file from `.env.example`, and set the appropriate database credentials and drush site url.
 
 ## What does the original drupal-composer/drupal-project template do?
 

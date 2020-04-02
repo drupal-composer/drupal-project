@@ -139,18 +139,18 @@ $settings['skip_permissions_hardening'] = TRUE;
 $settings['config_exclude_modules'] = ['devel', 'stage_file_proxy'];
 
 /**
- * Provide default database credentials for use with Lando.
+ * If we are not running lando with the pantheon recipie, look for credentials from an .env file.
  */
-if (empty($databases['default']['default'])) {
+if (!isset($_ENV['PANTHEON_ENVIRONMENT'])) {
   $databases['default']['default'] = [
-    'database' => 'drupal8',
-    'username' => 'drupal8',
-    'password' => 'drupal8',
-    'prefix' => '',
-    'host' => 'database',
-    'port' => '3306',
-    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'database' => getenv('MYSQL_DATABASE'),
     'driver' => 'mysql',
+    'host' => getenv('MYSQL_HOSTNAME'),
+    'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
+    'password' => getenv('MYSQL_PASSWORD'),
+    'port' => getenv('MYSQL_PORT'),
+    'prefix' => '',
+    'username' => getenv('MYSQL_USER'),
   ];
 }
 
