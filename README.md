@@ -16,13 +16,14 @@ Press the `Use this template` button in Github to create a new repository for yo
 1. When prompted to select an upstream, choose the regular Drupal 8 option, so the hidden framework variable on Pantheon is properly set to Drupal.
 1. Run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
 1. Add the Kalamuna Commit Bot `kalacommitbot@kalamuna.com` under the `Team` tab for the project (or an alternate account you'd like to use for pushing to pantheon).
-1. Copy the location of the pantheon git repo, which is under `Connection info` (but remove everything in the `git clone` command but the actual url).
+1. Copy the location of the Pantheon git repo from the `Git SSH clone URL` field under the `Connection info` dropdown in the Pantheon site dashboard, which is the format `ssh://codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX@codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.drush.in:2222/~/repository.git`. Discard the `git clone` and `site-name` parts from before and after the URL in the provided command.
 
 ### Initialize CircleCI integration
 
 1. Log into CircleCI and add your github repo as an active project.
-1. Under the `environment variables` tab in the project settings, add the url for the destination repository to the `PANTHEON_REPO` variable.
-1. In the project settings, find the place to add an ssh key (varies between old and new interface), and add the public key associated with the pantheon user you added above, using `drush.in` as the domain.
+1. Under the `environment variables` tab in the project settings, create a new variable with `PANTHEON_REPO` as the key, and the `ssh://codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX@codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.drush.in:2222/~/repository.git` repo url as the value.
+1. Find the place to add ssh keys to the circle project, which is at `Project Settings` >  `SSH Keys` > `Additional SSH Keys` in the new circleci interface, and at `Project Settings` > `SSH Permissions` in the old interface.
+1. And add a new private key with `drush.in` as the hostname and the private key text for `kalacommitbot@kalamuna.com`, or whichever user you added to the pantheon project for pushing commits. The private key should start with `-----BEGIN RSA PRIVATE KEY-----` and end with `-----END RSA PRIVATE KEY-----`. (Kalamuna devs should look in Lastpass for this info.)
 
 ### Install the codebase and deploy
 
