@@ -34,7 +34,7 @@ Press the `Use this template` button in Github to create a new repository for yo
 
 ### Configure Drupal:
 1. Install Drupal in the Pantheon dev environment. (Note: If you want to run the Drupal installation process locally, you may need to re-enable some layers of caching in the `/web/sites/default/settings.local.php` file.)
-1. Enabled required modules such as `admin_toolbar_tools`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
+1. Enable the included contrib modules, including `admin_toolbar_tools`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 1. Copy the database to your local environment, and run `drush cex` to export the configuration to the `config/sync` directory, and commit to git.
 
 ## What does the original drupal-composer/drupal-project template do?
