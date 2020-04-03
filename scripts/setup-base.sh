@@ -4,6 +4,7 @@
 #
 # This will be invoked via the phapp setup command when a site is setup.
 cd `dirname $0`/..
+source scripts/util/os-compat-helpers.sh
 
 # Copy example settings.
 cp web/sites/example.local.services.yml web/sites/local.services.yml
@@ -55,6 +56,7 @@ for SITE in `ls -d web/sites/*/`; do
   fi
 
   # Link public files directory to persistent files.
-  ln -sfT ../../../$PERSISTENT_FILES_DIR/$SITE/public web/sites/$SITE/files
+  mkdir -p web/sites/$SITE
+  os_compat_link_directory ../../../$PERSISTENT_FILES_DIR/$SITE/public web/sites/$SITE/files
 done
 

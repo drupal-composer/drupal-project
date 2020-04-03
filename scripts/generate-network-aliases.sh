@@ -4,8 +4,8 @@
 # Extends the main docker-compose file with network aliases for localdev inner-container hostname resolution.
 # This allows containers in the 'traefik' network to connect to this app under the given hostnames.
 ######
-
-TEMPLATE_FILE=`readlink -f $(dirname $0)`/generate-network-aliases.template.yml
+source `dirname $0`/util/os-compat-helpers.sh
+TEMPLATE_FILE=`os_compat_readlink -f $(dirname $0)`/generate-network-aliases.template.yml
 cd `dirname $0`/..
 source dotenv/loader.sh
 
@@ -37,5 +37,5 @@ for HOST in $HOSTS; do
 done
 
 ## Register the compose file.
-sed -i '/^COMPOSE_FILE/ s/ *$/:docker-compose.overrides.aliases.yml/' .env
+os_compat_sed_i '/^COMPOSE_FILE/ s/ *$/:docker-compose.overrides.aliases.yml/' .env
 echo "docker-compose.overrides.aliases.yml generated."
