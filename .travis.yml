@@ -23,7 +23,7 @@ before_install:
 
 install:
   - composer --verbose validate
-  - composer --verbose install
+  - COMPOSER_MEMORY_LIMIT=-1 composer --verbose install
 
 script:
   - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
