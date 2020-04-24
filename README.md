@@ -8,14 +8,14 @@ The goal of this repository is to provide a clean installation with just the too
 
 ### Create a new Github repo
 
-Press the `Use this template` button in Github to create a new repository for your project based on this template, or clone this repository manually and remove the unneeded git history.
+Press the `Use this template` button in Github to create a new repository for your project based on this template, or clone this repository manually and remove any unneeded git history.
 
 ### Create Pantheon environment
 
 1. Created a new pantheon site at [https://dashboard.pantheon.io/sites/create](https://dashboard.pantheon.io/sites/create), selecting the appropriate Organization. *Note: It may make more sense from a process perspective to have the client create the pantheon site and then add Kalamuna as a supporting organization.*
 1. When prompted to select an upstream, choose the regular Drupal 8 option, so the hidden framework variable on Pantheon is properly set to Drupal.
 1. Run `terminus site:upstream:set my-site-name empty` from your command line to remove the unneeded upstream after the site has been initialized.
-1. Add the Kalamuna Commit Bot `kalacommitbot@kalamuna.com` under the `Team` tab for the project (or an alternate account you'd like to use for pushing to pantheon).
+1. Add the Kalamuna Commit Bot `kalacommitbot@kalamuna.com` under the `Team` tab for the project (or an alternate account you'd like to use for pushing to Pantheon).
 1. Copy the location of the Pantheon git repo from the `Git SSH clone URL` field under the `Connection info` dropdown in the Pantheon site dashboard, which is the format `ssh://codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX@codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.drush.in:2222/~/repository.git`. Discard the `git clone` and `site-name` parts from before and after the URL in the provided command.
 
 ### Initialize CircleCI integration
@@ -64,7 +64,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Required the `pantheon-systems/drupal-integrations` package which contains additional scaffolding for pantheon sites.
 * The `robots.txt` file is installed initially from drupal scaffold, but any subsequent changes are not overwritten.
 * Provide default `development.services.yml` and `settings.local.php` files which will be created in web/sites if they don't already exist.
-* Add local settings to keep kint from loading to many objects and crashing drupal.
+* Add local settings to keep kint from loading too many objects and crashing drupal.
 * Require modules used on all sites, including `admin_toolbar`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
 * Provide a package.json file to install npm module.
 * Add configuration for the sync directory to be located at `../config/sync`.
@@ -73,7 +73,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Removed unneeded .travis.yml and phpunit.xml.dist files.
 * Not using .gitignore files created by Drupal Scaffold.
 * Not requiring drush or DrupalConsole, since they are installed globally in Lando and on Pantheon.
-* Remove `services.yml` from the list of things that drupal-project adds, since doint that is no longer advised.
+* Remove `services.yml` from the list of things that drupal-project adds, since doing that is no longer advised.
 
 ## Potential improvements
 * Build out the `package.json` file with the configuration for compiling themes with Gulp.
