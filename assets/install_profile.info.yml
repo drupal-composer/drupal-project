@@ -1,0 +1,68 @@
+name: Drupal Project
+type: profile
+description: 'Install profile including common core modules and contrib from drupal-project.'
+core: 8.x
+
+# Modules to install to support the profile.
+install:
+  - admin_toolbar
+  - admin_toolbar_links_access_filter
+  - admin_toolbar_search
+  - admin_toolbar_tools
+  - block_content
+  - breakpoint
+  - ckeditor
+  - crop
+  - ctools
+  - dblog
+  - dynamic_page_cache
+  - editor
+  - entity_reference_revisions
+  - field_group
+  - field_ui
+  - file
+  - filter
+  - focal_point
+  - google_tag
+  - image
+  - link
+  - linkit
+  - media
+  - media_library
+  - menu_ui
+  - metatag
+  - options
+  - page_cache
+  - pantheon_advanced_page_cache
+  - path
+  - path_alias
+  - redirect
+  - responsive_image
+  - search
+  - simple_sitemap
+  - syslog
+  - taxonomy
+  - text
+  - token
+  - toolbar
+  - update
+  - views_ui
+  - extlink
+  - menu_link_content
+  - pathauto
+  - paragraphs
+
+# Required modules
+# Note that any dependencies of the modules listed here will be installed automatically.
+dependencies:
+  - node
+  - block
+  - config
+  - field
+  - user
+  - views
+
+# List any themes that should be installed as part of the profile installation.
+# Note that this will not set any theme as the default theme.
+themes:
+  - claro

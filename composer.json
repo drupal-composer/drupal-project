@@ -83,6 +83,10 @@
                 "web-root": "web/"
             },
             "file-mapping": {
+              "[web-root]/profiles/drupal_project/drupal_project.info.yml": {
+                "path": "assets/install_profile.info.yml",
+                "overwrite": false
+              },
               "[web-root]/sites/development.services.yml": {
                 "path": "assets/default.development.services.yml",
                 "overwrite": false
