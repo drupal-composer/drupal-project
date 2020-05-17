@@ -1,0 +1,83 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the drupal_project install profile.
+ *
+ * Composer will place this file at: web/profiles/drupal_project/drupal_project.install
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function drupal_project_install() {
+  $config_factory = \Drupal::configFactory();
+
+  // Only allow admins to create accounts by default.
+  $config_factory->getEditable('user.settings')->set('register', 'admin_only')->save(TRUE);
+
+  // Set the admin theme to Claro.
+  $config_factory->getEditable('system.theme')->set('admin', 'claro')->save(TRUE);
+
+  // Use the admin theme for editing content.
+  $config_factory->getEditable('node.settings')->set('use_admin_theme', true)->save(TRUE);
+
+  // Create an administrator role that has all permissions.
+  \Drupal\user\Entity\Role::create(array('id' => 'admin', 'label' => 'Administrator', 'is_admin' => true, 'weight' => 4))->save();
+
+  // Create an editor role for editing content.
+  \Drupal\user\Entity\Role::create(array('id' => 'editor', 'label' => 'Site Editor', 'weight' => 2))->save();
+
+  // Create a manager role that can change users and permissions.
+  \Drupal\user\Entity\Role::create(array('id' => 'manager', 'label' => 'Site Manager', 'weight' => 3))->save();
+
+  // Grant additional permissions to anonymous users.
+  user_role_grant_permissions('anonymous', [
+    'access content',
+    'view media',
+    'search content',
+  ]);
+
+  // Grant additional permissions to authenticated users on top of whatever anonmyous users can do.
+  user_role_grant_permissions('authenticated', array_merge(\Drupal\user\Entity\Role::load('anonymous')->getPermissions(), [
+    'access user profiles',
+    'change own username',
+    'use advanced search',
+    'view the administration theme',
+  ]));
+
+  // Grant additional permissions to editors on top of whatever authenticated users can do.
+  user_role_grant_permissions('editor', array_merge(\Drupal\user\Entity\Role::load('authenticated')->getPermissions(), [
+    'access administration pages',
+    'access content overview',
+    'access media overview',
+    'access site in maintenance mode',
+    'access taxonomy overview',
+    'access toolbar',
+    'administer menu',
+    'administer nodes',
+    'administer redirects',
+    'administer taxonomy',
+    'bypass node access',
+    'create media',
+    'create url aliases',
+    'delete any media',
+    'link to any page',
+    'notify of path changes',
+    'update any media',
+    'use admin toolbar search',
+    'view all media revisions',
+    'view unpublished paragraphs',
+  ]));
+
+  // Grant additional permissions to managers on top of whatever editors can do.
+  user_role_grant_permissions('manager', array_merge(\Drupal\user\Entity\Role::load('editor')->getPermissions(), [
+    'access site reports',
+    'administer account settings',
+    'administer google tag manager',
+    'administer permissions',
+    'administer sitemap settings',
+    'administer users',
+  ]));
+}
