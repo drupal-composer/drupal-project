@@ -2,7 +2,7 @@
 
 This template is based on the [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) template, with additional tools and settings specific to the Kalamuna workflow.
 
-The goal of this repository is to provide a clean installation with just the tools and files that we need for 95% of our Drupal projects. Alternate configurations, with lesser-used packages or frameworks, should be added as separate branches which can be used when needed for particular projects.
+The goal of this repository is to provide a clean installation with just the tools and files that we need for 95% of our Drupal projects. Alternate configurations, with lesser-used packages or frameworks, should be included as sperate packages or moved to branches which can be used when needed for particular projects.
 
 ## Usage
 
@@ -66,6 +66,7 @@ When installing the given `composer.json` some tasks are taken care of:
 * Provide default `development.services.yml` and `settings.local.php` files which will be created in web/sites if they don't already exist.
 * Add local settings to keep kint from loading too many objects and crashing drupal.
 * Require modules used on all sites, including `admin_toolbar`, `metatag`, `pantheon_advanced_page_cache`, and `pathauto`.
+* Provide an install profile to enable the needed modules automatically.
 * Provide a package.json file to install npm module.
 * Add configuration for the sync directory to be located at `../config/sync`.
 
@@ -78,7 +79,7 @@ When installing the given `composer.json` some tasks are taken care of:
 ## Potential improvements
 * Build out the `package.json` file with the configuration for compiling themes with Gulp.
 * Have `composer install` call `npm install` automatically.
-* Require additional contrib modules we use on most sites, including `google_tag`, `extlink`, `linkit`, and `twig_tweak`.
-* Use an install profile to enable the needed modules automatically.
+* Require additional contrib modules we use on most sites.
 * Don't hardcode the Kalamuna Commit Bot user in the cricleci config.
 * Determine standard process for using the `config_split` module.
+* Include common configuration, either as part of the install profile or using other import methods.
