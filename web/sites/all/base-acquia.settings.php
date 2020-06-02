@@ -6,7 +6,6 @@
  */
 
 // Set the config directory here to override defaults set in acquia includes.
-// $default_config_directories is set in base.settings.php.
-$config_directories = $default_config_directories;
+$settings['config_sync_directory'] = '../config/sync';
 
 // @todo: If acquia is used, include acquia settings here.

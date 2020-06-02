@@ -39,3 +39,5 @@ node_modules
 
 # Ignore .DS_Store files (OSX)
 .DS_Store
+/.editorconfig
+/.gitattributes
