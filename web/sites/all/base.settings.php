@@ -1,12 +1,6 @@
 <?php
 
-$default_config_directories = array(
-  CONFIG_SYNC_DIRECTORY => '../config/sync',
-);
-
-// The directories are set here initially (for ci) but a copy is left in case
-// they are overridden by some hoster provided settings.php as done by Acquia.
-$config_directories = $default_config_directories;
+$settings['config_sync_directory'] = '../config/sync';
 
 // Set active split configuration.
 $config['config_split.config_split.' . $env_mode]['status'] = TRUE;
@@ -53,7 +47,7 @@ $settings['file_scan_ignore_directories'] = [
 // Customize setting directories.
 $settings['file_public_path'] = "sites/$site/files";
 $settings['file_private_path'] = '../' . getenv('PERSISTENT_FILES_DIR') . "/$site/private";
-#$config['system.file']['path']['temporary'] = "sites/$site/files-tmp";
+#$settings['file_temp_path'] = "sites/$site/files-tmp";
 #Ensure all sites use the same translations directory.
 $config['locale.settings']['translation']['path'] = 'sites/default/files/translations';
 
