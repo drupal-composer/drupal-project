@@ -33,7 +33,8 @@
         "drupal/coder": "^8.3",
         "behat/behat": "^3.5",
         "drupal/drupal-extension": "^3.4",
-        "sensiolabs/security-checker": "^5.0"
+        "sensiolabs/security-checker": "^5.0",
+        "drupal/core-dev": "^8.8"
     },
     "conflict": {
         "drupal/drupal": "*"
