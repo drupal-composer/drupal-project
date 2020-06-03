@@ -1,6 +1,6 @@
 # Composer template for drunomics Drupal projects
 
-[![Build Status](https://www.travis-ci.org/drunomics/drupal-project.svg?branch=3.x)](https://www.travis-ci.org/drunomics/drupal-project)
+[![Build Status](https://www.travis-ci.org/drunomics/drupal-project.svg?branch=5.x)](https://www.travis-ci.org/drunomics/drupal-project)
 
 Builds upon https://github.com/drupal-composer/drupal-project.
 
@@ -16,9 +16,9 @@ After that you can create the project:
 
 ```
 // Last stable version:
-composer create-project drunomics/drupal-project:4.* PROJECT
+composer create-project drunomics/drupal-project:5.* PROJECT
 // Last development version:
-composer create-project drunomics/drupal-project:4.*@dev --stability dev PROJECT
+composer create-project drunomics/drupal-project:5.*@dev --stability dev PROJECT
 ```
 
 With `composer require ...` you can download new dependencies to your 
