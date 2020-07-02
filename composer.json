@@ -1,6 +1,6 @@
 {
     "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 8 projects with composer",
+    "description": "Project template for Drupal 9 projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
@@ -16,19 +16,18 @@
         }
     ],
     "require": {
-        "php": ">=7.0.8",
+        "php": ">=7.3",
         "composer/installers": "^1.2",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal/console": "^1.0.2",
-        "drupal/core": "^8.8.0",
-        "drupal/core-composer-scaffold": "^8.8.0",
-        "drush/drush": "^9.7.1 | ^10.0.0",
+        "drupal/core": "^9.0",
+        "drupal/core-composer-scaffold": "^9.0",
+        "drush/drush": "^10.0",
         "vlucas/phpdotenv": "^4.0",
         "webflo/drupal-finder": "^1.0.0",
         "zaporylie/composer-drupal-optimizations": "^1.0"
     },
     "require-dev": {
-        "drupal/core-dev": "^8.8.0"
+        "drupal/core-dev": "^9.0"
     },
     "conflict": {
         "drupal/drupal": "*"
