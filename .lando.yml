@@ -1,0 +1,27 @@
+name: d8
+recipe: drupal8
+config:
+  webroot: web
+  php: 7.3
+  via: apache:2.4
+  database: mysql:5.7
+proxy:
+  phpmyadmin:
+    - pma.lndo.site
+  mailhog:
+    - mailhog.lndo.site
+services:
+  appserver:
+    build:
+      - composer install
+    build_as_root:
+      - pecl install uploadprogress
+      - docker-php-ext-enable uploadprogress
+  phpmyadmin:
+    type: phpmyadmin
+    hosts:
+      - database
+  mailhog:
+    type: mailhog
+    hogfrom:
+      - appserver

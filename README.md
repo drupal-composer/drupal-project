@@ -20,11 +20,20 @@ cd {some-dir}
 drush site:install --account-name=admin --account-mail=foo@example.com --account-pass=pass --locale=ja --db-url=mysql://user:password@host:port/dbname
 ```
 
-初期インストール後、 `settings.php` を変更しgitの初期化を行います
+初期インストール後、 `settings.php` を変更しgitの初期化を行います。
 
 ```bash
 git init
 git commit -m "initial commit."
+```
+
+## Landoを実行
+
+以下コマンドでLando環境が起動します。  
+Landoのインストールは事前に行ってください。( https://docs.lando.dev/basics/installation.html )
+
+```bash
+lando start
 ```
 
 ## その他ライブラリ導入方法
@@ -80,3 +89,4 @@ composer config platform.php 7.4
 
 - `drupal/core` -> `drupal/core-recomended` への置き換え
 - [drupal-composer/drupal-paranoia](https://packagist.org/packages/drupal-composer/drupal-paranoia) の利用
+- [Lando](https://docs.lando.dev/) の実行環境
