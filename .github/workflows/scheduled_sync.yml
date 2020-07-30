@@ -1,0 +1,26 @@
+name: Merge upstream branches
+
+on:
+  schedule:
+    - cron: '0 0,12 * * *'
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Merge upstream
+        run: |
+          git config --global user.name ${NAME}
+          git config --global user.email ${EMAIL}
+          git config --global pull.rebase merges
+          git pull --unshallow
+          git remote add upstream ${REPO_FORK}
+          git fetch upstream
+          git checkout 8.x
+          git merge --no-edit upstream/8.x
+          git push origin 8.x
+        env:
+          NAME: studioumi
+          EMAIL: motoki.kobayashi+github@studio-umi.jp
+          REPO_FORK: 'https://github.com/drupal-composer/drupal-project.git'
