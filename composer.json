@@ -1,5 +1,5 @@
 {
-    "name": "drupal-composer/drupal-project",
+    "name": "studioumi/drupal-project",
     "description": "Project template for Drupal 8 projects with composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
@@ -17,11 +17,12 @@
     ],
     "require": {
         "php": ">=7.0.8",
-        "composer/installers": "^1.2",
+        "composer/installers": "^1.7",
         "cweagans/composer-patches": "^1.6.5",
+        "drupal-composer/drupal-paranoia": "~1",
         "drupal/console": "^1.0.2",
-        "drupal/core": "^8.8.0",
         "drupal/core-composer-scaffold": "^8.8.0",
+        "drupal/core-recommended": "^8.8.0",
         "drush/drush": "^9.7.1 | ^10.0.0",
         "vlucas/phpdotenv": "^4.0",
         "webflo/drupal-finder": "^1.0.0",
@@ -65,15 +66,19 @@
         },
         "drupal-scaffold": {
             "locations": {
-                "web-root": "web/"
+                "web-root": "app/"
             }
         },
+        "drupal-paranoia": {
+            "app-dir": "app",
+            "web-dir": "web"
+        },
         "installer-paths": {
-            "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
-            "web/modules/contrib/{$name}": ["type:drupal-module"],
-            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
-            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "app/core": ["type:drupal-core"],
+            "app/libraries/{$name}": ["type:drupal-library"],
+            "app/modules/contrib/{$name}": ["type:drupal-module"],
+            "app/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "app/themes/contrib/{$name}": ["type:drupal-theme"],
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
         }
     }
