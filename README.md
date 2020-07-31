@@ -1,5 +1,7 @@
 # Composer template for Drupal projects
 
+![Merge upstream branches](https://github.com/studioumi/drupal-project/workflows/Merge%20upstream%20branches/badge.svg)
+
 composer create-projectによってDrupal8.xの初期構築を行うパッケージ。
 
 ## 使用方法
