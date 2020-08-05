@@ -45,6 +45,9 @@
         "files": ["load.environment.php"]
     },
     "scripts": {
+        "post-create-project-cmd": [
+            "rm -rf ./.github"
+        ],
         "pre-install-cmd": [
             "DrupalProject\\composer\\ScriptHandler::checkComposerVersion"
         ],
