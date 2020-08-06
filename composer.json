@@ -26,7 +26,7 @@
         "composer/installers": "^1.2",
         "composer/semver": "^1.4",
         "cweagans/composer-patches": "^1.6.5",
-        "drupal-composer/preserve-paths": "^0.1",
+        "drupal-composer/preserve-paths": "dev-master#4c5f62",
         "drupal/composer_autoloader": "^1.0",
         "drupal/drupal": "^7.62",
         "drush/drush": "^8.0",
