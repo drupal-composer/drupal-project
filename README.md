@@ -12,7 +12,7 @@ composer create-projectによってDrupal9.xの初期構築を行うパッケー
 
 ```bash
 # {some-dir} は Drupal をインストールするディレクトリ.
-composer create-project studioumi/drupal-project:8.x-dev {some-dir} --no-interaction
+composer create-project studioumi/drupal-project:9.x-dev {some-dir} --no-interaction
 ```
 
 プロジェクト作成後、インストールディレクトリへ移動しDrupalの初期インストールを実行します。
