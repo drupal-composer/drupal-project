@@ -2,7 +2,7 @@
 
 ![Merge upstream branches](https://github.com/studioumi/drupal-project/workflows/Merge%20upstream%20branches/badge.svg)
 
-composer create-projectによってDrupal8.xの初期構築を行うパッケージ。
+composer create-projectによってDrupal9.xの初期構築を行うパッケージ。
 
 ## 使用方法
 
