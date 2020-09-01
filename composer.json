@@ -34,6 +34,7 @@
         "drupal/pathauto": "^1.8",
         "drupal/redirect": "^1.6",
         "drupal/simple_sitemap": "^3.6",
+        "drush/drush": "^10.3",
         "pantheon-systems/drupal-integrations": "^8.0",
         "vlucas/phpdotenv": "^4.1",
         "webflo/drupal-finder": "^1.2",
