@@ -21,9 +21,10 @@ Press the `Use this template` button in Github to create a new repository for yo
 ### Initialize CircleCI integration
 
 1. Log into CircleCI and add your github repo as an active project.
-1. Under the `environment variables` tab in the project settings, create a new variable with `PANTHEON_REPO` as the key, and the `ssh://codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX@codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.drush.in:2222/~/repository.git` repo url as the value.
 1. Find the place to add ssh keys to the circle project, which is at `Project Settings` >  `SSH Keys` > `Additional SSH Keys` in the new circleci interface, and at `Project Settings` > `SSH Permissions` in the old interface.
-1. And add a new private key with `drush.in` as the hostname and the private key text for `kalacommitbot@kalamuna.com`, or whichever user you added to the pantheon project for pushing commits. The private key should start with `-----BEGIN RSA PRIVATE KEY-----` and end with `-----END RSA PRIVATE KEY-----`. (Kalamuna devs should look in Lastpass for this info.)
+1. And add a new private key with `drush.in` as the hostname and the private key text for `kalacommitbot@kalamuna.com`, or whichever user you added to the pantheon project for pushing commits. The private key should start with `-----BEGIN RSA PRIVATE KEY-----` and end with `-----END RSA PRIVATE KEY-----`. (Kalamuna devs should look in 1password for this info.)
+1. Under the `environment variables` tab in the project settings, create a new variable with `PANTHEON_REPO` as the key, and the `ssh://codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX@codeserver.dev.XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX.drush.in:2222/~/repository.git` repo url as the value. (If you encounter an error, double check that you removed `git clone` and the trailing repository name that is added in the pantheon connection info.)
+1. If the npm build process should run in a subfolder, add a `NPM_PATH` environmental variable in the format `web/themes/custom/themename/`. (Note that until circle allows environmental variables in keys, the packages used in a subfolder will not be cached. [More info](https://discuss.circleci.com/t/cannot-use-circle-yml-environment-variables-in-cache-keys/10994))
 
 ### Install the codebase and deploy
 

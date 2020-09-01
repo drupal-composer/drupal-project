@@ -41,7 +41,10 @@ jobs:
       # Install node modules and build theme.
       - run:
           name: Node Install
-          command: npm it
+          # Set the NPM_PATH environmental variable if you want to run npm in another directory, like: web/themes/custom/themename/
+          # Note: Until circle allows you to use environmental variables in cache keys, the packages used in custom paths are not cached.
+          #       https://discuss.circleci.com/t/cannot-use-circle-yml-environment-variables-in-cache-keys/10994
+          command: npm --prefix ./${NPM_PATH} it
       # Cache node_modules so the packages don't need to be redownloaded next time.
       - save_cache:
           name: Save Node Cache
