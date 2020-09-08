@@ -26,8 +26,7 @@ install:
   - composer --verbose install
 
 script:
-  - if [[ $RELEASE = dev ]]; then composer --verbose remove --no-update drupal/console; fi;
-  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core:8.8.x-dev; composer --verbose require --no-update --dev drupal/core-dev:8.8.x-dev; fi;
+  - if [[ $RELEASE = dev ]]; then composer --verbose require --no-update drupal/core-recommended:9.0.x-dev; composer --verbose require --no-update --dev drupal/core-dev:9.0.x-dev; fi;
   - if [[ $RELEASE = dev ]]; then composer --verbose update; fi;
   - ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
   - ./vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
