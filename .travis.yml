@@ -17,6 +17,10 @@ env:
     - RELEASE=stable COMPOSER_CHANNEL=snapshot
 
 before_install:
+  # https://www.drupal.org/project/drupal/issues/3107155
+  - sudo echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse" >> /etc/apt/sources.list
+  - sudo apt-get update
+  - sudo apt-get -y install sqlite3/focal
   - echo 'sendmail_path = /bin/true' >> ~/.phpenv/versions/$(phpenv version-name)/etc/conf.d/travis.ini
   - phpenv config-rm xdebug.ini
   - composer --verbose self-update --$COMPOSER_CHANNEL
