@@ -49,7 +49,7 @@ script:
   - docker-compose up -d
   - echo "Waiting for mysql to come up..." && docker-compose exec cli /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
   - docker-compose exec cli phapp install --no-build
-  - curl -v http://example.project.localdev.space | grep "Drupal 8"
+  - curl -v http://example.project.localdev.space | grep "Drupal 9"
 
 after_success:
   - echo "SUCCESS!"
