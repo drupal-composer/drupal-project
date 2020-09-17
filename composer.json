@@ -31,7 +31,7 @@
         "drunomics/behat-drupal-utils": "^2.1",
         "drupal/coder": "^8.3",
         "behat/behat": "^3.5",
-        "drupal/drupal-extension": "^3.4",
+        "drupal/drupal-extension": "^4.1",
         "sensiolabs/security-checker": "^5.0",
         "drupal/core-dev": "^9"
     },
