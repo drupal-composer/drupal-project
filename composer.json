@@ -17,7 +17,7 @@
         "drupal/admin_toolbar": "^2.0",
         "drupal/core-composer-scaffold": "^9",
         "drupal/core-recommended": "^9",
-        "drupal/services_env_parameter": "^1.0",
+        "drupal/services_env_parameter": "^1.2",
         "drush/drush": "^10",
         "oomphinc/composer-installers-extender": "^1.1",
         "symfony/dotenv": "^3.4",
@@ -138,11 +138,7 @@
             "test": "Run tests."
         },
         "enable-patching": true,
-        "patches": {
-            "drupal/services_env_parameter": {
-                "#3148742: Automated Drupal 9 compatibility fixes": "https://www.drupal.org/files/issues/2020-06-06/services_env_parameter.1.x-dev.rector.patch"
-            }
-        }
+        "patches": {}
     },
     "config": {
         "platform": {
