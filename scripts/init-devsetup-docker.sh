@@ -9,8 +9,7 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   echo "Adding devsetup-docker from https://github.com/drunomics/devsetup-docker..."
   echo "Set PROJECT_ADD_DEVSETUP_DOCKER=0 to disable."
 
-  # @todo: temporary use needed branch for testing.
-  git clone https://github.com/drunomics/devsetup-docker.git --branch=feature/DEV-1786 devsetup-tmp
+  git clone https://github.com/drunomics/devsetup-docker.git --branch=3.x devsetup-tmp
   rm -rf devsetup-tmp/.git devsetup-tmp/README.md
 
   # OS specific cp operations
@@ -30,6 +29,6 @@ if [[ $PROJECT_ADD_DEVSETUP_DOCKER = 1 ]]; then
   rm -rf devsetup-tmp process-replacements.php
   echo \
 'COMPOSE_AMAZEEIO_VERSION=v1.9.1
-COMPOSE_AMAZEEIO_PHP_VERSION=7.3
+COMPOSE_AMAZEEIO_PHP_VERSION=7.4
 ' >> .env-defaults
 fi
