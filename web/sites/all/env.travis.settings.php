@@ -9,7 +9,7 @@ $settings['trusted_host_patterns'][] = '^localhost$';
 $settings['trusted_host_patterns'][] = '^(.+\.)?{{ project }}.local(:([0-9])*)?$';
 
 // We only ran a single site for testing on travis.
-$databases['default']['default'] = array(
+$databases['default']['default'] = [
   'database' => '{{ project }}_' . $site_prefix,
   'username' => 'root',
   'password' => '',
@@ -18,4 +18,4 @@ $databases['default']['default'] = array(
   'port' => 3306,
   'namespace' => 'Drupal\Core\Database\Driver\mysql',
   'driver' => 'mysql',
-);
+];

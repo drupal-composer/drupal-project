@@ -51,7 +51,7 @@ $settings['file_private_path'] = '../' . getenv('PERSISTENT_FILES_DIR') . "/$sit
 #Ensure all sites use the same translations directory.
 $config['locale.settings']['translation']['path'] = 'sites/default/files/translations';
 
-$settings['container_yamls'] = [ __DIR__ . '/services.yml' ];
+$settings['container_yamls'] = [__DIR__ . '/services.yml'];
 
 ###
 ### More project-specific settings are configured below:
