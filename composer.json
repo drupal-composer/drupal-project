@@ -142,7 +142,7 @@
     },
     "config": {
         "platform": {
-            "php": "7.3"
+            "php": "7.4"
         },
         "sort-packages": true,
         "preferred-install": {
