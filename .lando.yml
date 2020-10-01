@@ -7,9 +7,9 @@
 name: PROJECTNAME
 recipe: pantheon
 config:
-  # Set the pantheon site id, which is in the format: your-site-name
-  id: PANTHEON_SITE_ID
   # Copy the machine id from the url of your pantheon site dashboard, which is in the format: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  id: PANTHEON_SITE_ID
+  # Set the pantheon site id, which is in the format: your-site-name
   site: PANTHEON_SITE_MACHINE_NAME
   # We are using drupal 8 with a nested docroot.
   framework: drupal8
