@@ -4,6 +4,13 @@
 
 Builds upon https://github.com/drupal-composer/drupal-project.
 
+## Version compatibility
+
+| Git branch/tag: | Drupal core: |
+|---             | ---         |
+| 5.x            | Drupal 8    |
+| 6.x            | Drupal 9    |
+
 ## Usage
 
 First you need to [install composer](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx).
