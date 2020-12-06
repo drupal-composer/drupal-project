@@ -20,4 +20,6 @@
 
 // Just pick up the result of the multisite-request-matcher, invoked via
 // dotenv/loader.php.
-$sites[$request->getHost()] = getenv('SITE');
+if (isset($request) && getenv('SITE')) {
+  $sites[$request->getHost()] = getenv('SITE');
+}
