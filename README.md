@@ -81,7 +81,7 @@ This project (drupal-composer/drupal-project) predates drupal/recommended-projec
 
 Drupal officially recommends using drupal/recommended-project. As it matures, drupal/recommended-project is likely to eventually replace drupal-composer/drupal-project.
 
-Whichever project template you choose, you’ll have a great experience out of the box. See [this change record](https://www.drupal.org/node/3082474) and https://github.com/drupal-composer/drupal-project/pull/550 for additional information and discussion.
+Whichever project template you choose, you’ll have a great experience out of the box. See [this change record](https://www.drupal.org/node/3082474) and [this discussion](https://github.com/drupal-composer/drupal-project/pull/550) for additional information.
 
 ### Should I commit the contrib modules I download?
 
