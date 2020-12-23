@@ -98,6 +98,9 @@
             ],
             "locations": {
                 "web-root": "web/"
+            },
+            "file-mapping": {
+                "[web-root]/sites/example/default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
             }
         },
         "installer-types": ["npm-asset", "bower-asset"],
@@ -137,6 +140,7 @@
             "test": "Run tests."
         },
         "enable-patching": true,
+        "composer-exit-on-patch-failure": true,
         "patches": {}
     },
     "config": {
