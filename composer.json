@@ -10,7 +10,7 @@
         }
     ],
     "require": {
-        "cweagans/composer-patches": "^1.6",
+        "cweagans/composer-patches": "^1.7",
         "drunomics/dsk-config-split": "^1.0",
         "drunomics/multisite-request-matcher": "^1.7",
         "drunomics/phapp_env_mode": "^1.1",
@@ -19,13 +19,12 @@
         "drupal/core-recommended": "^9",
         "drupal/services_env_parameter": "^1.2",
         "drush/drush": "^10",
-        "oomphinc/composer-installers-extender": "^1.1",
-        "symfony/dotenv": "^3.4",
-        "zaporylie/composer-drupal-optimizations": "^1.1"
+        "oomphinc/composer-installers-extender": "^2.0",
+        "symfony/dotenv": "^3.4"
     },
     "require-dev": {
         "behat/mink-goutte-driver": "^1.2",
-        "dealerdirect/phpcodesniffer-composer-installer": "^0.5.0",
+        "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "devinci/devinci-behat-extension": "^0.1",
         "dmore/behat-chrome-extension": "^1.2",
         "drunomics/behat-drupal-utils": "^2.1",
@@ -101,7 +100,7 @@
                 "web-root": "web/"
             }
         },
-        "installer-types": ["library", "npm-asset", "bower-asset"],
+        "installer-types": ["npm-asset", "bower-asset"],
         "installer-paths": {
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/core": ["type:drupal-core"],
