@@ -82,6 +82,78 @@ composer update drupal/core-recommended drupal/core-dev --with-dependencies
 composer config platform.php 7.4
 ```
 
+## フロントエンド開発用のパッケージ
+
+本パッケージにはカスタムモジュール/テーマのフロントエンド開発を楽にするためのタスクランナーとリンターが含まれています。これらを利用するにはローカル環境で Node.js と Yarn を使えるようにしてください。
+
+### セットアップ
+
+次のコマンドを実行して必要な Node.js のパッケージをインストールします。
+
+```bash
+yarn
+```
+
+### stylelint
+
+SCSS で書かれたファイルを Drupal のコーディングスタンダードをベースとしたものに則ってチェックします。
+
+```bash
+npx stylelint <file_name>
+
+# カスタムモジュールを一括で stylelint する例
+npx stylelint app/modules/custom/**/*.scss
+```
+
+### ESLint
+
+ES6 の JavaScript で書かれたファイルを Drupal のコーディングスタンダードに則ってチェックします。
+
+```bash
+npx eslint <file_name>
+
+# カスタムモジュールを一括で eslint する例
+npx eslnt app/modules/custom/**/*.es6.js
+```
+
+### Gulp.js
+
+Browsersync の起動や、SASS(SCSS) および ES6 で書かれた JavaScript のトランスパイルなどのタスクを自動化するタスクランナーです。
+
+```bash
+npx gulp [tasks]
+```
+
+`gulp` 実行時にタスクを指定しなかった場合は Browsersync が起動し、SCSS および JavaScript(ES6) のファイルを監視して更新があった時にトランスパイルします。
+
+利用可能なタスク:
+
+|タスク|説明|
+|-|-|
+| `build:scss` | カスタムモジュール・テーマ内にある、SCSSファイル(拡張子が .scss のもの)をCSSにトランスパイルします。 |
+| `build:js` | カスタムモジュール・テーマ内にある、ES6のJavaScriptファイル(拡張子が .es6.js のもの)をにトランスパイルします。 |
+| `build` | ビルドタスクを一括して行います。 |
+| `lint:scss` | カスタムモジュール・テーマ内にある、SCSSファイルを stylelint でチェックします。 |
+| `lint:js` | カスタムモジュール・テーマ内にある、ES6のJavaScriptファイルを ESLint でチェックします。 |
+| `lint` | リンタータスクを一括して行います。 |
+| `watch:scss` | カスタムモジュール・テーマ内にある、SCSSファイルを監視して更新があった際にビルドタスクを実行します。 |
+| `watch:js` | カスタムモジュール・テーマ内にある、ES6のJavaScriptファイルを監視して更新があった際にビルドタスクを実行します。 |
+| `watch:twig` | カスタムモジュール・テーマ内にある、Twig テンプレートを監視して更新があった際にブラウザをリロードします。 |
+| `watch` | 監視タスクを一括して行います。 |
+
+#### 設定
+
+各タスクのデフォルトのオプションを変更したい場合は、 gulpfile.js/config/example.local.yml のファイルを gulpfile.js/config/local.yml にコピーして設定をオーバーライドます
+
+Browsersync のポートを変更したい場合は次の様に定義します。
+
+```yaml
+browsersync:
+  port: 8080
+```
+
+デフォルトの設定やその他のオプションについて詳しく知りたい場合は、 gulpfile.js/config/default.yml に書かれたコメントを参照してください。
+
 ## その他
 
 本プロジェクトは [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) のフォークプロジェクトです。
