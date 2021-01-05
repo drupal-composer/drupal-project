@@ -1,0 +1,34 @@
+{
+  "name": "studio-umi-drupal-project",
+  "version": "1.0.0",
+  "description": "Gulp.js を使ってカスタムモジュール・テーマの開発タスクを自動実行します。",
+  "main": "gulpfile.js",
+  "license": "GPL-2.0",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.0.0",
+    "babel-preset-env": "^1.7.0",
+    "breakpoint-sass": "^2.7.1",
+    "browser-sync": "^2.26.13",
+    "config": "^3.3.3",
+    "eslint-config-drupal": "^5.0.2",
+    "fancy-log": "^1.3.3",
+    "gulp": "^4.0.2",
+    "gulp-babel": "^8.0.0",
+    "gulp-eslint": "^6.0.0",
+    "gulp-load-plugins": "^2.0.6",
+    "gulp-plumber": "^1.2.1",
+    "gulp-rename": "^2.0.0",
+    "gulp-sass": "^4.1.0",
+    "gulp-sass-glob": "^1.1.0",
+    "gulp-stylelint": "^13.0.0",
+    "stylelint": "^13.0.0",
+    "stylelint-config-drupal": "^1.0.0",
+    "stylelint-scss": "^3.18.0"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  }
+}

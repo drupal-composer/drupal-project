@@ -1,0 +1,8 @@
+# @file
+# Gulp.js local environment configuration file.
+
+# Browsersync options.
+# @see https://browsersync.io/docs/options
+browsersync:
+  # Browsersync で使用するポート
+  port: 3000
