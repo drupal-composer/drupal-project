@@ -31,7 +31,7 @@ git commit -m "initial commit."
 
 ## Landoを実行
 
-以下コマンドでLando環境が起動します。  
+以下コマンドでLando環境が起動します。
 Landoのインストールは事前に行ってください。( https://docs.lando.dev/basics/installation.html )
 
 ```bash
@@ -56,12 +56,12 @@ composer require drupal/devel:~1.0
 composer update drupal/core-recommended drupal/core-dev --with-dependencies
 ```
 
-2. `git diff` で差分の確認を行います。その際、 `.htaccess` や `robots.txt` 等のファイルも更新される為  
+2. `git diff` で差分の確認を行います。その際、 `.htaccess` や `robots.txt` 等のファイルも更新される為
    必要に応じて差分の取り込みを行います。
 
-### コア及びコントリビュートモジュールのパッチ適用
+## コア及びコントリビュートモジュールのパッチ適用
 
-コア等の挙動に問題があり、パッチを当てる必要がある場合 `composer.json` へ適用するパッチを記載します。  
+コア等の挙動に問題があり、パッチを当てる必要がある場合 `composer.json` へ適用するパッチを記載します。
 これは [composer-patches](https://github.com/cweagans/composer-patches) によって自動的にパッチが適用されます。
 
 ```json
@@ -74,7 +74,7 @@ composer update drupal/core-recommended drupal/core-dev --with-dependencies
 }
 ```
 
-### PHPのバージョンを固定する方法
+## PHPのバージョンを固定する方法
 
 以下コマンドで実行するPHPのバージョンを固定することが出来ます。
 
@@ -82,12 +82,12 @@ composer update drupal/core-recommended drupal/core-dev --with-dependencies
 composer config platform.php 7.4
 ```
 
-### その他
+## その他
 
-本プロジェクトは [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) のフォークプロジェクトです。  
+本プロジェクトは [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) のフォークプロジェクトです。
 詳細な内容はそちらを参照ください。
 
-#### 主な変更点
+## 主な変更点
 
 - `drupal/core` -> `drupal/core-recomended` への置き換え
 - [drupal-composer/drupal-paranoia](https://packagist.org/packages/drupal-composer/drupal-paranoia) の利用
