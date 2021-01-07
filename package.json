@@ -6,8 +6,8 @@
   "license": "GPL-2.0",
   "private": true,
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "babel-preset-env": "^1.7.0",
+    "@babel/core": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
     "breakpoint-sass": "^2.7.1",
     "browser-sync": "^2.26.13",
     "config": "^3.3.3",
@@ -22,13 +22,13 @@
     "gulp-sass": "^4.1.0",
     "gulp-sass-glob": "^1.1.0",
     "gulp-stylelint": "^13.0.0",
-    "stylelint": "^13.0.0",
+    "stylelint": "^13.8.0",
     "stylelint-config-drupal": "^1.0.0",
     "stylelint-scss": "^3.18.0"
   },
   "babel": {
     "presets": [
-      "env"
+      "@babel/preset-env"
     ]
   }
 }
