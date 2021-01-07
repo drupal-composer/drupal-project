@@ -31,7 +31,7 @@ git commit -m "initial commit."
 
 ## Landoを実行
 
-以下コマンドでLando環境が起動します。  
+以下コマンドでLando環境が起動します。
 Landoのインストールは事前に行ってください。( https://docs.lando.dev/basics/installation.html )
 
 ```bash
@@ -56,12 +56,12 @@ composer require drupal/devel:~1.0
 composer update drupal/core-recommended drupal/core-dev --with-dependencies
 ```
 
-2. `git diff` で差分の確認を行います。その際、 `.htaccess` や `robots.txt` 等のファイルも更新される為  
+2. `git diff` で差分の確認を行います。その際、 `.htaccess` や `robots.txt` 等のファイルも更新される為
    必要に応じて差分の取り込みを行います。
 
-### コア及びコントリビュートモジュールのパッチ適用
+## コア及びコントリビュートモジュールのパッチ適用
 
-コア等の挙動に問題があり、パッチを当てる必要がある場合 `composer.json` へ適用するパッチを記載します。  
+コア等の挙動に問題があり、パッチを当てる必要がある場合 `composer.json` へ適用するパッチを記載します。
 これは [composer-patches](https://github.com/cweagans/composer-patches) によって自動的にパッチが適用されます。
 
 ```json
@@ -74,7 +74,7 @@ composer update drupal/core-recommended drupal/core-dev --with-dependencies
 }
 ```
 
-### PHPのバージョンを固定する方法
+## PHPのバージョンを固定する方法
 
 以下コマンドで実行するPHPのバージョンを固定することが出来ます。
 
@@ -82,12 +82,84 @@ composer update drupal/core-recommended drupal/core-dev --with-dependencies
 composer config platform.php 7.4
 ```
 
-### その他
+## フロントエンド開発用のパッケージ
 
-本プロジェクトは [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) のフォークプロジェクトです。  
+本パッケージにはカスタムモジュール/テーマのフロントエンド開発を楽にするためのタスクランナーとリンターが含まれています。これらを利用するにはローカル環境で Node.js と Yarn を使えるようにしてください。
+
+### セットアップ
+
+次のコマンドを実行して必要な Node.js のパッケージをインストールします。
+
+```bash
+yarn
+```
+
+### stylelint
+
+SCSS で書かれたファイルを Drupal のコーディングスタンダードをベースとしたものに則ってチェックします。
+
+```bash
+npx stylelint <file_name>
+
+# カスタムモジュールを一括で stylelint する例
+npx stylelint app/modules/custom/**/*.scss
+```
+
+### ESLint
+
+ES6 の JavaScript で書かれたファイルを Drupal のコーディングスタンダードに則ってチェックします。
+
+```bash
+npx eslint <file_name>
+
+# カスタムモジュールを一括で eslint する例
+npx eslnt app/modules/custom/**/*.es6.js
+```
+
+### Gulp.js
+
+Browsersync の起動や、SASS(SCSS) および ES6 で書かれた JavaScript のトランスパイルなどのタスクを自動化するタスクランナーです。
+
+```bash
+npx gulp [tasks]
+```
+
+`gulp` 実行時にタスクを指定しなかった場合は Browsersync が起動し、SCSS および JavaScript(ES6) のファイルを監視して更新があった時にトランスパイルします。
+
+利用可能なタスク:
+
+|タスク|説明|
+|-|-|
+| `build:scss` | カスタムモジュール・テーマ内にある、SCSSファイル(拡張子が .scss のもの)をCSSにトランスパイルします。 |
+| `build:js` | カスタムモジュール・テーマ内にある、ES6のJavaScriptファイル(拡張子が .es6.js のもの)をにトランスパイルします。 |
+| `build` | ビルドタスクを一括して行います。 |
+| `lint:scss` | カスタムモジュール・テーマ内にある、SCSSファイルを stylelint でチェックします。 |
+| `lint:js` | カスタムモジュール・テーマ内にある、ES6のJavaScriptファイルを ESLint でチェックします。 |
+| `lint` | リンタータスクを一括して行います。 |
+| `watch:scss` | カスタムモジュール・テーマ内にある、SCSSファイルを監視して更新があった際にビルドタスクを実行します。 |
+| `watch:js` | カスタムモジュール・テーマ内にある、ES6のJavaScriptファイルを監視して更新があった際にビルドタスクを実行します。 |
+| `watch:twig` | カスタムモジュール・テーマ内にある、Twig テンプレートを監視して更新があった際にブラウザをリロードします。 |
+| `watch` | 監視タスクを一括して行います。 |
+
+#### 設定
+
+各タスクのデフォルトのオプションを変更したい場合は、 gulpfile.js/config/example.local.yml のファイルを gulpfile.js/config/local.yml にコピーして設定をオーバーライドます
+
+Browsersync のポートを変更したい場合は次の様に定義します。
+
+```yaml
+browsersync:
+  port: 8080
+```
+
+デフォルトの設定やその他のオプションについて詳しく知りたい場合は、 gulpfile.js/config/default.yml に書かれたコメントを参照してください。
+
+## その他
+
+本プロジェクトは [drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project) のフォークプロジェクトです。
 詳細な内容はそちらを参照ください。
 
-#### 主な変更点
+## 主な変更点
 
 - `drupal/core` -> `drupal/core-recomended` への置き換え
 - [drupal-composer/drupal-paranoia](https://packagist.org/packages/drupal-composer/drupal-paranoia) の利用

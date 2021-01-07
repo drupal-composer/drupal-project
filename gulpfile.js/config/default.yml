@@ -1,0 +1,22 @@
+# @file
+# Gulp.js configuration file.
+
+# @see https://browsersync.io/docs/options
+browsersync:
+  logSnippet: false
+  ui: false
+
+# @see https://www.npmjs.com/package/gulp-sass
+# @see https://github.com/sass/node-sass#options
+sass:
+  outputStyle: expanded
+  includePaths:
+    - node_modules/breakpoint-sass/stylesheets
+
+# @see https://www.npmjs.com/package/gulp-stylelint
+# @see https://stylelint.io/user-guide/usage/node-api#options
+stylelint:
+  reporters:
+    -
+      formatter: string
+      console: true
