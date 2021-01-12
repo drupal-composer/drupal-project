@@ -8,8 +8,10 @@
          verbose="true"
         >
     <testsuites>
+        <!--Custom modules testsuite-->
         <testsuite name="drupal-composer-project tests">
-            <directory>./test/</directory>
+            <directory>web/modules</directory>
+            <exclude>web/modules/contrib</exclude>
         </testsuite>
     </testsuites>
 </phpunit>
