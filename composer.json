@@ -31,7 +31,6 @@
         "drupal/coder": "^8.3",
         "behat/behat": "^3.5",
         "drupal/drupal-extension": "^4.1",
-        "sensiolabs/security-checker": "^5.0",
         "drupal/core-dev": "^9"
     },
     "conflict": {
@@ -83,7 +82,7 @@
         ],
         "cs": "vendor/bin/phpcs --colors",
         "cbf": "vendor/bin/phpcbf",
-        "check-security": "security-checker security:check",
+        "check-security": "local-php-security-checker",
         "test": "./tests/behat/run.sh --colors"
     },
     "extra": {
@@ -126,13 +125,17 @@
             "phapp": {
                 "url": "https://github.com/drunomics/phapp-cli/releases/download/0.6.7/phapp.phar",
                 "version": "0.6.7"
+            },
+            "local-php-security-checker": {
+                "url": "https://github.com/fabpot/local-php-security-checker/releases/download/v1.0.0/local-php-security-checker_1.0.0_linux_amd64",
+                "version": "1.0.0"
             }
         },
         "scripts-description": {
             "clean": "Removes files of installed packages.",
             "cs": "Run coding style checks using phpcs.",
             "cbf": "Run coding style fixes using phpcbf.",
-            "check-security": "Verify only securie packages are installed.",
+            "check-security": "Verify only secure packages are installed.",
             "install-phar-tools": "Installs phar tools used by this project.",
             "test": "Run tests."
         },
