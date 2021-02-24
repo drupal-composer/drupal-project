@@ -8,7 +8,6 @@
 namespace DrupalProject\composer;
 
 use Composer\Script\Event;
-use Composer\Semver\Comparator;
 use Drupal\Core\Site\Settings;
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
