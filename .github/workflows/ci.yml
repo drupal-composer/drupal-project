@@ -17,8 +17,12 @@ jobs:
         drupal-release: ['stable']
         composer-channel: ['stable']
         include:
-          - drupal-release: dev
-          - composer-channel: snapshot
+          - php-version: '8.0'
+            drupal-release: dev
+            composer-channel: stable
+          - php-version: '8.0'
+            drupal-release: stable
+            composer-channel: snapshot
     steps:
       - name: Dump matrix context
         env:
