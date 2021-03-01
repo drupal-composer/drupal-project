@@ -64,7 +64,7 @@ jobs:
 
         # https://www.drupal.org/project/drupal/issues/3182653
         # https://www.drupal.org/node/3176567
-      - if: matrix.php-versions == "7.4" || matrix.php-versions == "8.0"
+      - if: ${{ matrix.php-versions == "7.4" }} || ${{ matrix.php-versions == "8.0" }}
         run: composer require phpspec/prophecy-phpunit:^2
 
       - name: Run a single unit test to verfiy the testing setup.
