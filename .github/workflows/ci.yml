@@ -9,10 +9,9 @@ env:
 
 jobs:
   build:
-    runs-on: 'ubuntu-latest'
+    runs-on: 'ubuntu-20.04'
     strategy:
       matrix:
-        operating-system: ['ubuntu-latest']
         php-versions: ['7.3', '7.4', '8.0']
         include:
           - drupal-release: stable
@@ -29,14 +28,6 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-
-      # https://www.drupal.org/project/drupal/issues/3107155
-      - name: Update sqlite
-        run: |
-          sudo echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse" >> /etc/apt/sources.list
-          sudo echo "deb http://archive.ubuntu.com/ubuntu focal main restricted universe multiverse" >> /etc/apt/sources.list
-          sudo apt-get update
-          sudo apt-get -y install sqlite3/focal
 
       - name: Update composer
         run: composer --verbose self-update --${{ matrix.composer-channel }}
