@@ -62,6 +62,11 @@ jobs:
 
       - run: until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
 
+        # https://www.drupal.org/project/drupal/issues/3182653
+        # https://www.drupal.org/node/3176567
+      - if: matrix.php-versions == "7.4" || matrix.php-versions == "8.0"
+        run: composer require phpspec/prophecy-phpunit:^2
+
       - name: Run a single unit test to verfiy the testing setup.
         run: ./vendor/bin/phpunit -c ./web/core ./web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
 
