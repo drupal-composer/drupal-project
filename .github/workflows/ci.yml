@@ -28,6 +28,7 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
+          extensions: gd
 
       - name: Update composer
         run: composer --verbose self-update --${{ matrix.composer-channel }}
