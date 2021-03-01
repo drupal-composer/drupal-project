@@ -22,6 +22,11 @@ jobs:
           - drupal-release: stable
             composer-channel: snapshot
     steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+
       - name: Checkout
         uses: actions/checkout@v2
 
