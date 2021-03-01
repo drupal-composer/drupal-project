@@ -1,0 +1,73 @@
+name: CI
+
+on: [push]
+
+env:
+  COMPOSER_MEMORY_LIMIT: -1
+  SIMPLETEST_DB: sqlite://tmp/site.sqlite
+  SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
+
+jobs:
+  build:
+    runs-on: 'ubuntu-20.04'
+    strategy:
+      fail-fast: false
+      matrix:
+        php-versions: ['7.3', '7.4', '8.0']
+        drupal-release: ['stable']
+        composer-channel: ['stable']
+        include:
+          - php-versions: '8.0'
+            drupal-release: dev
+            composer-channel: stable
+          - php-versions: '8.0'
+            drupal-release: stable
+            composer-channel: snapshot
+    steps:
+      - name: Dump matrix context
+        env:
+          MATRIX_CONTEXT: ${{ toJSON(matrix) }}
+        run: echo "$MATRIX_CONTEXT"
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-versions }}
+          extensions: gd, pdo_sqlite
+
+      - name: Update composer
+        run: composer --verbose self-update --${{ matrix.composer-channel }}
+
+      - name: Dump composer verson
+        run: composer --version
+
+      - name: Validate composer.json
+        run: composer --verbose validate
+
+      - name: Install dependencies
+        run: composer --verbose install
+
+      - if: matrix.drupal-release == 'dev'
+        run: composer --verbose require --no-update drupal/core-recommended:9.2.x-dev && composer --verbose require --no-update --dev drupal/core-dev:9.2.x-dev
+
+      - if: matrix.drupal-release == 'dev'
+        run: composer --verbose update
+
+      - run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
+
+      - run: ./vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
+
+      - run: until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
+
+        # https://www.drupal.org/project/drupal/issues/3182653
+        # https://www.drupal.org/node/3176567
+      - if: ${{ matrix.php-versions == '7.4' }} || ${{ matrix.php-versions == '8.0' }}
+        run: composer require phpspec/prophecy-phpunit:^2
+
+      - name: Run a single unit test to verfiy the testing setup.
+        run: ./vendor/bin/phpunit -c ./web/core ./web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
+
+      - run: ./vendor/bin/drush
