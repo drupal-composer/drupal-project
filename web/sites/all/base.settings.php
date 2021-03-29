@@ -62,6 +62,4 @@ $config['environment_indicator.indicator']['name'] = $env;
 $config['environment_indicator.indicator']['bg_color'] = getenv('PHAPP_ENV_COLOR');
 
 # Make sure drush has proper host when generating sitemap xml.
-if (php_sapi_name() == 'cli') {
-  $config['simple_sitemap.settings']['base_url'] = getenv('PHAPP_BASE_URL');
-}
+$config['simple_sitemap.settings']['base_url'] = getenv('PHAPP_BASE_URL');

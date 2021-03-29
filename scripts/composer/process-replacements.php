@@ -25,6 +25,7 @@ function random_string($length) {
 
 // Specify files for which replacement will be applied.
 $file_patterns = [
+  '*.yml',
   '*.md',
   '.*.env',
   '.env-*',
