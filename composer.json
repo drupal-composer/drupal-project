@@ -1,20 +1,25 @@
 {
-    "name": "drupal-composer/drupal-project",
+    "name": "ramsalt/drupal-project",
     "description": "Project template for Drupal 9 projects with Composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
+            "name": "Marlon <marlon@ramsalt.com>",
+            "role": ""
+        },
+        {
+            "name": "Stephan <stephan@ramsalt.com>",
             "role": ""
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "private-packagist": {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
+            "url": "https://repo.packagist.com/ramsalt/"
+        },
+        "packagist.org": false
+    },
     "require": {
         "php": ">=7.3",
         "composer/installers": "^1.9",
@@ -22,6 +27,7 @@
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
         "drush/drush": "^10.3",
+        "ramsalt/drupal-scaffold": "*",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
     },
@@ -60,6 +66,9 @@
     },
     "extra": {
         "drupal-scaffold": {
+            "allowed-packages": [
+                "ramsalt/drupal-scaffold"
+            ],
             "locations": {
                 "web-root": "web/"
             }
@@ -76,7 +85,7 @@
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": {
-        }
+        "enable-patching": true,
+        "patches-file": "composer.patches.json"
     }
 }

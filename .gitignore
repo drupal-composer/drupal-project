@@ -8,7 +8,6 @@
 /web/libraries/
 
 # Ignore sensitive information
-/web/sites/*/settings.php
 /web/sites/*/settings.local.php
 
 # Ignore Drupal's file directory
