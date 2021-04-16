@@ -1,6 +1,6 @@
 # Composer template for Drupal projects
 
-[![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=9.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
+[![CI](https://github.com/ramsalt/drupal-project/actions/workflows/ci.yml/badge.svg?branch=9.x)](https://github.com/ramsalt/drupal-project/actions/workflows/ci.yml)
 
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
