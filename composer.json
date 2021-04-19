@@ -23,15 +23,15 @@
         "ext-openssl": "*",
         "ext-pdo": "*",
         "ext-xml": "*",
-        "composer/installers": "^1.2",
+        "composer/installers": "^1.9",
         "composer/semver": "^1.4",
-        "cweagans/composer-patches": "^1.6.5",
-        "drupal-composer/preserve-paths": "^0.1",
+        "cweagans/composer-patches": "^1.7",
+        "drupal-composer/preserve-paths": "^0.1.6",
         "drupal/composer_autoloader": "^1.0",
         "drupal/drupal": "^7.62",
         "drush/drush": "^8.0",
-        "symfony/filesystem": "~2.7|^3",
-        "webflo/drupal-finder": "^1.0.0"
+        "symfony/filesystem": "~2.7 || ^3",
+        "webflo/drupal-finder": "^1.2.1"
     },
     "conflict": {
         "drupal/core": "8.*"
@@ -72,9 +72,10 @@
             "web/sites/all/modules/contrib/{$name}/": ["type:drupal-module"],
             "web/sites/all/themes/contrib/{$name}/": ["type:drupal-theme"]
         },
+        "patches-install-hooks": true,
         "patches": {
             "cweagans/composer-patches": {
-                "Call the preserve paths hooks" : "https://github.com/SebCorbin/composer-patches/commit/1cb9bacba51f8bba0c5f3f322c3bb61e4ceae974.patch"
+                "Call the preserve paths hooks" : "https://github.com/jcnventura/composer-patches/compare/1.x...jcnventura:fix-preserve-paths.diff"
             }
         },
         "preserve-paths": [
