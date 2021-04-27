@@ -40,7 +40,8 @@ class PharInstaller {
           }
           $event->getIO()->write("<info>Downloading $filename...</info>");
           $content = static::download($data['url']);
-          $fs->dumpFile("$bin_dir/$filename", $content, 0755);
+          $fs->dumpFile("$bin_dir/$filename", $content);
+          $fs->chmod("$bin_dir/$filename", 0755);
 
           if ($fs->exists("$bin_dir/$tool")) {
             $fs->remove("$bin_dir/$tool");

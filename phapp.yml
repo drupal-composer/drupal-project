@@ -34,8 +34,7 @@ commands:
     fi &&
     drush locale:check && drush locale:update
   install: |
-    chmod +w web/sites/default/settings.php &&
-    chmod +w web/sites/default/default.settings.php &&
+    chmod +w web/sites/default &&
     drush sql-create -y &&
     SITE=${SITE:-default} &&
     drush site-install -y --sites-subdir=$SITE --config-dir=../config/sync ${INSTALL_PROFILE:-minimal} &&

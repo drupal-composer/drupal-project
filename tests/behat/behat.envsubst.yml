@@ -6,9 +6,13 @@ default:
         - %paths.base%/behat-features
       contexts:
         - FeatureContext
+        - drunomics\BehatDrupalUtils\Context\HttpHeadersContext
+        - drunomics\BehatDrupalUtils\Context\SiteVariantContext
         - drunomics\BehatDrupalUtils\Context\DrupalUtilsApiContext
         - drunomics\BehatDrupalUtils\Context\DrupalCleanTestContentApiContext
         - drunomics\BehatDrupalUtils\Context\DrupalErrorCheckApiContext
+        - drunomics\BehatDrupalUtils\Context\DrupalErrorCheckApiContext:
+            fail_on_notice: TRUE
         - Drupal\DrupalExtension\Context\MinkContext
         - Drupal\DrupalExtension\Context\MessageContext
         - Drupal\DrupalExtension\Context\DrushContext
@@ -40,8 +44,8 @@ default:
         login_form_selector: 'form#user-login-form'
       text:
         # Login text customizations used by drupal-extension. Uncomment to use.
-        # username_field: 'Benutzername'
-        # password_field: 'Passwort'
+        username_field: 'edit-name'
+        password_field: 'edit-pass'
         # log_in: 'Anmelden'
 
 selenium:

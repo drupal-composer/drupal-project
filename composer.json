@@ -27,7 +27,7 @@
         "dealerdirect/phpcodesniffer-composer-installer": "^0.7.0",
         "devinci/devinci-behat-extension": "^0.1",
         "dmore/behat-chrome-extension": "^1.2",
-        "drunomics/behat-drupal-utils": "^2.1",
+        "drunomics/behat-drupal-utils": "^2.9",
         "drupal/coder": "^8.3",
         "behat/behat": "^3.5",
         "drupal/drupal-extension": "^4.1",
@@ -60,7 +60,6 @@
         "files": ["dotenv/loader.php"]
     },
     "scripts": {
-        "drupal-scaffold": "DrupalComposer\\DrupalScaffold\\Plugin::scaffold",
         "process-replacements": "php scripts/composer/process-replacements.php",
         "install-phar-tools": [
             "drunomics\\Composer\\PharInstaller::installPharTools"
@@ -87,22 +86,23 @@
     },
     "extra": {
         "drupal-scaffold": {
-            "initial": {
-                "sites/default/default.services.yml": "web/sites/default/services.yml",
-                "sites/example.settings.local.php": "web/sites/example.local.settings.php"
+            "file-mapping": {
+                "[web-root]/sites/development.services.yml": {
+                    "mode": "skip"
+                },
+                "[web-root]/sites/example.settings.local.php": "web/sites/example.local.settings.php",
+                "[web-root]/sites/default/default.services.yml": {
+                    "mode": "replace",
+                    "path": "web/sites/all/services.yml",
+                    "overwrite": false
+                },
+                "[web-root]/sites/example/default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
             },
-            "excludes": [
-                "sites/development.services.yml",
-                "sites/example.settings.local.php"
-            ],
             "locations": {
                 "web-root": "web/"
-            },
-            "file-mapping": {
-                "[web-root]/sites/example/default.settings.php": "web/core/assets/scaffold/files/default.settings.php"
             }
         },
-        "installer-types": ["npm-asset", "bower-asset"],
+        "installer-types": ["drupal-library", "npm-asset", "bower-asset"],
         "installer-paths": {
             "drush/Commands/contrib/{$name}": ["type:drupal-drush"],
             "web/core": ["type:drupal-core"],

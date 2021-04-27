@@ -42,7 +42,7 @@ if [[ $HTTP_AUTH_USER ]]; then
   echo "Using HTTP authentication for user $HTTP_AUTH_USER"
 fi
 
-curl -sL $BASE_URL ${ARG_HTTP_AUTH:-} | grep "${BEHAT_WARMUP_REQUIRED_CONTENT:-Drupal 8}" -q
+curl -sL --compressed $BASE_URL ${ARG_HTTP_AUTH:-} | grep "$BEHAT_WARMUP_REQUIRED_CONTENT:" -q
 
 if [[ $? -ne 0 ]]; then
   echo Unable to access site.
@@ -53,10 +53,6 @@ fi
 # Ease running behat from the vagrant environment by launching chrome.
 if [[ $PHAPP_ENV = vagrant ]] || [[ $PHAPP_ENV = localdev ]]; then
   (google-chrome-stable --headless --remote-debugging-address=0.0.0.0 --remote-debugging-port=9222 ) &
-
-  echo "++++++++++++++++++++++++"
-  echo "For debugging open your Chrome browser on http://127.0.0.1:9222"
-  echo "++++++++++++++++++++++++"
 fi
 
 set -x

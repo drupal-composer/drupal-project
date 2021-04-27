@@ -40,13 +40,15 @@ if [[ $COMMANDS = '-' ]]; then
 fi
 
 if [[ "$PHAPP_ENV" = "drunomics-ci" ]]; then
-  CONTAINER=${SITES_OVERRIDE_DOMAIN/\.ci\.drunomics\.com/}
+  CONTAINER=${APP_MULTISITE_DOMAIN/\.ci\.drunomics\.com/}
 elif [[ "$PHAPP_ENV_TYPE" = "lagoon" ]]; then
   CONTAINER=${COMPOSE_PROJECT_NAME}_cli_1
 elif [[ "$PHAPP_ENV" = "vagrant" ]]; then
-  CONTAINER=${SITES_OVERRIDE_DOMAIN/\.local/}
+  CONTAINER=${APP_MULTISITE_DOMAIN/\.local/}
 elif [[ "$PHAPP_ENV" = "travis" ]]; then
-  CONTAINER=${SITES_OVERRIDE_DOMAIN/\.local/}_web_1
+  CONTAINER=${APP_MULTISITE_DOMAIN/\.local/}_web_1
+elif [[ "$PHAPP_ENV" = "localdev" ]]; then
+  CONTAINER=cli
 fi
 
 # Pass through a few support variables.
