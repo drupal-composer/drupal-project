@@ -6,7 +6,6 @@
  */
 
 use Dotenv\Dotenv;
-use Dotenv\Exception\InvalidPathException;
 
 /**
  * Load any .env file. See /.env.example.
