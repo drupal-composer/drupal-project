@@ -23,6 +23,7 @@
     "require": {
         "php": ">=7.3",
         "composer/installers": "^1.9",
+        "oomphinc/composer-installers-extender": "^2.0",
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^9.1",
         "drupal/core-recommended": "^9.1",
