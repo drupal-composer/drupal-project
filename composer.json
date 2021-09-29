@@ -80,7 +80,7 @@
                 "overwrite": false
             },
             "allowed-packages": ["ramsalt/drupal-scaffold"]
-        },
+            }
         },
         "installer-paths": {
             "web/core": ["type:drupal-core"],
