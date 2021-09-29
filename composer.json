@@ -78,7 +78,8 @@
                 "mode": "replace",
                 "path": "web/core/assets/scaffold/files/development.services.yml",
                 "overwrite": false
-            }
+            },
+            "allowed-packages": ["ramsalt/drupal-scaffold"]
         },
         },
         "installer-paths": {
