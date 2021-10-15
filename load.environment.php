@@ -17,6 +17,7 @@ use Dotenv\Dotenv;
  */
 if (method_exists('Dotenv', 'createUnsafeImmutable')) {
   $dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+}
 elseif (method_exists('Dotenv', 'createImmutable')) {
   $dotenv = Dotenv::createImmutable(__DIR__);
 }  
