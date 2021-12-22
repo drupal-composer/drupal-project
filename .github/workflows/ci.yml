@@ -41,7 +41,7 @@ jobs:
       - name: Update composer
         run: composer --verbose self-update --${{ matrix.composer-channel }}
 
-      - name: Dump composer verson
+      - name: Dump composer version
         run: composer --version
 
       - name: Validate composer.json
