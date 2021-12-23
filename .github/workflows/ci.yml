@@ -51,7 +51,7 @@ jobs:
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
-        run: composer --verbose require --no-update drupal/core-recommended:9.2.x-dev && composer --verbose require --no-update --dev drupal/core-dev:9.2.x-dev
+        run: composer --verbose require --no-update drupal/core-recommended:9.4.x-dev && composer --verbose require --no-update --dev drupal/core-dev:9.4.x-dev
 
       - if: matrix.drupal-release == 'dev'
         run: composer --verbose update
