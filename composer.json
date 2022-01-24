@@ -26,8 +26,7 @@
         "webflo/drupal-finder": "^1.2"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.3",
-        "zaporylie/composer-drupal-optimizations": "^1.2"
+        "drupal/core-dev": "^9.3"
     },
     "conflict": {
         "drupal/drupal": "*"
@@ -36,7 +35,12 @@
     "prefer-stable": true,
     "config": {
         "discard-changes": true,
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "cweagans/composer-patches": true,
+            "drupal/core-composer-scaffold": true
+        }
     },
     "autoload": {
         "classmap": [
