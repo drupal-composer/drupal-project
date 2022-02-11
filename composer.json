@@ -28,6 +28,7 @@
         "drupal/core-composer-scaffold": "^9.3",
         "drupal/core-recommended": "^9.3",
         "drush/drush": "^10.6",
+        "ramsalt/drupal-scaffold": "*",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
     },
