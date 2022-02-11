@@ -15,7 +15,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['7.3', '7.4', '8.0']
+        php-versions: ['7.4', '8.0']
         drupal-release: ['stable']
         composer-channel: ['stable']
         include:
@@ -43,7 +43,7 @@ jobs:
       - name: Update composer
         run: composer --verbose self-update --${{ matrix.composer-channel }}
 
-      - name: Dump composer verson
+      - name: Dump composer version
         run: composer --version
 
       - name: Validate composer.json
@@ -53,10 +53,10 @@ jobs:
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
-        run: |
-          composer --verbose require --no-update drupal/core-recommended:9.2.x-dev
-          composer --verbose require --no-update --dev drupal/core-dev:9.2.x-dev
-          composer --verbose update
+        run: composer --verbose require --no-update drupal/core-recommended:9.4.x-dev && composer --verbose require --no-update --dev drupal/core-dev:9.4.x-dev
+
+      - if: matrix.drupal-release == 'dev'
+        run: composer --verbose update
 
       - run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
 
