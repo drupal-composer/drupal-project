@@ -66,6 +66,17 @@
         ]
     },
     "extra": {
+        "installer-types": ["bower-asset", "npm-asset", "ramsaltmedia-module", "ramsaltmedia-theme"],
+        "installer-paths": {
+            "web/core": ["type:drupal-core"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
+            "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/modules/ramsaltmedia/{$name}": ["type:ramsaltmedia-module"],
+            "web/profiles/contrib/{$name}": ["type:drupal-profile"],
+            "web/themes/contrib/{$name}": ["type:drupal-theme"],
+            "web/themes/ramsaltmedia/{$name}": ["type:ramsaltmedia-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
         "drupal-scaffold": {
             "allowed-packages": [
                 "ramsalt/drupal-scaffold"
