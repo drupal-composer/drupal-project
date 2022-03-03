@@ -1,0 +1,50 @@
+name: Test drupal setup
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  push:
+    branches:
+     - '6.**'
+  pull_request:
+    types: [opened, reopened]
+jobs:
+  test-drupal-setup:
+    name: Build and install drupal project
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup PHP
+        run: |
+          sudo update-alternatives --set php /usr/bin/php7.4
+      - name: "Determine composer cache directory"
+        id: "determine-composer-cache-directory"
+        run: "echo \"::set-output name=directory::$(composer config cache-dir)\""
+      - name: "Cache dependencies installed with composer"
+        uses: actions/cache@v2.1.5
+        with:
+          path: "${{ steps.determine-composer-cache-directory.outputs.directory }}"
+          key: ${{ runner.os }}-composer-v1-${{ hashFiles('./composer.json') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-v1
+      - name: Install docker-compose.
+        run: |
+          sudo rm /usr/local/bin/docker-compose
+          curl -L https://github.com/docker/compose/releases/download/1.22.0/docker-compose-`uname -s`-`uname -m` > docker-compose
+          chmod +x docker-compose
+          sudo mv docker-compose /usr/local/bin
+      - name: Install composer dependencies.
+        run: |
+          composer config platform-check false
+          composer create-project
+          composer install
+      - name: Setup the environment
+        run: |
+          vendor/bin/phapp setup localdev
+      - name: Setup docker containers
+        run: |
+          export COMPOSE_DEFAULT_USER=$(id -u $USER)
+          docker-compose up -d
+          echo "Waiting for mysql to come up..." && docker-compose exec cli /bin/bash -c "while ! echo exit | nc mariadb 3306; do sleep 1; done" >/dev/null
+          docker-compose exec cli phapp install --no-build
+          curl -v http://example.project.localdev.space | grep "Drupal 9"
