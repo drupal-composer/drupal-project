@@ -25,15 +25,15 @@
         "composer/installers": "^1.9",
         "oomphinc/composer-installers-extender": "^2.0",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core-composer-scaffold": "^9.3",
-        "drupal/core-recommended": "^9.3",
-        "drush/drush": "^10.6",
+        "drupal/core-composer-scaffold": "^9.4",
+        "drupal/core-recommended": "^9.4",
+        "drush/drush": "^11.0",
         "ramsalt/drupal-scaffold": "*",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
     },
     "require-dev": {
-        "drupal/core-dev": "^9.3"
+        "drupal/core-dev": "^9.4"
     },
     "conflict": {
         "drupal/drupal": "*"
