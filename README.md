@@ -123,7 +123,7 @@ section of composer.json:
 
 ### How do I specify a PHP version ?
 
-This project supports PHP 7.3 as minimum version (see [Environment requirements of Drupal 9](https://www.drupal.org/docs/understanding-drupal/how-drupal-9-was-made-and-what-is-included/environment-requirements-of)), however it's possible that a `composer update` will upgrade some package that will then require PHP 7.3+.
+This project supports PHP 7.4 as minimum version (see Drupal 9.4 [PHP requirements](https://www.drupal.org/docs/system-requirements/php-requirements#versions)) and [Drop official PHP 7.3 support in Drupal 9.4](https://www.drupal.org/project/drupal/issues/2917655), however it's possible that a `composer update` will upgrade some package that will then require PHP 7.4+.
 
 To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
 
@@ -131,7 +131,7 @@ To prevent this you can add this code to specify the PHP version you want to use
 "config": {
     "sort-packages": true,
     "platform": {
-        "php": "7.3.19"
+        "php": "7.4.30"
     }
 },
 ```
