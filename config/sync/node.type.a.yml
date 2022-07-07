@@ -1,0 +1,18 @@
+uuid: e6e80a35-0812-4ab2-a84c-f572b0300b24
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus:
+      - main
+    parent: 'main:'
+name: asda
+type: a
+description: ''
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: true
