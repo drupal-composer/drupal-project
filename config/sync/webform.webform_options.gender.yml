@@ -1,0 +1,42 @@
+uuid: f148b9d2-f3ef-4800-9b79-7df9d4ab67a9
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: yxhG0JmQs2HT-Ro6ZeDQboDc9ZWR4GglflTtyoqxK4A
+id: gender
+label: Gender
+category: Demographic
+likert: false
+options: |
+  Man: Man
+  Woman: Woman
+  Non-binary: Non-binary
+  Agender/Genderless: Agender/Genderless
+  Androgyne/Androgynous: Androgyne/Androgynous
+  Aporagender: Aporagender
+  Bigender: Bigender
+  Demi-agender: Demi-agender
+  Demi-boy: Demi-boy
+  Demi-fluid: Demi-fluid
+  Demi-girl: Demi-girl
+  Demi-gender: Demi-gender
+  Demi-non-binary: Demi-non-binary
+  Genderqueer: Genderqueer
+  Genderflux: Genderflux
+  Genderfluid: Genderfluid
+  Gender-indifferent: Gender-indifferent
+  Gender-neutral: Gender-neutral
+  Graygender: Graygender
+  Intergender: Intergender
+  Maverique: Maverique
+  Maxigender: Maxigender
+  Multigender/Polygender: Multigender/Polygender
+  Neutrois: Neutrois
+  Pangender/Omnigender: Pangender/Omnigender
+  Trigender: Trigender
+  Two-spirit: Two-spirit
+  'Prefer Not to Answer': 'Prefer Not to Answer'

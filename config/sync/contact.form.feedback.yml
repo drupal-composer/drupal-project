@@ -1,0 +1,14 @@
+uuid: 367970bb-d0fa-48cb-b933-d0f112585465
+langcode: en
+status: true
+dependencies: {  }
+_core:
+  default_config_hash: vymHlgJy26BuI5GGj9-IXjwR3dRC5C0tij4BpWJnoqw
+id: feedback
+label: 'Website feedback'
+recipients:
+  - claudiuvisan@tutanota.com
+reply: ''
+weight: 0
+message: 'Your message has been sent.'
+redirect: ''

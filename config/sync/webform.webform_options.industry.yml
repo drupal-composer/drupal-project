@@ -1,0 +1,53 @@
+uuid: 0d6ca4fe-1fb6-43b1-aedb-19f5920c3aa4
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: s_SXZn2HbRGvTex-TLOCxz2oOnMYqtEZh8HD4_318QI
+id: industry
+label: Industry
+category: Demographic
+likert: false
+options: |
+  Accounting/Finance: Accounting/Finance
+  Advertising/Public Relations: Advertising/Public Relations
+  Aerospace/Aviation: Aerospace/Aviation
+  Arts/Entertainment/Publishing: Arts/Entertainment/Publishing
+  Automotive: Automotive
+  Banking/Mortgage: Banking/Mortgage
+  Business Development: Business Development
+  Business Opportunity: Business Opportunity
+  Clerical/Administrative: Clerical/Administrative
+  Construction/Facilities: Construction/Facilities
+  Consumer Goods: Consumer Goods
+  Customer Service: Customer Service
+  Education/Training: Education/Training
+  Energy/Utilities: Energy/Utilities
+  Engineering: Engineering
+  Government/Military: Government/Military
+  Healthcare: Healthcare
+  Hospitality/Travel: Hospitality/Travel
+  Human Resources: Human Resources
+  Installation/Maintenance: Installation/Maintenance
+  Insurance: Insurance
+  Internet: Internet
+  Law Enforcement/Security: Law Enforcement/Security
+  Legal: Legal
+  Management/Executive: Management/Executive
+  Manufacturing/Operations: Manufacturing/Operations
+  Marketing: Marketing
+  Non-Profit/Volunteer: Non-Profit/Volunteer
+  Pharmaceutical/Biotech: Pharmaceutical/Biotech
+  Professional Services: Professional Services
+  Real Estate: Real Estate
+  Restaurant/Food Service: Restaurant/Food Service
+  Retail: Retail
+  Sales: Sales
+  Science/Research: Science/Research
+  Skilled Labor: Skilled Labor
+  Technology: Technology
+  Telecommunications: Telecommunications
+  Transportation/Logistics: Transportation/Logistics

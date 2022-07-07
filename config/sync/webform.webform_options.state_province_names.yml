@@ -1,0 +1,89 @@
+uuid: 114353f2-e6ca-46d4-98d0-f45cdcde5cbd
+langcode: en
+status: true
+dependencies:
+  enforced:
+    module:
+      - webform
+_core:
+  default_config_hash: d4mxS_CxdzHZK4WaGQf1H3m-Uubm5HPbu9U4ydzscuo
+id: state_province_names
+label: 'State/Province names'
+category: Geographic
+likert: false
+options: |
+  Alabama: Alabama
+  Alaska: Alaska
+  'American Samoa': 'American Samoa'
+  Arizona: Arizona
+  Arkansas: Arkansas
+  'Armed Forces (Canada, Europe, Africa, or Middle East)': 'Armed Forces (Canada, Europe, Africa, or Middle East)'
+  'Armed Forces Americas': 'Armed Forces Americas'
+  'Armed Forces Pacific': 'Armed Forces Pacific'
+  California: California
+  Colorado: Colorado
+  Connecticut: Connecticut
+  Delaware: Delaware
+  'District of Columbia': 'District of Columbia'
+  'Federated States of Micronesia': 'Federated States of Micronesia'
+  Florida: Florida
+  Georgia: Georgia
+  Guam: Guam
+  Hawaii: Hawaii
+  Idaho: Idaho
+  Illinois: Illinois
+  Indiana: Indiana
+  Iowa: Iowa
+  Kansas: Kansas
+  Kentucky: Kentucky
+  Louisiana: Louisiana
+  Maine: Maine
+  'Marshall Islands': 'Marshall Islands'
+  Maryland: Maryland
+  Massachusetts: Massachusetts
+  Michigan: Michigan
+  Minnesota: Minnesota
+  Mississippi: Mississippi
+  Missouri: Missouri
+  Montana: Montana
+  Nebraska: Nebraska
+  Nevada: Nevada
+  'New Hampshire': 'New Hampshire'
+  'New Jersey': 'New Jersey'
+  'New Mexico': 'New Mexico'
+  'New York': 'New York'
+  'North Carolina': 'North Carolina'
+  'North Dakota': 'North Dakota'
+  'Northern Mariana Islands': 'Northern Mariana Islands'
+  Ohio: Ohio
+  Oklahoma: Oklahoma
+  Oregon: Oregon
+  Palau: Palau
+  Pennsylvania: Pennsylvania
+  'Puerto Rico': 'Puerto Rico'
+  'Rhode Island': 'Rhode Island'
+  'South Carolina': 'South Carolina'
+  'South Dakota': 'South Dakota'
+  Tennessee: Tennessee
+  Texas: Texas
+  Utah: Utah
+  Vermont: Vermont
+  'Virgin Islands': 'Virgin Islands'
+  Virginia: Virginia
+  Washington: Washington
+  'West Virginia': 'West Virginia'
+  Wisconsin: Wisconsin
+  Wyoming: Wyoming
+  Alberta: Alberta
+  'British Columbia': 'British Columbia'
+  Manitoba: Manitoba
+  'New Brunswick': 'New Brunswick'
+  'Newfoundland and Labrador': 'Newfoundland and Labrador'
+  'Nova Scotia': 'Nova Scotia'
+  'Northwest Territories': 'Northwest Territories'
+  Nunavut: Nunavut
+  Ontario: Ontario
+  'Prince Edward Island': 'Prince Edward Island'
+  Quebec: Quebec
+  Saskatchewan: Saskatchewan
+  Yukon: Yukon
