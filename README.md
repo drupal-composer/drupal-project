@@ -1,6 +1,6 @@
 # Composer template for Drupal projects
 
-[![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=9.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
+[![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=10.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
 
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
@@ -16,7 +16,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:9.x-dev some-dir --no-interaction
+composer create-project drupal-composer/drupal-project:10.x-dev some-dir --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your

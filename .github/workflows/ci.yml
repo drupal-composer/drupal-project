@@ -13,7 +13,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-versions: ['7.4', '8.1']
+        php-versions: ['8.1']
         drupal-release: ['stable']
         composer-channel: ['stable']
         include:
@@ -51,7 +51,7 @@ jobs:
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
-        run: composer --verbose require --no-update drupal/core-recommended:9.4.x-dev && composer --verbose require --no-update --dev drupal/core-dev:9.4.x-dev
+        run: composer --verbose require --no-update drupal/core-recommended:10.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:10.0.x-dev
 
       - if: matrix.drupal-release == 'dev'
         run: composer --verbose update
@@ -64,10 +64,10 @@ jobs:
 
         # https://www.drupal.org/project/drupal/issues/3182653
         # https://www.drupal.org/node/3176567
-      - if: ${{ matrix.php-versions == '7.4' }} || ${{ matrix.php-versions == '8.1' }}
+      - if: ${{ matrix.php-versions == '8.1' }}
         run: composer require phpspec/prophecy-phpunit:^2
 
-      - name: Run a single unit test to verfiy the testing setup.
+      - name: Run a single unit test to verify the testing setup.
         run: ./vendor/bin/phpunit -c ./web/core ./web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
 
       - run: ./vendor/bin/drush
