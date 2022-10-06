@@ -12,6 +12,13 @@ use Dotenv\Dotenv;
  *
  * Drupal has no official method for loading environment variables and uses
  * getenv() in some places.
+ * 
+ * Check for the method to ensure backward compatibility.
  */
-$dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+if (method_exists('Dotenv', 'createUnsafeImmutable')) {
+  $dotenv = Dotenv::createUnsafeImmutable(__DIR__);
+}
+elseif (method_exists('Dotenv', 'createImmutable')) {
+  $dotenv = Dotenv::createImmutable(__DIR__);
+}  
 $dotenv->safeLoad();
