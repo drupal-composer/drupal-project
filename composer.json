@@ -21,8 +21,10 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-recommended": "^9.4",
+        "symfony/filesystem": "^4.4",
         "vlucas/phpdotenv": "^5.1",
-        "webflo/drupal-finder": "^1.2"
+        "webflo/drupal-finder": "^1.2",
+        "webmozart/path-util": "^2.3"
     },
     "require-dev": {
         "drupal/core-dev": "^9.4"
