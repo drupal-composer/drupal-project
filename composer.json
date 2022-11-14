@@ -23,7 +23,8 @@
         "drupal/core-recommended": "^10.0@beta",
         "drush/drush": "^11.0",
         "vlucas/phpdotenv": "^5.1",
-        "webflo/drupal-finder": "^1.2"
+        "webflo/drupal-finder": "^1.2",
+        "webmozart/path-util": "^2.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10.0@beta"
