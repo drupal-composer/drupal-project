@@ -12,7 +12,7 @@ use Composer\Semver\Comparator;
 use Drupal\Core\Site\Settings;
 use DrupalFinder\DrupalFinder;
 use Symfony\Component\Filesystem\Filesystem;
-use Webmozart\PathUtil\Path;
+use Symfony\Component\Filesystem\Path;
 
 class ScriptHandler {
 
