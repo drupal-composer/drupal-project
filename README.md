@@ -73,6 +73,16 @@ Follow the steps below to update your core files.
 
 ## FAQ
 
+### What’s the difference between this project and drupal/recommended-project?
+
+The two most commonly recommended Drupal project templates are this project ([drupal-composer/drupal-project](https://github.com/drupal-composer/drupal-project)) and [drupal/recommended-project](https://github.com/acquia/drupal-recommended-project).
+
+This project (drupal-composer/drupal-project) predates drupal/recommended-project and generally has more documentation, more functionality (such as Drush out of the box), and more community support.
+
+Drupal officially recommends using drupal/recommended-project. As it matures, drupal/recommended-project is likely to eventually replace drupal-composer/drupal-project.
+
+Whichever project template you choose, you’ll have a great experience out of the box. See [this change record](https://www.drupal.org/node/3082474) and [this discussion](https://github.com/drupal-composer/drupal-project/pull/550) for additional information.
+
 ### Should I commit the contrib modules I download?
 
 Composer recommends **no**. They provide [argumentation against but also
