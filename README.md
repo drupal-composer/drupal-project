@@ -1,4 +1,4 @@
-# Composer template for Drupal projects
+# Composer template for Drupal projects (DevShop Edition)
 
 [![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=9.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
 
