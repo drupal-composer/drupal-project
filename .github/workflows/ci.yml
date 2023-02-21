@@ -48,12 +48,18 @@ jobs:
         run: composer --verbose validate
 
       - name: Install dependencies
+        env:
+          COMPOSER_AUTH: '{"http-basic": {"repo.packagist.com": {"username": "token", "password": "${{secrets.COMPOSER_AUTH}}"}}}'
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
+        env:
+          COMPOSER_AUTH: '{"http-basic": {"repo.packagist.com": {"username": "token", "password": "${{secrets.COMPOSER_AUTH}}"}}}'
         run: composer --verbose require --no-update drupal/core-recommended:10.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:10.0.x-dev
 
       - if: matrix.drupal-release == 'dev'
+        env:
+          COMPOSER_AUTH: '{"http-basic": {"repo.packagist.com": {"username": "token", "password": "${{secrets.COMPOSER_AUTH}}"}}}'
         run: composer --verbose update
 
       - run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
