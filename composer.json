@@ -1,20 +1,25 @@
 {
-    "name": "drupal-composer/drupal-project",
+    "name": "ramsalt/drupal-project",
     "description": "Project template for Drupal 10 projects with Composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
         {
-            "name": "",
+            "name": "Marlon <marlon@ramsalt.com>",
+            "role": ""
+        },
+        {
+            "name": "Stephan <stephan@ramsalt.com>",
             "role": ""
         }
     ],
-    "repositories": [
-        {
+    "repositories": {
+        "private-packagist": {
             "type": "composer",
-            "url": "https://packages.drupal.org/8"
-        }
-    ],
+            "url": "https://repo.packagist.com/ramsalt/"
+        },
+        "packagist.org": false
+    },
     "require": {
         "php": ">=8.1",
         "composer/installers": "^2.1",
@@ -22,6 +27,8 @@
         "drupal/core-composer-scaffold": "^10.0.0",
         "drupal/core-recommended": "^10.0.0",
         "drush/drush": "^11.4.0",
+        "oomphinc/composer-installers-extender": "^2.0",
+        "ramsalt/drupal-scaffold": "*",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
     },
@@ -41,7 +48,8 @@
             "cweagans/composer-patches": true,
             "drupal/core-composer-scaffold": true,
             "dealerdirect/phpcodesniffer-composer-installer": true,
-            "phpstan/extension-installer": true
+            "phpstan/extension-installer": true,
+            "oomphinc/composer-installers-extender": true
         }
     },
     "autoload": {
@@ -65,24 +73,37 @@
         ]
     },
     "extra": {
-        "drupal-scaffold": {
-            "locations": {
-                "web-root": "web/"
-            }
-        },
+        "installer-types": ["bower-asset", "npm-asset", "ramsaltmedia-module", "ramsaltmedia-theme"],
         "installer-paths": {
             "web/core": ["type:drupal-core"],
-            "web/libraries/{$name}": ["type:drupal-library"],
+            "web/libraries/{$name}": ["type:drupal-library", "type:bower-asset", "type:npm-asset"],
             "web/modules/contrib/{$name}": ["type:drupal-module"],
+            "web/modules/ramsaltmedia/{$name}": ["type:ramsaltmedia-module"],
             "web/profiles/contrib/{$name}": ["type:drupal-profile"],
             "web/themes/contrib/{$name}": ["type:drupal-theme"],
-            "drush/Commands/contrib/{$name}": ["type:drupal-drush"]
+            "web/themes/ramsaltmedia/{$name}": ["type:ramsaltmedia-theme"],
+            "drush/contrib/{$name}": ["type:drupal-drush"]
+        },
+        "drupal-scaffold": {
+            "allowed-packages": [
+                "ramsalt/drupal-scaffold"
+            ],
+            "locations": {
+                "web-root": "web/"
+            },
+            "file-mapping": {
+                "[web-root]/sites/development.services.yml": {
+                    "mode": "replace",
+                    "path": "web/core/assets/scaffold/files/development.services.yml",
+                    "overwrite": false
+                }
+            }
         },
         "composer-exit-on-patch-failure": true,
         "patchLevel": {
             "drupal/core": "-p2"
         },
-        "patches": {
-        }
+        "enable-patching": true,
+        "patches-file": "composer.patches.json"
     }
 }

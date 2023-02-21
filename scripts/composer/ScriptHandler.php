@@ -91,8 +91,8 @@ class ScriptHandler {
     if ($version === '@package_version@' || $version === '@package_branch_alias_version@') {
       $io->writeError('<warning>You are running a development version of Composer. If you experience problems, please update Composer to the latest stable version.</warning>');
     }
-    elseif (Comparator::lessThan($version, '1.0.0')) {
-      $io->writeError('<error>Drupal-project requires Composer version 1.0.0 or higher. Please update your Composer before continuing</error>.');
+    elseif (Comparator::lessThan($version, '2.0.0')) {
+      $io->writeError('<error>Drupal-project requires Composer version 2.0.0 or higher. Please update your Composer before continuing</error>.');
       exit(1);
     }
   }
