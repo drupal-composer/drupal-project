@@ -21,6 +21,7 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^9.4",
         "drupal/core-recommended": "^9.4",
+        "drupal/site_audit": "^4",
         "symfony/filesystem": "^4.4",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2",
