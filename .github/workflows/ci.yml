@@ -49,12 +49,12 @@ jobs:
 
       - name: Install dependencies
         env:
-          COMPOSER_AUTH: '{"http-basic": {"repo.packagist.com": {"username": "token", "password": "${{secrets.COMPOSER_AUTH}}"}}}'
+          COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
         env:
-          COMPOSER_AUTH: '${{secrets.COMPOSER_AUTH}}'
+          COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
         run: composer --verbose require --no-update drupal/core-recommended:10.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:10.0.x-dev
 
       - if: matrix.drupal-release == 'dev'
