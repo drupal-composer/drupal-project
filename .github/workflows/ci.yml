@@ -59,7 +59,7 @@ jobs:
 
       - if: matrix.drupal-release == 'dev'
         env:
-          COMPOSER_AUTH: '{"http-basic": {"repo.packagist.com": {"username": "token", "password": "${{secrets.COMPOSER_AUTH}}"}}}'
+          COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
         run: composer --verbose update
 
       - run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
