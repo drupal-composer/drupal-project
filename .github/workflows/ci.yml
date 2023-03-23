@@ -4,6 +4,7 @@ on: [push]
 
 env:
   COMPOSER_MEMORY_LIMIT: -1
+  COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
   SIMPLETEST_DB: sqlite://tmp/site.sqlite
   SIMPLETEST_BASE_URL: "http://127.0.0.1:8080"
 
@@ -48,18 +49,12 @@ jobs:
         run: composer --verbose validate
 
       - name: Install dependencies
-        env:
-          COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
-        env:
-          COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
         run: composer --verbose require --no-update drupal/core-recommended:10.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:10.0.x-dev
 
       - if: matrix.drupal-release == 'dev'
-        env:
-          COMPOSER_AUTH: ${{secrets.COMPOSER_AUTH}}
         run: composer --verbose update
 
       - run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
