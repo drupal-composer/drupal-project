@@ -26,6 +26,7 @@
         "cweagans/composer-patches": "^1.7",
         "drupal/core-composer-scaffold": "^10.0.0",
         "drupal/core-recommended": "^10.0.0",
+        "drupal/monolog": "^3.0",
         "drush/drush": "^11.4.0",
         "oomphinc/composer-installers-extender": "^2.0",
         "ramsalt/drupal-scaffold": "*",
