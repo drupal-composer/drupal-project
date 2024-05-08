@@ -12,7 +12,7 @@ env:
 
 jobs:
   build:
-    runs-on: 'ubuntu-20.04'
+    runs-on: ubuntu-latest
     strategy:
       fail-fast: false
       matrix:
@@ -35,11 +35,20 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: Upgrade sqlite3
+        run: |
+          wget https://www.sqlite.org/2024/sqlite-autoconf-3450300.tar.gz -O /tmp/sqlite.tar.gz
+          tar -xzf /tmp/sqlite.tar.gz -C /tmp
+          cd /tmp/sqlite-autoconf-3450300
+          ./configure CFLAGS="-DSQLITE_ENABLE_COLUMN_METADATA=1" --prefix=/usr/local
+          make && sudo make install
+          sudo ldconfig
+
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php-versions }}
-          extensions: gd, pdo_sqlite
+          extensions: gd, sqlite, pdo_sqlite
 
       - name: Update composer
         run: composer --verbose self-update --${{ matrix.composer-channel }}
@@ -54,7 +63,7 @@ jobs:
         run: composer --verbose install
 
       - if: matrix.drupal-release == 'dev'
-        run: composer --verbose require --no-update drupal/core-recommended:10.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:10.0.x-dev
+        run: composer --verbose require --no-update drupal/core-recommended:11.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:11.0.x-dev
 
       - if: matrix.drupal-release == 'dev'
         run: composer --verbose update
@@ -66,6 +75,6 @@ jobs:
       - run: until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
 
       - name: Run a single unit test to verify the testing setup.
-        run: ./vendor/bin/phpunit -c ./web/core ./web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
+        run: ./vendor/bin/phpunit -c ./web/core $(pwd)/web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
 
       - run: ./vendor/bin/drush
