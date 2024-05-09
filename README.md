@@ -1,6 +1,6 @@
 # Composer template for Drupal projects
 
-[![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=10.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
+[![CI](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml/badge.svg?branch=11.x)](https://github.com/drupal-composer/drupal-project/actions/workflows/ci.yml)
 
 This project template provides a starter kit for managing your site
 dependencies with [Composer](https://getcomposer.org/).
@@ -16,7 +16,7 @@ for your setup.
 After that you can create the project:
 
 ```
-composer create-project drupal-composer/drupal-project:10.x-dev some-dir --no-interaction
+composer create-project drupal-composer/drupal-project:11.x-dev some-dir --no-interaction
 ```
 
 With `composer require ...` you can download new dependencies to your
@@ -123,7 +123,7 @@ section of composer.json:
 
 ### How do I specify a PHP version?
 
-This project supports PHP 8.1 as minimum version (see [Environment requirements of Drupal 10](https://www.drupal.org/docs/system-requirements/php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 8.1+.
+This project supports PHP 8.3 as minimum version (see [PHP requirements](https://www.drupal.org/docs/system-requirements/php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 8.3+.
 
 To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
 
@@ -131,7 +131,7 @@ To prevent this you can add this code to specify the PHP version you want to use
 "config": {
     "sort-packages": true,
     "platform": {
-        "php": "8.1.13"
+        "php": "8.3.1"
     }
 },
 ```

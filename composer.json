@@ -1,6 +1,6 @@
 {
     "name": "drupal-composer/drupal-project",
-    "description": "Project template for Drupal 10 projects with Composer",
+    "description": "Project template for Drupal 11 projects with Composer",
     "type": "project",
     "license": "GPL-2.0-or-later",
     "authors": [
