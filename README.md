@@ -123,15 +123,36 @@ section of composer.json:
 
 ### How do I specify a PHP version?
 
-This project supports PHP 8.1 as minimum version (see [Environment requirements of Drupal 10](https://www.drupal.org/docs/system-requirements/php-requirements)), however it's possible that a `composer update` will upgrade some package that will then require PHP 8.1+.
+There are 2 places where Composer will be looking for PHP version requirements
+when resolving dependencies:
+1. The `require.php` version value in `composer.json`.
+2. The `config.platform` version value in `composer.json`.
 
-To prevent this you can add this code to specify the PHP version you want to use in the `config` section of `composer.json`:
+The purpose of `require.php` is to set the minimum PHP language requirements
+for a package. For example, the minimum version required for Drupal 10.0 is 
+`8.0.2` or above, which can be specified as `>=8`.
+
+The purpose of `config.platform` is to set the PHP language requirements for the
+specific instance of the package running in the current environment. For
+example, while the minimum version required for Drupal 10 is `8.0.2` or above, 
+the  actual PHP version on the hosting provider could be `8.1.0`. The value of 
+this field should provide your exact version of PHP with all 3 parts of the 
+version.
+
+#### Which versions to specify in my Drupal site?
+
+This project includes `drupal/core` which already has `require.php` added. Your
+would inherit that constraint. There is no need to add `require.php` to your
+`composer.json`.
+
+`config.platform` is a platform-specific. It is recommended to specify 
+`config.platform` as a _specific version_ (e.g.`8.1.19`) constraint to ensure 
+that only the package versions supported by your current environment are used.
 
 ```json
 "config": {
-    "sort-packages": true,
     "platform": {
-        "php": "8.1.13"
+        "php": "8.1.19"
     }
 },
 ```
