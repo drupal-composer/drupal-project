@@ -3,7 +3,10 @@ name: CI
 on:
   push:
   pull_request:
-    types: [opened, synchronize, reopened]
+    types:
+      - opened
+      - synchronize
+      - reopened
 
 env:
   COMPOSER_MEMORY_LIMIT: -1
@@ -15,17 +18,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       fail-fast: false
+
       matrix:
         php-versions: ['8.3']
-        drupal-release: ['alpha']
-        composer-channel: ['stable']
-        include:
-          - php-versions: '8.3'
-            drupal-release: dev
-            composer-channel: stable
-          - php-versions: '8.3'
-            drupal-release: alpha
-            composer-channel: snapshot
+        drupal-release: ['alpha', 'dev']
+        composer-channel: ['stable', 'snapshot']
+
     steps:
       - name: Dump matrix context
         env:
@@ -50,10 +48,10 @@ jobs:
           php-version: ${{ matrix.php-versions }}
           extensions: gd, sqlite, pdo_sqlite
 
-      - name: Update composer
+      - name: Update Composer
         run: composer --verbose self-update --${{ matrix.composer-channel }}
 
-      - name: Dump composer version
+      - name: Show Composer version
         run: composer --version
 
       - name: Validate composer.json
@@ -62,19 +60,20 @@ jobs:
       - name: Install dependencies
         run: composer --verbose install
 
-      - if: matrix.drupal-release == 'dev'
-        run: composer --verbose require --no-update drupal/core-recommended:11.0.x-dev && composer --verbose require --no-update --dev drupal/core-dev:11.0.x-dev
+      - name: Override Drupal version to dev for testing dev releases
+        if: matrix.drupal-release == 'dev'
+        run: |
+          composer --verbose require --no-update drupal/core-recommended:11.0.x-dev
+          composer --verbose require --no-update --dev drupal/core-dev:11.0.x-dev
+          composer --verbose update
 
-      - if: matrix.drupal-release == 'dev'
-        run: composer --verbose update
+      - name: Install site
+        run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
 
-      - run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
+      - name: Start server
+        run: |
+          ./vendor/bin/drush runserver "$SIMPLETEST_BASE_URL" &
+          until curl -s "$SIMPLETEST_BASE_URL"; do true; done > /dev/null
 
-      - run: ./vendor/bin/drush runserver $SIMPLETEST_BASE_URL &
-
-      - run: until curl -s $SIMPLETEST_BASE_URL; do true; done > /dev/null
-
-      - name: Run a single unit test to verify the testing setup.
+      - name: Run a single unit test to verify the testing setup
         run: ./vendor/bin/phpunit -c ./web/core $(pwd)/web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
-
-      - run: ./vendor/bin/drush
