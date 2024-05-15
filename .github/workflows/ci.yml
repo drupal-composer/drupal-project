@@ -60,6 +60,9 @@ jobs:
       - name: Install dependencies
         run: composer --verbose install
 
+      - name: Validate composer.json structure
+        run: composer normalize --dry-run
+
       # @see https://www.drupal.org/node/3176567
       - name: Install testing dependency
         if: ${{ matrix.php-versions == '8.1' }}
