@@ -9,7 +9,7 @@ dependencies with [Composer](https://getcomposer.org/).
 ## What does the template do?
 
 * Drupal will be installed in the `web` directory.
-* Generated composer autoloader `vendor/autoload.php` is used  instead of
+* Generated composer autoloader `vendor/autoload.php` is used instead of
   `web/vendor/autoload.php` provided by Drupal core.
 * Modules (packages of type `drupal-module`) will be placed in `web/modules/contrib` directory.
 * Themes (packages of type `drupal-theme`) will be placed in `web/themes/contrib` directory.
@@ -47,12 +47,50 @@ cd some-dir
 composer require drupal/devel
 ```
 
+### Adding libraries
+
+You can manage front-end asset libraries with Composer thanks to the
+[asset-packagist repository](https://asset-packagist.org/). Composer will detect
+and install new versions of a library that meet the stated constraints.
+
+```bash
+composer require bower-asset/dropzone
+```
+
+### Custom installation paths for libraries
+
+The installation path of a specific library can be controlled by adding it to
+the `extra.installer-paths` configuration preceding `web/libraries/{$name}`.
+For example, the `chosen` Drupal module expects the `chosen` library to be
+located on `web/libraries/chosen`, but `composer require npm-asset/chosen-js`
+installs the library into `web/libraries/chosen-js`. The following configuration
+overrides installation it into the expected directory:
+
+```json
+{
+    "extra": {
+        "installer-paths": {
+            "web/libraries/chosen": [
+                "npm-asset/chosen-js"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ]
+        }
+    }
+}
+```
+
+For more details, see https://asset-packagist.org/site/about
+
 ### Updating Drupal Core
 
 This project will attempt to keep all of your Drupal Core files up-to-date; the
 project [drupal/core-composer-scaffold](https://github.com/drupal/core-composer-scaffold)
-is used to ensure that your scaffold files are updated every time `drupal/core` 
-is updated. 
+is used to ensure that your scaffold files are updated every time `drupal/core`
+is updated.
 
 If you customize any of the "scaffolding" files (commonly `.htaccess`),
 you may need to merge conflicts if any of your modified files are updated in a
@@ -63,7 +101,7 @@ Follow the steps below to update your Drupal core files.
 1. Run `composer update "drupal/core-*" --with-dependencies` to update Drupal Core and its dependencies.
 2. Run `git diff` to determine if any of the scaffolding files have changed.
    Review the files for any changes and restore any customizations to
-  `.htaccess` or `robots.txt`.
+   `.htaccess` or `robots.txt`.
 3. Commit everything all together in a single commit, so `web` will remain in
    sync with the `core` when checking out branches or running `git bisect`.
 4. In the event that there are non-trivial conflicts in step 2, you may wish
@@ -83,12 +121,12 @@ workarounds if a project decides to do it anyway](https://getcomposer.org/doc/fa
 ### Should I commit the scaffolding files?
 
 The [Drupal Composer Scaffold](https://github.com/drupal/core-composer-scaffold)
-plugin can download the scaffold files (like `index.php`, `update.php` etc.) to 
-the `web` directory of your project. If you have not customized those files you 
-could choose to not check them into your version control system (e.g. git). 
-If that is the case for your project, it might be convenient to automatically 
-run the drupal-scaffold plugin after every install or update of your project. 
-You can achieve that by registering `@composer drupal:scaffold` as `post-install` 
+plugin can download the scaffold files (like `index.php`, `update.php` etc.) to
+the `web` directory of your project. If you have not customized those files you
+could choose to not check them into your version control system (e.g. git).
+If that is the case for your project, it might be convenient to automatically
+run the drupal-scaffold plugin after every install or update of your project.
+You can achieve that by registering `@composer drupal:scaffold` as `post-install`
 and `post-update` command in your `composer.json`:
 
 ```json
@@ -110,7 +148,7 @@ If you need to apply patches, you can do so with the
 [composer-patches](https://github.com/cweagans/composer-patches) plugin included
 in this project.
 
-To add a patch to Drupal module `foobar`, insert the `patches` section in the 
+To add a patch to Drupal module `foobar`, insert the `patches` section in the
 `extra` section of `composer.json`:
 
 ```json
@@ -137,7 +175,7 @@ for a package. For example, the minimum version required for Drupal 11.0 is
 The purpose of `config.platform` is to set the PHP language requirements for the
 specific instance of the package running in the current environment. For
 example, while the minimum version required for Drupal 11 is `8.3` or above,
-the  actual PHP version on the hosting provider could be `8.3.1`. The value of
+the actual PHP version on the hosting provider could be `8.3.1`. The value of
 this field should provide your exact version of PHP with all 3 parts of the
 version.
 
