@@ -21,7 +21,7 @@ jobs:
 
       matrix:
         php-versions: ['8.3']
-        drupal-release: ['alpha', 'dev']
+        drupal-release: ['beta', 'dev']
         composer-channel: ['stable', 'snapshot']
 
     steps:
@@ -72,6 +72,7 @@ jobs:
       - name: Override Drupal version to dev for testing dev releases
         if: matrix.drupal-release == 'dev'
         run: |
+          composer config minimum-stability dev
           composer --verbose require --no-update drupal/core-recommended:11.0.x-dev
           composer --verbose require --no-update --dev drupal/core-dev:11.0.x-dev
           composer --verbose update
