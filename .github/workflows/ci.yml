@@ -63,6 +63,12 @@ jobs:
       - name: Validate composer.json structure
         run: composer normalize --dry-run
 
+      - name: Require bower-asset
+        run: |
+          test ! -d web/libraries/dropzone
+          composer require bower-asset/dropzone
+          test -d web/libraries/dropzone
+
       # @see https://www.drupal.org/node/3176567
       - name: Install testing dependency
         if: ${{ matrix.php-versions == '8.1' }}

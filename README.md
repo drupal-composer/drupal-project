@@ -50,12 +50,50 @@ cd some-dir
 composer require drupal/devel
 ```
 
+### Adding libraries
+
+You can manage front-end asset libraries with Composer thanks to the
+[asset-packagist repository](https://asset-packagist.org/). Composer will detect
+and install new versions of a library that meet the stated constraints.
+
+```bash
+composer require bower-asset/dropzone
+```
+
+### Custom installation paths for libraries
+
+The installation path of a specific library can be controlled by adding it to
+the `extra.installer-paths` configuration preceding `web/libraries/{$name}`.
+For example, the `chosen` Drupal module expects the `chosen` library to be
+located on `web/libraries/chosen`, but `composer require npm-asset/chosen-js`
+installs the library into `web/libraries/chosen-js`. The following configuration
+overrides installation it into the expected directory:
+
+```json
+{
+    "extra": {
+        "installer-paths": {
+            "web/libraries/chosen": [
+                "npm-asset/chosen-js"
+            ],
+            "web/libraries/{$name}": [
+                "type:drupal-library",
+                "type:npm-asset",
+                "type:bower-asset"
+            ]
+        }
+    }
+}
+```
+
+For more details, see https://asset-packagist.org/site/about
+
 ### Updating Drupal Core
 
 This project will attempt to keep all of your Drupal Core files up-to-date; the
 project [drupal/core-composer-scaffold](https://github.com/drupal/core-composer-scaffold)
-is used to ensure that your scaffold files are updated every time `drupal/core` 
-is updated. 
+is used to ensure that your scaffold files are updated every time `drupal/core`
+is updated.
 
 If you customize any of the "scaffolding" files (commonly `.htaccess`),
 you may need to merge conflicts if any of your modified files are updated in a
@@ -86,12 +124,12 @@ workarounds if a project decides to do it anyway](https://getcomposer.org/doc/fa
 ### Should I commit the scaffolding files?
 
 The [Drupal Composer Scaffold](https://github.com/drupal/core-composer-scaffold)
-plugin can download the scaffold files (like `index.php`, `update.php` etc.) to 
-the `web` directory of your project. If you have not customized those files you 
-could choose to not check them into your version control system (e.g. git). 
-If that is the case for your project, it might be convenient to automatically 
-run the drupal-scaffold plugin after every install or update of your project. 
-You can achieve that by registering `@composer drupal:scaffold` as `post-install` 
+plugin can download the scaffold files (like `index.php`, `update.php` etc.) to
+the `web` directory of your project. If you have not customized those files you
+could choose to not check them into your version control system (e.g. git).
+If that is the case for your project, it might be convenient to automatically
+run the drupal-scaffold plugin after every install or update of your project.
+You can achieve that by registering `@composer drupal:scaffold` as `post-install`
 and `post-update` command in your `composer.json`:
 
 ```json
@@ -113,7 +151,7 @@ If you need to apply patches, you can do so with the
 [composer-patches](https://github.com/cweagans/composer-patches) plugin included
 in this project.
 
-To add a patch to Drupal module `foobar`, insert the `patches` section in the 
+To add a patch to Drupal module `foobar`, insert the `patches` section in the
 `extra` section of `composer.json`:
 
 ```json
@@ -134,14 +172,14 @@ when resolving dependencies:
 2. The `config.platform` version value in `composer.json`.
 
 The purpose of `require.php` is to set the minimum PHP language requirements
-for a package. For example, the minimum version required for Drupal 10.0 is 
+for a package. For example, the minimum version required for Drupal 10.0 is
 `8.0.2` or above, which can be specified as `>=8`.
 
 The purpose of `config.platform` is to set the PHP language requirements for the
 specific instance of the package running in the current environment. For
-example, while the minimum version required for Drupal 10 is `8.0.2` or above, 
-the  actual PHP version on the hosting provider could be `8.1.0`. The value of 
-this field should provide your exact version of PHP with all 3 parts of the 
+example, while the minimum version required for Drupal 10 is `8.0.2` or above,
+the  actual PHP version on the hosting provider could be `8.1.0`. The value of
+this field should provide your exact version of PHP with all 3 parts of the
 version.
 
 #### Which versions to specify in my Drupal site?
@@ -150,8 +188,8 @@ This project includes `drupal/core` which already has `require.php` added. Your
 would inherit that constraint. There is no need to add `require.php` to your
 `composer.json`.
 
-`config.platform` is a platform-specific. It is recommended to specify 
-`config.platform` as a _specific version_ (e.g.`8.1.19`) constraint to ensure 
+`config.platform` is a platform-specific. It is recommended to specify
+`config.platform` as a _specific version_ (e.g.`8.1.19`) constraint to ensure
 that only the package versions supported by your current environment are used.
 
 ```json

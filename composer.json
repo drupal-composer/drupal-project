@@ -15,6 +15,7 @@
         "drupal/core-composer-scaffold": "^10.2.0",
         "drupal/core-recommended": "^10.2.0",
         "drush/drush": "^12.4.3",
+        "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
     },
@@ -29,6 +30,10 @@
         {
             "type": "composer",
             "url": "https://packages.drupal.org/8"
+        },
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
         }
     ],
     "minimum-stability": "dev",
@@ -48,6 +53,7 @@
             "dealerdirect/phpcodesniffer-composer-installer": true,
             "drupal/core-composer-scaffold": true,
             "ergebnis/composer-normalize": true,
+            "oomphinc/composer-installers-extender": true,
             "php-http/discovery": true,
             "phpstan/extension-installer": true
         },
@@ -66,7 +72,9 @@
                 "type:drupal-core"
             ],
             "web/libraries/{$name}": [
-                "type:drupal-library"
+                "type:drupal-library",
+                "type:bower-asset",
+                "type:npm-asset"
             ],
             "web/modules/contrib/{$name}": [
                 "type:drupal-module"
@@ -81,6 +89,10 @@
                 "type:drupal-drush"
             ]
         },
+        "installer-types": [
+            "bower-asset",
+            "npm-asset"
+        ],
         "patchLevel": {
             "drupal/core": "-p2"
         },
