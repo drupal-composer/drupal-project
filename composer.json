@@ -36,7 +36,7 @@
             "url": "https://asset-packagist.org"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "classmap": [

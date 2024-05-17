@@ -50,6 +50,29 @@ cd some-dir
 composer require drupal/devel
 ```
 
+By default, this project is set to install only stable releases of dependencies,
+as specified by `"minimum-stability": "stable"` in `composer.json`. If you need 
+to use non-stable releases (e.g., `alpha`, `beta`, `RC`), you can modify the 
+version constraint to allow for such versions. For instance, to require a beta 
+version of a module:
+
+```bash
+composer require drupal/devel:1.0.0-beta1
+```
+
+Alternatively, you can globally adjust the stability settings by modifying 
+`composer.json` to include the desired stability level and explicitly allow it:
+
+```json
+{
+    "minimum-stability": "beta",
+    "prefer-stable": true
+}
+```
+
+This configuration ensures that stable releases are preferred, but allows the 
+installation of non-stable packages when necessary.
+
 ### Adding libraries
 
 You can manage front-end asset libraries with Composer thanks to the
