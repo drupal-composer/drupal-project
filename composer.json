@@ -12,15 +12,15 @@
     "require": {
         "composer/installers": "^2.1",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core-composer-scaffold": "^11@beta",
-        "drupal/core-recommended": "^11@beta",
+        "drupal/core-composer-scaffold": "^11@alpha",
+        "drupal/core-recommended": "^11@alpha",
         "drush/drush": "^13@beta",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.2"
     },
     "require-dev": {
-        "drupal/core-dev": "^11@beta",
+        "drupal/core-dev": "^11@alpha",
         "ergebnis/composer-normalize": "^2.42"
     },
     "conflict": {

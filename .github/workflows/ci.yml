@@ -21,7 +21,7 @@ jobs:
 
       matrix:
         php-versions: ['8.3']
-        drupal-release: ['beta', 'dev']
+        drupal-release: ['alpha', 'beta', 'dev']
         composer-channel: ['stable', 'snapshot']
 
     steps:
