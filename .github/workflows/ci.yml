@@ -21,7 +21,7 @@ jobs:
 
       matrix:
         php-versions: ['8.1', '8.2']
-        drupal-release: ['stable', 'dev']
+        drupal-release: ['stable', 'beta', 'dev']
         composer-channel: ['stable', 'snapshot']
         # Drupal 10.x-dev tests fail on PHP 8.3.
         # @see https://www.drupal.org/project/drupal/issues/3375693
@@ -75,12 +75,13 @@ jobs:
         run: composer require --dev phpspec/prophecy-phpunit:^2
 
       - name: Override Drupal version to dev for testing dev releases
-        if: matrix.drupal-release == 'dev'
+        if: matrix.drupal-release == 'dev' || matrix.drupal-release == 'beta'
         run: |
-          composer config minimum-stability dev
-          composer --verbose require --no-update drupal/core-composer-scaffold:^10@dev
-          composer --verbose require --no-update drupal/core-recommended:^10@dev
-          composer --verbose require --no-update --dev drupal/core-dev:^10@dev
+          composer config minimum-stability ${{ matrix.drupal-release }}
+          composer config prefer-stable false
+          composer --verbose require --no-update drupal/core-composer-scaffold:^10@${{ matrix.drupal-release }}
+          composer --verbose require --no-update drupal/core-recommended:^10@${{ matrix.drupal-release }}
+          composer --verbose require --no-update --dev drupal/core-dev:^10@${{ matrix.drupal-release }}
           composer --verbose update
 
       - name: Install site
