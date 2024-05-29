@@ -70,11 +70,15 @@ jobs:
           test -d web/libraries/dropzone
 
       - name: Override Drupal version to dev for testing dev releases
-        if: matrix.drupal-release == 'dev'
+        if: matrix.drupal-release == 'dev' || matrix.drupal-release == 'beta'
         run: |
-          composer config minimum-stability dev
-          composer --verbose require --no-update drupal/core-recommended:11.0.x-dev
-          composer --verbose require --no-update --dev drupal/core-dev:11.0.x-dev
+          composer config minimum-stability ${{ matrix.drupal-release }}
+          composer config prefer-stable false
+          composer --verbose require --no-update drupal/core-composer-scaffold:^11@${{ matrix.drupal-release }}
+          composer --verbose require --no-update drupal/core-recommended:^11@${{ matrix.drupal-release }}
+          composer --verbose require --no-update --dev drupal/core-dev:^11@${{ matrix.drupal-release }}
+          # Remove the line below once the package is out of `alpha`. 
+          [[ ${{ matrix.drupal-release }} == 'beta' ]] && composer require chi-teck/drupal-code-generator:^4@alpha          
           composer --verbose update
 
       - name: Install site
@@ -89,7 +93,7 @@ jobs:
           until curl -s "$SIMPLETEST_BASE_URL"; do true; done > /dev/null
 
       - name: Run a single unit test to verify the testing setup
-        run: ./vendor/bin/phpunit -c ./web/core $(pwd)/web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php
+        run: ./vendor/bin/phpunit -c ./web/core "$(pwd)/web/core/modules/user/tests/src/Unit/UserAccessControlHandlerTest.php"
 
   # Using outdated Composer version to test the Composer version constraint.
   test-composer:
