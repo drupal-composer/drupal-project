@@ -77,7 +77,7 @@ jobs:
       - name: Override Drupal version to dev for testing dev releases
         if: matrix.drupal-release == 'dev' || matrix.drupal-release == 'beta'
         run: |
-          composer config minimum-stability ${{ matrix.drupal-release }}
+          [[ ${{ matrix.drupal-release }} == 'dev' ]] && composer config minimum-stability ${{ matrix.drupal-release }}
           composer config prefer-stable false
           composer --verbose require --no-update drupal/core-composer-scaffold:^10@${{ matrix.drupal-release }}
           composer --verbose require --no-update drupal/core-recommended:^10@${{ matrix.drupal-release }}
