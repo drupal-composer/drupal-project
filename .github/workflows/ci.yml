@@ -78,8 +78,9 @@ jobs:
         if: matrix.drupal-release == 'dev'
         run: |
           composer config minimum-stability dev
-          composer --verbose require --no-update drupal/core-recommended:10.0.x-dev
-          composer --verbose require --no-update --dev drupal/core-dev:10.0.x-dev
+          composer --verbose require --no-update drupal/core-composer-scaffold:^10@dev
+          composer --verbose require --no-update drupal/core-recommended:^10@dev
+          composer --verbose require --no-update --dev drupal/core-dev:^10@dev
           composer --verbose update
 
       - name: Install site
