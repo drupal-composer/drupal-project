@@ -85,6 +85,9 @@ jobs:
       - name: Install site
         run: ./vendor/bin/drush site-install --verbose --yes --db-url=sqlite://tmp/site.sqlite
 
+      - name: Show site information
+        run: ./vendor/bin/drush status
+
       - name: Start server
         run: |
           ./vendor/bin/drush runserver "$SIMPLETEST_BASE_URL" &
