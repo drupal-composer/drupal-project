@@ -17,7 +17,7 @@
         "drush/drush": "^12.4.3",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
-        "webflo/drupal-finder": "^1.2"
+        "webflo/drupal-finder": "^1.3"
     },
     "require-dev": {
         "drupal/core-dev": "^10.2.0",
