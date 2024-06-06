@@ -14,7 +14,6 @@ use Drupal\Core\Site\SettingsEditor;
 use DrupalFinder\DrupalFinder;
 use DrupalFinder\DrupalFinderComposerRuntime;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Path;
 
 class ScriptHandler {
 
