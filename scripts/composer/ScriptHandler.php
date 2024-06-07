@@ -12,15 +12,14 @@ use Composer\Semver\Comparator;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Site\SettingsEditor;
 use DrupalFinder\DrupalFinder;
+use DrupalFinder\DrupalFinderComposerRuntime;
 use Symfony\Component\Filesystem\Filesystem;
-use Symfony\Component\Filesystem\Path;
 
 class ScriptHandler {
 
   public static function createRequiredFiles(Event $event) {
     $fs = new Filesystem();
-    $drupalFinder = new DrupalFinder();
-    $drupalFinder->locateRoot(getcwd());
+    $drupalFinder = new DrupalFinderComposerRuntime();
     $drupalRoot = $drupalFinder->getDrupalRoot();
 
     $dirs = [
@@ -44,7 +43,7 @@ class ScriptHandler {
       require_once $drupalRoot . '/core/includes/install.inc';
       new Settings([]);
       $settings['settings']['config_sync_directory'] = (object) [
-        'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
+        'value' => '../config/sync',
         'required' => TRUE,
       ];
       SettingsEditor::rewrite($drupalRoot . '/sites/default/settings.php', $settings);
