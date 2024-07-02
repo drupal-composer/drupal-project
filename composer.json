@@ -63,6 +63,11 @@
     "extra": {
         "composer-exit-on-patch-failure": true,
         "drupal-scaffold": {
+            "file-mapping": {
+                "[project-root]/.gitignore": false,
+                "[web-root]/INSTALL.txt": false,
+                "[web-root]/README.txt": false
+            },
             "locations": {
                 "web-root": "web/"
             }
