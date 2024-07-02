@@ -22,12 +22,8 @@ class ScriptHandler {
     $drupalFinder = new DrupalFinderComposerRuntime();
     $drupalRoot = $drupalFinder->getDrupalRoot();
 
-    // If Drupal root was not found, exit.
     if (is_null($drupalRoot)) {
-      $io = $event->getIO();
-      $io->writeError(
-        '<error>Drupal root could not be detected.</error>',
-      );
+      $event->getIO()->writeError('<error>Drupal root could not be detected.</error>');
       exit(1);
     }
 
