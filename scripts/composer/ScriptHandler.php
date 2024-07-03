@@ -11,9 +11,9 @@ use Composer\Script\Event;
 use Composer\Semver\Comparator;
 use Drupal\Core\Site\Settings;
 use Drupal\Core\Site\SettingsEditor;
-use DrupalFinder\DrupalFinder;
 use DrupalFinder\DrupalFinderComposerRuntime;
 use Symfony\Component\Filesystem\Filesystem;
+use Symfony\Component\Filesystem\Path;
 
 class ScriptHandler {
 
@@ -21,6 +21,11 @@ class ScriptHandler {
     $fs = new Filesystem();
     $drupalFinder = new DrupalFinderComposerRuntime();
     $drupalRoot = $drupalFinder->getDrupalRoot();
+
+    if (is_null($drupalRoot)) {
+      $event->getIO()->writeError('<error>Drupal root could not be detected.</error>');
+      exit(1);
+    }
 
     $dirs = [
       'modules',
@@ -43,7 +48,7 @@ class ScriptHandler {
       require_once $drupalRoot . '/core/includes/install.inc';
       new Settings([]);
       $settings['settings']['config_sync_directory'] = (object) [
-        'value' => '../config/sync',
+        'value' => Path::makeRelative($drupalFinder->getComposerRoot() . '/config/sync', $drupalRoot),
         'required' => TRUE,
       ];
       SettingsEditor::rewrite($drupalRoot . '/sites/default/settings.php', $settings);
