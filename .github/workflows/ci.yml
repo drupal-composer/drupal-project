@@ -21,7 +21,7 @@ jobs:
 
       matrix:
         php-versions: ['8.3']
-        drupal-release: ['alpha', 'beta', 'dev']
+        drupal-release: ['stable', 'beta', 'dev']
         composer-channel: ['stable', 'snapshot']
 
     steps:
@@ -77,8 +77,6 @@ jobs:
           composer --verbose require --no-update drupal/core-composer-scaffold:^11@${{ matrix.drupal-release }}
           composer --verbose require --no-update drupal/core-recommended:^11@${{ matrix.drupal-release }}
           composer --verbose require --no-update --dev drupal/core-dev:^11@${{ matrix.drupal-release }}
-          # Remove the line below once the package is out of `alpha`. 
-          [[ ${{ matrix.drupal-release }} == 'beta' ]] && composer require chi-teck/drupal-code-generator:^4@alpha          
           composer --verbose update
 
       - name: Install site

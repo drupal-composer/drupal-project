@@ -12,15 +12,15 @@
     "require": {
         "composer/installers": "^2.1",
         "cweagans/composer-patches": "^1.7",
-        "drupal/core-composer-scaffold": "^11@alpha",
-        "drupal/core-recommended": "^11@alpha",
-        "drush/drush": "^13@beta",
+        "drupal/core-composer-scaffold": "^11",
+        "drupal/core-recommended": "^11",
+        "drush/drush": "^13",
         "oomphinc/composer-installers-extender": "^2.0",
         "vlucas/phpdotenv": "^5.1",
         "webflo/drupal-finder": "^1.3"
     },
     "require-dev": {
-        "drupal/core-dev": "^11@alpha",
+        "drupal/core-dev": "^11",
         "ergebnis/composer-normalize": "^2.42"
     },
     "conflict": {
@@ -36,7 +36,7 @@
             "url": "https://asset-packagist.org"
         }
     ],
-    "minimum-stability": "alpha",
+    "minimum-stability": "stable",
     "prefer-stable": true,
     "autoload": {
         "classmap": [
